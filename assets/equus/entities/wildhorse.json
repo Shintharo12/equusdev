@@ -271,7 +271,7 @@
 			"*-baby-*-ferus": {"base": "entity/land/ferus/baby"}
 		},
 		"textureByType": {
-			"*-adult-*-ferus": {"base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
+			"*-ferus": {"base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
                 {"base": "entity/ferus/grullo"},
                 {"base": "entity/ferus/mealy-reddun"},
                 {"base": "entity/ferus/bay"},
@@ -320,8 +320,7 @@
                 {"base": "entity/ferus/baydun-leopard", "overlays": [ "entity/ferus/roan" ] },
                 {"base": "entity/ferus/grullo-leopard", "overlays": [ "entity/ferus/roan" ] },
                 {"base": "entity/ferus/reddun-leopard", "overlays": [ "entity/ferus/roan" ] },
-                {"base": "entity/ferus/cremello", "overlays": [ "entity/ferus/roan" ] } ]},
-			"*-baby-*-ferus": {"base": "entity/ferus/mealy-bay"}
+                {"base": "entity/ferus/cremello", "overlays": [ "entity/ferus/roan" ] } ]}
 		},
 		"sizeByType": {
 			"*-adult-female-ferus": 1,"*-adult-male-ferus": 1.05,"*-baby-*-ferus": 1
