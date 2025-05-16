@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "patches": {
+    "float":{
+      "equus:entities/wildhorse.json": {
+        "/server/spawnconditions/worldgen/triesPerChunk/avg": "worlgen",
+        "/server/spawnconditions/runtime/chanceByType/*-adult-male-ferus": "runtimeferus"
+      }
+    }
+  },
+  "settings":[
+    {
+      "code": "worlgen",
+      "type": "float",
+      "ingui": "setting-worldgen-spawnrate",
+      "default": 0.001,
+      "range": {
+        "min": 0.000,
+        "max": 1.0,
+        "step":0.0001
+      }
+    },
+    {
+      "code": "runtimeferus",
+      "type": "float",
+      "ingui": "setting-runtime-spawnrate-ferus",
+      "default": 0.00003,
+      "range": {
+        "min": 0.0000,
+        "max": 1.0,
+        "step":0.00001
+      }
+    }
+  ]
+}

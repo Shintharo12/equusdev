@@ -1,0 +1,133 @@
+{
+	"editor": {
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/Equus/assets/equus/shapes/entity/land/ferus/adult",
+		"collapsedPaths": "Root/ORIGIN/SaddleSeat,Root/ORIGIN/SaddleFrontWall,Root/ORIGIN/Saddle/SaddleFrontN/StrapFront,Root/ORIGIN/SaddleBack1,Root/SaddleFrontN",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"pelt": [16,16],
+		"rope7": [32,32]
+	},
+	"textures": {
+	},
+	"elements": [
+		{
+			"name": "ORIGIN",
+			"stepParentName": "MidStorage",
+			"from": [ 2.1, 1.2, 4.29 ],
+			"to": [ 3.2, 2.3, 5.39 ],
+			"rotationOrigin": [ 2.1, 1.2, 4.29 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "Saddle",
+					"from": [ 0.0, 0.0, 0.22 ],
+					"to": [ 0.0, 0.0, 0.22 ],
+					"rotationOrigin": [ 0.0, 0.0, 0.22 ],
+					"faces": {
+						"north": { "texture": "#pelt", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "autoUv": false },
+						"east": { "texture": "#pelt", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "autoUv": false },
+						"south": { "texture": "#pelt", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "autoUv": false },
+						"west": { "texture": "#pelt", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "autoUv": false },
+						"up": { "texture": "#pelt", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "autoUv": false },
+						"down": { "texture": "#pelt", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "autoUv": false }
+					}
+				},
+				{
+					"name": "SaddleFrontN",
+					"from": [ -1.98, -4.62, -4.95 ],
+					"to": [ 2.53, 1.43, 5.39 ],
+					"rotationOrigin": [ -1.98, -4.6192, -4.895 ],
+					"rotationZ": 3.0,
+					"faces": {
+						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 9.5, 12.5 ], "autoUv": false },
+						"east": { "texture": "#pelt", "uv": [ 4.0, 1.0, 13.0, 6.5 ], "autoUv": false },
+						"south": { "texture": "#pelt", "uv": [ 9.5, 4.0, 13.5, 9.5 ], "autoUv": false },
+						"west": { "texture": "#pelt", "uv": [ 3.0, 6.5, 12.0, 12.0 ], "autoUv": false },
+						"up": { "texture": "#pelt", "uv": [ 2.0, 5.0, 6.0, 14.0 ], "autoUv": false },
+						"down": { "texture": "#pelt", "uv": [ 0.0, 4.5, 4.0, 13.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+					}
+				},
+				{
+					"name": "StrapFront",
+					"from": [ -0.0835, -9.2601, -4.18 ],
+					"to": [ 2.1165, -8.9301, 4.62 ],
+					"rotationOrigin": [ -0.0835, -9.2601, -4.18 ],
+					"faces": {
+						"north": { "texture": "#rope7", "uv": [ 13.5, 0.0, 15.5, 0.5 ], "autoUv": false },
+						"east": { "texture": "#rope7", "uv": [ 1.0, 12.5, 9.0, 13.0 ], "autoUv": false },
+						"south": { "texture": "#rope7", "uv": [ 6.0, 9.0, 8.0, 9.5 ], "autoUv": false },
+						"west": { "texture": "#rope7", "uv": [ 3.5, 10.0, 11.5, 10.5 ], "autoUv": false },
+						"up": { "texture": "#rope7", "uv": [ 8.0, 9.5, 16.0, 11.5 ], "rotation": 90, "autoUv": false },
+						"down": { "texture": "#rope7", "uv": [ 1.5, 12.5, 9.5, 14.5 ], "rotation": 90, "autoUv": false }
+					},
+					"children": [
+						{
+							"name": "StrapFront2",
+							"from": [ 0.0, 0.0, -0.33 ],
+							"to": [ 2.2, 7.26, 0.0 ],
+							"rotationOrigin": [ 0.0, 0.0, -0.33 ],
+							"rotationX": -1.8,
+							"faces": {
+								"north": { "texture": "#rope7", "uv": [ 1.5, 1.5, 8.0, 3.5 ], "rotation": 90, "autoUv": false },
+								"east": { "texture": "#rope7", "uv": [ 0.0, 4.0, 0.5, 10.5 ], "autoUv": false },
+								"south": { "texture": "#rope7", "uv": [ 7.0, 8.5, 13.5, 10.5 ], "rotation": 90, "autoUv": false },
+								"west": { "texture": "#rope7", "uv": [ 14.5, 5.5, 15.0, 12.0 ], "autoUv": false },
+								"up": { "texture": "#rope7", "uv": [ 9.5, 1.5, 11.5, 2.0 ], "autoUv": false },
+								"down": { "texture": "#rope7", "uv": [ 0.5, 1.0, 2.5, 1.5 ], "autoUv": false }
+							}
+						},
+						{
+							"name": "StrapFront3",
+							"from": [ 0.0, 0.0, 8.8 ],
+							"to": [ 2.2, 9.35, 9.13 ],
+							"rotationOrigin": [ 0.0, 0.0, 8.8 ],
+							"rotationX": 1.8,
+							"faces": {
+								"north": { "texture": "#rope7", "uv": [ 6.5, 2.0, 15.0, 4.0 ], "rotation": 90, "autoUv": false },
+								"east": { "texture": "#rope7", "uv": [ 14.5, 6.5, 15.0, 15.0 ], "autoUv": false },
+								"south": { "texture": "#rope7", "uv": [ 2.5, 1.5, 11.0, 3.5 ], "rotation": 90, "autoUv": false },
+								"west": { "texture": "#rope7", "uv": [ 11.5, 2.0, 12.0, 10.5 ], "autoUv": false },
+								"up": { "texture": "#rope7", "uv": [ 2.5, 5.0, 4.5, 5.5 ], "autoUv": false },
+								"down": { "texture": "#rope7", "uv": [ 3.0, 7.5, 5.0, 8.0 ], "autoUv": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "SaddleFrontN2",
+					"from": [ 1.3155, -2.244, -4.84 ],
+					"to": [ 7.9155, 1.276, 5.28 ],
+					"rotationOrigin": [ 1.3155, -2.2465, -4.785 ],
+					"rotationZ": 3.0,
+					"faces": {
+						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 11.5, 10.0 ], "autoUv": false },
+						"east": { "texture": "#pelt", "uv": [ 4.0, 1.0, 13.0, 4.0 ], "autoUv": false },
+						"south": { "texture": "#pelt", "uv": [ 9.5, 4.0, 15.5, 7.0 ], "autoUv": false },
+						"west": { "texture": "#pelt", "uv": [ 3.0, 6.5, 12.0, 9.5 ], "autoUv": false },
+						"up": { "texture": "#pelt", "uv": [ 2.0, 5.0, 8.0, 14.0 ], "autoUv": false },
+						"down": { "texture": "#pelt", "uv": [ 0.0, 4.5, 6.0, 13.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+					}
+				},
+				{
+					"name": "SaddleFrontN3",
+					"from": [ -2.1527, 0.8755, -0.44 ],
+					"to": [ -0.2827, 2.5255, 0.99 ],
+					"rotationOrigin": [ -2.1527, 0.8763, -0.385 ],
+					"rotationZ": 3.0,
+					"faces": {
+						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 7.0, 8.5 ], "autoUv": false },
+						"east": { "texture": "#pelt", "uv": [ 4.0, 1.0, 5.0, 2.5 ], "autoUv": false },
+						"south": { "texture": "#pelt", "uv": [ 9.5, 4.0, 11.0, 5.5 ], "autoUv": false },
+						"west": { "texture": "#pelt", "uv": [ 3.0, 6.5, 4.0, 8.0 ], "autoUv": false },
+						"up": { "texture": "#pelt", "uv": [ 2.0, 5.0, 3.5, 6.0 ], "autoUv": false },
+						"down": { "texture": "#pelt", "uv": [ 0.0, 4.5, 1.5, 5.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+					}
+				}
+			]
+		}
+	]}

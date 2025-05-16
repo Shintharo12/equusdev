@@ -1,0 +1,14 @@
+{
+    "type": "code",
+    "modid": "equus",
+    "name": "Equus: Wild Horses",
+    "authors": [
+        "Shintaro12", "sekelsta"
+    ],
+    "description": "Adds a fictional breed of wild horses",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": "",
+        "genelib": ""
+    }
+}

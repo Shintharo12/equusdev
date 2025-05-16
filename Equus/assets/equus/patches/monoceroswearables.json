@@ -1,0 +1,73 @@
+[
+  {
+    "file": "monoceros:itemtypes/wearable.json",
+    "op": "addmerge",
+    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-saddle1",
+    "side": "Server",
+    "value": {
+      "*-ferus": { "base": "equus:item/wearable/{type}-ferus"}
+    },
+    "dependsOn": [
+        {
+          "modid": "monoceros"
+        }
+      ]
+  },
+    {
+    "file": "monoceros:itemtypes/wearable.json",
+    "op": "addmerge",
+    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-saddlepelt",
+    "side": "Server",
+    "value": {
+      "*-ferus": { "base": "equus:item/wearable/{type}-ferus"}
+    },
+    "dependsOn": [
+        {
+          "modid": "monoceros"
+        }
+      ]
+  },
+  {
+    "file": "monoceros:itemtypes/wearable.json",
+    "op": "addmerge",
+    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-bridle1",
+    "side": "Server",
+    "value": {
+      "*-ferus": { "base": "equus:item/wearable/{type}-ferus"}
+    },
+    "dependsOn": [
+        {
+          "modid": "monoceros"
+        }
+      ]
+  },
+  {
+    "file": "monoceros:itemtypes/wearable.json",
+    "op": "addmerge",
+    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-bridle2",
+    "side": "Server",
+    "value": {
+      "*-ferus": { "base": "equus:item/wearable/{type}-ferus"}
+    },
+    "dependsOn": [
+        {
+          "modid": "monoceros"
+        }
+      ]
+  },
+    {
+    "file": "monoceros:itemtypes/wearable.json",
+    "op": "addmerge",
+    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-bridlerope",
+    "side": "Server",
+    "value": {
+      "*-ferus": { "base": "equus:item/wearable/{type}-ferus"}
+    },
+    "dependsOn": [
+        {
+          "modid": "monoceros"
+        }
+      ]
+  }
+]
+

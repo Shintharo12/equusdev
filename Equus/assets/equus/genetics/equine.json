@@ -1,0 +1,50 @@
+{
+    "genes": {
+        "autosomal": [
+            { "agouti": ["wildtype", "black"] },
+            { "extension": ["wildtype", "red"] },
+            { "dun": [ "dun", "nondun" ] },
+            { "cream": ["wildtype", "cream"] },
+            { "leopard": ["wildtype", "leopard"] },
+            { "mealy": ["mealy", "nonmealy"] },
+            { "roan": ["wildtype", "roan"] }
+        ]
+    },
+    "interpreters": [ "Polygenes", "Equus" ],
+    "sexdetermination": "xy",
+    "initializers": {
+        "wildlike": {
+            "autosomal": {
+            }
+        },
+        "deepforest": {
+            "autosomal": {
+                "agouti": { "default": "wildtype", "black": 0.5 },
+                "mealy": { "default": "mealy", "nonmealy": 0.5 }
+            },
+            "conditions": {
+                "minForest": 0.6
+            }
+        },
+        "verycold": {
+            "autosomal": {
+                "leopard": { "default": "wildtype", "leopard": 0.2 },
+                "extension": { "default": "wildtype", "red": 0.4 }
+            },
+            "conditions": {
+                "maxTemp": 10
+            }
+        },
+        "colorful": {
+            "autosomal": {
+                "agouti": { "default": "wildtype", "black": 0.5 },
+                "extension": { "default": "wildtype", "red": 0.5 },
+                "dun": { "default": "dun", "nondun": 0.6 },
+                "cream": { "default": "wildtype", "cream": 0.1 },
+                "leopard": { "default": "wildtype", "leopard": 0.2 },
+                "mealy": { "default": "mealy", "nonmealy": 0.5 },
+                "roan": { "default": "wildtype", "roan": 0.1 }
+            }
+        }
+    }
+}

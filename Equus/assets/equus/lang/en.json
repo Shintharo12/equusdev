@@ -1,0 +1,24 @@
+{
+  "game:creaturegroup-wildhorse": "Wild horses",
+
+  "setting-drop-multiplier":"Mob drop multiplier",
+  "setting-worldgen-spawnrate":"Worldgen spawnrate",
+  "setting-runtime-spawnrate":"Runtime spawnrate",
+  "setting-runtime-spawnrate-ferus":"Runtime ferus spawnrate",
+
+  "item-creature-equus-adult-female-ferus": "Wild horse mare",
+  "item-creature-equus-adult-male-ferus": "Wild horse stallion",
+  "item-creature-equus-baby-female-ferus": "Wild horse filly",
+  "item-creature-equus-baby-male-ferus": "Wild horse colt",
+
+  "item-dead-creature-equus-adult-female-ferus": "Wild horse mare (Dead)",
+  "item-dead-creature-equus-adult-male-ferus": "Wild horse stallion (Dead)",
+  "item-dead-creature-equus-baby-female-ferus": "Wild horse filly (Dead)",
+  "item-dead-creature-equus-baby-male-ferus": "Wild horse colt (Dead)",
+
+  "game:prefixandcreature-equusadultfemaleferus": "a wild horse mare",
+  "game:prefixandcreature-equusadultmaleferus": "a wild horse stallion",
+  "game:prefixandcreature-equusbabyfemaleferus": "a wild horse filly",
+  "game:prefixandcreature-equusbabymaleferus": "a wild horse colt"
+
+}

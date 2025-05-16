@@ -1,0 +1,23 @@
+[
+      {
+      "file": "equus:entities/wildhorse.json",
+      "op": "addmerge",
+      "path": "/attributesByType",
+      "side": "Server",
+      "value": {
+        "*-ferus": {
+          "biorealm": [
+              "central palearctic",
+              "atlantic palearctic",
+              "eastern palearctic"
+          ]
+        }
+      },
+      "dependsOn": [
+        {
+          "modid": "biomes"
+        }
+      ]
+    }
+]
+  
