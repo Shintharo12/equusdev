@@ -42,16 +42,17 @@
 				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
 				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
 				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
-				{ "code": "lowerbackside-ferus", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } }
+				{ "code": "lowerbackside-ferus", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
+				{ "code": "neck-ferus", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } }  }
 			]},
 			"selectionboxes": {
-				"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP"]
+				"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP"]
 			},
 			"rideable": {
 				"interactMountAnySeat": true,
 				"seats": [
 					{ "apName": "Rider", "selectionBox": "MidAP", "bodyYawLimit": 0.2, "controllable": true,
-						"mountOffsetByType": { "*-female-ferus": {"x":0,"y":-0.4,"z":0},"*-male-ferus": {"x":0,"y":-0.4,"z":0},
+						"mountOffsetByType": { "*adult-*-ferus": {"x":-0.1,"y":-0.4,"z":0},
 						"*": {"x":0,"y":-0.5,"z":0} } }
 				],
 		"controls": {
@@ -336,10 +337,10 @@
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
 			{"code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
-			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }, "minGeneration": 2},
-			{ "code": "rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}, "minGeneration": 2},
-			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}, "minGeneration": 2},
-			{"code": "ropetieable", "minGeneration": 2}
+			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
+			{ "code": "rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
+			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
+			{"code": "ropetieable", "minGeneration": 0}
 		],
 		"animations": [
 			{"code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
@@ -434,7 +435,7 @@
 				"spawnQuantityMin": 1,
 				"spawnQuantityMaxByType": {"*": 2},
 				"pregnancyDaysByType": {
-					"*-ferus": 32
+					"*-ferus": 36
 				},
 				"genelib.multiplyCooldownDaysMinByType": {"*": 6},
 				"genelib.multiplyCooldownDaysMaxByType": {"*": 11},
@@ -468,11 +469,10 @@
 							"*-baby-*": 0.0
 						},
 						"slot": 2,"priority": 3,"accumType": "noaccum"},
-					{"code": "fleeondamage","duration": 60,"slot": 2,"chanceByType": {"*-adult-*": 0.1,"*-baby-*": 1},"priority": 1,"accumType": "max","whenHealthRelBelow": 0.35},
-					{"code": "fleeondamage","duration": 30,"slot": 2,"chanceByType": {"*-adult-*": 0.0,"*-baby-*": 1},"priority": 0.5,"accumType": "max","whenHealthRelBelow": 1},
+					{"code": "fleeondamage","duration": 60,"slot": 2,"chanceByType": {"*-adult-*": 0.5,"*-baby-*": 1},"priority": 1,"accumType": "max","whenHealthRelBelow": 0.5},
+					{"code": "fleeondamage","duration": 30,"slot": 2,"chanceByType": {"*-adult-*": 0.5,"*-baby-*": 1},"priority": 0.5,"accumType": "max","whenHealthRelBelow": 1, "maxGeneration": 2},
 					{"code": "alarmherdondamage","chance": 1,"slot": 1,"priority": 1.5,"accumType": "max"},
-					{"code": "saturated","duration": 1200,"chance": 1,"slot": 0,"priority": 1,"accumType": "sum"},
-					{ "code": "aggressivearoundentities", "duration": 60, "chanceByType": {"*-baby-*": 0.0,"*-adult-*": 1.0}, "slot": 2, "priority": 5, "entityCodes": ["equus:wildhorse-baby-male-{type}","equus:wildhorse-baby-female-{type}"], "maxGeneration": 2 }
+					{"code": "saturated","duration": 1200,"chance": 1,"slot": 0,"priority": 1,"accumType": "sum"}
 				]
 			},
 			{
@@ -496,7 +496,7 @@
 							"*-baby-*": false,
 							"*": true},
 						"entityCodesByType": {
-							"*-adult-*": [ "player","bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"]},
+							"*-adult-*": ["bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"]},
 						"priority": 3,
 						"slot": 1,
 						"damageByType": {
@@ -509,46 +509,12 @@
 						"attackDurationMs": 500,
 						"damagePlayerAtMs": 250,
 						"animationSpeed": 1,
-						"whenInEmotionState": "aggressiveondamage|aggressivearoundentities"
-					},
-					{
-						"code": "meleeattack",
-						"animation": "Attack",
-						"enabledByType": {
-							"*-baby-*": false,
-							"*": true},
-						"entityCodesByType": {
-							"*-adult-*-ferus": ["bell-*","bowtorn-*","drifter-*","shiver-*"]},
-						"priority": 3,
-						"slot": 1,
-						"damageByType": {
-							"*-adult-*-ferus":10
-						},
-						"knockbackStrengthByType": {"*":2},
-						"damageTierByType": {"*":3},
-						"mincooldown": 500,
-						"maxcooldown": 1000,
-						"attackDurationMs": 500,
-						"damagePlayerAtMs": 250,
-						"animationSpeed": 1
+						"whenInEmotionState": "aggressiveondamage"
 					},
 					{
 						"code": "seekentity",
 						"entityCodesByType": {
-							"*-adult-*-ferus": ["bell-*","bowtorn-*","drifter-*","shiver-*"]},
-						"priority": 2.5,
-						"mincooldown": 1000,
-						"maxcooldown": 1500,
-						"seekingRange": 20,
-						"movespeed": 0.037,
-						"animation": "Charge",
-						"animationSpeed": 1,
-						"sound": "game:creature/hooved/generic/sniff*"
-					},
-					{
-						"code": "seekentity",
-						"entityCodesByType": {
-							"*-adult-*": [ "player","bear-*","bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","moose-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"  ]},
+							"*-adult-*": ["bear-*","bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","moose-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"  ]},
 						"priority": 2.5,
 						"mincooldown": 1000,
 						"maxcooldown": 1500,
@@ -557,7 +523,7 @@
 						"animation": "Charge",
 						"animationSpeed": 1,
 						"sound": "game:creature/hooved/generic/sniff*",
-						"whenInEmotionState": "aggressiveondamage|aggressivearoundentities"
+						"whenInEmotionState": "aggressiveondamage"
 					},
 					{
 						"code": "fleeentity",
@@ -589,10 +555,10 @@
 						"entityCodeByType": {
 							"*-baby-*": "wildhorse-adult-female-{type}"},
 						"movespeedByType": {
-							"*-adult-*-ferus": 0.0285,"*-baby-*-ferus": 0.015
+							"*-adult-*-ferus": 0.0285,"*-baby-*-ferus": 0.02
 						},
 						"animationSpeedByType": {
-							"*-baby-*": 2.4,
+							"*-baby-*": 2.7,
 							"*": 2.2
 						},
 						"maxDistanceByType": {"*-baby-*": 6},

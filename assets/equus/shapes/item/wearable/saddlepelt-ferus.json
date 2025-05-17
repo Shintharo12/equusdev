@@ -1,6 +1,6 @@
 {
 	"editor": {
-		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/Equus/assets/equus/shapes/entity/land/ferus/adult",
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
 		"collapsedPaths": "Root/ORIGIN/SaddleSeat,Root/ORIGIN/SaddleFrontWall,Root/ORIGIN/Saddle/SaddleFrontN/StrapFront,Root/ORIGIN/SaddleBack1,Root/SaddleFrontN",
 		"allAngles": true,
 		"entityTextureMode": false
@@ -39,9 +39,9 @@
 				},
 				{
 					"name": "SaddleFrontN",
-					"from": [ -1.98, -4.62, -4.95 ],
-					"to": [ 2.53, 1.43, 5.39 ],
-					"rotationOrigin": [ -1.98, -4.6192, -4.895 ],
+					"from": [ -1.98, -4.42, -5.35 ],
+					"to": [ 2.53, 1.63, 5.99 ],
+					"rotationOrigin": [ -1.98, -4.4192, -5.295 ],
 					"rotationZ": 3.0,
 					"faces": {
 						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 9.5, 12.5 ], "autoUv": false },
@@ -54,9 +54,9 @@
 				},
 				{
 					"name": "StrapFront",
-					"from": [ -0.0835, -9.2601, -4.18 ],
-					"to": [ 2.1165, -8.9301, 4.62 ],
-					"rotationOrigin": [ -0.0835, -9.2601, -4.18 ],
+					"from": [ -0.0835, -9.2601, -4.88 ],
+					"to": [ 2.1165, -8.9301, 5.52 ],
+					"rotationOrigin": [ -0.0835, -9.2601, -4.88 ],
 					"faces": {
 						"north": { "texture": "#rope7", "uv": [ 13.5, 0.0, 15.5, 0.5 ], "autoUv": false },
 						"east": { "texture": "#rope7", "uv": [ 1.0, 12.5, 9.0, 13.0 ], "autoUv": false },
@@ -83,9 +83,9 @@
 						},
 						{
 							"name": "StrapFront3",
-							"from": [ 0.0, 0.0, 8.8 ],
-							"to": [ 2.2, 9.35, 9.13 ],
-							"rotationOrigin": [ 0.0, 0.0, 8.8 ],
+							"from": [ 0.0, 0.0, 10.2 ],
+							"to": [ 2.2, 9.35, 10.53 ],
+							"rotationOrigin": [ 0.0, 0.0, 10.2 ],
 							"rotationX": 1.8,
 							"faces": {
 								"north": { "texture": "#rope7", "uv": [ 6.5, 2.0, 15.0, 4.0 ], "rotation": 90, "autoUv": false },
@@ -100,9 +100,9 @@
 				},
 				{
 					"name": "SaddleFrontN2",
-					"from": [ 1.3155, -2.244, -4.84 ],
-					"to": [ 7.9155, 1.276, 5.28 ],
-					"rotationOrigin": [ 1.3155, -2.2465, -4.785 ],
+					"from": [ 1.3155, -2.244, -5.14 ],
+					"to": [ 7.9155, 1.376, 5.58 ],
+					"rotationOrigin": [ 1.3155, -2.2465, -5.085 ],
 					"rotationZ": 3.0,
 					"faces": {
 						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 11.5, 10.0 ], "autoUv": false },

@@ -1,6 +1,6 @@
 {
 	"editor": {
-		"collapsedPaths": ",Root/Origin/Head Origin/Cube5,Root/Origin/Head Origin/Cube2,Root/Origin/Body Origin/Chest/Neck1/Neck2/Neck3,Root/Origin/Head Origin/Cube7,Root/R scapula,Root/Origin/Body Origin/Belly/Chest,Root/R Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Neck3/Head Origin,Root/Origin/Body Origin/Belly/Chest/Neck1/mane,Root/L Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear R,Root/Origin/Cube2,Root/Origin/R scapula,Root/Origin/Body Origin/Chest/Neck1/Neck2,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear L,Root/L scapula,Root/Origin/Head Origin,Root/Origin/Body Origin/Belly/Hind",
+		"collapsedPaths": ",Root/Origin/Head Origin/Cube5,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin,Root/Origin/Head Origin/Cube2,Root/Origin/Body Origin/Chest/Neck1/Neck2/Neck3,Root/Origin/Head Origin/Cube7,Root/R scapula,Root/R Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Neck3/Head Origin,Root/Origin/Body Origin/Belly/Chest/Neck1/mane,Root/L Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear R,Root/Origin/Cube2,Root/Origin/R scapula,Root/Origin/Body Origin/Chest/Neck1/Neck2,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear L,Root/L scapula,Root/Origin/Head Origin,Root/Origin/Body Origin/Belly/Hind",
 		"allAngles": true,
 		"entityTextureMode": true
 	},
@@ -264,6 +264,23 @@
 																"up": { "texture": "#skin", "uv": [ 67.0, 13.5, 70.0, 17.5 ], "rotation": 270, "windMode": [-1,-1,-1,-1], "windData": [1,1,2,2] },
 																"down": { "texture": "#skin", "uv": [ 81.5, 13.5, 84.5, 17.5 ], "rotation": 90 }
 															}
+														},
+														{
+															"name": "NeckStorage",
+															"from": [ -1.0, 5.7, -1.6 ],
+															"to": [ 4.2, 11.9, 5.3 ],
+															"uv": [ 0.0, 0.0 ],
+															"rotationOrigin": [ -1.8566, 5.698, -1.6 ],
+															"rotationZ": -65.5,
+															"faces": {
+															},
+															"attachmentpoints": [
+																{
+																	"code": "NeckAP",
+																	"posX": "0.0","posY": "0.0","posZ": "0.0",
+																	"rotationX": "0.0","rotationY": "0.0","rotationZ": "0.0"
+																}
+															]
 														}
 													]
 												},

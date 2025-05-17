@@ -4,7 +4,7 @@
     "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
     "file": "game:itemtypes/wearable/hooved.json",
     "side": "Server"
-    },  
+    },
     {
     "file": "game:itemtypes/wearable/hooved.json",
     "op": "addmerge",

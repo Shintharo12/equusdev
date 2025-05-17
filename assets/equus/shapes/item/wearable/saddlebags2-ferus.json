@@ -11,7 +11,7 @@
 		"leather": [16,16]
 	},
 	"textures": {
-		"leather": "block/leather/plain",
+		"leather": "block/leather/chromium",
 		"metal": "block/metal/sheet-plain/tinbronze1"
 	},
 	"elements": [
