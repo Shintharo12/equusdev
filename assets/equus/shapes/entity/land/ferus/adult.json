@@ -675,7 +675,7 @@
 								{
 									"name": "RearSideStorage",
 									"from": [ 12.3, 5.9, -1.0 ],
-									"to": [ 18.5, 10.1, 10.0 ],
+									"to": [ 18.5, 9.4, 10.0 ],
 									"uv": [ 0.0, 0.0 ],
 									"rotationOrigin": [ 12.3, 5.9, -1.0 ],
 									"faces": {
@@ -683,6 +683,22 @@
 									"attachmentpoints": [
 										{
 											"code": "RearSideAP",
+											"posX": "0.0","posY": "0.0","posZ": "0.0",
+											"rotationX": "0.0","rotationY": "0.0","rotationZ": "0.0"
+										}
+									]
+								},
+								{
+									"name": "RearStorage",
+									"from": [ 15.3, 8.9, -1.0 ],
+									"to": [ 21.5, 12.4, 10.0 ],
+									"uv": [ 0.0, 0.0 ],
+									"rotationOrigin": [ 15.3, 8.9, -1.0 ],
+									"faces": {
+									},
+									"attachmentpoints": [
+										{
+											"code": "RearAP",
 											"posX": "0.0","posY": "0.0","posZ": "0.0",
 											"rotationX": "0.0","rotationY": "0.0","rotationZ": "0.0"
 										}

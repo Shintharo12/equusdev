@@ -43,10 +43,11 @@
 				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
 				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
 				{ "code": "lowerbackside-ferus", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
-				{ "code": "neck-ferus", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } }  }
+				{ "code": "neck-ferus", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } } },
+				{ "code": "lowerback-ferus", "forCategoryCodes": ["bedroll"], "attachmentPointCode": "RearAP", "stepParentTo": { "": { "elementName": "RearStorage" } }  }
 			]},
 			"selectionboxes": {
-				"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP"]
+				"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP", "RearAP"]
 			},
 			"rideable": {
 				"interactMountAnySeat": true,
@@ -462,14 +463,14 @@
 							"*-adult-*": 1,
 							"*-baby-*": 1
 						},
-						"slot": 2,"priority": 4,"accumType": "max","whenHealthRelBelow": 0.2},
+						"slot": 2,"priority": 4,"accumType": "max","whenHealthRelBelow": 0.3},
 					{"code": "aggressiveondamage","duration": 60,
 						"chanceByType": {
-							"*-adult-*": 1,
+							"*-adult-*": 0.2,
 							"*-baby-*": 0.0
 						},
 						"slot": 2,"priority": 3,"accumType": "noaccum"},
-					{"code": "fleeondamage","duration": 60,"slot": 2,"chanceByType": {"*-adult-*": 0.5,"*-baby-*": 1},"priority": 1,"accumType": "max","whenHealthRelBelow": 0.5},
+					{"code": "fleeondamage","duration": 60,"slot": 2,"chanceByType": {"*-adult-*": 0.7,"*-baby-*": 1},"priority": 1,"accumType": "max","whenHealthRelBelow": 0.5},
 					{"code": "fleeondamage","duration": 30,"slot": 2,"chanceByType": {"*-adult-*": 0.5,"*-baby-*": 1},"priority": 0.5,"accumType": "max","whenHealthRelBelow": 1, "maxGeneration": 2},
 					{"code": "alarmherdondamage","chance": 1,"slot": 1,"priority": 1.5,"accumType": "max"},
 					{"code": "saturated","duration": 1200,"chance": 1,"slot": 0,"priority": 1,"accumType": "sum"}
@@ -496,11 +497,11 @@
 							"*-baby-*": false,
 							"*": true},
 						"entityCodesByType": {
-							"*-adult-*": ["bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"]},
+							"*-adult-*": ["player","bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"]},
 						"priority": 3,
 						"slot": 1,
 						"damageByType": {
-							"*-adult-*-ferus":10
+							"*-adult-*-ferus":7
 						},
 						"knockbackStrengthByType": {"*":2},
 						"damageTierByType": {"*":3},
@@ -514,7 +515,7 @@
 					{
 						"code": "seekentity",
 						"entityCodesByType": {
-							"*-adult-*": ["bear-*","bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","moose-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"  ]},
+							"*-adult-*": ["player","bear-*","bell-*","bowtorn-*","drifter-*","hyena-*","locust-*","moose-*","shiver-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"  ]},
 						"priority": 2.5,
 						"mincooldown": 1000,
 						"maxcooldown": 1500,
@@ -683,47 +684,56 @@
 		],
 		"spawnconditions": {
 			"worldgen": {
-				"TriesPerChunk": { "avg": 0.001, "var": 0 },
 				"tryOnlySurface": true,
+				"triesPerChunk": { "avg": 0, "var": 0 },
 				"groupSizeByType": {
-					"*-adult-male-ferus":{"dist": "uniform","avg": 3, "var": 1 }
+					"*-adult-female-ferus": { "dist": "uniform", "avg": 7, "var": 3 },
+					"*-adult-male-ferus": { "dist": "uniform", "avg": 3.5, "var": 2.5 }
 				},
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
-				"minTemp": -5,
-				"maxTemp": 25,
-				"minRain": 0.3,
-				"maxRain": 0.9,
-				"minForestOrShrubs": 0.25,
-				"maxForest": 0.75,
-				"maxShrubs": 0.75,
-				"companionsByType":{
-					"*-adult-male-ferus":  ["equus:wildhorse-adult-female-ferus", "equus:wildhorse-adult-female-ferus", "equus:wildhorse-baby-female-ferus", "equus:wildhorse-baby-male-ferus"]
-				}
+				"companionsByType": {
+				"*-adult-male-*":["equus:wildhorse-adult-female-{type}"],
+				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-baby-female-{type}","equus:wildhorse-baby-male-{type}"]}
 			},
 			"runtime": {
 				"group": "neutral",
 				"tryOnlySurface": true,
 				"chanceByType": {
-				"*-adult-male-ferus": 0.00003,
-				"*": 0.0
+					"*-adult-female-ferus": 0.0001,"*-adult-male-ferus": 0.0001,
+					"*": 0.0
 				},
-				"maxQuantity": 3,
+				"mindistancetoplayer": 50,
 				"maxLightLevel": 7,
 				"lightLevelType": "onlyBlockLight",
+				"spawnCapPlayerScaling": 0.0,			
 				"groupSizeByType": {
-					"*-adult-male-ferus":{"dist": "uniform","avg": 3, "var": 1 }
-
+					"*-adult-female-ferus": { "dist": "uniform", "avg": 7, "var": 3 },
+					"*-adult-male-ferus": { "dist": "uniform", "avg": 3.5, "var": 2.5 }
 				},
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
-				"minTemp": -5,
-				"maxTemp": 25,
-				"minRain": 0.3,
-				"maxRain": 0.9,
-				"minForestOrShrubs": 0.25,
-				"maxForest": 0.75,
-				"maxShrubs": 0.75,
-				"companionsByType":{
-					"*-adult-male-ferus":  ["equus:wildhorse-adult-female-ferus", "equus:wildhorse-adult-female-ferus", "equus:wildhorse-baby-female-ferus", "equus:wildhorse-baby-male-ferus"]
+				"companionsByType": {
+				"*-adult-male-*":["equus:wildhorse-adult-female-{type}"],
+				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-baby-female-{type}","equus:wildhorse-baby-male-{type}"]}
+			}
+		},
+		"spawnconditionsByType": {
+			"wildhorse-adult-*-ferus": {
+				"climate": {
+					"minTemp": 2,
+					"maxTemp": 14,
+					"minRain": 0.25,
+					"maxRain": 0.8,
+					"minForest": 0.0,
+					"maxForest": 0.6,
+					"maxShrubs": 0.9,
+					"minY": 1.0,
+					"maxY": 1.3					
+				},
+				"worldgen": {
+					"triesPerChunk": { "avg": 0.001, "var": 0}
+				},
+				"runtime": {
+					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 3 }
 				}
 			}
 		}
