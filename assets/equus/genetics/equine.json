@@ -13,10 +13,6 @@
     "interpreters": [ "Polygenes", "Equus" ],
     "sexdetermination": "xy",
     "initializers": {
-        "wildlike": {
-            "autosomal": {
-            }
-        },
         "deepforest": {
             "autosomal": {
                 "agouti": { "default": "wildtype", "black": 0.5 },

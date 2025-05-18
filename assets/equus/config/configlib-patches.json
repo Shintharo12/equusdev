@@ -4,7 +4,7 @@
     "float":{
       "equus:entities/wildhorse.json": {
         "/server/spawnconditions/worldgen/triesPerChunk/avg": "worlgen",
-        "/server/spawnconditions/runtime/chanceByType/*-adult-male-ferus": "runtimeferus"
+        "/server/spawnconditions/runtime/chanceByType/*-ferus": "runtimeferus"
       }
     }
   },
