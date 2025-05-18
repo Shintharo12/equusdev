@@ -466,7 +466,7 @@
 						"slot": 2,"priority": 4,"accumType": "max","whenHealthRelBelow": 0.3},
 					{"code": "aggressiveondamage","duration": 60,
 						"chanceByType": {
-							"*-adult-*": 0.2,
+							"*-adult-*": 0.1,
 							"*-baby-*": 0.0
 						},
 						"slot": 2,"priority": 3,"accumType": "noaccum"},
@@ -693,7 +693,7 @@
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
 				"companionsByType": {
 				"*-adult-male-*":["equus:wildhorse-adult-female-{type}"],
-				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-baby-female-{type}","equus:wildhorse-baby-male-{type}"]}
+				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
 			},
 			"runtime": {
 				"group": "neutral",
@@ -713,7 +713,7 @@
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
 				"companionsByType": {
 				"*-adult-male-*":["equus:wildhorse-adult-female-{type}"],
-				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-baby-female-{type}","equus:wildhorse-baby-male-{type}"]}
+				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
 			}
 		},
 		"spawnconditionsByType": {
