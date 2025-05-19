@@ -11,30 +11,42 @@
         "side": "server"
     },
     {
-    "enabled": true,
-    "dependsOn": [
-      {
-        "modid": "cervinae",
-        "invert": true
-      }
-    ],
-    "op": "remove",
-    "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShape",
-    "file": "game:blocktypes/wood/bed.json",
-    "side": "Server"
+        "enabled": true,
+        "dependsOn": [
+            {
+                "modid": "cervinae",
+                "invert": true
+            }
+        ],
+        "op": "remove",
+        "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShape",
+        "file": "game:blocktypes/wood/bed.json",
+        "side": "Server"
     },
     {
-    "enabled": true,
-    "dependsOn": [
-      {
-        "modid": "cartwrightscaravan",
-        "invert": true
-      }
-    ],
-    "op": "remove",
-    "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShape",
-    "file": "game:blocktypes/wood/bed.json",
-    "side": "Server"
+        "enabled": true,
+        "dependsOn": [
+            {
+                "modid": "cartwrightscaravan",
+                "invert": true
+            }
+        ],
+        "op": "remove",
+        "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShape",
+        "file": "game:blocktypes/wood/bed.json",
+        "side": "Server"
+    },
+    {
+        "dependsOn": [
+            {
+                "modid": "cartwrightscaravan"
+            }
+        ],
+        "op": "move",
+        "frompath": "/attributesByType/bed-hay-*/attachableToEntity/attachedShapeBySlotCode/*",
+        "path": "/temp",
+        "file": "game:blocktypes/wood/bed.json",
+        "side": "Server"
     },
     {
         "file": "game:blocktypes/wood/bed.json",
@@ -55,5 +67,17 @@
             }
         },
         "side": "server"
+    },
+    {
+        "dependsOn": [
+            {
+                "modid": "cartwrightscaravan"
+            }
+        ],
+        "op": "move",
+        "frompath": "/temp",
+        "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShapeBySlotCode/*",
+        "file": "game:blocktypes/wood/bed.json",
+        "side": "Server"
     }
 ]

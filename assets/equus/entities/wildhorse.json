@@ -536,6 +536,15 @@
 						"animation": "Gallop",
 						"animationSpeed": 2
 					},
+										{
+						"code": "fleeentity",
+						"entityCodes": ["bear-*","hyena-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"],
+						"priority": 1.7,
+						"movespeed": 0.05,
+						"seekingRange": 12,
+						"animation": "Gallop",
+						"animationSpeed": 2
+					},
 					{
 						"code": "getoutofwater",
 						"animation": "Swim",
@@ -728,7 +737,7 @@
 					"maxShrubs": 0.9				
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.001, "var": 0}
+					"triesPerChunk": { "avg": 0.0015, "var": 0}
 				},
 				"runtime": {
 					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 3 }
