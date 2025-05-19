@@ -341,7 +341,7 @@
 			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
 			{ "code": "rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
-			{"code": "ropetieable", "minGeneration": 0}
+			{"code": "ropetieable"}
 		],
 		"animations": [
 			{"code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
@@ -689,7 +689,7 @@
             { "code": "selectionboxes", "minGeneration": 2 },
 			{ "code": "rideableaccessories", "minGeneration": 2 },
 			{ "code": "rideable", "minGeneration": 2 },
-            { "code": "ropetieable", "minGeneration": 2 }
+            { "code": "ropetieable"}
 		],
 		"spawnconditions": {
 			"worldgen": {
@@ -701,8 +701,8 @@
 				},
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
 				"companionsByType": {
-				"*-adult-male-*":["equus:wildhorse-adult-female-{type}"],
-				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
+				"*-adult-male-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}"],
+				"*-adult-female-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
 			},
 			"runtime": {
 				"group": "neutral",
@@ -711,7 +711,6 @@
 					"*-adult-female-ferus": 0.0005,"*-adult-male-ferus": 0.0005,
 					"*": 0.0
 				},
-				"mindistancetoplayer": 50,
 				"maxLightLevel": 7,
 				"lightLevelType": "onlyBlockLight",
 				"spawnCapPlayerScaling": 0.0,			
@@ -721,8 +720,8 @@
 				},
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
 				"companionsByType": {
-				"*-adult-male-*":["equus:wildhorse-adult-female-{type}"],
-				"*-adult-female-*":["equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
+				"*-adult-male-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}"],
+				"*-adult-female-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
 			}
 		},
 		"spawnconditionsByType": {
@@ -737,7 +736,7 @@
 					"maxShrubs": 0.9				
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.0015, "var": 0}
+					"triesPerChunk": { "avg": 0.003, "var": 0}
 				},
 				"runtime": {
 					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 3 }
