@@ -1,0 +1,218 @@
+{
+	"editor": {
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
+		"collapsedPaths": "Root/ORIGINbridle/Bit/StrapBottom,Root/ORIGINbridle/Bit/StrapTop,Root/ORIGINbridle/Bit/ReinsN4,Root/ORIGINbridle/Bit/ReinsN",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"plain": [16,16]
+	},
+	"textures": {
+		"plain": "block/leather/plain",
+		"tinbronze1": "block/metal/sheet-plain/tinbronze1",
+		"rustyglow": "entity/humanoid/seraphclothes/neck/gem/ruby"
+	},
+	"elements": [
+		{
+			"name": "faceORIGIN",
+			"stepParentName": "Bridge",
+			"from": [ -0.3, -0.4, 0.0 ],
+			"to": [ 0.7, 0.6, 1.0 ],
+			"rotationOrigin": [ -0.3, -0.4, 0.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "Medallion",
+					"from": [ 3.8, 1.7, 0.6 ],
+					"to": [ 4.8, 1.9, 1.6 ],
+					"rotationOrigin": [ 4.4, 1.7, 1.2 ],
+					"rotationY": 45.0,
+					"faces": {
+						"north": { "texture": "#tinbronze1", "uv": [ 1.5, 14.0, 2.5, 14.5 ] },
+						"east": { "texture": "#tinbronze1", "uv": [ 13.0, 5.0, 14.0, 5.5 ] },
+						"south": { "texture": "#tinbronze1", "uv": [ 12.0, 13.5, 13.0, 14.0 ] },
+						"west": { "texture": "#tinbronze1", "uv": [ 9.0, 5.5, 10.0, 6.0 ] },
+						"up": { "texture": "#tinbronze1", "uv": [ 3.5, 9.5, 4.5, 10.5 ] }
+					},
+					"children": [
+						{
+							"name": "strap",
+							"from": [ 0.4, 0.0, 0.9 ],
+							"to": [ 1.4, 0.1, 1.5 ],
+							"rotationOrigin": [ 1.2, 0.0, 1.2 ],
+							"rotationY": -45.0,
+							"faces": {
+								"north": { "texture": "#plain", "uv": [ 13.5, 8.5, 14.5, 9.0 ] },
+								"south": { "texture": "#plain", "uv": [ 14.0, 4.0, 15.0, 4.5 ] },
+								"up": { "texture": "#plain", "uv": [ 10.0, 6.0, 11.0, 6.5 ] },
+								"down": { "texture": "#plain", "uv": [ 3.0, 13.5, 4.0, 14.0 ] }
+							}
+						},
+						{
+							"name": "gem",
+							"from": [ 0.2, 0.2, 0.2 ],
+							"to": [ 0.8, 0.3, 0.8 ],
+							"rotationOrigin": [ 0.5, 0.2, 0.5 ],
+							"faces": {
+								"north": { "texture": "#rustyglow", "uv": [ 14.0, 1.5, 14.5, 2.0 ] },
+								"east": { "texture": "#rustyglow", "uv": [ 14.0, 10.5, 14.5, 11.0 ] },
+								"south": { "texture": "#rustyglow", "uv": [ 10.0, 6.0, 10.5, 6.5 ] },
+								"west": { "texture": "#rustyglow", "uv": [ 10.5, 10.0, 11.0, 10.5 ] },
+								"up": { "texture": "#rustyglow", "uv": [ 2.0, 4.5, 2.5, 5.0 ] }
+							}
+						},
+						{
+							"name": "strap1",
+							"from": [ 0.3, 0.0, -0.5 ],
+							"to": [ 0.7, 0.11, 1.5 ],
+							"rotationOrigin": [ 0.5, 0.0, 0.5 ],
+							"faces": {
+								"east": { "texture": "#plain", "uv": [ 7.5, 9.0, 9.5, 9.5 ] },
+								"west": { "texture": "#plain", "uv": [ 0.0, 10.0, 2.0, 10.5 ] },
+								"up": { "texture": "#plain", "uv": [ 1.0, 3.5, 1.5, 5.5 ] }
+							},
+							"children": [
+								{
+									"name": "medallion1",
+									"from": [ -0.1, 0.0, 1.9 ],
+									"to": [ 0.5, 0.2, 2.5 ],
+									"rotationOrigin": [ 0.2, 0.0, 2.2 ],
+									"rotationY": 45.0,
+									"faces": {
+										"north": { "texture": "#tinbronze1", "uv": [ 8.5, 3.5, 9.0, 4.0 ] },
+										"east": { "texture": "#tinbronze1", "uv": [ 13.0, 8.0, 13.5, 8.5 ] },
+										"south": { "texture": "#tinbronze1", "uv": [ 8.5, 2.0, 9.0, 2.5 ] },
+										"west": { "texture": "#tinbronze1", "uv": [ 6.0, 11.0, 6.5, 11.5 ] },
+										"up": { "texture": "#tinbronze1", "uv": [ 7.5, 15.0, 8.0, 15.5 ] }
+									},
+									"children": [
+										{
+											"name": "gem2",
+											"from": [ 0.1, 0.2, 0.1 ],
+											"to": [ 0.5, 0.3, 0.5 ],
+											"rotationOrigin": [ 0.3, 0.2, 0.3 ],
+											"faces": {
+												"north": { "texture": "#rustyglow", "uv": [ 3.5, 7.0, 4.0, 7.5 ] },
+												"east": { "texture": "#rustyglow", "uv": [ 7.5, 5.0, 8.0, 5.5 ] },
+												"south": { "texture": "#rustyglow", "uv": [ 8.0, 7.0, 8.5, 7.5 ] },
+												"west": { "texture": "#rustyglow", "uv": [ 15.0, 13.5, 15.5, 14.0 ] },
+												"up": { "texture": "#rustyglow", "uv": [ 11.0, 14.5, 11.5, 15.0 ] }
+											}
+										}
+									]
+								},
+								{
+									"name": "medallion2",
+									"from": [ -0.1, 0.0, -0.5 ],
+									"to": [ 0.5, 0.2, 0.1 ],
+									"rotationOrigin": [ 0.2, 0.0, -0.2 ],
+									"rotationY": 45.0,
+									"faces": {
+										"north": { "texture": "#tinbronze1", "uv": [ 13.0, 7.5, 13.5, 8.0 ] },
+										"east": { "texture": "#tinbronze1", "uv": [ 14.5, 2.0, 15.0, 2.5 ] },
+										"south": { "texture": "#tinbronze1", "uv": [ 14.5, 2.0, 15.0, 2.5 ] },
+										"west": { "texture": "#tinbronze1", "uv": [ 0.0, 7.5, 0.5, 8.0 ] },
+										"up": { "texture": "#tinbronze1", "uv": [ 1.0, 15.0, 1.5, 15.5 ] }
+									},
+									"children": [
+										{
+											"name": "gem3",
+											"from": [ 0.1, 0.2, 0.1 ],
+											"to": [ 0.5, 0.3, 0.5 ],
+											"rotationOrigin": [ 0.3, 0.2, 0.3 ],
+											"faces": {
+												"north": { "texture": "#rustyglow", "uv": [ 9.0, 12.5, 9.5, 13.0 ] },
+												"east": { "texture": "#rustyglow", "uv": [ 12.5, 1.0, 13.0, 1.5 ] },
+												"south": { "texture": "#rustyglow", "uv": [ 11.0, 7.0, 11.5, 7.5 ] },
+												"west": { "texture": "#rustyglow", "uv": [ 9.0, 11.0, 9.5, 11.5 ] },
+												"up": { "texture": "#rustyglow", "uv": [ 3.5, 8.0, 4.0, 8.5 ] }
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "strap2",
+							"from": [ 0.3, 0.0, -0.5 ],
+							"to": [ 0.7, 0.11, 1.5 ],
+							"rotationOrigin": [ 0.5, 0.0, 0.5 ],
+							"rotationY": 90.0,
+							"faces": {
+								"east": { "texture": "#plain", "uv": [ 12.5, 2.5, 14.5, 3.0 ] },
+								"west": { "texture": "#plain", "uv": [ 11.5, 2.0, 13.5, 2.5 ] },
+								"up": { "texture": "#plain", "uv": [ 9.5, 3.5, 10.0, 5.5 ] }
+							},
+							"children": [
+								{
+									"name": "medallion3",
+									"from": [ -0.1, 0.0, 1.9 ],
+									"to": [ 0.5, 0.2, 2.5 ],
+									"rotationOrigin": [ 0.2, 0.0, 2.2 ],
+									"rotationY": 45.0,
+									"faces": {
+										"north": { "texture": "#tinbronze1", "uv": [ 4.5, 11.5, 5.0, 12.0 ] },
+										"east": { "texture": "#tinbronze1", "uv": [ 2.0, 14.5, 2.5, 15.0 ] },
+										"south": { "texture": "#tinbronze1", "uv": [ 5.0, 8.0, 5.5, 8.5 ] },
+										"west": { "texture": "#tinbronze1", "uv": [ 11.0, 8.0, 11.5, 8.5 ] },
+										"up": { "texture": "#tinbronze1", "uv": [ 2.0, 11.0, 2.5, 11.5 ] }
+									},
+									"children": [
+										{
+											"name": "gem4",
+											"from": [ 0.1, 0.2, 0.1 ],
+											"to": [ 0.5, 0.3, 0.5 ],
+											"rotationOrigin": [ 0.3, 0.2, 0.3 ],
+											"faces": {
+												"north": { "texture": "#rustyglow", "uv": [ 0.0, 4.0, 0.5, 4.5 ] },
+												"east": { "texture": "#rustyglow", "uv": [ 10.0, 14.5, 10.5, 15.0 ] },
+												"south": { "texture": "#rustyglow", "uv": [ 11.5, 7.0, 12.0, 7.5 ] },
+												"west": { "texture": "#rustyglow", "uv": [ 10.0, 9.5, 10.5, 10.0 ] },
+												"up": { "texture": "#rustyglow", "uv": [ 6.5, 11.5, 7.0, 12.0 ] }
+											}
+										}
+									]
+								},
+								{
+									"name": "medallion4",
+									"from": [ -0.1, 0.0, -0.5 ],
+									"to": [ 0.5, 0.2, 0.1 ],
+									"rotationOrigin": [ 0.2, 0.0, -0.2 ],
+									"rotationY": 45.0,
+									"faces": {
+										"north": { "texture": "#tinbronze1", "uv": [ 9.0, 6.5, 9.5, 7.0 ] },
+										"east": { "texture": "#tinbronze1", "uv": [ 3.0, 7.5, 3.5, 8.0 ] },
+										"south": { "texture": "#tinbronze1", "uv": [ 3.0, 11.0, 3.5, 11.5 ] },
+										"west": { "texture": "#tinbronze1", "uv": [ 7.5, 13.0, 8.0, 13.5 ] },
+										"up": { "texture": "#tinbronze1", "uv": [ 6.5, 12.0, 7.0, 12.5 ] }
+									},
+									"children": [
+										{
+											"name": "gem5",
+											"from": [ 0.1, 0.2, 0.1 ],
+											"to": [ 0.5, 0.3, 0.5 ],
+											"rotationOrigin": [ 0.3, 0.2, 0.3 ],
+											"faces": {
+												"north": { "texture": "#rustyglow", "uv": [ 14.0, 1.5, 14.5, 2.0 ] },
+												"east": { "texture": "#rustyglow", "uv": [ 14.0, 5.5, 14.5, 6.0 ] },
+												"south": { "texture": "#rustyglow", "uv": [ 12.0, 1.5, 12.5, 2.0 ] },
+												"west": { "texture": "#rustyglow", "uv": [ 13.5, 4.0, 14.0, 4.5 ] },
+												"up": { "texture": "#rustyglow", "uv": [ 14.5, 0.0, 15.0, 0.5 ] }
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

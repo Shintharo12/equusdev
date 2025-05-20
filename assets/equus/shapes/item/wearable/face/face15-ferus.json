@@ -1,0 +1,142 @@
+{
+	"editor": {
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
+		"collapsedPaths": "Root/ORIGINbridle/Bit/StrapBottom,Root/ORIGINbridle/Bit/StrapTop,Root/ORIGINbridle/Bit/ReinsN4,Root/ORIGINbridle/Bit/ReinsN",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"plain": [16,16]
+	},
+	"textures": {
+		"plain": "block/leather/plain",
+		"tinbronze1": "block/metal/sheet-plain/tinbronze1",
+		"lapislazuli": "block/stone/gem/lapislazuli"
+	},
+	"elements": [
+		{
+			"name": "faceORIGIN",
+			"stepParentName": "Bridge",
+			"from": [ -0.4, -0.1, 0.0 ],
+			"to": [ 0.65, 0.95, 1.05 ],
+			"rotationOrigin": [ -0.4, -0.1, 0.0 ],
+			"rotationZ": -3.0,
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "Medallion",
+					"from": [ 3.99, 1.785, 1.05 ],
+					"to": [ 5.04, 1.995, 1.47 ],
+					"rotationOrigin": [ 4.62, 1.785, 1.26 ],
+					"faces": {
+						"north": { "texture": "#tinbronze1", "uv": [ 8.0, 8.0, 9.0, 8.5 ], "autoUv": false },
+						"east": { "texture": "#tinbronze1", "uv": [ 9.5, 15.0, 10.0, 15.5 ], "autoUv": false },
+						"south": { "texture": "#tinbronze1", "uv": [ 4.5, 5.0, 5.5, 5.5 ], "autoUv": false },
+						"west": { "texture": "#tinbronze1", "uv": [ 8.0, 14.0, 8.5, 14.5 ], "autoUv": false },
+						"up": { "texture": "#tinbronze1", "uv": [ 11.5, 6.0, 12.5, 6.5 ], "autoUv": false }
+					},
+					"children": [
+						{
+							"name": "strap",
+							"from": [ 1.26, 0.0, -0.105 ],
+							"to": [ 1.785, 0.105, 0.525 ],
+							"rotationOrigin": [ 1.26, 0.0, 0.21 ],
+							"faces": {
+								"north": { "texture": "#plain", "uv": [ 2.0, 3.0, 2.5, 3.5 ], "autoUv": false },
+								"south": { "texture": "#plain", "uv": [ 11.5, 2.0, 12.0, 2.5 ], "autoUv": false },
+								"up": { "texture": "#plain", "uv": [ 5.5, 4.0, 6.0, 4.5 ], "autoUv": false },
+								"down": { "texture": "#plain", "uv": [ 2.5, 15.0, 3.0, 15.5 ], "autoUv": false }
+							},
+							"children": [
+								{
+									"name": "band",
+									"from": [ -1.05, -0.105, -1.05 ],
+									"to": [ 0.0, 0.42, 1.68 ],
+									"rotationOrigin": [ 0.0, 0.0, 0.315 ],
+									"rotationZ": 25.0,
+									"faces": {
+										"north": { "texture": "#plain", "uv": [ 2.0, 10.0, 3.0, 10.5 ], "autoUv": false },
+										"east": { "texture": "#plain", "uv": [ 11.0, 10.0, 13.5, 10.5 ], "autoUv": false },
+										"south": { "texture": "#plain", "uv": [ 8.0, 8.0, 9.0, 8.5 ], "autoUv": false },
+										"west": { "texture": "#plain", "uv": [ 4.0, 1.5, 6.5, 2.0 ], "autoUv": false },
+										"up": { "texture": "#plain", "uv": [ 6.5, 12.5, 7.5, 15.0 ], "autoUv": false },
+										"down": { "texture": "#plain", "uv": [ 7.5, 7.5, 8.5, 10.0 ], "autoUv": false }
+									},
+									"children": [
+										{
+											"name": "strip1",
+											"from": [ 0.525, 0.315, 1.47 ],
+											"to": [ 2.1, 0.525, 1.68 ],
+											"rotationOrigin": [ 0.525, 0.42, 1.575 ],
+											"rotationY": -36.0,
+											"rotationZ": 36.0,
+											"faces": {
+												"north": { "texture": "#tinbronze1", "uv": [ 11.0, 9.0, 12.5, 9.5 ], "autoUv": false },
+												"east": { "texture": "#tinbronze1", "uv": [ 10.0, 8.5, 10.5, 9.0 ], "autoUv": false },
+												"south": { "texture": "#tinbronze1", "uv": [ 13.5, 0.5, 15.0, 1.0 ], "autoUv": false },
+												"west": { "texture": "#tinbronze1", "uv": [ 0.5, 12.5, 1.0, 13.0 ], "autoUv": false },
+												"up": { "texture": "#tinbronze1", "uv": [ 8.0, 10.5, 9.5, 11.0 ], "autoUv": false },
+												"down": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.5, 0.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+											}
+										},
+										{
+											"name": "strip2",
+											"from": [ 0.525, 0.315, 1.05 ],
+											"to": [ 2.1, 0.525, 1.26 ],
+											"rotationOrigin": [ 0.525, 0.42, 1.155 ],
+											"rotationY": 36.0,
+											"rotationZ": 36.0,
+											"faces": {
+												"north": { "texture": "#tinbronze1", "uv": [ 11.0, 9.0, 12.5, 9.5 ], "autoUv": false },
+												"east": { "texture": "#tinbronze1", "uv": [ 10.0, 8.5, 10.5, 9.0 ], "autoUv": false },
+												"south": { "texture": "#tinbronze1", "uv": [ 13.5, 0.5, 15.0, 1.0 ], "autoUv": false },
+												"west": { "texture": "#tinbronze1", "uv": [ 0.5, 12.5, 1.0, 13.0 ], "autoUv": false },
+												"up": { "texture": "#tinbronze1", "uv": [ 8.0, 10.5, 9.5, 11.0 ], "autoUv": false },
+												"down": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.5, 0.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+											}
+										},
+										{
+											"name": "strip3",
+											"from": [ 0.0, 0.63, 1.26 ],
+											"to": [ 0.21, 1.68, 1.47 ],
+											"rotationOrigin": [ 0.105, 0.63, 1.365 ],
+											"faces": {
+												"north": { "texture": "#tinbronze1", "uv": [ 10.0, 3.0, 10.5, 4.0 ], "autoUv": false },
+												"east": { "texture": "#tinbronze1", "uv": [ 3.0, 14.0, 3.5, 15.0 ], "autoUv": false },
+												"south": { "texture": "#tinbronze1", "uv": [ 3.0, 4.5, 3.5, 5.5 ], "autoUv": false },
+												"west": { "texture": "#tinbronze1", "uv": [ 12.0, 4.0, 12.5, 5.0 ], "autoUv": false },
+												"up": { "texture": "#tinbronze1", "uv": [ 5.0, 8.5, 5.5, 9.0 ], "autoUv": false }
+											},
+											"children": [
+												{
+													"name": "gem",
+													"from": [ 0.315, 0.0, -0.21 ],
+													"to": [ 0.945, 0.63, 0.42 ],
+													"rotationOrigin": [ 0.63, 0.315, 0.105 ],
+													"rotationY": 45.0,
+													"faces": {
+														"north": { "texture": "#lapislazuli", "uv": [ 1.5, 3.0, 2.0, 3.5 ], "autoUv": false },
+														"east": { "texture": "#lapislazuli", "uv": [ 9.0, 12.5, 9.5, 13.0 ], "autoUv": false },
+														"south": { "texture": "#lapislazuli", "uv": [ 6.0, 12.5, 6.5, 13.0 ], "autoUv": false },
+														"west": { "texture": "#lapislazuli", "uv": [ 0.5, 7.5, 1.0, 8.0 ], "autoUv": false },
+														"up": { "texture": "#lapislazuli", "uv": [ 10.0, 12.5, 10.5, 13.0 ], "autoUv": false },
+														"down": { "texture": "#lapislazuli", "uv": [ 9.0, 8.5, 9.5, 9.0 ], "autoUv": false }
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

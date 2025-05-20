@@ -1,0 +1,115 @@
+{
+	"editor": {
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
+		"collapsedPaths": "Root/ORIGINbridle/Bit/StrapBottom,Root/ORIGINbridle/Bit/StrapTop,Root/ORIGINbridle/Bit/ReinsN4,Root/ORIGINbridle/Bit/ReinsN",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"plain": [16,16]
+	},
+	"textures": {
+		"plain": "block/leather/plain",
+		"tinbronze1": "block/metal/sheet-plain/tinbronze1"
+	},
+	"elements": [
+		{
+			"name": "faceORIGIN",
+			"stepParentName": "Bridge",
+			"from": [ 0.0, -0.4, 0.0 ],
+			"to": [ 1.0, 0.6, 1.0 ],
+			"rotationOrigin": [ 0.0, -0.4, 0.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "main",
+					"from": [ 4.3, 1.7, 0.8 ],
+					"to": [ 4.6, 1.9, 1.6 ],
+					"rotationOrigin": [ 4.4, 1.7, 1.2 ],
+					"faces": {
+						"north": { "texture": "#tinbronze1", "uv": [ 8.5, 6.0, 9.0, 6.5 ] },
+						"east": { "texture": "#tinbronze1", "uv": [ 2.0, 10.0, 2.5, 10.5 ] },
+						"south": { "texture": "#tinbronze1", "uv": [ 0.5, 13.5, 1.0, 14.0 ] },
+						"west": { "texture": "#tinbronze1", "uv": [ 4.0, 5.0, 4.5, 5.5 ] },
+						"up": { "texture": "#tinbronze1", "uv": [ 6.5, 12.5, 7.0, 13.0 ] }
+					},
+					"children": [
+						{
+							"name": "strap",
+							"from": [ 0.2, 0.0, 0.1 ],
+							"to": [ 1.2, 0.1, 0.7 ],
+							"rotationOrigin": [ 1.0, 0.0, 0.4 ],
+							"faces": {
+								"north": { "texture": "#plain", "uv": [ 7.5, 1.5, 8.5, 2.0 ] },
+								"south": { "texture": "#plain", "uv": [ 9.0, 8.5, 10.0, 9.0 ] },
+								"up": { "texture": "#plain", "uv": [ 11.0, 4.0, 12.0, 4.5 ] },
+								"down": { "texture": "#plain", "uv": [ 7.5, 0.0, 8.5, 0.5 ] }
+							}
+						},
+						{
+							"name": "strip1",
+							"from": [ -0.5, 0.0, 0.0 ],
+							"to": [ 0.3, 0.19, 0.3 ],
+							"rotationOrigin": [ 0.3, 0.0, 0.0 ],
+							"rotationY": -36.0,
+							"faces": {
+								"north": { "texture": "#tinbronze1", "uv": [ 10.5, 1.0, 11.0, 1.5 ] },
+								"south": { "texture": "#tinbronze1", "uv": [ 3.5, 11.0, 4.0, 11.5 ] },
+								"west": { "texture": "#tinbronze1", "uv": [ 3.0, 11.5, 3.5, 12.0 ] },
+								"up": { "texture": "#tinbronze1", "uv": [ 7.5, 13.0, 8.0, 13.5 ] }
+							},
+							"children": [
+								{
+									"name": "strip3",
+									"from": [ 0.0, 0.0, 0.0 ],
+									"to": [ 0.3, 0.18, 0.8 ],
+									"rotationOrigin": [ 0.0, 0.0, 0.0 ],
+									"rotationY": -14.0,
+									"faces": {
+										"east": { "texture": "#tinbronze1", "uv": [ 3.0, 2.0, 3.5, 2.5 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+										"south": { "texture": "#tinbronze1", "uv": [ 1.5, 4.0, 2.0, 4.5 ] },
+										"west": { "texture": "#tinbronze1", "uv": [ 13.0, 2.5, 13.5, 3.0 ] },
+										"up": { "texture": "#tinbronze1", "uv": [ 10.5, 12.5, 11.0, 13.0 ] }
+									}
+								}
+							]
+						},
+						{
+							"name": "strip2",
+							"from": [ -0.5, 0.0, 0.5 ],
+							"to": [ 0.3, 0.19, 0.8 ],
+							"rotationOrigin": [ 0.3, 0.0, 0.8 ],
+							"rotationY": 36.0,
+							"faces": {
+								"north": { "texture": "#tinbronze1", "uv": [ 2.0, 4.0, 2.5, 4.5 ] },
+								"south": { "texture": "#tinbronze1", "uv": [ 1.0, 6.0, 1.5, 6.5 ] },
+								"west": { "texture": "#tinbronze1", "uv": [ 1.0, 4.0, 1.5, 4.5 ] },
+								"up": { "texture": "#tinbronze1", "uv": [ 1.0, 6.5, 1.5, 7.0 ] }
+							},
+							"children": [
+								{
+									"name": "strip4",
+									"from": [ 0.0, 0.0, -0.5 ],
+									"to": [ 0.3, 0.18, 0.3 ],
+									"rotationOrigin": [ 0.0, 0.0, 0.3 ],
+									"rotationY": 14.0,
+									"faces": {
+										"north": { "texture": "#tinbronze1", "uv": [ 8.5, 10.5, 9.0, 11.0 ] },
+										"east": { "texture": "#tinbronze1", "uv": [ 3.0, 1.5, 3.5, 2.0 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+										"west": { "texture": "#tinbronze1", "uv": [ 0.5, 6.0, 1.0, 6.5 ] },
+										"up": { "texture": "#tinbronze1", "uv": [ 8.5, 0.0, 9.0, 0.5 ] }
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

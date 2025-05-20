@@ -1,0 +1,82 @@
+{
+	"editor": {
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
+		"collapsedPaths": "Root/ORIGINbridle/Bit/StrapBottom,Root/ORIGINbridle/Bit/StrapTop,Root/ORIGINbridle/Bit/ReinsN4,Root/ORIGINbridle/Bit/ReinsN",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"plain": [16,16]
+	},
+	"textures": {
+		"plain": "block/leather/plain",
+		"tinbronze1": "block/metal/sheet-plain/tinbronze1"
+	},
+	"elements": [
+		{
+			"name": "faceORIGIN",
+			"stepParentName": "Bridge",
+			"from": [ 0.0, -0.4, 0.0 ],
+			"to": [ 1.0, 0.6, 1.0 ],
+			"rotationOrigin": [ 0.0, -0.4, 0.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "Medallion",
+					"from": [ 3.8, 1.7, 0.6 ],
+					"to": [ 5.0, 1.9, 1.8 ],
+					"rotationOrigin": [ 4.4, 1.7, 1.2 ],
+					"faces": {
+						"north": { "texture": "#tinbronze1", "uv": [ 8.0, 8.0, 9.0, 8.5 ] },
+						"east": { "texture": "#tinbronze1", "uv": [ 9.5, 15.0, 10.5, 15.5 ] },
+						"south": { "texture": "#tinbronze1", "uv": [ 4.5, 5.0, 5.5, 5.5 ] },
+						"west": { "texture": "#tinbronze1", "uv": [ 8.0, 14.0, 9.0, 14.5 ] },
+						"up": { "texture": "#tinbronze1", "uv": [ 11.5, 6.0, 12.5, 7.0 ] }
+					},
+					"children": [
+						{
+							"name": "strap",
+							"from": [ -1.8, 0.0, 0.3 ],
+							"to": [ 1.7, 0.1, 0.9 ],
+							"rotationOrigin": [ 1.2, 0.0, 0.6 ],
+							"faces": {
+								"north": { "texture": "#plain", "uv": [ 2.0, 3.0, 5.5, 3.5 ] },
+								"south": { "texture": "#plain", "uv": [ 11.5, 2.0, 15.0, 2.5 ] },
+								"up": { "texture": "#plain", "uv": [ 5.5, 4.0, 9.0, 4.5 ] },
+								"down": { "texture": "#plain", "uv": [ 2.5, 15.0, 6.0, 15.5 ] }
+							}
+						},
+						{
+							"name": "Cube2",
+							"from": [ -1.3, 0.0, 0.1 ],
+							"to": [ -0.3, 0.15, 1.1 ],
+							"rotationOrigin": [ -0.8, 0.0, 0.6 ],
+							"faces": {
+								"north": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+								"east": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+								"south": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+								"west": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+								"up": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 1.0, 1.0 ] }
+							}
+						},
+						{
+							"name": "Cube3",
+							"from": [ -2.4, 0.0, 0.2 ],
+							"to": [ -1.6, 0.15, 1.0 ],
+							"rotationOrigin": [ -2.0, 0.0, 0.6 ],
+							"faces": {
+								"north": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"east": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"south": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"west": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+								"up": { "texture": "#tinbronze1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}
