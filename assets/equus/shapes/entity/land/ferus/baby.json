@@ -864,12 +864,12 @@
 				},
 				{
 					"name": "L scapula",
-					"from": [ 2.1, 3.57, 3.64 ],
-					"to": [ 4.62, 7.77, 6.16 ],
+					"from": [ 2.1, 3.57, 3.54 ],
+					"to": [ 4.62, 7.77, 6.06 ],
 					"unwrapMode": 7,
 					"unwrapRotation": 1,
 					"uv": [ 26.0, 32.0 ],
-					"rotationOrigin": [ 3.36, 6.37, 4.97 ],
+					"rotationOrigin": [ 3.36, 6.37, 4.87 ],
 					"rotationZ": -22.5,
 					"faces": {
 					},
@@ -975,12 +975,12 @@
 				},
 				{
 					"name": "R scapula",
-					"from": [ 2.1, 3.57, 0.0 ],
-					"to": [ 4.62, 7.77, 2.52 ],
+					"from": [ 2.1, 3.57, 0.1 ],
+					"to": [ 4.62, 7.77, 2.62 ],
 					"unwrapMode": 7,
 					"unwrapRotation": 1,
 					"uv": [ 39.0, 38.5 ],
-					"rotationOrigin": [ 3.36, 6.37, 1.82 ],
+					"rotationOrigin": [ 3.36, 6.37, 1.92 ],
 					"rotationZ": -22.5,
 					"faces": {
 					},
