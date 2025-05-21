@@ -1,7 +1,7 @@
 {
 	"code": "wildhorse",
 	"class": "EntityAgent",
-	"fallDamageMultiplierByType": { "*-baby-*" :0.5,"*-ferus" :1},
+	"fallDamageMultiplierByType": { "*-baby-*" :0.5,"*-ferus" :0.5},
 	"variantgroups": [
 		{"code": "age","states": [ "adult","baby"]},
 		{"code": "gender","states": [ "female","male"]},
@@ -34,7 +34,7 @@
 	"behaviorConfigs": {
 		"controlledphysics": { 
 			"stepHeight": 3.1251,
-			"stepUpSpeed": 0.1
+			"stepUpSpeed": 0.2
 		},
 		"floatupwhenstuck": { "onlyWhenDead": true },
 		"rideableaccessories": {
@@ -223,10 +223,11 @@
 					}
 				},
 					"jump": {
-					"animation": "Walk",
-				    "weight": 50,
+					"animation": "Jump",
+				    "weight": 100,
 					"blendMode": "Average",
-					"animationSpeed": 1,
+					"animationSpeed": 1.4,
+					"easeOutSpeed": 40,
 					"movespeed": 0.08,
 					"riderAnim": {
 						"animation": "rideelk-jump",
