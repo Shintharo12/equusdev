@@ -440,9 +440,9 @@
 				"pregnancyDaysByType": {
 					"*-ferus": 36
 				},
-				"genelib.multiplyCooldownDaysMinByType": {"*": 6},
-				"genelib.multiplyCooldownDaysMaxByType": {"*": 11},
-				"portionsEatenForgenelib.multiplyByType": {
+				"multiplyCooldownDaysMinByType": {"*": 6},
+				"multiplyCooldownDaysMaxByType": {"*": 11},
+				"portionsEatenForMultiplyByType": {
 					"*-ferus": 10
 				}
 			},
@@ -452,7 +452,7 @@
 					"*-baby-*": true,
 					"*": false
 				},
-				"hoursTogenelib.growByType": {"*": 168},
+				"hoursToGrowByType": {"*": 432},
 				"adultEntityCodesByType": {
 					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
 					"*-baby-female-*": ["equus:wildhorse-adult-female-{type}"]
