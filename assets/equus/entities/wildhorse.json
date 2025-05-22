@@ -191,7 +191,7 @@
 					"easeOutSpeed": 4,
 					"weight": 10,
 						"movespeedByType": {
-							"*-ferus": 0.15
+							"*-ferus": 0.12
 						},
 						"animationSpeedByType": {
 							"*-ferus": 3.1,
@@ -228,7 +228,7 @@
 					"blendMode": "Average",
 					"animationSpeed": 1.4,
 					"easeOutSpeed": 40,
-					"movespeed": 0.08,
+					"movespeed": 0.12,
 					"riderAnim": {
 						"animation": "rideelk-jump",
 						"animationSpeed": 1,
