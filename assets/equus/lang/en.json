@@ -24,6 +24,11 @@
   "item-dead-creature-wildhorse-baby-female-ferus": "Wild horse filly (Dead)",
   "item-dead-creature-wildhorse-baby-male-ferus": "Wild horse colt (Dead)",
 
+  "item-dead-creature-wildhorse-adult-female-ferus-tamed": "Tamed horse mare (Dead)",
+  "item-dead-creature-wildhorse-adult-male-ferus-tamed": "Tamed horse stallion (Dead)",
+  "item-dead-creature-wildhorse-baby-female-ferus-tamed": "Tamed horse filly (Dead)",
+  "item-dead-creature-wildhorse-baby-male-ferus-tamed": "Tamed horse colt (Dead)",
+
   "game:prefixandcreature-wildhorseadultfemaleferus": "a wild horse mare",
   "game:prefixandcreature-wildhorseadultmaleferus": "a wild horse stallion",
   "game:prefixandcreature-wildhorsebabyfemaleferus": "a wild horse filly",
@@ -34,5 +39,9 @@
   "game:itemdesc-hoovedwearables-head-bridle2": "Useful for long distance travel. Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-middleback-saddle1": "Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Suitable for: elk, horse",
-  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse"
+  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse",
+
+  "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
+  "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
+  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}"
 }
