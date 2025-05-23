@@ -6,21 +6,21 @@
 		{"code": "main","states": [ "wildhorse"]},
 		{"code": "age","states": [ "adult","baby"]},
 		{"code": "gender","states": [ "female","male"]},
-		{"code": "type","states": [ "ferus"]}
+		{"code": "type","states": [ "ferus","ferustamed"]}
 	],
 
 	"shapeByType": {
-		"*-adult-male-ferus": {"base": "entity/land/ferus/adult"},
-		"*-adult-female-ferus": {"base": "entity/land/ferus/adult"},
-		"*-baby-female-ferus": {"base": "entity/land/ferus/baby"},
-		"*-baby-male-ferus": {"base": "entity/land/ferus/baby"}	
+		"*-adult-male-ferus*": {"base": "entity/land/ferus/adult"},
+		"*-adult-female-ferus*": {"base": "entity/land/ferus/adult"},
+		"*-baby-female-ferus*": {"base": "entity/land/ferus/baby"},
+		"*-baby-male-ferus*": {"base": "entity/land/ferus/baby"}	
 
 	},
 	"texturesByType": {
-		"*adult-male-ferus": {"skin": { "base": "entity/ferus/mealy-bay" }},
-		"*adult-female-ferus": {"skin": { "base": "entity/ferus/mealy-bay" }},
-		"*-baby-female-ferus": {"skin": { "base": "entity/ferus/mealy-bay" }},
-		"*-baby-male-ferus": {"skin": { "base": "entity/ferus/mealy-bay" }}
+		"*adult-male-ferus*": {"skin": { "base": "entity/ferus/mealy-bay" }},
+		"*adult-female-ferus*": {"skin": { "base": "entity/ferus/mealy-bay" }},
+		"*-baby-female-ferus*": {"skin": { "base": "entity/ferus/mealy-bay" }},
+		"*-baby-male-ferus*": {"skin": { "base": "entity/ferus/mealy-bay" }}
 	},
 	
 	
