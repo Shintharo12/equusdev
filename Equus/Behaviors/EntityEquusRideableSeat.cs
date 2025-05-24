@@ -100,6 +100,14 @@ namespace Equus.Behaviors
         {
             if (entityAgent is not EntityPlayer player) return false;
 
+            var ebr = Entity.GetBehavior<EntityBehaviorEquusRideable>();
+            if (Entity.WatchedAttributes.GetInt("generation") < ebr.minGeneration && player.Player.WorldData.CurrentGameMode != EnumGameMode.Creative)
+            {
+                var capi = entityAgent.World.Api as ICoreClientAPI;
+                capi?.TriggerIngameError(this, "toowild", Lang.Get("Animal is too wild to ride"));
+                return false;
+            }
+
             var ebho = Entity.GetBehavior<EntityBehaviorOwnable>();
             if (ebho != null && !ebho.IsOwner(player))
             {

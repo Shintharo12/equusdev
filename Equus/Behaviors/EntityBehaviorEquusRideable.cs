@@ -1,14 +1,13 @@
-﻿using Equus.Systems;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
 namespace Equus.Behaviors
@@ -52,20 +51,6 @@ namespace Equus.Behaviors
         // In EntityBehaviorEquusRideable class
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
 
-        public float GaitMotionMultiplier
-        {
-            get
-            {
-                return CurrentGait switch
-                {
-                    GaitState.Walk => 1.0f,
-                    GaitState.Canter => 1.5f,
-                    GaitState.Gallop => 2.0f,
-                    _ => 1.0f
-                };
-            }
-        }
-
         protected ICoreAPI api;
         // Time the player can walk off an edge before gravity applies.
         protected float coyoteTimer;
@@ -80,7 +65,9 @@ namespace Equus.Behaviors
 
         protected long lastGaitChangeMs = 0;
         protected bool lastSprintPressed = false;
-        private float timeSinceLastLog;
+        private float timeSinceLastLog = 0;
+        private float timeSinceLastGaitCheck = 0;
+        internal int minGeneration = 0; // Minimum generation for the equus to be rideable
 
         ControlMeta curControlMeta = null;
         bool shouldMove = false;
@@ -117,6 +104,7 @@ namespace Equus.Behaviors
             base.Initialize(properties, attributes);
 
             rideableconfig = attributes.AsObject<RideableConfig>();
+            minGeneration = rideableconfig.MinGeneration;
             foreach (var val in rideableconfig.Controls.Values) { val.RiderAnim?.Init(); }
 
             api = entity.Api;
@@ -148,15 +136,15 @@ namespace Equus.Behaviors
 
         public override void OnEntityLoaded()
         {
-            setupTaskBlocker();
+            SetupTaskBlocker();
         }
 
         public override void OnEntitySpawn()
         {
-            setupTaskBlocker();
+            SetupTaskBlocker();
         }
 
-        void setupTaskBlocker()
+        void SetupTaskBlocker()
         {
             var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
 
@@ -173,7 +161,7 @@ namespace Equus.Behaviors
             {
                 if (ebc != null)
                 {
-                    entity.WatchedAttributes.RegisterModifiedListener(ebc.InventoryClassName, updateControlScheme);
+                    entity.WatchedAttributes.RegisterModifiedListener(ebc.InventoryClassName, UpdateControlScheme);
                 }
             }
 
@@ -181,10 +169,10 @@ namespace Equus.Behaviors
 
         private void Inventory_SlotModified(int obj)
         {
-            updateControlScheme();
+            UpdateControlScheme();
         }
 
-        private void updateControlScheme()
+        private void UpdateControlScheme()
         {
             var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
             if (ebc != null)
@@ -230,11 +218,10 @@ namespace Equus.Behaviors
             if (capi.IsGamePaused) return;
 
 
-            updateAngleAndMotion(dt);
+            UpdateAngleAndMotion(dt);
         }
 
-
-        protected virtual void updateAngleAndMotion(float dt)
+        protected virtual void UpdateAngleAndMotion(float dt)
         {
             // Ignore lag spikes
             dt = Math.Min(0.5f, dt);
@@ -244,7 +231,7 @@ namespace Equus.Behaviors
 
             if (jumpNow)
             {
-                updateRidingState();
+                UpdateRidingState();
             }
 
             ForwardSpeed = Math.Sign(motion.X);
@@ -270,7 +257,7 @@ namespace Equus.Behaviors
 
         bool prevForwardKey, prevBackwardKey, prevSprintKey;
 
-        bool forward, backward, canter, gallop;
+        bool forward, backward;
         public virtual Vec2d SeatsToMotion(float dt)
         {
             int seatsRowing = 0;
@@ -339,7 +326,6 @@ namespace Equus.Behaviors
 
                 if (!canride) continue;
 
-
                 // Only able to jump every 1000ms. Only works while on the ground.
                 if (controls.Jump && entity.World.ElapsedMilliseconds - lastJumpMs > 1000 && entity.Alive && (entity.OnGround || coyoteTimer > 0))
                 {
@@ -385,6 +371,7 @@ namespace Equus.Behaviors
                     forward = controls.Forward;
                     backward = controls.Backward;
 
+                    // Don't allow backwards canter/gallop
                     if (backward) CurrentGait = GaitState.Walk;
                 }
                 else
@@ -426,14 +413,14 @@ namespace Equus.Behaviors
                 if (forward || backward)
                 {
                     float dir = forward ? 1 : -1;
-                    linearMotion += str * dir * dt * GaitMotionMultiplier;
+                    linearMotion += str * dir * dt * 2f;
                 }
             }
 
             return new Vec2d(linearMotion, angularMotion);
         }
 
-        protected void updateRidingState()
+        protected void UpdateRidingState()
         {
             if (!AnyMounted()) return;
 
@@ -523,7 +510,7 @@ namespace Equus.Behaviors
                 }
 
                 curControlMeta = nowControlMeta;
-                ModSystem.Logger.Notification($"Meta: {nowControlMeta.Code}");
+                ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta.Code}");
                 eagent.AnimManager.StartAnimation(nowControlMeta);
             }
 
@@ -533,19 +520,93 @@ namespace Equus.Behaviors
             }
         }
 
-        public void DrainStamina()
+        /// <summary>
+        /// Check for stamina triggered changes to gait then sync to server
+        /// </summary>
+        /// <param name="dt">tick time</param>
+        public void StaminaGaitCheckandSync(float dt)
         {
-            if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
-            {
-                if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f) { /* maybe buck */ }
+            if (capi is null) return;
+            if (api.Side != EnumAppSide.Client) return;
 
-                if (ebs.Stamina < 10)
-                    CurrentGait = GaitState.Walk;
-                else if (ebs.Stamina < 50)
-                    CurrentGait = GaitState.Canter;
-                else
-                    CurrentGait = GaitState.Gallop;
+            timeSinceLastGaitCheck += dt;
+
+            // Check once a second
+            if (timeSinceLastGaitCheck >= 1f)
+            {
+                if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
+                {
+                    GaitState nextGait = CurrentGait;
+                    if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f) 
+                    { 
+                        /* maybe buck */  
+                    }
+
+                    int syncPacketId;
+                    if (ebs.Stamina < 10)
+                    {
+                        nextGait = GaitState.Walk;
+                        syncPacketId = 9999;
+                    }
+                    else if (capi.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina))
+                    {
+                        nextGait = GaitState.Canter;
+                        syncPacketId = 9998;
+                    }
+                    else
+                    {
+                        nextGait = GaitState.Gallop;
+                        syncPacketId = 9997;
+                    }
+
+                    // If gait changes sync it to the server 
+                    if (nextGait != CurrentGait)
+                    {
+                        CurrentGait = nextGait;
+                        capi.Network.SendEntityPacket(entity.EntityId, syncPacketId);
+                    }
+                }
+
+                timeSinceLastGaitCheck = 0;
             }
+        }
+
+        // For syncing gait from client to server
+        public override void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
+        {
+            switch (packetid)
+            {
+                case 9999:
+                    CurrentGait = GaitState.Walk;
+                    UpdateRidingState();
+                    break;
+                case 9998:
+                    CurrentGait = GaitState.Canter;
+                    UpdateRidingState();
+                    break;
+                case 9997:
+                    CurrentGait = GaitState.Gallop;
+                    UpdateRidingState();
+                    break;
+            };
+            handled = EnumHandling.Handled;
+        }
+
+        /// <summary>
+        /// Returns a value on a quadratic curve as stamina drops below 50%
+        /// </summary>
+        /// <param name="currentStamina"></param>
+        /// <param name="maxStamina"></param>
+        /// <returns></returns>
+        public static float GetStaminaDeficitMultiplier(float currentStamina, float maxStamina)
+        {
+            float midpoint = maxStamina * 0.5f;
+
+            if (currentStamina >= midpoint)
+                return 0f;
+
+            float deficit = 1f - (currentStamina / midpoint);  // 0 at midpoint, 1 at 0 stamina
+            return deficit * deficit;  // Quadratic curve for gradual increase
         }
 
         public void DismountViolently()
@@ -571,6 +632,7 @@ namespace Equus.Behaviors
 
         public void Stop()
         {
+            CurrentGait = GaitState.Walk;
             eagent.Controls.StopAllMovement();
             eagent.Controls.WalkVector.Set(0, 0, 0);
             eagent.Controls.FlyVector.Set(0, 0, 0);
@@ -598,10 +660,12 @@ namespace Equus.Behaviors
 
             if (api.Side == EnumAppSide.Server)
             {
-                updateAngleAndMotion(dt);
+                UpdateAngleAndMotion(dt);
             }
 
-            updateRidingState();
+            StaminaGaitCheckandSync(dt);
+
+            UpdateRidingState();
 
             if (!AnyMounted() && eagent.Controls.TriesToMove && eagent?.MountedOn != null)
             {
@@ -610,26 +674,26 @@ namespace Equus.Behaviors
 
             if (shouldMove)
             {
-                move(dt, eagent.Controls, curControlMeta.MoveSpeed);
+                Move(dt, eagent.Controls, curControlMeta.MoveSpeed);
             }
             else
             {
                 if (entity.Swimming) eagent.Controls.FlyVector.Y = 0.2;
             }
 
-            updateSoundState(dt);
+            UpdateSoundState(dt);
         }
 
         float notOnGroundAccum;
-        private void updateSoundState(float dt)
+        private void UpdateSoundState(float dt)
         {
             if (capi == null) return;
 
             if (eagent.OnGround) notOnGroundAccum = 0;
             else notOnGroundAccum += dt;
 
-            bool nowtrot = shouldMove && !eagent.Controls.Sprint && notOnGroundAccum < 0.2;
-            bool nowgallop = shouldMove && eagent.Controls.Sprint && notOnGroundAccum < 0.2;
+            bool nowtrot = shouldMove && CurrentGait != GaitState.Gallop && notOnGroundAccum < 0.2;
+            bool nowgallop = shouldMove && CurrentGait == GaitState.Gallop && notOnGroundAccum < 0.2;
 
             bool wastrot = trotSound != null && trotSound.IsPlaying;
             bool wasgallop = gallopSound != null && gallopSound.IsPlaying;
@@ -684,7 +748,7 @@ namespace Equus.Behaviors
             }
         }
 
-        private void move(float dt, EntityControls controls, float nowMoveSpeed)
+        private void Move(float dt, EntityControls controls, float nowMoveSpeed)
         {
             double cosYaw = Math.Cos(entity.Pos.Yaw);
             double sinYaw = Math.Sin(entity.Pos.Yaw);
@@ -755,7 +819,7 @@ namespace Equus.Behaviors
 
         public void DidMount(EntityAgent entityAgent)
         {
-            updateControlScheme();
+            UpdateControlScheme();
         }
     }
 

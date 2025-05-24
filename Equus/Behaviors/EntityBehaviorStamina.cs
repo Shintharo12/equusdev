@@ -1,9 +1,7 @@
 ﻿using Equus.Systems;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -11,7 +9,6 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-using Vintagestory.GameContent;
 
 namespace Equus.Behaviors
 {
@@ -85,7 +82,7 @@ namespace Equus.Behaviors
 
         public float SprintFatigue
         {
-            get => StaminaTree?.GetFloat("sprintfatigue") ?? 0.1f;
+            get => StaminaTree?.GetFloat("sprintfatigue") ?? 1f;
             set
             {
                 StaminaTree.SetFloat("sprintfatigue", value);
@@ -94,7 +91,7 @@ namespace Equus.Behaviors
         }
         public float SwimFatigue
         {
-            get => StaminaTree?.GetFloat("swimfatigue") ?? 0.2f;
+            get => StaminaTree?.GetFloat("swimfatigue") ?? 1f;
             set
             {
                 StaminaTree.SetFloat("swimfatigue", value);
@@ -164,7 +161,7 @@ namespace Equus.Behaviors
             Exhausted = typeAttributes["exhausted"].AsBool(false);
             MaxStamina = typeAttributes["maxstamina"].AsFloat(staminaAttributes["maxStamina"].AsFloat(100f));
             Stamina = typeAttributes["currentstamina"].AsFloat(staminaAttributes["maxStamina"].AsFloat(100f));
-            SprintFatigue = typeAttributes["sprintfatigue"].AsFloat(staminaAttributes["sprintfatigue"].AsFloat(0.1f));
+            SprintFatigue = typeAttributes["sprintfatigue"].AsFloat(staminaAttributes["sprintfatigue"].AsFloat(0.2f));
             SwimFatigue = typeAttributes["swimfatigue"].AsFloat(staminaAttributes["swimfatigue"].AsFloat(0.2f));
             StaminaRegenRate = typeAttributes["staminaregenrate"].AsFloat(staminaAttributes["staminaregenrate"].AsFloat(1f));
             BaseFatigueRate = typeAttributes["basefatiguerate"].AsFloat(staminaAttributes["basefatiguerate"].AsFloat(1f));
@@ -230,6 +227,7 @@ namespace Equus.Behaviors
 
                     // Sync sprinting state to server, not sure why the tree attribute doesn't do this automatically
                     capi.Network.SendEntityPacket(entity.EntityId, currentlySprinting ? 4242 : 2424);
+                    //if (DebugMode) ModSystem.Logger.Notification($"{entity.EntityId} - Sending sprinting state: {currentlySprinting}");
                 }
                 return;
             }            
@@ -284,7 +282,7 @@ namespace Equus.Behaviors
 
         public void RegenerateStamina(float elapsedTime)
         {
-            var stamina = Stamina;  // higher performance to read this TreeAttribute only once
+            var stamina = Stamina;  // better performance to read this TreeAttribute only once
             var maxStamina = MaxStamina;
 
             // Add up penalties for various actions
@@ -292,13 +290,13 @@ namespace Equus.Behaviors
             var currentMountedPenalty = eagent.GetBehavior<EntityBehaviorEquusRideable>().AnyMounted() ? RegenPenaltyMounted : 0f;
 
             var totalPenalty = currentMountedPenalty + currentSwimmingPenalty;
-
+                        
             var staminaRegenRate = (StaminaRegenRate - totalPenalty) * ModSystem.Config.GlobalStaminaRegenMultiplier;
 
             if (stamina < maxStamina)
             {
-                // 15% multiplier to scale human usable values to reasonable game numbers
-                var staminaRegenPerGameSecond = 0.15f * staminaRegenRate;
+                // 25% multiplier since we do this four times a second
+                var staminaRegenPerGameSecond = 0.25f * staminaRegenRate;
                 var multiplierPerGameSec = elapsedTime * ModSystem.Api.World.Calendar.SpeedOfTime * ModSystem.Api.World.Calendar.CalendarSpeedMul;
 
                 Stamina = Math.Min(stamina + (multiplierPerGameSec * staminaRegenPerGameSecond), maxStamina);
@@ -352,12 +350,6 @@ namespace Equus.Behaviors
             var fatigueRate = BaseFatigueRate * fatigue;
 
             Stamina = GameMath.Clamp(stamina - fatigueRate, 0, maxStamina);
-
-            if (DebugMode)
-            {
-                //ModSystem.Logger.Notification($"{ftgSource.Source} reduced stamina by: {fatigue}");
-                //ModSystem.Logger.Notification($"Stamina: {stamina}/{maxStamina}");
-            }
         }
 
         public override void GetInfoText(StringBuilder infotext)
@@ -365,7 +357,9 @@ namespace Equus.Behaviors
             var capi = entity.Api as ICoreClientAPI;
             if (capi?.World.Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
             {
-                infotext.AppendLine(Lang.Get($"[Equus] Stamina: {Stamina}/{MaxStamina}"));                
+                infotext.AppendLine(Lang.Get($"[{ModSystem.ModId}] Stamina: {Stamina}/{MaxStamina}"));
+                infotext.AppendLine(Lang.Get($"[{ModSystem.ModId}] Sprint Fatigue: {SprintFatigue}"));
+                infotext.AppendLine(Lang.Get($"[{ModSystem.ModId}] Swim Fatigue: {SwimFatigue}"));
             }
         }
 

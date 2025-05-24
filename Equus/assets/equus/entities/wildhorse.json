@@ -32,10 +32,12 @@
 		},
 		"stamina": {
 			"maxStamina": 100,
+			"sprintFatigue": 0.2,
+			"swimFatigue": 0.2,
 			"baseFatigueRate": 1,
             "staminaRegenRate": 1,
-            "regenPenatlySwimming": 0.1,
-            "regenPenaltyRiding": 0.1
+            "regenPenatlySwimming": 0.4,
+            "regenPenaltyRiding": 0.3
 		}
 	},
 	"behaviorConfigs": {
@@ -197,15 +199,15 @@
                     "animation": "Canter",
                     "weight": 10,
                     "movespeedByType": {
-                        "*-ferus": 0.075
+                        "*-ferus": 0.07625
                     },
                     "animationSpeedByType": {
-                        "*-ferus": 3.5,
-                        "*": 3.5
+                        "*-ferus": 2.8,
+                        "*": 2.8
                     },
                     "blendMode": "Average",
                     "riderAnim": {
-                        "animation": "rideelk-walk",
+                        "animation": "rideelk-run",
                         "animationSpeed": 1,
                         "weight": 1,
                         "withFpVariant": true,
@@ -383,7 +385,7 @@
 			{ "code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
 			{ "code": "equus:rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
-			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
+			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}, "minGeneration": 2},
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
 			{ "code": "ropetieable" },
             { "code": "equus:stamina" }

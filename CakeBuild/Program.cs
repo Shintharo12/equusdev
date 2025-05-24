@@ -35,7 +35,7 @@ public class BuildContext : FrostingContext
     {
         BuildConfiguration = context.Argument("configuration", "Release");
         SkipJsonValidation = context.Argument("skipJsonValidation", false);
-        var modInfo = context.DeserializeJsonFromFile<ModInfo>($"../modinfo.json");
+        var modInfo = context.DeserializeJsonFromFile<ModInfo>($"../{ProjectName}/modinfo.json");
         Version = modInfo.Version;
         Name = modInfo.ModID;
     }
@@ -96,12 +96,15 @@ public sealed class PackageTask : FrostingTask<BuildContext>
         context.EnsureDirectoryExists("../Releases");
         context.CleanDirectory("../Releases");
         context.EnsureDirectoryExists($"../Releases/{context.Name}");
-        context.CopyFiles($"../{BuildContext.ProjectName}/bin/{context.BuildConfiguration}/publish/*", $"../Releases/{context.Name}");
-        context.CopyDirectory($"../assets", $"../Releases/{context.Name}/assets");
-        context.CopyFile($"../modinfo.json", $"../Releases/{context.Name}/modinfo.json");
-        if (context.FileExists($"../modicon.png"))
+        context.CopyFiles($"../{BuildContext.ProjectName}/bin/{context.BuildConfiguration}/Mods/mod/publish/*", $"../Releases/{context.Name}");
+        if (context.DirectoryExists($"../{BuildContext.ProjectName}/assets"))
         {
-            context.CopyFile($"../modicon.png", $"../Releases/{context.Name}/modicon.png");
+            context.CopyDirectory($"../{BuildContext.ProjectName}/assets", $"../Releases/{context.Name}/assets");
+        }
+        context.CopyFile($"../{BuildContext.ProjectName}/modinfo.json", $"../Releases/{context.Name}/modinfo.json");
+        if (context.FileExists($"../{BuildContext.ProjectName}/modicon.png"))
+        {
+            context.CopyFile($"../{BuildContext.ProjectName}/modicon.png", $"../Releases/{context.Name}/modicon.png");
         }
         context.Zip($"../Releases/{context.Name}", $"../Releases/{context.Name}_{context.Version}.zip");
     }
