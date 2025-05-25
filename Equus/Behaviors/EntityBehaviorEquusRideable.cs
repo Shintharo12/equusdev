@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Equus.Systems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -50,6 +52,20 @@ namespace Equus.Behaviors
 
         // In EntityBehaviorEquusRideable class
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
+
+        public float GaitMotionMultiplier
+        {
+            get
+            {
+                return CurrentGait switch
+                {
+                    GaitState.Walk => 1.0f,
+                    GaitState.Canter => 1.5f,
+                    GaitState.Gallop => 2.0f,
+                    _ => 1.0f
+                };
+            }
+        }
 
         protected ICoreAPI api;
         // Time the player can walk off an edge before gravity applies.
@@ -326,6 +342,7 @@ namespace Equus.Behaviors
 
                 if (!canride) continue;
 
+
                 // Only able to jump every 1000ms. Only works while on the ground.
                 if (controls.Jump && entity.World.ElapsedMilliseconds - lastJumpMs > 1000 && entity.Alive && (entity.OnGround || coyoteTimer > 0))
                 {
@@ -534,8 +551,8 @@ namespace Equus.Behaviors
             // Check once a second
             if (timeSinceLastGaitCheck >= 1f)
             {
-                if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
-                {
+            if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
+            {
                     GaitState nextGait = CurrentGait;
                     if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f) 
                     { 
@@ -543,7 +560,7 @@ namespace Equus.Behaviors
                     }
 
                     int syncPacketId;
-                    if (ebs.Stamina < 10)
+                if (ebs.Stamina < 10)
                     {
                         nextGait = GaitState.Walk;
                         syncPacketId = 9999;
@@ -590,7 +607,7 @@ namespace Equus.Behaviors
                     break;
             };
             handled = EnumHandling.Handled;
-        }
+            }
 
         /// <summary>
         /// Returns a value on a quadratic curve as stamina drops below 50%

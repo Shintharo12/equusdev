@@ -1,7 +1,9 @@
 ﻿using Equus.Systems;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -9,6 +11,7 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.GameContent;
 
 namespace Equus.Behaviors
 {
@@ -290,7 +293,7 @@ namespace Equus.Behaviors
             var currentMountedPenalty = eagent.GetBehavior<EntityBehaviorEquusRideable>().AnyMounted() ? RegenPenaltyMounted : 0f;
 
             var totalPenalty = currentMountedPenalty + currentSwimmingPenalty;
-                        
+
             var staminaRegenRate = (StaminaRegenRate - totalPenalty) * ModSystem.Config.GlobalStaminaRegenMultiplier;
 
             if (stamina < maxStamina)
@@ -350,6 +353,12 @@ namespace Equus.Behaviors
             var fatigueRate = BaseFatigueRate * fatigue;
 
             Stamina = GameMath.Clamp(stamina - fatigueRate, 0, maxStamina);
+
+            if (DebugMode)
+            {
+                //ModSystem.Logger.Notification($"{ftgSource.Source} reduced stamina by: {fatigue}");
+                //ModSystem.Logger.Notification($"Stamina: {stamina}/{maxStamina}");
+            }
         }
 
         public override void GetInfoText(StringBuilder infotext)
