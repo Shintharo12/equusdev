@@ -527,7 +527,7 @@ namespace Equus.Behaviors
                 }
 
                 curControlMeta = nowControlMeta;
-                ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta.Code}");
+                if (DebugMode) ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta.Code}");
                 eagent.AnimManager.StartAnimation(nowControlMeta);
             }
 
@@ -665,15 +665,6 @@ namespace Equus.Behaviors
         public override void OnGameTick(float dt)
         {
             timeSinceLastLog += dt;
-
-            if (false && timeSinceLastLog > 5)
-            {
-                timeSinceLastLog = 0;
-                foreach (var seat in Seats)
-                {
-                    if (DebugMode && seat.Passenger != null) ModSystem.Logger.Notification($"Current Gait: {CurrentGait}");
-                }
-            }
 
             if (api.Side == EnumAppSide.Server)
             {
