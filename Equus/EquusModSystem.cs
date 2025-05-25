@@ -1,5 +1,6 @@
 ﻿using Equus.Behaviors;
 using Equus.Config;
+using Equus.Hud;
 using Equus.Systems;
 using Genelib;
 using System;
@@ -8,16 +9,20 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Server;
+using Vintagestory.Client.NoObf;
 
 namespace Equus
 {
     public class EquusModSystem : ModSystem
     {
+        private HudElementStaminaBar _staminaHud;
         private FileWatcher _fileWatcher;
+        private long customHudListenerId;
 
         public string ModId => Mod.Info.ModID;
         public ILogger Logger => Mod.Logger;
         public ICoreAPI Api { get; private set; }
+        public ICoreClientAPI ClientApi { get; private set; }
         public EquusConfig Config { get; private set; }
         public static EquusModSystem Instance { get; private set; }
 
@@ -38,12 +43,43 @@ namespace Equus
         public override void StartServerSide(ICoreServerAPI api)
         {
             api.Event.OnEntityLoaded += AddFatigueHandlers;
-
         }
 
         public override void StartClientSide(ICoreClientAPI api)
         {
+            ClientApi = api;
 
+            if (Config.EnableStamina)
+            {
+                customHudListenerId = api.Event.RegisterGameTickListener(CheckAndInitializeCustomHud, 20);
+            }
+        }
+
+        private void CheckAndInitializeCustomHud(float dt)
+        {
+            var vanillaHudStatbar = GetVanillaStatbarHud();
+
+            if (vanillaHudStatbar != null && vanillaHudStatbar.IsOpened())
+            {
+                _staminaHud = new HudElementStaminaBar(ClientApi);
+                ClientApi.Event.RegisterGameTickListener(_staminaHud.OnGameTick, 1000);
+                ClientApi.Gui.RegisterDialog(_staminaHud);
+
+                ClientApi.Event.UnregisterGameTickListener(customHudListenerId);
+            }
+        }
+
+        private HudStatbar GetVanillaStatbarHud()
+        {
+            foreach (var hud in ClientApi.Gui.OpenedGuis)
+            {
+                if (hud is HudStatbar statbar)
+                {
+                    return statbar;
+                }
+            }
+
+            return null;
         }
 
         private void AddFatigueHandlers(Entity entity)

@@ -60,17 +60,6 @@
       }
     },
     {
-      "code": "GlobalSaturationCostMultiplier",
-      "type": "float",
-      "ingui": "setting-saturation-cost-per-stamina",
-      "default": 0.5,
-      "range": {
-        "min": 0.0,
-        "max": 1.0,
-        "step": 0.1
-      }
-    },
-    {
       "code": "GlobalSwimStaminaCostMultiplier",
       "type": "float",
       "ingui": "setting-swim-stamina-cost",
@@ -97,39 +86,6 @@
       "type": "bool",
       "ingui": "setting-hide-stamina-on-full",
       "default": true
-    },
-    {
-      "code": "StaminaCircleScale",
-      "type": "float",
-      "ingui": "setting-stamina-circle-scale",
-      "default": 1.0,
-      "range": {
-        "min": 0.0,
-        "max": 5.0,
-        "step": 0.1
-      }
-    },
-    {
-      "code": "StaminaCircleInnerRadius",
-      "type": "float",
-      "ingui": "setting-stamina-circle-inner-radius",
-      "default": 0.6,
-      "range": {
-        "min": 0.0,
-        "max": 5.0,
-        "step": 0.1
-      }
-    },
-    {
-      "code": "StaminaCircleOuterRadius",
-      "type": "float",
-      "ingui": "setting-stamina-circle-outer-radius",
-      "default": 0.8,
-      "range": {
-        "min": 0.0,
-        "max": 5.0,
-        "step": 0.1
-      }
     },
     {
       "code": "DebugMode",

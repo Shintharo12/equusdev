@@ -26,7 +26,7 @@
 	
 	
 	
-	"creativeinventory": { "general": ["*"], "items": ["*"], "creatures": ["*-wildhorse-*"] },
+	"creativeinventory": { "general": ["*"], "items": ["*"], "creatures": ["*-wildhorse-*"], "equus": ["*"] },
 	"materialDensity": 600,
 	"guiTransformByType": {
 

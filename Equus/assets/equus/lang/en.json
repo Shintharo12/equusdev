@@ -1,5 +1,6 @@
 {
   "game:creaturegroup-wildhorse": "Wild horses",
+  "game:tabname-equus": "Equus",
 
   "setting-drop-multiplier":"Mob drop multiplier",
   "setting-worldgen-spawnrate-ferus":"Worldgen ferus spawnrate",
@@ -7,16 +8,10 @@
   "setting-runtime-spawnrate-ferus":"Runtime ferus spawnrate",
   "setting-enable-stamina":"Enable stamina",
   "setting-max-stamina":"Max stamina",
-  "setting-stamina-regen-speed":"Stamina regen speed",
-  "setting-saturation-cost-per-stamina":"Saturation cost per stamina",
-  "setting-swim-stamina-cost":"Swim stamina cost",
-  "setting-sprint-stamina-cost":"Sprint stamina cost",
-  "setting-walk-speed-half-stamina":"Walk speed half stamina",
-  "setting-walk-speed-exhausted":"Walk speed exhausted",
+  "setting-stamina-regen-speed":"Global stamina regen multiplier",
+  "setting-sprint-stamina-cost":"Global sprint stamina multiplier",
+  "setting-swim-stamina-cost":"Global swim stamina multiplier",
   "setting-hide-stamina-on-full":"Hide stamina on full",
-  "setting-stamina-circle-scale":"Stamina circle scale",
-  "setting-stamina-circle-inner-radius":"Stamina circle inner radius",
-  "setting-stamina-circle-outer-radius":"Stamina circle outer radius",
   "setting-debug-mode":"Debug mode",
 
   "item-creature-wildhorse-adult-female-ferus": "Wild horse mare",
@@ -32,6 +27,12 @@
   "game:prefixandcreature-wildhorseadultfemaleferus": "a wild horse mare",
   "game:prefixandcreature-wildhorseadultmaleferus": "a wild horse stallion",
   "game:prefixandcreature-wildhorsebabyfemaleferus": "a wild horse filly",
-  "game:prefixandcreature-wildhorsebabymaleferus": "a wild horse colt"
+  "game:prefixandcreature-wildhorsebabymaleferus": "a wild horse colt",
 
+  "game:itemdesc-hoovedwearables-face-face*": "Place on the brow of a tamed elk or horse to claim ownership. You can only claim one elk at a time.",
+  "game:itemdesc-hoovedwearables-head-bridle1": "Useful for precise, short distance travel. Suitable for: elk, horse",
+  "game:itemdesc-hoovedwearables-head-bridle2": "Useful for long distance travel. Suitable for: elk, horse",
+  "game:itemdesc-hoovedwearables-middleback-saddle1": "Suitable for: elk, horse",
+  "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Suitable for: elk, horse",
+  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse"
 }
