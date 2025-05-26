@@ -260,7 +260,7 @@ namespace Equus.Behaviors
                     }
 
                     // Entity sprinting (rider?.MountedOn != null && rider.MountedOn.Controls.Sprint) || 
-                    if (Sprinting)
+                    if (sprinting)
                     {
                         activelyFatiguing = ApplyFatigue(SprintFatigue * CalculateElapsedMultiplier(timeSinceLastUpdate), EnumFatigueSource.Run);
                     }
