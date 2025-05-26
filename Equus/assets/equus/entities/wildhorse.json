@@ -124,6 +124,41 @@
 					}
 				},
 				"walk": {
+					"animation": "Walk",
+					"weight": 10,
+						"movespeedByType": {
+							"*-ferus": 0.02
+						},
+						"animationSpeedByType": {
+							"*-ferus": 1.8,
+							"*": 1.8
+						},
+					"blendMode": "Average",
+					"riderAnim": {
+						"animation": "rideelk-walk",
+						"animationSpeed": 1,
+						"weight": 1,	
+						"withFpVariant": true,
+						"blendMode": "Average", 
+						"elementWeight": {
+							"LowerTorso": 80,
+							"UpperTorso": 80,
+							"UpperFootR": 80,
+							"UpperFootL": 80,
+							"LowerFootR": 80,
+							"LowerFootL": 80
+						},
+						"elementBlendMode": {
+							"LowerTorso": "Average",
+							"UpperTorso": "Average",
+							"UpperFootR": "Average",
+							"UpperFootL": "Average",
+							"LowerFootR": "Average",
+							"LowerFootL": "Average"
+						}
+					}
+				},
+				"trot": {
 					"animation": "Trot",
 					"weight": 10,
 						"movespeedByType": {
@@ -402,6 +437,7 @@
 			{ "code": "swim","animation": "Swim","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "walk","animation": "Walk","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "trot","animation": "Trot","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
+			{ "code": "canter","animation": "Canter","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "gallop","animation": "Gallop","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "dead","animation": "dead","weight": 10,"blendMode": "Average"},
 			{ "code": "turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},

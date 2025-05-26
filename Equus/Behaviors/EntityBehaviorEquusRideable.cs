@@ -18,6 +18,7 @@ namespace Equus.Behaviors
     public enum GaitState
     {
         Walk,
+        Trot,
         Canter,
         Gallop
     }
@@ -53,13 +54,15 @@ namespace Equus.Behaviors
         // In EntityBehaviorEquusRideable class
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
 
+        // Not currently used
         public float GaitMotionMultiplier
         {
             get
             {
                 return CurrentGait switch
                 {
-                    GaitState.Walk => 1.0f,
+                    GaitState.Walk => 0.5f,
+                    GaitState.Trot => 1.0f,
                     GaitState.Canter => 1.5f,
                     GaitState.Gallop => 2.0f,
                     _ => 1.0f
@@ -374,24 +377,24 @@ namespace Equus.Behaviors
                 {
                     CurrentGait = CurrentGait switch
                     {
-                        GaitState.Walk => GaitState.Canter,
+                        GaitState.Walk => GaitState.Trot,
+                        GaitState.Trot => GaitState.Canter,
                         GaitState.Canter => GaitState.Gallop,
-                        GaitState.Gallop => GaitState.Walk,
+                        GaitState.Gallop => GaitState.Canter,
                         _ => GaitState.Walk
                     };
 
                     lastGaitChangeMs = nowMs;
                 }
-
                 prevSprintKey = nowSprint;
+
+                // Don't allow backwards canter/gallop
+                if (backward) CurrentGait = GaitState.Walk;
 
                 if (scheme == EnumControlScheme.Hold)
                 {
                     forward = controls.Forward;
                     backward = controls.Backward;
-
-                    // Don't allow backwards canter/gallop
-                    if (backward) CurrentGait = GaitState.Walk;
                 }
                 else
                 {
@@ -486,6 +489,9 @@ namespace Equus.Behaviors
                 {
                     case GaitState.Walk:
                         controlCode = eagent.Controls.Backward ? "walkback" : "walk";
+                        break;
+                    case GaitState.Trot:
+                        controlCode = "trot";
                         break;
                     case GaitState.Canter:
                         controlCode = "canter";
