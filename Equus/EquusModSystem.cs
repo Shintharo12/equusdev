@@ -85,6 +85,7 @@ namespace Equus
         private void AddFatigueHandlers(Entity entity)
         {
             var ebs = entity.GetBehavior<EntityBehaviorStamina>();
+            if (ebs == null) return;
             ebs.OnFatigued += (ftg, ftgSource) => HandleFatigued(entity as EntityAgent, ftg, ftgSource);
         }
 
