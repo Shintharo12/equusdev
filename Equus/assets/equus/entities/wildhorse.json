@@ -202,8 +202,8 @@
                         "*-ferus": 0.07625
                     },
                     "animationSpeedByType": {
-                        "*-ferus": 2.8,
-                        "*": 2.8
+                        "*-ferus": 2.2,
+                        "*": 2.2
                     },
                     "blendMode": "Average",
                     "riderAnim": {
