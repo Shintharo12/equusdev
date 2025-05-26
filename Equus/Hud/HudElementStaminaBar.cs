@@ -4,9 +4,22 @@ using Vintagestory.API.Common;
 
 namespace Equus.Hud
 {
+    public enum StaminaBarPlacement
+    {
+        AboveHealth,
+        AboveHunger,
+        AboveTemporal
+    }
+
     public class HudElementStaminaBar : HudElement
     {
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
+        public float StaminaBarWidthMultiplier => ModSystem.Config.StaminaBarWidthMultiplier;
+        public float StaminaBarXOffset => ModSystem.Config.StaminaBarXOffset;
+        public float StaminaBarYOffset => ModSystem.Config.StaminaBarYOffset;
+        public StaminaBarPlacement StaminaBarLocation => Enum.TryParse(ModSystem.Config.StaminaBarLocation, out StaminaBarPlacement location) 
+            ? location
+            : StaminaBarPlacement.AboveHealth;
 
         private GuiElementStatbar _statbar;
         private int _tickCounter;
@@ -90,22 +103,59 @@ namespace Equus.Hud
         {
             const float statsBarParentWidth = 850f;
             const float statsBarWidth = statsBarParentWidth * 0.41f;
-
             double[] staminaBarColor = { 0.85, 0.65, 0, 0.5 };
 
-            var statsBarBounds = new ElementBounds()
+            EnumDialogArea dialogArea;
+            ElementBounds statsBarBounds;
+            double alignmentOffsetX;
+            double alignmentOffsetY;
+            bool isRight;
+            switch (StaminaBarLocation)
             {
-                Alignment = EnumDialogArea.CenterBottom,
-                BothSizing = ElementSizing.Fixed,
-                fixedWidth = statsBarParentWidth,
-                fixedHeight = 100
-            }.WithFixedAlignmentOffset(0.0, 5.0);
+                case StaminaBarPlacement.AboveTemporal:
+                    statsBarBounds = new ElementBounds()
+                    {
+                        Alignment = EnumDialogArea.CenterBottom,
+                        BothSizing = ElementSizing.Fixed,
+                        fixedWidth = statsBarParentWidth,
+                        fixedHeight = 200
+                    }.WithFixedAlignmentOffset(0.0, 5.0);
+                    dialogArea = EnumDialogArea.CenterTop;
+                    alignmentOffsetX = 0.0 + StaminaBarXOffset;
+                    alignmentOffsetY = -100 + StaminaBarYOffset;
+                    isRight = false;
+                    break;
+                case StaminaBarPlacement.AboveHunger:
+                    statsBarBounds = new ElementBounds()
+                    {
+                        Alignment = EnumDialogArea.CenterBottom,
+                        BothSizing = ElementSizing.Fixed,
+                        fixedWidth = statsBarParentWidth,
+                        fixedHeight = 100
+                    }.WithFixedAlignmentOffset(0.0, 5.0);
+                    dialogArea = EnumDialogArea.RightTop;
+                    alignmentOffsetX = -2.0 + StaminaBarXOffset;
+                    alignmentOffsetY = -16 + StaminaBarYOffset;
+                    isRight = true;
+                    break;
+                case StaminaBarPlacement.AboveHealth:
+                default:
+                    statsBarBounds = new ElementBounds()
+                    {
+                        Alignment = EnumDialogArea.CenterBottom,
+                        BothSizing = ElementSizing.Fixed,
+                        fixedWidth = statsBarParentWidth,
+                        fixedHeight = 100
+                    }.WithFixedAlignmentOffset(0.0, 5.0);
+                    dialogArea = EnumDialogArea.LeftTop;
+                    alignmentOffsetX = 1.0 + StaminaBarXOffset;
+                    alignmentOffsetY = -16 + StaminaBarYOffset;
+                    isRight = false;
+                    break;
+            }
 
-            var isRight = false;
-            var alignmentOffsetX = isRight ? -2.0 : 1.0;
-
-            var staminaBarBounds = ElementStdBounds.Statbar(isRight ? EnumDialogArea.RightTop : EnumDialogArea.LeftTop, statsBarWidth)
-                .WithFixedAlignmentOffset(alignmentOffsetX, -16)
+            var staminaBarBounds = ElementStdBounds.Statbar(dialogArea, statsBarWidth * StaminaBarWidthMultiplier)
+                .WithFixedAlignmentOffset(alignmentOffsetX, alignmentOffsetY)
                 .WithFixedHeight(10);
 
             var staminaBarParentBounds = statsBarBounds.FlatCopy().FixedGrow(0.0, 20.0);

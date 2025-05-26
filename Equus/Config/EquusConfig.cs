@@ -23,9 +23,13 @@ namespace Equus.Config
 
         // Hud
         public bool HideStaminaOnFull { get; set; } = true;
+        public string StaminaBarLocation { get; set; } = "AboveHealth";
+        public float StaminaBarWidthMultiplier { get; set; } = 1f;
+        public float StaminaBarXOffset { get; set; } = 0f;
+        public float StaminaBarYOffset { get; set; } = -300f;
 
         // Debugging
-        public bool DebugMode { get; set; } = false;
+        public bool DebugMode { get; set; } = true;
 
     }
 }
