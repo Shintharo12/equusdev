@@ -139,7 +139,7 @@ namespace Equus
                 Mod.Logger.Error(ex);
             }
 
-            //api.Event.RegisterCallback(_ => _fileWatcher.Queued = false, 100);
+            api.Event.RegisterCallback(_ => _fileWatcher.Queued = false, 100);
         }
 
     }
