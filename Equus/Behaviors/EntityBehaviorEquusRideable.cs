@@ -132,6 +132,8 @@ namespace Equus.Behaviors
 
         public override void AfterInitialized(bool onFirstSpawn)
         {
+            base.AfterInitialized(onFirstSpawn);
+
             ebs = eagent.GetBehavior<EntityBehaviorStamina>();
         }
 
