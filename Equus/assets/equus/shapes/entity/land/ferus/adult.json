@@ -2176,8 +2176,8 @@
 						"R Pelvis": { "offsetX": -0.73, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 },
 						"Chest": { "rotationX": 3.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"tail": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 72.0 },
-						"Ear R": { "rotationX": 3.0, "rotationY": 22.0, "rotationZ": -39.0 },
-						"Ear L": { "rotationX": 6.0, "rotationY": -14.0, "rotationZ": -36.0 },
+						"Ear R": { "rotationX": 6.0, "rotationY": -133.0, "rotationZ": 75.0 },
+						"Ear L": { "rotationX": 0.0, "rotationY": 130.0, "rotationZ": 78.0 },
 						"Hind": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -6.0 }
 					}
 				},
@@ -2286,11 +2286,11 @@
 						"R radius": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -11.0 },
 						"Head Origin": { "rotationX": 0.0, "rotationY": -3.0, "rotationZ": 10.0 },
 						"Chest": { "rotationX": -3.0, "rotationY": 0.0, "rotationZ": 6.129 },
-						"Ear L": { "rotationX": 0.0, "rotationY": 14.0, "rotationZ": 22.0 },
-						"Ear R": { "rotationX": -15.0, "rotationY": -14.0, "rotationZ": 11.0 },
 						"tail": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 61.0 },
 						"Hind": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 6.0 },
-						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 11.0 }
+						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 11.0 },
+						"Ear L": { "rotationX": 0.0, "rotationY": 136.0, "rotationZ": 102.0 },
+						"Ear R": { "rotationX": 6.0, "rotationY": -133.0, "rotationZ": 100.0 }
 					}
 				},
 				{
