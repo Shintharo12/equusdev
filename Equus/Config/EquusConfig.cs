@@ -26,7 +26,7 @@ namespace Equus.Config
         public string StaminaBarLocation { get; set; } = "AboveHealth";
         public float StaminaBarWidthMultiplier { get; set; } = 1f;
         public float StaminaBarXOffset { get; set; } = 0f;
-        public float StaminaBarYOffset { get; set; } = -300f;
+        public float StaminaBarYOffset { get; set; } = 0f;
 
         // Debugging
         public bool DebugMode { get; set; } = true;
