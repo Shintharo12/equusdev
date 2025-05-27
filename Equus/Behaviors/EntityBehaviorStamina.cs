@@ -239,7 +239,7 @@ namespace Equus.Behaviors
             var maxStamina = MaxStamina;
             var sprinting = Sprinting;
 
-            EntityBehaviorEquusRideableOld ebr = eagent.GetBehavior<EntityBehaviorEquusRideableOld>();
+            EntityBehaviorRideable ebr = eagent.GetBehavior<EntityBehaviorRideable>();
             EntityPlayer rider = ebr.Controller as EntityPlayer;
 
             timeSinceLastUpdate += deltaTime;
@@ -290,7 +290,7 @@ namespace Equus.Behaviors
 
             // Add up penalties for various actions
             var currentSwimmingPenalty = eagent.Swimming ? RegenPenaltySwimming : 0f;
-            var currentMountedPenalty = eagent.GetBehavior<EntityBehaviorEquusRideableOld>().AnyMounted() ? RegenPenaltyMounted : 0f;
+            var currentMountedPenalty = eagent.GetBehavior<EntityBehaviorRideable>().AnyMounted() ? RegenPenaltyMounted : 0f;
 
             var totalPenalty = currentMountedPenalty + currentSwimmingPenalty;
 

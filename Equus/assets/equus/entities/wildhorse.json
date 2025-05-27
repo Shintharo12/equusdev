@@ -46,7 +46,7 @@
 			"stepUpSpeed": 0.2
 		},
 		"floatupwhenstuck": { "onlyWhenDead": true },
-		"equus:rideableaccessories": {
+		"rideableaccessories": {
 			"wearableSlots": [
 				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
 				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
@@ -419,7 +419,7 @@
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
 			{ "code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
-			{ "code": "equus:rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
+			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
 			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
 			{ "code": "ropetieable" },
@@ -770,7 +770,7 @@
 			},
             { "code": "pettable", "minGeneration": 1},
             { "code": "selectionboxes", "minGeneration": 2 },
-			{ "code": "equus:rideableaccessories", "minGeneration": 2 },
+			{ "code": "rideableaccessories", "minGeneration": 2 },
 			{ "code": "equus:rideable" },
             { "code": "ropetieable"},
             { "code": "equus:stamina" }

@@ -1,8 +1,5 @@
-﻿using Equus.Systems;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Net.Sockets;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -23,30 +20,16 @@ namespace Equus.Behaviors
         Gallop
     }
 
+    public delegate bool EquusCanRideDelegate(IMountableSeat seat, out string errorMessage);
+
     public class EntityBehaviorEquusRideable : EntityBehaviorRideable
     {
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
-        private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
         public float StaminaSpeedMultiplier { get; set; } = 1f;
-
-        // In EntityBehaviorEquusRideable class
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
-
-        // Not currently used
-        public float GaitMotionMultiplier
-        {
-            get
-            {
-                return CurrentGait switch
-                {
-                    GaitState.Walk => 0.5f,
-                    GaitState.Trot => 1.0f,
-                    GaitState.Canter => 1.5f,
-                    GaitState.Gallop => 2.0f,
-                    _ => 1.0f
-                };
-            }
-        }
+        public new event EquusCanRideDelegate CanRide;
+        public new event EquusCanRideDelegate CanTurn;
+        private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
 
         protected long lastGaitChangeMs = 0;
         protected bool lastSprintPressed = false;
@@ -91,6 +74,69 @@ namespace Equus.Behaviors
             base.AfterInitialized(onFirstSpawn);
 
             ebs = eagent.GetBehavior<EntityBehaviorStamina>();
+        }
+
+        public override void OnEntityLoaded()
+        {
+            setupTaskBlocker();
+        }
+
+        public override void OnEntitySpawn()
+        {
+            setupTaskBlocker();
+        }
+
+        void setupTaskBlocker()
+        {
+            var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
+
+            if (api.Side == EnumAppSide.Server)
+            {
+                EntityBehaviorTaskAI taskAi = entity.GetBehavior<EntityBehaviorTaskAI>();
+                taskAi.TaskManager.OnShouldExecuteTask += TaskManager_OnShouldExecuteTask;
+                if (ebc != null)
+                {
+                    ebc.Inventory.SlotModified += Inventory_SlotModified;
+                }
+            }
+            else
+            {
+                if (ebc != null)
+                {
+                    entity.WatchedAttributes.RegisterModifiedListener(ebc.InventoryClassName, updateControlScheme);
+                }
+            }
+        }
+
+        private void Inventory_SlotModified(int obj)
+        {
+            updateControlScheme();
+        }
+
+        private void updateControlScheme()
+        {
+            var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
+            if (ebc != null)
+            {
+                scheme = EnumControlScheme.Hold;
+                foreach (var slot in ebc.Inventory)
+                {
+                    if (slot.Empty) continue;
+                    var sch = slot.Itemstack.ItemAttributes?["controlScheme"].AsString(null);
+                    if (sch != null)
+                    {
+                        if (!Enum.TryParse<EnumControlScheme>(sch, out scheme)) scheme = EnumControlScheme.Hold;
+                        else break;
+                    }
+                }
+            }
+        }
+
+        private bool TaskManager_OnShouldExecuteTask(IAiTask task)
+        {
+            if (task is AiTaskWander && api.World.Calendar.TotalHours - lastDismountTotalHours < 24) return false;
+
+            return !Seats.Any(seat => seat.Passenger != null);
         }
 
         protected virtual void UpdateAngleAndMotion(float dt)
@@ -296,7 +342,11 @@ namespace Equus.Behaviors
 
         protected void UpdateRidingState()
         {
-            if (!AnyMounted()) return;
+            if (!AnyMounted())
+            {
+                Stop(); 
+                return;
+            }
 
             bool wasMidJump = IsInMidJump;
             IsInMidJump &= (entity.World.ElapsedMilliseconds - lastJumpMs < 500 || !entity.OnGround) && !entity.Swimming;
@@ -325,8 +375,8 @@ namespace Equus.Behaviors
             }
 
             ControlMeta nowControlMeta;
-            shouldMove = ForwardSpeed != 0;
 
+            shouldMove = ForwardSpeed != 0;
             if (!shouldMove && !jumpNow)
             {
                 if (curControlMeta != null) Stop();
@@ -507,6 +557,20 @@ namespace Equus.Behaviors
             }
         }
 
+        public new void Stop()
+        {
+            CurrentGait = GaitState.Walk;
+            eagent.Controls.StopAllMovement();
+            eagent.Controls.WalkVector.Set(0, 0, 0);
+            eagent.Controls.FlyVector.Set(0, 0, 0);
+            shouldMove = false;
+            if (curControlMeta != null && curControlMeta.Animation != "jump")
+            {
+                eagent.StopAnimation(curControlMeta.Animation);
+            }
+            curControlMeta = null;
+            eagent.StartAnimation("idle");
+        }
 
         public override void OnGameTick(float dt)
         {
@@ -600,6 +664,77 @@ namespace Equus.Behaviors
                     gallopSound.Stop();
                 }
             }
+        }
+
+        private void Move(float dt, EntityControls controls, float nowMoveSpeed)
+        {
+            double cosYaw = Math.Cos(entity.Pos.Yaw);
+            double sinYaw = Math.Sin(entity.Pos.Yaw);
+            controls.WalkVector.Set(sinYaw, 0, cosYaw);
+            controls.WalkVector.Mul(nowMoveSpeed * GlobalConstants.OverallSpeedMultiplier * ForwardSpeed);
+
+            // Make it walk along the wall, but not walk into the wall, which causes it to climb
+            if (entity.Properties.RotateModelOnClimb && controls.IsClimbing && entity.ClimbingOnFace != null && entity.Alive)
+            {
+                BlockFacing facing = entity.ClimbingOnFace;
+                if (Math.Sign(facing.Normali.X) == Math.Sign(controls.WalkVector.X))
+                {
+                    controls.WalkVector.X = 0;
+                }
+
+                if (Math.Sign(facing.Normali.Z) == Math.Sign(controls.WalkVector.Z))
+                {
+                    controls.WalkVector.Z = 0;
+                }
+            }
+
+            if (entity.Swimming)
+            {
+                controls.FlyVector.Set(controls.WalkVector);
+
+                Vec3d pos = entity.Pos.XYZ;
+                Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
+                Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+                float waterY = (int)pos.Y + inblock.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9 / 8f : 0);
+                float bottomSubmergedness = waterY - (float)pos.Y;
+
+                // 0 = at swim line
+                // 1 = completely submerged
+                float swimlineSubmergedness = GameMath.Clamp(bottomSubmergedness - ((float)entity.SwimmingOffsetY), 0, 1);
+                swimlineSubmergedness = Math.Min(1, swimlineSubmergedness + 0.075f);
+                controls.FlyVector.Y = GameMath.Clamp(controls.FlyVector.Y, 0.002f, 0.004f) * swimlineSubmergedness * 3;
+
+                if (entity.CollidedHorizontally)
+                {
+                    controls.FlyVector.Y = 0.05f;
+                }
+
+                eagent.Pos.Motion.Y += (swimlineSubmergedness - 0.1) / 300.0;
+            }
+        }
+
+        public new void DidUnnmount(EntityAgent entityAgent)
+        {
+            Stop();
+
+            lastDismountTotalHours = entity.World.Calendar.TotalHours;
+            foreach (var meta in rideableconfig.Controls.Values)
+            {
+                if (meta.RiderAnim?.Animation != null)
+                {
+                    entityAgent.StopAnimation(meta.RiderAnim.Animation);
+                }
+            }
+
+            if (eagent.Swimming)
+            {
+                eagent.StartAnimation("swim");
+            }
+        }
+
+        public new void DidMount(EntityAgent entityAgent)
+        {
+            updateControlScheme();
         }
     }
 }
