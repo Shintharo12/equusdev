@@ -2,7 +2,7 @@
     "type": "code",
     "modid": "equus",
     "name": "Equus: Wild Horses",
-    "authors": ["Shintaro12", "sekelsta"],
+    "authors": ["Shintaro12", "sekelsta", "safwyl"],
     "contributors":["puditto"],
     "description": "Adds a fictional breed of wild horses",
     "version": "1.0.6",
