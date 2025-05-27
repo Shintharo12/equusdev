@@ -422,8 +422,7 @@
 			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
 			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
-			{ "code": "ropetieable" },
-            { "code": "equus:stamina" }
+			{ "code": "ropetieable" }
 		],
 		"animations": [
 			{ "code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
@@ -772,8 +771,7 @@
             { "code": "selectionboxes", "minGeneration": 2 },
 			{ "code": "rideableaccessories", "minGeneration": 2 },
 			{ "code": "equus:rideable" },
-            { "code": "ropetieable"},
-            { "code": "equus:stamina" }
+            { "code": "ropetieable"}
 		],
 		"spawnconditions": {
 			"worldgen": {

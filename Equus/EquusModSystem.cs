@@ -34,7 +34,7 @@ namespace Equus
             GenomeType.RegisterInterpreter(new EquusInterpreter());
 
             api.RegisterEntityBehaviorClass(ModId + ":rideable", typeof(EntityBehaviorEquusRideable));
-            api.RegisterEntityBehaviorClass(ModId + ":stamina", typeof(EntityBehaviorStamina));
+            //api.RegisterEntityBehaviorClass(ModId + ":stamina", typeof(EntityBehaviorStamina));
 
             ReloadConfig(api, false);
         }

@@ -20,15 +20,13 @@ namespace Equus.Behaviors
         Gallop
     }
 
-    public delegate bool EquusCanRideDelegate(IMountableSeat seat, out string errorMessage);
-
     public class EntityBehaviorEquusRideable : EntityBehaviorRideable
     {
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
         public float StaminaSpeedMultiplier { get; set; } = 1f;
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
-        public new event EquusCanRideDelegate CanRide;
-        public new event EquusCanRideDelegate CanTurn;
+        public new event CanRideDelegate CanRide;
+        public new event CanRideDelegate CanTurn;
         private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
 
         protected long lastGaitChangeMs = 0;
@@ -213,7 +211,7 @@ namespace Equus.Behaviors
 
                 if (CanRide != null && (controls.Jump || controls.TriesToMove))
                 {
-                    foreach (EquusCanRideDelegate dele in CanRide.GetInvocationList().Cast<EquusCanRideDelegate>())
+                    foreach (CanRideDelegate dele in CanRide.GetInvocationList().Cast<CanRideDelegate>())
                     {
                         if (!dele(seat, out string errMsg))
                         {
@@ -229,7 +227,7 @@ namespace Equus.Behaviors
 
                 if (CanTurn != null && (controls.Left || controls.Right))
                 {
-                    foreach (EquusCanRideDelegate dele in CanTurn.GetInvocationList())
+                    foreach (CanRideDelegate dele in CanTurn.GetInvocationList())
                     {
                         if (!dele(seat, out string errMsg))
                         {
@@ -344,7 +342,6 @@ namespace Equus.Behaviors
         {
             if (!AnyMounted())
             {
-                Stop(); 
                 return;
             }
 
@@ -464,33 +461,36 @@ namespace Equus.Behaviors
             if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
             {
                     GaitState nextGait = CurrentGait;
-                    if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f) 
-                    { 
-                        /* maybe buck */  
-                    }
+                    if (ebs != null)
+                    {
+                        if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f)
+                        {
+                            /* maybe buck */
+                        }
 
-                    int syncPacketId;
-                if (ebs.Stamina < 10)
-                    {
-                        nextGait = GaitState.Walk;
-                        syncPacketId = 9999;
-                    }
-                    else if (capi.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina))
-                    {
-                        nextGait = GaitState.Canter;
-                        syncPacketId = 9998;
-                    }
-                    else
-                    {
-                        nextGait = GaitState.Gallop;
-                        syncPacketId = 9997;
-                    }
+                        int syncPacketId;
+                        if (ebs.Stamina < 10)
+                        {
+                            nextGait = GaitState.Walk;
+                            syncPacketId = 9999;
+                        }
+                        else if (capi.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina))
+                        {
+                            nextGait = GaitState.Canter;
+                            syncPacketId = 9998;
+                        }
+                        else
+                        {
+                            nextGait = GaitState.Gallop;
+                            syncPacketId = 9997;
+                        }
 
-                    // If gait changes sync it to the server 
-                    if (nextGait != CurrentGait)
-                    {
-                        CurrentGait = nextGait;
-                        capi.Network.SendEntityPacket(entity.EntityId, syncPacketId);
+                        // If gait changes sync it to the server 
+                        if (nextGait != CurrentGait)
+                        {
+                            CurrentGait = nextGait;
+                            capi.Network.SendEntityPacket(entity.EntityId, syncPacketId);
+                        }
                     }
                 }
 
