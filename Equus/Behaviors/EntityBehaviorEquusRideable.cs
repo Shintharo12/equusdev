@@ -18,14 +18,15 @@ namespace Equus.Behaviors
         Walk,
         Trot,
         Canter,
-        Gallop
+        Gallop,
+        //Buck
     }
 
     public class EntityBehaviorEquusRideable : EntityBehaviorRideable
     {
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
         public float StaminaSpeedMultiplier { get; set; } = 1f;
-        public GaitState CurrentGait { get; private set; } = GaitState.Walk;
+        //public GaitState CurrentGait { get; private set; } = GaitState.Walk;
         private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
 
         protected long lastGaitChangeMs = 0;
@@ -40,6 +41,46 @@ namespace Equus.Behaviors
         string curTurnAnim = null;
         EnumControlScheme scheme;
         EntityBehaviorStamina ebs;
+
+        private ITreeAttribute RideableTree
+        {
+            get
+            {
+                var tree = entity.WatchedAttributes.GetTreeAttribute(AttributeKey);
+                if (tree == null)
+                {
+                    tree = new TreeAttribute();
+                    entity.WatchedAttributes.SetAttribute(AttributeKey, tree);
+                    entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                }
+                return tree;
+            }
+        }
+
+        private GaitState _currentGait;
+        public GaitState CurrentGait
+        {
+            get 
+            {
+                if (Enum.TryParse<GaitState>(RideableTree?.GetString("currentgait"), out _currentGait))
+                {
+                    return _currentGait;
+                }
+                else
+                {
+                    return GaitState.Walk;
+                }
+
+            }
+            set
+            {
+                RideableTree.SetString("currentgait", value.ToString());
+                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+            }
+        }
+
+        private static string AttributeKey => $"{ModSystem.ModId}:rideable";
+
 
         public EntityBehaviorEquusRideable(Entity entity) : base(entity)
         {
@@ -458,74 +499,35 @@ namespace Equus.Behaviors
         /// <param name="dt">tick time</param>
         public void StaminaGaitCheckandSync(float dt)
         {
-            if (capi is null) return;
-            if (api.Side != EnumAppSide.Client) return;
+            if (api.Side != EnumAppSide.Server || ebs == null) return;
 
             timeSinceLastGaitCheck += dt;
 
             // Check once a second
             if (timeSinceLastGaitCheck >= 1f)
             {
-            if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
-            {
-                    GaitState nextGait = CurrentGait;
-                    if (ebs != null)
+                if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
+                {
+                    if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f)
                     {
-                        if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f)
-                        {
-                            /* maybe buck */
-                        }
+                        //CurrentGait = GaitState.Buck;
+                    }
 
-                        int syncPacketId;
-                        if (ebs.Stamina < 10)
-                        {
-                            nextGait = GaitState.Walk;
-                            syncPacketId = 9999;
-                        }
-                        else if (capi.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina))
-                        {
-                            nextGait = GaitState.Canter;
-                            syncPacketId = 9998;
-                        }
-                        else
-                        {
-                            nextGait = GaitState.Gallop;
-                            syncPacketId = 9997;
-                        }
+                    bool isTired = api.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina);
 
-                        // If gait changes sync it to the server 
-                        if (nextGait != CurrentGait)
-                        {
-                            CurrentGait = nextGait;
-                            capi.Network.SendEntityPacket(entity.EntityId, syncPacketId);
-                        }
+                    if (isTired)
+                    {
+                        CurrentGait = ebs.Stamina < 10 ? GaitState.Trot : GaitState.Canter;
+                    }
+                    else
+                    {
+                        CurrentGait = GaitState.Gallop;
                     }
                 }
 
                 timeSinceLastGaitCheck = 0;
             }
         }
-
-        // For syncing gait from client to server
-        public override void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
-        {
-            switch (packetid)
-            {
-                case 9999:
-                    CurrentGait = GaitState.Walk;
-                    UpdateRidingState();
-                    break;
-                case 9998:
-                    CurrentGait = GaitState.Canter;
-                    UpdateRidingState();
-                    break;
-                case 9997:
-                    CurrentGait = GaitState.Gallop;
-                    UpdateRidingState();
-                    break;
-            };
-            handled = EnumHandling.Handled;
-            }
 
         /// <summary>
         /// Returns a value on a quadratic curve as stamina drops below 50%

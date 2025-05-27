@@ -1,16 +1,13 @@
 ﻿using Equus.Systems;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 
 namespace Equus.Behaviors
@@ -272,7 +269,6 @@ namespace Equus.Behaviors
 
             if (stamina < maxStamina)
             {
-                ModSystem.Logger.Notification($"Regenerating stamina on entity {entity.EntityId}");
                 // 25% multiplier since we do this four times a second
                 var staminaRegenPerGameSecond = 0.25f * staminaRegenRate;
                 var multiplierPerGameSec = elapsedTime * ModSystem.Api.World.Calendar.SpeedOfTime * ModSystem.Api.World.Calendar.CalendarSpeedMul;
@@ -326,14 +322,7 @@ namespace Equus.Behaviors
             if (fatigue <= 0) return;
 
             var fatigueRate = BaseFatigueRate * fatigue;
-            ModSystem.Logger.Notification($"Depleting stamina on entity {entity.EntityId}");
             Stamina = GameMath.Clamp(stamina - fatigueRate, 0, maxStamina);
-
-            if (DebugMode)
-            {
-                //ModSystem.Logger.Notification($"{ftgSource.Source} reduced stamina by: {fatigue}");
-                //ModSystem.Logger.Notification($"Stamina: {stamina}/{maxStamina}");
-            }
         }
 
         public override void GetInfoText(StringBuilder infotext)
