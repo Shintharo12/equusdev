@@ -1,0 +1,14 @@
+[
+    {
+    "file": "equus:entities/wildhorse.json",
+    "op": "addmerge",
+    "path": "/server/behaviors/14/aitasks/4/entityCodes",
+    "side": "Server",
+    "value": ["player"],
+    "dependsOn": [
+      {
+        "modid": "bola"
+      }
+    ]
+  }
+]

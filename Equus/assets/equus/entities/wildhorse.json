@@ -619,7 +619,7 @@
 						"animation": "Gallop",
 						"animationSpeed": 2
 					},
-										{
+					{
 						"code": "fleeentity",
 						"entityCodes": ["bear-*","hyena-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"],
 						"priority": 1.7,
