@@ -29,7 +29,6 @@ namespace Equus.Behaviors
         public event OnFatiguedDelegate OnFatigued = (ftg, ftgSource) => ftg;
 
         private float timeSinceLastUpdate;
-        private EntityAgent eagent;
 
         #region Config props
 
@@ -156,7 +155,6 @@ namespace Equus.Behaviors
 
         public EntityBehaviorStamina(Entity entity) : base(entity) 
         { 
-            eagent = entity as EntityAgent;
         }
 
         public void MapAttributes(JsonObject typeAttributes, JsonObject staminaAttributes)
@@ -207,39 +205,15 @@ namespace Equus.Behaviors
             timeSinceLastUpdate = (float)entity.World.Rand.NextDouble();   // Randomise which game tick these update, a starting server would otherwise start all loaded entities with the same zero timer
         }
 
-        // For syncing sprinting state from client to server
-        public override void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
-        {
-            Sprinting = packetid == 4242;
-            handled = EnumHandling.Handled;
-        }
-
         public override void OnGameTick(float deltaTime)
         {
-            if (eagent.World.Side == EnumAppSide.Client)
-            {
-                var capi = entity.Api as ICoreClientAPI;
-
-                // Only update if changed to reduce traffic
-                bool currentlySprinting = eagent.Controls.Sprint;
-                
-                if (Sprinting != currentlySprinting)
-                {
-                    // Update client side sprinting state
-                    Sprinting = currentlySprinting;
-
-                    // Sync sprinting state to server, not sure why the tree attribute doesn't do this automatically
-                    capi.Network.SendEntityPacket(entity.EntityId, currentlySprinting ? 4242 : 2424);
-                    //if (DebugMode) ModSystem.Logger.Notification($"{entity.EntityId} - Sending sprinting state: {currentlySprinting}");
-                }
-                return;
-            }            
+            if (entity.World.Side == EnumAppSide.Client) return;
 
             var stamina = Stamina;  // higher performance to read this TreeAttribute only once
             var maxStamina = MaxStamina;
             var sprinting = Sprinting;
 
-            EntityBehaviorRideable ebr = eagent.GetBehavior<EntityBehaviorRideable>();
+            EntityBehaviorRideable ebr = entity.GetBehavior<EntityBehaviorRideable>();
             EntityPlayer rider = ebr.Controller as EntityPlayer;
 
             timeSinceLastUpdate += deltaTime;
@@ -254,7 +228,7 @@ namespace Equus.Behaviors
 
                     // --- Fatiguing actions ---
                     // Entity swimming
-                    if (eagent.Swimming)
+                    if (entity.Swimming)
                     {
                         activelyFatiguing = ApplyFatigue(SwimFatigue * CalculateElapsedMultiplier(timeSinceLastUpdate), EnumFatigueSource.Swim);
                     }
@@ -289,8 +263,8 @@ namespace Equus.Behaviors
             var maxStamina = MaxStamina;
 
             // Add up penalties for various actions
-            var currentSwimmingPenalty = eagent.Swimming ? RegenPenaltySwimming : 0f;
-            var currentMountedPenalty = eagent.GetBehavior<EntityBehaviorRideable>().AnyMounted() ? RegenPenaltyMounted : 0f;
+            var currentSwimmingPenalty = entity.Swimming ? RegenPenaltySwimming : 0f;
+            var currentMountedPenalty = entity.GetBehavior<EntityBehaviorRideable>().AnyMounted() ? RegenPenaltyMounted : 0f;
 
             var totalPenalty = currentMountedPenalty + currentSwimmingPenalty;
 
@@ -298,6 +272,7 @@ namespace Equus.Behaviors
 
             if (stamina < maxStamina)
             {
+                ModSystem.Logger.Notification($"Regenerating stamina on entity {entity.EntityId}");
                 // 25% multiplier since we do this four times a second
                 var staminaRegenPerGameSecond = 0.25f * staminaRegenRate;
                 var multiplierPerGameSec = elapsedTime * ModSystem.Api.World.Calendar.SpeedOfTime * ModSystem.Api.World.Calendar.CalendarSpeedMul;
@@ -351,7 +326,7 @@ namespace Equus.Behaviors
             if (fatigue <= 0) return;
 
             var fatigueRate = BaseFatigueRate * fatigue;
-
+            ModSystem.Logger.Notification($"Depleting stamina on entity {entity.EntityId}");
             Stamina = GameMath.Clamp(stamina - fatigueRate, 0, maxStamina);
 
             if (DebugMode)

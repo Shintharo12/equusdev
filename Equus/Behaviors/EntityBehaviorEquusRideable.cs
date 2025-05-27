@@ -286,6 +286,10 @@ namespace Equus.Behaviors
 
                     lastGaitChangeMs = nowMs;
                 }
+
+                // If entity has stamina let it know youre currently sprinting
+                if (ebs is not null) ebs.Sprinting = CurrentGait == GaitState.Gallop;
+
                 prevSprintKey = nowSprint;
 
                 // Don't allow backwards canter/gallop

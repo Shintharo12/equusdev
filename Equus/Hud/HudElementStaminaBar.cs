@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Equus.Behaviors;
+using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
@@ -182,7 +183,9 @@ namespace Equus.Hud
 
         public override void OnRenderGUI(float deltaTime)
         {
+            if (!ModSystem.Config.EnableStamina) return;
             if (capi.World.Player.Entity?.MountedOn?.Entity is not EntityAgent equus) return;
+            if (equus.HasBehavior<EntityBehaviorStamina>() == false) return;
 
             var staminaTree = equus.WatchedAttributes.GetTreeAttribute($"{ModSystem.ModId}:stamina");
             if (staminaTree == null) return;
