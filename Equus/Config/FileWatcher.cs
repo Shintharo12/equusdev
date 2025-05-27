@@ -72,7 +72,7 @@ namespace Equus.Config
             Queued = true;
 
             // Inform console/log
-            if (changed) ModSystem.Logger.Event($"Detected {ModSystem.ModId} config was changed, reloading.");
+            if (changed) ModSystem.Logger.Event($"Detected {ModSystem.ModId} config was changed, reloading. Some changes may require a game restart.");
 
             // Wait for other changes to process
             ModSystem.Api.Event.RegisterCallback(_ => {

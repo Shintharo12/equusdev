@@ -15,19 +15,41 @@ using Vintagestory.GameContent;
 namespace Equus.Behaviors
 {
     // Added enum for gait states
-    public enum GaitState
-    {
-        Walk,
-        Trot,
-        Canter,
-        Gallop
-    }
+    //public enum GaitState
+    //{
+    //    Walk,
+    //    Trot,
+    //    Canter,
+    //    Gallop
+    //}
 
-    public class EntityBehaviorEquusRideable : EntityBehaviorRideable
+    /// <summary>
+    /// Essentially a duplicate of EntityBehaviorRideable, but with added canter state and progressive adjustment using stamina behavior
+    /// </summary>
+    /// <param name="seat"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    //public delegate bool EquusCanRideDelegate(IMountableSeat seat, out string errorMessage);
+
+    public class EntityBehaviorEquusRideableOld : EntityBehaviorSeatable, IMountable, IRenderer, IMountableListener
     {
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
         private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
         public float StaminaSpeedMultiplier { get; set; } = 1f;
+        public Vec3f MountAngle { get; set; } = new Vec3f();
+        public EntityPos SeatPosition => entity.SidedPos;
+        public double RenderOrder => 1;
+        public int RenderRange => 100;
+        public virtual float SpeedMultiplier => 1f;
+        public Entity Mount => entity;
+        // current forward speed
+        public double ForwardSpeed = 0.0;
+        // current turning speed (rad/tick)
+        public double AngularVelocity = 0.0;
+
+        public bool IsInMidJump;
+        public event EquusCanRideDelegate CanRide;
+        public event EquusCanRideDelegate CanTurn;
 
         // In EntityBehaviorEquusRideable class
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
@@ -48,6 +70,18 @@ namespace Equus.Behaviors
             }
         }
 
+        protected ICoreAPI api;
+        // Time the player can walk off an edge before gravity applies.
+        protected float coyoteTimer;
+        // Time the player last jumped.
+        protected long lastJumpMs;
+        protected bool jumpNow;
+        protected EntityAgent eagent;
+        protected RideableConfig rideableconfig;
+        protected ILoadedSound trotSound;
+        protected ILoadedSound gallopSound;
+        protected ICoreClientAPI capi;
+
         protected long lastGaitChangeMs = 0;
         protected bool lastSprintPressed = false;
         private float timeSinceLastLog = 0;
@@ -56,12 +90,25 @@ namespace Equus.Behaviors
 
         ControlMeta curControlMeta = null;
         bool shouldMove = false;
+        public AnimationMetaData curAnim;
 
         string curTurnAnim = null;
         EnumControlScheme scheme;
         EntityBehaviorStamina ebs;
 
-        public EntityBehaviorEquusRideable(Entity entity) : base(entity)
+        public double lastDismountTotalHours
+        {
+            get
+            {
+                return entity.WatchedAttributes.GetDouble("lastDismountTotalHours");
+            }
+            set
+            {
+                entity.WatchedAttributes.SetDouble("lastDismountTotalHours", value);
+            }
+        }
+
+        public EntityBehaviorEquusRideableOld(Entity entity) : base(entity)
         {
             eagent = entity as EntityAgent;
         }
@@ -91,6 +138,108 @@ namespace Equus.Behaviors
             base.AfterInitialized(onFirstSpawn);
 
             ebs = eagent.GetBehavior<EntityBehaviorStamina>();
+        }
+
+        public override void OnEntityDespawn(EntityDespawnData despawn)
+        {
+            base.OnEntityDespawn(despawn);
+
+            capi?.Event.UnregisterRenderer(this, EnumRenderStage.Before);
+        }
+
+        public void UnmnountPassengers()
+        {
+            foreach (var seat in Seats)
+            {
+                (seat.Passenger as EntityAgent)?.TryUnmount();
+            }
+        }
+
+        public override void OnEntityLoaded()
+        {
+            SetupTaskBlocker();
+        }
+
+        public override void OnEntitySpawn()
+        {
+            SetupTaskBlocker();
+        }
+
+        void SetupTaskBlocker()
+        {
+            var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
+
+            if (api.Side == EnumAppSide.Server)
+            {
+                EntityBehaviorTaskAI taskAi = entity.GetBehavior<EntityBehaviorTaskAI>();
+                taskAi.TaskManager.OnShouldExecuteTask += TaskManager_OnShouldExecuteTask;
+                if (ebc != null)
+                {
+                    ebc.Inventory.SlotModified += Inventory_SlotModified;
+                }
+            }
+            else
+            {
+                if (ebc != null)
+                {
+                    entity.WatchedAttributes.RegisterModifiedListener(ebc.InventoryClassName, UpdateControlScheme);
+                }
+            }
+
+        }
+
+        private void Inventory_SlotModified(int obj)
+        {
+            UpdateControlScheme();
+        }
+
+        private void UpdateControlScheme()
+        {
+            var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
+            if (ebc != null)
+            {
+                scheme = EnumControlScheme.Hold;
+                foreach (var slot in ebc.Inventory)
+                {
+                    if (slot.Empty) continue;
+                    var sch = slot.Itemstack.ItemAttributes?["controlScheme"].AsString(null);
+                    if (sch != null)
+                    {
+                        if (!Enum.TryParse<EnumControlScheme>(sch, out scheme)) scheme = EnumControlScheme.Hold;
+                        else break;
+                    }
+                }
+            }
+        }
+
+        private bool TaskManager_OnShouldExecuteTask(IAiTask task)
+        {
+            if (task is AiTaskWander && api.World.Calendar.TotalHours - lastDismountTotalHours < 24) return false;
+
+            return !Seats.Any(seat => seat.Passenger != null);
+        }
+
+        bool wasPaused;
+
+        public void OnRenderFrame(float dt, EnumRenderStage stage)
+        {
+            if (!wasPaused && capi.IsGamePaused)
+            {
+                trotSound?.Pause();
+                gallopSound?.Pause();
+            }
+            if (wasPaused && !capi.IsGamePaused)
+            {
+                if (trotSound?.IsPaused == true) trotSound?.Start();
+                if (gallopSound?.IsPaused == true) gallopSound?.Start();
+            }
+
+            wasPaused = capi.IsGamePaused;
+
+            if (capi.IsGamePaused) return;
+
+
+            UpdateAngleAndMotion(dt);
         }
 
         protected virtual void UpdateAngleAndMotion(float dt)
@@ -131,7 +280,7 @@ namespace Equus.Behaviors
         bool prevForwardKey, prevBackwardKey, prevSprintKey;
 
         bool forward, backward;
-        public override Vec2d SeatsToMotion(float dt)
+        public virtual Vec2d SeatsToMotion(float dt)
         {
             int seatsRowing = 0;
 
@@ -507,6 +656,20 @@ namespace Equus.Behaviors
             }
         }
 
+        public void Stop()
+        {
+            CurrentGait = GaitState.Walk;
+            eagent.Controls.StopAllMovement();
+            eagent.Controls.WalkVector.Set(0, 0, 0);
+            eagent.Controls.FlyVector.Set(0, 0, 0);
+            shouldMove = false;
+            if (curControlMeta != null && curControlMeta.Animation != "jump")
+            {
+                eagent.StopAnimation(curControlMeta.Animation);
+            }
+            curControlMeta = null;
+            eagent.StartAnimation("idle");
+        }
 
         public override void OnGameTick(float dt)
         {
@@ -601,5 +764,115 @@ namespace Equus.Behaviors
                 }
             }
         }
+
+        private void Move(float dt, EntityControls controls, float nowMoveSpeed)
+        {
+            double cosYaw = Math.Cos(entity.Pos.Yaw);
+            double sinYaw = Math.Sin(entity.Pos.Yaw);
+            controls.WalkVector.Set(sinYaw, 0, cosYaw);
+            controls.WalkVector.Mul(nowMoveSpeed * GlobalConstants.OverallSpeedMultiplier * StaminaSpeedMultiplier * ForwardSpeed);
+
+            // Make it walk along the wall, but not walk into the wall, which causes it to climb
+            if (entity.Properties.RotateModelOnClimb && controls.IsClimbing && entity.ClimbingOnFace != null && entity.Alive)
+            {
+                BlockFacing facing = entity.ClimbingOnFace;
+                if (Math.Sign(facing.Normali.X) == Math.Sign(controls.WalkVector.X))
+                {
+                    controls.WalkVector.X = 0;
+                }
+
+                if (Math.Sign(facing.Normali.Z) == Math.Sign(controls.WalkVector.Z))
+                {
+                    controls.WalkVector.Z = 0;
+                }
+            }
+
+            if (entity.Swimming)
+            {
+                controls.FlyVector.Set(controls.WalkVector);
+
+                Vec3d pos = entity.Pos.XYZ;
+                Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
+                Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+                float waterY = (int)pos.Y + inblock.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9 / 8f : 0);
+                float bottomSubmergedness = waterY - (float)pos.Y;
+
+                // 0 = at swim line
+                // 1 = completely submerged
+                float swimlineSubmergedness = GameMath.Clamp(bottomSubmergedness - ((float)entity.SwimmingOffsetY), 0, 1);
+                swimlineSubmergedness = Math.Min(1, swimlineSubmergedness + 0.075f);
+                controls.FlyVector.Y = GameMath.Clamp(controls.FlyVector.Y, 0.002f, 0.004f) * swimlineSubmergedness * 3;
+
+                if (entity.CollidedHorizontally)
+                {
+                    controls.FlyVector.Y = 0.05f;
+                }
+
+                eagent.Pos.Motion.Y += (swimlineSubmergedness - 0.1) / 300.0;
+            }
+        }
+
+        public override string PropertyName() => "rideable";
+        public void Dispose() { }
+
+        public void DidUnnmount(EntityAgent entityAgent)
+        {
+            Stop();
+
+            lastDismountTotalHours = entity.World.Calendar.TotalHours;
+            foreach (var meta in rideableconfig.Controls.Values)
+            {
+                if (meta.RiderAnim?.Animation != null)
+                {
+                    entityAgent.StopAnimation(meta.RiderAnim.Animation);
+                }
+            }
+
+            if (eagent.Swimming)
+            {
+                eagent.StartAnimation("swim");
+            }
+        }
+
+        public void DidMount(EntityAgent entityAgent)
+        {
+            UpdateControlScheme();
+        }
     }
+
+    //public class ElkAnimationManager : AnimationManager
+    //{
+    //    public string animAppendix = "-antlers";
+
+    //    public override void ResetAnimation(string animCode)
+    //    {
+    //        base.ResetAnimation(animCode);
+    //        base.ResetAnimation(animCode + animAppendix);
+    //    }
+
+    //    public override void StopAnimation(string code)
+    //    {
+    //        base.StopAnimation(code);
+    //        base.StopAnimation(code + animAppendix);
+    //    }
+
+    //    public override bool StartAnimation(AnimationMetaData animdata)
+    //    {
+    //        return base.StartAnimation(animdata);
+    //    }
+    //}
+
+
+    //public class ControlMeta : AnimationMetaData
+    //{
+    //    public float MoveSpeed;
+    //    public AnimationMetaData RiderAnim;
+    //}
+
+    //public class RideableConfig
+    //{
+    //    public int MinGeneration;
+    //    public Dictionary<string, ControlMeta> Controls;
+    //}
+
 }

@@ -18,7 +18,7 @@ namespace Equus.Behaviors
         {
             base.AfterInitialized(onFirstSpawn);
 
-            var bh = entity.GetBehavior<EntityBehaviorEquusRideable>();
+            var bh = entity.GetBehavior<EntityBehaviorEquusRideableOld>();
             if (bh != null)
             {
                 bh.CanRide += EntityBehaviorDressable_CanRide;
