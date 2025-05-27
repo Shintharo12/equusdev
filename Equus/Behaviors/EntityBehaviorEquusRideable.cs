@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -25,8 +26,6 @@ namespace Equus.Behaviors
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
         public float StaminaSpeedMultiplier { get; set; } = 1f;
         public GaitState CurrentGait { get; private set; } = GaitState.Walk;
-        public new event CanRideDelegate CanRide;
-        public new event CanRideDelegate CanTurn;
         private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
 
         protected long lastGaitChangeMs = 0;
@@ -209,9 +208,11 @@ namespace Equus.Behaviors
                 bool canride = true;
                 bool canturn = true;
 
-                if (CanRide != null && (controls.Jump || controls.TriesToMove))
+                var canRideField = typeof(EntityBehaviorRideable).GetField("CanRide", BindingFlags.NonPublic | BindingFlags.Instance);
+                CanRideDelegate canRideEvent = (CanRideDelegate)canRideField.GetValue(this);
+                if (canRideEvent != null && (controls.Jump || controls.TriesToMove))
                 {
-                    foreach (CanRideDelegate dele in CanRide.GetInvocationList().Cast<CanRideDelegate>())
+                    foreach (CanRideDelegate dele in canRideEvent.GetInvocationList().Cast<CanRideDelegate>())
                     {
                         if (!dele(seat, out string errMsg))
                         {
@@ -225,9 +226,11 @@ namespace Equus.Behaviors
                     }
                 }
 
-                if (CanTurn != null && (controls.Left || controls.Right))
+                var canTurnField = typeof(EntityBehaviorRideable).GetField("CanTurn", BindingFlags.NonPublic | BindingFlags.Instance);
+                CanRideDelegate canTurnEvent = (CanRideDelegate)canTurnField.GetValue(this);
+                if (canTurnEvent != null && (controls.Left || controls.Right))
                 {
-                    foreach (CanRideDelegate dele in CanTurn.GetInvocationList())
+                    foreach (CanRideDelegate dele in canTurnEvent.GetInvocationList())
                     {
                         if (!dele(seat, out string errMsg))
                         {
@@ -240,6 +243,7 @@ namespace Equus.Behaviors
                         }
                     }
                 }
+                
 
                 if (!canride) continue;
 
