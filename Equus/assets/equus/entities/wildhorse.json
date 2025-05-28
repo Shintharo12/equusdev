@@ -30,7 +30,7 @@
 		"handbook": {
 			"groupcode": "creaturegroup-wildhorse-{type}"
 		},
-		"stamina": {
+		"equus:stamina": {
 			"maxStamina": 100,
 			"sprintFatigue": 0.2,
 			"swimFatigue": 0.2,

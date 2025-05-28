@@ -32,20 +32,7 @@ namespace Equus.Behaviors
         private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
         #endregion
 
-        private ITreeAttribute StaminaTree
-        {
-            get
-            {
-                var tree = entity.WatchedAttributes.GetTreeAttribute(AttributeKey);
-                if (tree == null)
-                {
-                    tree = new TreeAttribute();
-                    entity.WatchedAttributes.SetAttribute(AttributeKey, tree);
-                    entity.WatchedAttributes.MarkPathDirty(AttributeKey);
-                }
-                return tree;
-            }
-        }
+        ITreeAttribute StaminaTree => entity.WatchedAttributes.GetTreeAttribute(AttributeKey);
 
         private static string AttributeKey => $"{ModSystem.ModId}:stamina";
 
@@ -55,7 +42,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetBool("exhausted", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -65,7 +52,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetFloat("currentstamina", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -75,7 +62,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetFloat("maxstamina", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -85,7 +72,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetFloat("sprintfatigue", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
         public float SwimFatigue
@@ -94,7 +81,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetFloat("swimfatigue", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -104,7 +91,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetFloat("basefatiguerate", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -114,26 +101,27 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetFloat("staminaregenrate", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
-        public float RegenPenaltySwimming
+        public float RegenPenaltyWounded
         {
-            get => StaminaTree?.GetFloat("regenpenaltyswimming") ?? 0f;
+            get => StaminaTree?.GetFloat("regenpenaltywounded") ?? 0f;
             set
             {
-                StaminaTree.SetFloat("regenpenaltyswimming", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                StaminaTree.SetFloat("regenpenaltywounded", value);
+                MarkDirty();
             }
         }
+
         public float RegenPenaltyMounted
         {
             get => StaminaTree?.GetFloat("regenpenaltymounted") ?? 0f;
             set
             {
                 StaminaTree.SetFloat("regenpenaltymounted", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -143,7 +131,7 @@ namespace Equus.Behaviors
             set
             {
                 StaminaTree.SetBool("sprinting", value);
-                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+                MarkDirty();
             }
         }
 
@@ -163,7 +151,7 @@ namespace Equus.Behaviors
             SwimFatigue = typeAttributes["swimfatigue"].AsFloat(staminaAttributes["swimfatigue"].AsFloat(0.2f));
             StaminaRegenRate = typeAttributes["staminaregenrate"].AsFloat(staminaAttributes["staminaregenrate"].AsFloat(1f));
             BaseFatigueRate = typeAttributes["basefatiguerate"].AsFloat(staminaAttributes["basefatiguerate"].AsFloat(1f));
-            RegenPenaltySwimming = typeAttributes["regenpenaltyswimming"].AsFloat(staminaAttributes["regenpenaltyswimming"].AsFloat(0f));
+            RegenPenaltyWounded = typeAttributes["regenpenaltywounded"].AsFloat(staminaAttributes["regenpenaltywounded"].AsFloat(0f));
             RegenPenaltyMounted = typeAttributes["regenpenaltymounted"].AsFloat(staminaAttributes["regenpenaltymounted"].AsFloat(0f));
             Sprinting = typeAttributes["sprinting"].AsBool(false);
             MarkDirty();
@@ -191,7 +179,7 @@ namespace Equus.Behaviors
             var staminaTree = entity.WatchedAttributes.GetTreeAttribute(AttributeKey);
 
             // Fetch the stamina attributes from the entity properties
-            var staminaAttributes = entity.Properties.Attributes["stamina"];
+            var staminaAttributes = entity.Properties.Attributes[AttributeKey];
 
             // Initialize stamina tree
             if (staminaTree == null) entity.WatchedAttributes.SetAttribute(AttributeKey, new TreeAttribute());
@@ -207,13 +195,11 @@ namespace Equus.Behaviors
             if (entity.World.Side == EnumAppSide.Client) return;
 
             var stamina = Stamina;  // better performance to read this TreeAttribute only once
-            var maxStamina = MaxStamina;
             var sprinting = Sprinting;
 
             timeSinceLastUpdate += deltaTime;
 
             // Check stamina 4 times a second
-            // Since this is server side only don't attempt to trigger animations here
             if (timeSinceLastUpdate >= 0.25f)
             {
                 if (entity.Alive)
@@ -256,21 +242,23 @@ namespace Equus.Behaviors
             var stamina = Stamina;  // better performance to read this TreeAttribute only once
             var maxStamina = MaxStamina;
 
+            var ebh = entity.GetBehavior<EntityBehaviorHealth>();
+
             // Add up penalties for various actions
-            var currentSwimmingPenalty = entity.Swimming ? RegenPenaltySwimming : 0f;
+            var currentWoundedPenalty = ebh.Health < ebh.MaxHealth * 0.7f ? RegenPenaltyWounded : 0f;
             var currentMountedPenalty = entity.GetBehavior<EntityBehaviorRideable>()?.AnyMounted() ?? false ? RegenPenaltyMounted : 0f;
 
-            var totalPenalty = currentMountedPenalty + currentSwimmingPenalty;
+            var totalPenalty = currentMountedPenalty + currentWoundedPenalty;
 
             var staminaRegenRate = (StaminaRegenRate - totalPenalty) * ModSystem.Config.GlobalStaminaRegenMultiplier;
 
             if (stamina < maxStamina)
             {
-                // 25% multiplier since we do this four times a second
-                var staminaRegenPerGameSecond = 0.25f * staminaRegenRate;
+                // 25% multiplier to convert per second regen to per tick regen
+                var staminaRegenPerTick = 0.25f * staminaRegenRate;
                 var multiplierPerGameSec = elapsedTime * ModSystem.Api.World.Calendar.SpeedOfTime * ModSystem.Api.World.Calendar.CalendarSpeedMul;
 
-                Stamina = Math.Min(stamina + (multiplierPerGameSec * staminaRegenPerGameSecond), maxStamina);
+                Stamina = Math.Min(stamina + (multiplierPerGameSec * staminaRegenPerTick), maxStamina);
             }
         }
 
@@ -322,11 +310,13 @@ namespace Equus.Behaviors
         public override void GetInfoText(StringBuilder infotext)
         {
             var capi = entity.Api as ICoreClientAPI;
+
+            infotext.AppendLine(Lang.Get("equus:infotext-stamina-state", Stamina, MaxStamina));
+
             if (capi?.World.Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
             {
-                infotext.AppendLine(Lang.Get($"[{ModSystem.ModId}] Stamina: {Stamina}/{MaxStamina}"));
-                infotext.AppendLine(Lang.Get($"[{ModSystem.ModId}] Sprint Fatigue: {SprintFatigue}"));
-                infotext.AppendLine(Lang.Get($"[{ModSystem.ModId}] Swim Fatigue: {SwimFatigue}"));
+                infotext.AppendLine(Lang.Get("equus:infotext-stamina-sprint-fatigue", SprintFatigue));
+                infotext.AppendLine(Lang.Get("equus:infotext-stamina-swim-fatigue", SwimFatigue));
             }
         }
 

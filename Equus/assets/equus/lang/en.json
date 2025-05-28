@@ -39,5 +39,9 @@
   "game:itemdesc-hoovedwearables-head-bridle2": "Useful for long distance travel. Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-middleback-saddle1": "Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Suitable for: elk, horse",
-  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse"
+  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse",
+
+  "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
+  "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
+  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}"
 }

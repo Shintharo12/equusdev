@@ -52,7 +52,6 @@ namespace Equus.Behaviors
 
         private static string AttributeKey => $"{ModSystem.ModId}:rideable";
 
-
         public EntityBehaviorEquusRideable(Entity entity) : base(entity)
         {
             eagent = entity as EntityAgent;
@@ -297,9 +296,6 @@ namespace Equus.Behaviors
                     lastGaitChangeMs = nowMs;
                 }
 
-                // If entity has stamina let it know youre currently sprinting
-                if (ebs is not null) ebs.Sprinting = CurrentGait == GaitState.Gallop;
-
                 prevSprintKey = nowSprint;
 
                 // Don't allow backwards canter/gallop
@@ -449,9 +445,12 @@ namespace Equus.Behaviors
                 }
 
                 curControlMeta = nowControlMeta;
-                if (DebugMode) ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta.Code}");
-                eagent.AnimManager.StartAnimation(nowControlMeta);
+                if (DebugMode) ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta?.Code}");
+                if (nowControlMeta != null) eagent.AnimManager.StartAnimation(nowControlMeta);
             }
+
+            // If entity has stamina let it know youre currently sprinting
+            if (ebs is not null) ebs.Sprinting = CurrentGait == GaitState.Gallop;
 
             if (api.Side == EnumAppSide.Server)
             {
@@ -536,7 +535,16 @@ namespace Equus.Behaviors
         public new void Stop()
         {
             CurrentGait = GaitState.Walk;
-            base.Stop();
+            eagent.Controls.StopAllMovement();
+            eagent.Controls.WalkVector.Set(0, 0, 0);
+            eagent.Controls.FlyVector.Set(0, 0, 0);
+            shouldMove = false;
+            if (curControlMeta != null && curControlMeta.Animation != "jump")
+            {
+                eagent.StopAnimation(curControlMeta.Animation);
+            }
+            curControlMeta = null;
+            eagent.StartAnimation("idle");
         }
 
         public override void OnGameTick(float dt)
