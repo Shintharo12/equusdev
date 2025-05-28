@@ -258,7 +258,7 @@ namespace Equus.Behaviors
 
             // Add up penalties for various actions
             var currentSwimmingPenalty = entity.Swimming ? RegenPenaltySwimming : 0f;
-            var currentMountedPenalty = entity.GetBehavior<EntityBehaviorRideable>().AnyMounted() ? RegenPenaltyMounted : 0f;
+            var currentMountedPenalty = entity.GetBehavior<EntityBehaviorRideable>()?.AnyMounted() ?? false ? RegenPenaltyMounted : 0f;
 
             var totalPenalty = currentMountedPenalty + currentSwimmingPenalty;
 
