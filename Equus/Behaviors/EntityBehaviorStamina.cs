@@ -26,6 +26,7 @@ namespace Equus.Behaviors
         public event OnFatiguedDelegate OnFatigued = (ftg, ftgSource) => ftg;
 
         private float timeSinceLastUpdate;
+        private float timeSinceLastLog;
 
         #region Config props
 
@@ -195,9 +196,24 @@ namespace Equus.Behaviors
             if (entity.World.Side == EnumAppSide.Client) return;
 
             var stamina = Stamina;  // better performance to read this TreeAttribute only once
-            var sprinting = Sprinting;
+
+            var ebr = entity.GetBehavior<EntityBehaviorRideable>();
+
+            bool anySprint = ebr.Seats.Any(s => s.Controls.Sprint);
+
+            bool sprinting = (ebr is EntityBehaviorEquusRideable) ? Sprinting : anySprint;
 
             timeSinceLastUpdate += deltaTime;
+            timeSinceLastLog += deltaTime;
+
+            if (timeSinceLastLog > 1f)
+            {
+                
+                //ModSystem.Logger.Notification($"Forward: {(entity as EntityAgent).Controls.Forward}");
+                //ModSystem.Logger.Notification($"Ctrl: {(entity as EntityAgent).Controls.CtrlKey}");
+                
+                timeSinceLastLog = 0f;
+            }
 
             // Check stamina 4 times a second
             if (timeSinceLastUpdate >= 0.25f)
@@ -255,10 +271,10 @@ namespace Equus.Behaviors
             if (stamina < maxStamina)
             {
                 // 25% multiplier to convert per second regen to per tick regen
-                var staminaRegenPerTick = 0.25f * staminaRegenRate;
+                var staminaRegenPerQuarterSecond = 0.25f * staminaRegenRate;
                 var multiplierPerGameSec = elapsedTime * ModSystem.Api.World.Calendar.SpeedOfTime * ModSystem.Api.World.Calendar.CalendarSpeedMul;
 
-                Stamina = Math.Min(stamina + (multiplierPerGameSec * staminaRegenPerTick), maxStamina);
+                Stamina = Math.Min(stamina + (multiplierPerGameSec * staminaRegenPerQuarterSecond), maxStamina);
             }
         }
 
