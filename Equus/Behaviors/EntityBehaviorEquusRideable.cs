@@ -536,7 +536,16 @@ namespace Equus.Behaviors
         public new void Stop()
         {
             CurrentGait = GaitState.Walk;
-            base.Stop();
+            eagent.Controls.StopAllMovement();
+            eagent.Controls.WalkVector.Set(0, 0, 0);
+            eagent.Controls.FlyVector.Set(0, 0, 0);
+            shouldMove = false;
+            if (curControlMeta != null && curControlMeta.Animation != "jump")
+            {
+                eagent.StopAnimation(curControlMeta.Animation);
+            }
+            curControlMeta = null;
+            eagent.StartAnimation("idle");
         }
 
         public override void OnGameTick(float dt)
