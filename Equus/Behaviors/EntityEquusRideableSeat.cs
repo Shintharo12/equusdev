@@ -1,17 +1,13 @@
-﻿using System.Linq;
-using Vintagestory.API.Client;
+﻿using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
-using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
 using Vintagestory.GameContent;
 
 namespace Equus.Behaviors
 {
     public class EntityEquusRideableSeat : EntityRideableSeat
     {
-
         public EntityEquusRideableSeat(IMountable mountablesupplier, string seatId, SeatConfig config) : base(mountablesupplier, seatId, config)
         {
         }

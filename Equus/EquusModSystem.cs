@@ -120,7 +120,6 @@ namespace Equus
                     Config = _config;
                 }
 
-                // Only do this if we are not actively reloading
                 if (isReload)
                 {
                     // Update stats
@@ -128,6 +127,7 @@ namespace Equus
                 }
                 else
                 {
+                    // Only do this if we are not actively reloading
                     // Store config again (to ensure any new props are saved)
                     api.StoreModConfig(Config, $"{ModId}.json");
                 }
@@ -140,6 +140,5 @@ namespace Equus
 
             api.Event.RegisterCallback(_ => _fileWatcher.Queued = false, 100);
         }
-
     }
 }

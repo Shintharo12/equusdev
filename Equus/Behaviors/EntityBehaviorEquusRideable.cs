@@ -18,15 +18,13 @@ namespace Equus.Behaviors
         Walk,
         Trot,
         Canter,
-        Gallop,
-        //Buck
+        Gallop
     }
 
     public class EntityBehaviorEquusRideable : EntityBehaviorRideable
     {
         public static EquusModSystem ModSystem => EquusModSystem.Instance;
         public float StaminaSpeedMultiplier { get; set; } = 1f;
-        //public GaitState CurrentGait { get; private set; } = GaitState.Walk;
         private static bool DebugMode => ModSystem.Config.DebugMode; // Debug mode for logging
 
         protected long lastGaitChangeMs = 0;
@@ -37,44 +35,17 @@ namespace Equus.Behaviors
 
         ControlMeta curControlMeta = null;
         bool shouldMove = false;
+        bool isBucking = false;
 
         string curTurnAnim = null;
         EnumControlScheme scheme;
         EntityBehaviorStamina ebs;
-
-        private ITreeAttribute RideableTree
-        {
-            get
-            {
-                var tree = entity.WatchedAttributes.GetTreeAttribute(AttributeKey);
-                if (tree == null)
-                {
-                    tree = new TreeAttribute();
-                    entity.WatchedAttributes.SetAttribute(AttributeKey, tree);
-                    entity.WatchedAttributes.MarkPathDirty(AttributeKey);
-                }
-                return tree;
-            }
-        }
-
-        private GaitState _currentGait;
         public GaitState CurrentGait
         {
-            get 
-            {
-                if (Enum.TryParse<GaitState>(RideableTree?.GetString("currentgait"), out _currentGait))
-                {
-                    return _currentGait;
-                }
-                else
-                {
-                    return GaitState.Walk;
-                }
-
-            }
+            get => (GaitState)entity.WatchedAttributes.GetInt("currentgait", (int)GaitState.Walk);
             set
             {
-                RideableTree.SetString("currentgait", value.ToString());
+                entity.WatchedAttributes.SetInt("currentgait", (int)value);
                 entity.WatchedAttributes.MarkPathDirty(AttributeKey);
             }
         }
@@ -233,9 +204,7 @@ namespace Equus.Behaviors
 
                 if (seat.Passenger == null || !seat.Config.Controllable) continue;
 
-                var eplr = seat.Passenger as EntityPlayer;
-
-                if (eplr != null)
+                if (seat.Passenger is EntityPlayer eplr)
                 {
                     eplr.Controls.LeftMouseDown = seat.Controls.LeftMouseDown;
                     eplr.HeadYawLimits = new AngleConstraint(entity.Pos.Yaw + seat.Config.MountRotation.Y * GameMath.DEG2RAD, GameMath.PIHALF);
@@ -389,10 +358,7 @@ namespace Equus.Behaviors
 
         protected void UpdateRidingState()
         {
-            if (!AnyMounted())
-            {
-                return;
-            }
+            if (!AnyMounted()) return;
 
             bool wasMidJump = IsInMidJump;
             IsInMidJump &= (entity.World.ElapsedMilliseconds - lastJumpMs < 500 || !entity.OnGround) && !entity.Swimming;
@@ -494,10 +460,10 @@ namespace Equus.Behaviors
         }
 
         /// <summary>
-        /// Check for stamina triggered changes to gait then sync to server
+        /// Check for stamina triggered changes to gait
         /// </summary>
         /// <param name="dt">tick time</param>
-        public void StaminaGaitCheckandSync(float dt)
+        public void StaminaGaitCheck(float dt)
         {
             if (api.Side != EnumAppSide.Server || ebs == null) return;
 
@@ -510,7 +476,7 @@ namespace Equus.Behaviors
                 {
                     if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f)
                     {
-                        //CurrentGait = GaitState.Buck;
+                        isBucking = true;
                     }
 
                     bool isTired = api.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina);
@@ -591,7 +557,7 @@ namespace Equus.Behaviors
                 UpdateAngleAndMotion(dt);
             }
 
-            StaminaGaitCheckandSync(dt);
+            StaminaGaitCheck(dt);
 
             UpdateRidingState();
 

@@ -36,7 +36,7 @@
 			"swimFatigue": 0.2,
 			"baseFatigueRate": 1,
             "staminaRegenRate": 1,
-            "regenPenatlySwimming": 0.4,
+            "regenPenaltyWounded": 0.5,
             "regenPenaltyRiding": 0.3
 		}
 	},
@@ -411,6 +411,7 @@
 		"behaviors": [
 			{ "code": "repulseagents" },
 			{ "code": "controlledphysics","stepHeight": 3.1251},
+			{ "code": "mortallywoundable" },
 			{ "code": "floatupwhenstuck","onlyWhenDead": true},
 			{ "code": "interpolateposition" },
 			{ "code": "health" },
@@ -431,6 +432,7 @@
 			{ "code": "die","animation": "Die","animationSpeed": 0.75,"weight": 10,"blendMode": "Average","triggeredBy": { "onControls": [ "dead" ] }},
 			{ "code": "eat","animation": "Eat","easeOutSpeed": 10,"blendMode": "Average"},
 			{ "code": "hurt","animation": "Hurt","animationSpeed": 1,"weight": 10,"blendMode": "AddAverage"},
+			{ "code": "wounded-idle", "animation": "wounded-idle", "easeInSpeed": 3, "weight": 10, "blendMode": "Average" },
 			{ "code": "idle","animation": "Idle","animationSpeed": 1,"blendMode": "AddAverage","easeOutSpeed": 4,"triggeredBy": { "defaultAnim": true }},
 			{ "code": "sit","animation": "Sit","easeInSpeed": 4,"easeOutSpeed": 4,"blendMode": "Average"},
 			{ "code": "sleep","animation": "Sleep","easeInSpeed": 4,"easeOutSpeed": 4,"weight": 5,"blendMode": "Average"},
@@ -456,6 +458,7 @@
 			{ "code": "repulseagents" },
 			{ "code": "genelib.genetics", "genomeType": "equus:equine" },
 			{ "code": "controlledphysics","stepHeight": 3.1251},
+			{ "code": "mortallywoundable", "whenBelowHealth": 6 },
 			{ "code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "health",
 				"maxhealthByType": {
@@ -773,7 +776,7 @@
 			{ "code": "rideableaccessories", "minGeneration": 2 },
 			{ "code": "equus:rideable" },
 			{ "code": "equus:stamina" },
-            { "code": "ropetieable"}
+            { "code": "ropetieable" }
 		],
 		"spawnconditions": {
 			"worldgen": {

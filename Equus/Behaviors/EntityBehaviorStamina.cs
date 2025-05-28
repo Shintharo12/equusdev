@@ -206,12 +206,9 @@ namespace Equus.Behaviors
         {
             if (entity.World.Side == EnumAppSide.Client) return;
 
-            var stamina = Stamina;  // higher performance to read this TreeAttribute only once
+            var stamina = Stamina;  // better performance to read this TreeAttribute only once
             var maxStamina = MaxStamina;
             var sprinting = Sprinting;
-
-            EntityBehaviorRideable ebr = entity.GetBehavior<EntityBehaviorRideable>();
-            EntityPlayer rider = ebr.Controller as EntityPlayer;
 
             timeSinceLastUpdate += deltaTime;
 
@@ -229,8 +226,8 @@ namespace Equus.Behaviors
                     {
                         activelyFatiguing = ApplyFatigue(SwimFatigue * CalculateElapsedMultiplier(timeSinceLastUpdate), EnumFatigueSource.Swim);
                     }
-
-                    // Entity sprinting (rider?.MountedOn != null && rider.MountedOn.Controls.Sprint) || 
+                    
+                    // Entity sprinting
                     if (sprinting)
                     {
                         activelyFatiguing = ApplyFatigue(SprintFatigue * CalculateElapsedMultiplier(timeSinceLastUpdate), EnumFatigueSource.Run);
