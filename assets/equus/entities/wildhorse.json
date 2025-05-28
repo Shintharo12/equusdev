@@ -127,11 +127,11 @@
 					"animation": "Walk",
 					"weight": 10,
 						"movespeedByType": {
-							"*-ferus": 0.02
+							"*-ferus": 0.013
 						},
 						"animationSpeedByType": {
-							"*-ferus": 1.8,
-							"*": 1.8
+							"*-ferus": 1.125,
+							"*": 1.125
 						},
 					"blendMode": "Average",
 					"riderAnim": {
@@ -197,11 +197,11 @@
 					"animation": "walkback",
 					"weight": 10,
 						"movespeedByType": {
-							"*-ferus": 0.017
+							"*-ferus": 0.013
 						},
 						"animationSpeedByType": {
-							"*-ferus": 1.2,
-							"*": 1.2
+							"*-ferus": 1.125,
+							"*": 1.125
 						},
 					"easeInSpeed": 1,
 					"easeOutSpeed": 3,
@@ -307,6 +307,7 @@
 					"blendMode": "Average",
 					"animationSpeed": 1.4,
 					"easeOutSpeed": 40,
+					"easeInSpeed": 40,
 					"movespeed": 0.12,
 					"riderAnim": {
 						"animation": "rideelk-jump",
@@ -428,22 +429,26 @@
 		],
 		"animations": [
 			{ "code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
+			{ "code": "buck", "animation": "Buck", "animationSpeed": 1.2, "weight": 100, "blendMode": "AddAverage"},
+			{ "code": "canter","animation": "Canter","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "charge","animation": "Charge","easeInSpeed": 10,"easeOutSpeed": 2,"animationSpeed": 1,"weight": 10,"blendMode": "Average"},
+			{ "code": "dead","animation": "dead","weight": 10,"blendMode": "Average"},
 			{ "code": "die","animation": "Die","animationSpeed": 0.75,"weight": 10,"blendMode": "Average","triggeredBy": { "onControls": [ "dead" ] }},
 			{ "code": "eat","animation": "Eat","easeOutSpeed": 10,"blendMode": "Average"},
+			{ "code": "gallop","animation": "Gallop","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "hurt","animation": "Hurt","animationSpeed": 1,"weight": 10,"blendMode": "AddAverage"},
-			{ "code": "wounded-idle", "animation": "wounded-idle", "easeInSpeed": 3, "weight": 10, "blendMode": "Average" },
 			{ "code": "idle","animation": "Idle","animationSpeed": 1,"blendMode": "AddAverage","easeOutSpeed": 4,"triggeredBy": { "defaultAnim": true }},
+			{ "code": "idle-turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "idle-turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "jump", "animation": "Jump", "animationSpeed": 1.4, "weight": 100, "blendMode": "AddAverage", "easeOutSpeed": 40 },
 			{ "code": "sit","animation": "Sit","easeInSpeed": 4,"easeOutSpeed": 4,"blendMode": "Average"},
 			{ "code": "sleep","animation": "Sleep","easeInSpeed": 4,"easeOutSpeed": 4,"weight": 5,"blendMode": "Average"},
 			{ "code": "swim","animation": "Swim","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "walk","animation": "Walk","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
 			{ "code": "trot","animation": "Trot","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "canter","animation": "Canter","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "gallop","animation": "Gallop","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "dead","animation": "dead","weight": 10,"blendMode": "Average"},
 			{ "code": "turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
-			{ "code": "turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}}
+			{ "code": "turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "wounded-idle", "animation": "wounded-idle", "easeInSpeed": 3, "weight": 10, "blendMode": "Average" }
 		]
 	},
 	"server": {

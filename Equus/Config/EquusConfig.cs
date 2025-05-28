@@ -27,6 +27,10 @@ namespace Equus.Config
         public float StaminaBarWidthMultiplier { get; set; } = 1f;
         public float StaminaBarXOffset { get; set; } = 0f;
         public float StaminaBarYOffset { get; set; } = 0f;
+        public bool ShowHudIcon { get; set; } = true;
+        public float IconOffsetX { get; set; } = -400f;
+        public float IconOffsetY { get; set; } = -99f;
+        public float IconSize { get; set; } = 42f;
 
         // Debugging
         public bool DebugMode { get; set; } = true;

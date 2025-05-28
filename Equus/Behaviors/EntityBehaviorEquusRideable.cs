@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Vintagestory.API.Client;
@@ -15,6 +16,8 @@ namespace Equus.Behaviors
     // Added enum for gait states
     public enum GaitState
     {
+        Walkback, // Special case for walking backwards
+        Idle,
         Walk,
         Trot,
         Canter,
@@ -40,6 +43,18 @@ namespace Equus.Behaviors
         string curTurnAnim = null;
         EnumControlScheme scheme;
         EntityBehaviorStamina ebs;
+
+        private static readonly List<GaitState> DefaultGaitOrder = new()
+        {
+            GaitState.Idle,
+            GaitState.Walk,
+            GaitState.Trot,
+            GaitState.Canter,
+            GaitState.Gallop
+        };
+
+        public List<GaitState> AvailableGaits = new();
+
         public GaitState CurrentGait
         {
             get => (GaitState)entity.WatchedAttributes.GetInt("currentgait", (int)GaitState.Walk);
@@ -68,7 +83,20 @@ namespace Equus.Behaviors
 
             rideableconfig = attributes.AsObject<RideableConfig>();
             minGeneration = rideableconfig.MinGeneration;
+
+            AvailableGaits.Clear();
+            foreach (var gait in DefaultGaitOrder)
+            {
+                if (rideableconfig.Controls.ContainsKey(gait.ToString().ToLowerInvariant()))
+                {
+                    AvailableGaits.Add(gait);
+                }
+            }
+
             foreach (var val in rideableconfig.Controls.Values) { val.RiderAnim?.Init(); }
+
+            //// Add this additional check to ensure curb bit works on load
+            //updateControlScheme();
 
             api = entity.Api;
             capi = api as ICoreClientAPI;
@@ -164,6 +192,7 @@ namespace Equus.Behaviors
 
             float yawMultiplier = CurrentGait switch
             {
+                GaitState.Idle => 4f,
                 GaitState.Walk => 3.5f,
                 GaitState.Trot => 3f,
                 GaitState.Canter => 2f,
@@ -213,6 +242,7 @@ namespace Equus.Behaviors
                 if (Controller != null) continue;
                 Controller = seat.Passenger;
 
+                #region Can Ride/Turn Checks
                 var controls = seat.Controls;
                 bool canride = true;
                 bool canturn = true;
@@ -253,12 +283,11 @@ namespace Equus.Behaviors
                     }
                 }
                 
-
                 if (!canride) continue;
+                #endregion
 
-
-                // Only able to jump every 1000ms. Only works while on the ground.
-                if (controls.Jump && entity.World.ElapsedMilliseconds - lastJumpMs > 1000 && entity.Alive && (entity.OnGround || coyoteTimer > 0))
+                // Only able to jump every 1500ms. Only works while on the ground.
+                if (controls.Jump && entity.World.ElapsedMilliseconds - lastJumpMs > 1500 && entity.Alive && (entity.OnGround || coyoteTimer > 0))
                 {
                     lastJumpMs = entity.World.ElapsedMilliseconds;
                     jumpNow = true;
@@ -271,18 +300,23 @@ namespace Equus.Behaviors
 
                 float str = ++seatsRowing == 1 ? 1 : 0.5f;
 
-                // Handle gait switching via sprint button
                 bool nowForwards = controls.Forward;
                 bool nowBackwards = controls.Backward;
+                
+                // Handle gait switching via sprint button
                 bool nowSprint = controls.CtrlKey;
 
-                // Detect fresh forward press
+                // Detect fresh button presses
                 bool forwardPressed = nowForwards && !prevForwardKey;
                 bool backwardPressed = nowBackwards && !prevBackwardKey;
                 bool sprintPressed = nowSprint && !prevSprintKey;
+
                 long nowMs = entity.World.ElapsedMilliseconds;
 
-                if (sprintPressed && nowMs - lastGaitChangeMs > 300)
+                #region Common controls across both schemes
+                if (forwardPressed && CurrentGait == GaitState.Idle) CurrentGait = GaitState.Walk; 
+
+                if (forward && sprintPressed && nowMs - lastGaitChangeMs > 300)
                 {
                     CurrentGait = CurrentGait switch
                     {
@@ -290,53 +324,71 @@ namespace Equus.Behaviors
                         GaitState.Trot => GaitState.Canter,
                         GaitState.Canter => GaitState.Gallop,
                         GaitState.Gallop => GaitState.Canter,
-                        _ => GaitState.Walk
+                        _ => GaitState.Idle
                     };
 
                     lastGaitChangeMs = nowMs;
                 }
 
-                prevSprintKey = nowSprint;
+                if (backwardPressed && nowMs - lastGaitChangeMs > 300)
+                {
+                    switch (CurrentGait)
+                    {
+                        case GaitState.Gallop:
+                            CurrentGait = GaitState.Canter;
+                            break;
+                        case GaitState.Canter:
+                            CurrentGait = GaitState.Trot;
+                            break;
+                        case GaitState.Trot:
+                            CurrentGait = GaitState.Walk;
+                            break;
+                        case GaitState.Walk:
+                            forward = false;
+                            CurrentGait = GaitState.Idle;
+                            break;
+                        case GaitState.Idle:
+                            backward = true;
+                            CurrentGait = GaitState.Walkback;
+                            break;
+                    }
 
-                // Don't allow backwards canter/gallop
-                if (backward) CurrentGait = GaitState.Walk;
+                    lastGaitChangeMs = nowMs;
+                }
+
+                prevSprintKey = nowSprint;
+                #endregion
 
                 if (scheme == EnumControlScheme.Hold)
                 {
+                    #region Snaffle bit controls (Hold scheme)
                     forward = controls.Forward;
                     backward = controls.Backward;
+                    #endregion
                 }
                 else
                 {
+                    #region Curb bit controls (Press scheme)
                     // Transition from idle to forward
                     if (!forward && !backward && forwardPressed)
                     {
                         forward = true;
                         CurrentGait = GaitState.Walk;
                     }
-                    // Switch from forward to backward
-                    else if (forward && backwardPressed)
-                    {
-                        forward = false;
-                        CurrentGait = GaitState.Walk;
-                    }
-                    // Transition from idle to backward
-                    else if (!backward && backwardPressed)
-                    {
-                        backward = true;
-                        CurrentGait = GaitState.Walk;
-                    }
-                    // Switch from backward to forward
+                    // Switch from backward to idle
                     else if (backward && forwardPressed)
                     {
                         backward = false;
-                        CurrentGait = GaitState.Walk;
+                        CurrentGait = GaitState.Idle;
                     }
 
                     prevForwardKey = nowForwards;
                     prevBackwardKey = nowBackwards;
+                    #endregion
+
                 }
 
+                #region Motion update
                 if (canturn && (controls.Left || controls.Right))
                 {
                     float dir = controls.Left ? 1 : -1;
@@ -347,6 +399,7 @@ namespace Equus.Behaviors
                     float dir = forward ? 1 : -1;
                     linearMotion += str * dir * dt * 2f;
                 }
+                #endregion
             }
 
             return new Vec2d(linearMotion, angularMotion);
@@ -397,6 +450,9 @@ namespace Equus.Behaviors
 
                 switch (CurrentGait)
                 {
+                    case GaitState.Idle:
+                        controlCode = "idle";
+                        break;
                     case GaitState.Walk:
                         controlCode = eagent.Controls.Backward ? "walkback" : "walk";
                         break;
@@ -420,8 +476,8 @@ namespace Equus.Behaviors
                 {
                     IsInMidJump = true;
                     jumpNow = false;
-                    var esr = eagent.Properties.Client.Renderer as EntityShapeRenderer;
-                    if (esr != null) esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
+                    if (eagent.Properties.Client.Renderer is EntityShapeRenderer esr) 
+                        esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
 
                     nowControlMeta = rideableconfig.Controls["jump"];
                     nowControlMeta.EaseOutSpeed = (ForwardSpeed != 0) ? 30 : 40;
@@ -534,7 +590,7 @@ namespace Equus.Behaviors
 
         public new void Stop()
         {
-            CurrentGait = GaitState.Walk;
+            CurrentGait = GaitState.Idle;
             eagent.Controls.StopAllMovement();
             eagent.Controls.WalkVector.Set(0, 0, 0);
             eagent.Controls.FlyVector.Set(0, 0, 0);
@@ -710,6 +766,7 @@ namespace Equus.Behaviors
         public new void DidMount(EntityAgent entityAgent)
         {
             updateControlScheme();
+            CurrentGait = GaitState.Idle;
         }
     }
 }

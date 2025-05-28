@@ -19,6 +19,8 @@ namespace Equus
         private FileWatcher _fileWatcher;
         private long customHudListenerId;
 
+        private HudIconRenderer hudIconRenderer;
+
         public string ModId => Mod.Info.ModID;
         public ILogger Logger => Mod.Logger;
         public ICoreAPI Api { get; private set; }
@@ -51,6 +53,12 @@ namespace Equus
             if (Config.EnableStamina)
             {
                 customHudListenerId = api.Event.RegisterGameTickListener(CheckAndInitializeCustomHud, 20);
+            }
+
+            if (Config.ShowHudIcon)
+            {
+                hudIconRenderer = new HudIconRenderer(api);
+                hudIconRenderer.Initialize();
             }
         }
 

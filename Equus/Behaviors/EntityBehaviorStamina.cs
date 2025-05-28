@@ -208,10 +208,8 @@ namespace Equus.Behaviors
 
             if (timeSinceLastLog > 1f)
             {
-                
-                //ModSystem.Logger.Notification($"Forward: {(entity as EntityAgent).Controls.Forward}");
-                //ModSystem.Logger.Notification($"Ctrl: {(entity as EntityAgent).Controls.CtrlKey}");
-                
+                // Do some logging every second
+
                 timeSinceLastLog = 0f;
             }
 
@@ -270,7 +268,7 @@ namespace Equus.Behaviors
 
             if (stamina < maxStamina)
             {
-                // 25% multiplier to convert per second regen to per tick regen
+                // 25% multiplier to convert per second regen to per quarter second regen
                 var staminaRegenPerQuarterSecond = 0.25f * staminaRegenRate;
                 var multiplierPerGameSec = elapsedTime * ModSystem.Api.World.Calendar.SpeedOfTime * ModSystem.Api.World.Calendar.CalendarSpeedMul;
 
