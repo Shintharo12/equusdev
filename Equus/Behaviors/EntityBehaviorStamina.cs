@@ -310,16 +310,13 @@ namespace Equus.Behaviors
 
         public void FatigueEntity(float fatigue, FatigueSource ftgSource)
         {
-            var stamina = Stamina;  // higher performance to read this TreeAttribute only once
-            var maxStamina = MaxStamina;
-
             if (entity.World.Side == EnumAppSide.Client) return;
 
             if (!entity.Alive) return;
             if (fatigue <= 0) return;
 
             var fatigueRate = BaseFatigueRate * fatigue;
-            Stamina = GameMath.Clamp(stamina - fatigueRate, 0, maxStamina);
+            Stamina = GameMath.Clamp(Stamina - fatigueRate, 0, MaxStamina);
         }
 
         public override void GetInfoText(StringBuilder infotext)
