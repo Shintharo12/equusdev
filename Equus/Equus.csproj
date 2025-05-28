@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>bin/$(Configuration)</OutputPath>
+    <OutputPath>bin/$(Configuration)/Mods/equus</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,5 +44,18 @@
         <Private>False</Private>
     </Reference>
   </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="../assets/**">
+            <Link>assets/%(RecursiveDir)%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="../modinfo.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="../modicon.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 
 </Project>
