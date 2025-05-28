@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Vintagestory.API.Client;
@@ -40,6 +41,17 @@ namespace Equus.Behaviors
         string curTurnAnim = null;
         EnumControlScheme scheme;
         EntityBehaviorStamina ebs;
+
+        private static readonly List<GaitState> DefaultGaitOrder = new()
+        {
+            GaitState.Walk,
+            GaitState.Trot,
+            GaitState.Canter,
+            GaitState.Gallop
+        };
+
+        public List<GaitState> AvailableGaits = new();
+
         public GaitState CurrentGait
         {
             get => (GaitState)entity.WatchedAttributes.GetInt("currentgait", (int)GaitState.Walk);
@@ -68,6 +80,16 @@ namespace Equus.Behaviors
 
             rideableconfig = attributes.AsObject<RideableConfig>();
             minGeneration = rideableconfig.MinGeneration;
+
+            AvailableGaits.Clear();
+            foreach (var gait in DefaultGaitOrder)
+            {
+                if (rideableconfig.Controls.ContainsKey(gait.ToString().ToLowerInvariant()))
+                {
+                    AvailableGaits.Add(gait);
+                }
+            }
+
             foreach (var val in rideableconfig.Controls.Values) { val.RiderAnim?.Init(); }
 
             api = entity.Api;
