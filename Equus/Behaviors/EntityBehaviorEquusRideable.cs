@@ -308,7 +308,7 @@ namespace Equus.Behaviors
                 bool sprintPressed = nowSprint && !prevSprintKey;
                 long nowMs = entity.World.ElapsedMilliseconds;
 
-                if (sprintPressed && nowMs - lastGaitChangeMs > 300)
+                if (forward && sprintPressed && nowMs - lastGaitChangeMs > 300)
                 {
                     CurrentGait = CurrentGait switch
                     {
