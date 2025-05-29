@@ -127,11 +127,11 @@
 					"animation": "Walk",
 					"weight": 10,
 						"movespeedByType": {
-							"*-ferus": 0.02
+							"*-ferus": 0.013
 						},
 						"animationSpeedByType": {
-							"*-ferus": 1.8,
-							"*": 1.8
+							"*-ferus": 1.2,
+							"*": 1.2
 						},
 					"blendMode": "Average",
 					"riderAnim": {
@@ -162,7 +162,7 @@
 					"animation": "Trot",
 					"weight": 10,
 						"movespeedByType": {
-							"*-ferus": 0.0325
+							"*-ferus": 0.035
 						},
 						"animationSpeedByType": {
 							"*-ferus": 2.5,
