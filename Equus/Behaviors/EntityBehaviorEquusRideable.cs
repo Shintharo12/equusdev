@@ -92,6 +92,9 @@ namespace Equus.Behaviors
 
             foreach (var val in rideableconfig.Controls.Values) { val.RiderAnim?.Init(); }
 
+            // Add this additional check to ensure curb bit works on load
+            updateControlScheme();
+
             api = entity.Api;
             capi = api as ICoreClientAPI;
             curAnim = rideableconfig.Controls["idle"].RiderAnim;
@@ -160,6 +163,7 @@ namespace Equus.Behaviors
                     }
                 }
             }
+            CurrentGait = GaitState.Walk;
         }
 
         private bool TaskManager_OnShouldExecuteTask(IAiTask task)
