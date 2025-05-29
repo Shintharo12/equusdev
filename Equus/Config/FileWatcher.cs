@@ -21,7 +21,6 @@ namespace Equus.Config
             var paths = new[]
             {
                 (GamePaths.ModConfig, $"{ModSystem.ModId}.json", false),
-                //(Path.Combine(GamePaths.ModConfig, $"{Equus.ModId}", "recipes"), "*.json", true)
             };
 
             foreach (var (path, filter, scanSubDir) in paths)
@@ -46,7 +45,7 @@ namespace Equus.Config
 
         private void Changed(object sender, FileSystemEventArgs e)
         {
-            // Debounce chcnages
+            // Debounce changes
             var now = DateTime.UtcNow;
             if ((now - lastChange).TotalMilliseconds < 200) return;
 
