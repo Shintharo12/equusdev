@@ -283,8 +283,8 @@ namespace Equus.Behaviors
                 if (!canride) continue;
 
 
-                // Only able to jump every 1000ms. Only works while on the ground.
-                if (controls.Jump && entity.World.ElapsedMilliseconds - lastJumpMs > 1000 && entity.Alive && (entity.OnGround || coyoteTimer > 0))
+                // Only able to jump every 1500ms. Only works while on the ground.
+                if (controls.Jump && entity.World.ElapsedMilliseconds - lastJumpMs > 1500 && entity.Alive && (entity.OnGround || coyoteTimer > 0))
                 {
                     lastJumpMs = entity.World.ElapsedMilliseconds;
                     jumpNow = true;
@@ -432,7 +432,7 @@ namespace Equus.Behaviors
             if (nowTurnAnim != curTurnAnim)
             {
                 if (curTurnAnim != null) eagent.StopAnimation(curTurnAnim);
-                eagent.StartAnimation((ForwardSpeed == 0 ? "idle-" : "") + (curTurnAnim = nowTurnAnim));
+                eagent.StartAnimation((curTurnAnim = nowTurnAnim));
             }
 
             ControlMeta nowControlMeta;
