@@ -97,10 +97,7 @@ public sealed class PackageTask : FrostingTask<BuildContext>
         context.CleanDirectory("../Releases");
         context.EnsureDirectoryExists($"../Releases/{context.Name}");
         context.CopyFiles($"../{BuildContext.ProjectName}/bin/{context.BuildConfiguration}/Mods/equus/publish/*", $"../Releases/{context.Name}");
-        if (context.DirectoryExists($"../assets"))
-        {
-            context.CopyDirectory($"../assets", $"../Releases/{context.Name}/assets");
-        }
+        context.CopyDirectory($"../assets", $"../Releases/{context.Name}/assets");
         context.CopyFile($"../modinfo.json", $"../Releases/{context.Name}/modinfo.json");
         if (context.FileExists($"../modicon.png"))
         {
