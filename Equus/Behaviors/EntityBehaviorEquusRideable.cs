@@ -336,17 +336,44 @@ namespace Equus.Behaviors
                         forward = true;
                         CurrentGait = GaitState.Walk;
                     }
-                    // Switch from forward to backward
-                    else if (forward && backwardPressed)
+                    // Slow down
+                    else if (forward && nowBackwards)
                     {
-                        forward = false;
-                        CurrentGait = GaitState.Walk;
+                        //forward = false;
+                        //CurrentGait = GaitState.Walk;
+
+                        if (nowMs - lastGaitChangeMs > 300)
+                        {
+                            switch (CurrentGait)
+                            {
+                                case GaitState.Gallop:
+                                    CurrentGait = GaitState.Canter;
+                                    break;
+                                case GaitState.Canter:
+                                    CurrentGait = GaitState.Trot;
+                                    break;
+                                case GaitState.Trot:
+                                    CurrentGait = GaitState.Walk;
+                                    break;
+                                case GaitState.Walk:
+                                    forward = false;
+                                    break;
+                            }
+
+                            lastGaitChangeMs = nowMs;
+                        }
                     }
                     // Transition from idle to backward
                     else if (!backward && backwardPressed)
                     {
-                        backward = true;
-                        CurrentGait = GaitState.Walk;
+                        // Increase wait time to prevent accidental walkback on rapid stop
+                        if (nowMs - lastGaitChangeMs > 600)
+                        {
+                            backward = true;
+                            CurrentGait = GaitState.Walk;
+
+                            lastGaitChangeMs = nowMs;
+                        }
                     }
                     // Switch from backward to forward
                     else if (backward && forwardPressed)
@@ -442,8 +469,8 @@ namespace Equus.Behaviors
                 {
                     IsInMidJump = true;
                     jumpNow = false;
-                    var esr = eagent.Properties.Client.Renderer as EntityShapeRenderer;
-                    if (esr != null) esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
+                    if (eagent.Properties.Client.Renderer is EntityShapeRenderer esr) 
+                        esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
 
                     nowControlMeta = rideableconfig.Controls["jump"];
                     nowControlMeta.EaseOutSpeed = (ForwardSpeed != 0) ? 30 : 40;
