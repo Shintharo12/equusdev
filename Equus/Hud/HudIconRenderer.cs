@@ -2,13 +2,8 @@
 using Equus.Behaviors;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
 namespace Equus.Hud
@@ -80,6 +75,8 @@ namespace Equus.Hud
             {
                 activeTexture = ebr.CurrentGait switch
                 {
+                    GaitState.Walkback => texturesDict["walk"],
+                    GaitState.Idle => texturesDict["walk"],
                     GaitState.Walk => texturesDict["walk"],
                     GaitState.Trot => texturesDict["trot"],
                     GaitState.Canter => texturesDict["canter"],
