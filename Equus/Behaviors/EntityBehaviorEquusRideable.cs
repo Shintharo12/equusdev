@@ -480,7 +480,7 @@ namespace Equus.Behaviors
                         esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
 
                     nowControlMeta = rideableconfig.Controls["jump"];
-                    nowControlMeta.EaseOutSpeed = (ForwardSpeed != 0) ? 30 : 40;
+                    if (ForwardSpeed != 0) nowControlMeta.EaseOutSpeed = 30;
 
                     foreach (var seat in Seats) seat.Passenger?.AnimManager?.StartAnimation(nowControlMeta.RiderAnim);
                     EntityPlayer entityPlayer = entity as EntityPlayer;
