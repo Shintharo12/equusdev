@@ -88,6 +88,54 @@
       "default": true
     },
     {
+      "code": "StaminaBarLocation",
+      "type": "string",
+      "ingui": "setting-stamina-bar-location",
+      "default": "AboveHealth"
+    },
+    {
+      "code": "StaminaBarWidthMultiplier",
+      "type": "float",
+      "ingui": "setting-stamina-bar-width-multiplier",
+      "default": 1.0
+    },
+    {
+      "code": "StaminaBarXOffset",
+      "type": "float",
+      "ingui": "setting-stamina-bar-x-offset",
+      "default": 0.0
+    },
+    {
+      "code": "StaminaBarYOffset",
+      "type": "float",
+      "ingui": "setting-stamina-bar-y-offset",
+      "default": 0.0
+    },
+    {
+      "code": "ShowHudIcon",
+      "type": "bool",
+      "ingui": "setting-show-hud-icon",
+      "default": true
+    },
+    {
+      "code": "IconOffsetX",
+      "type": "float",
+      "ingui": "setting-icon-offset-x",
+      "default": -400.0
+    },
+    {
+      "code": "IconOffsetY",
+      "type": "float",
+      "ingui": "setting-icon-offset-y",
+      "default": -99.0
+    },
+    {
+      "code": "IconSize",
+      "type": "float",
+      "ingui": "setting-icon-size",
+      "default": 42.0
+    },
+    {
       "code": "DebugMode",
       "type": "bool",
       "ingui": "setting-debug-mode",
