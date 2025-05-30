@@ -470,6 +470,7 @@
 			{ "code": "idle","animation": "Idle","animationSpeed": 1,"blendMode": "AddAverage","easeOutSpeed": 4,"triggeredBy": { "defaultAnim": true }},
 			{ "code": "idle-turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
 			{ "code": "idle-turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "jump", "animation": "Jump", "animationSpeed": 1.4, "weight": 100, "blendMode": "AddAverage", "easeOutSpeed": 40 },
 			{ "code": "sit","animation": "Sit","easeInSpeed": 4,"easeOutSpeed": 4,"blendMode": "Average"},
 			{ "code": "sleep","animation": "Sleep","easeInSpeed": 4,"easeOutSpeed": 4,"weight": 5,"blendMode": "Average"},
 			{ "code": "swim","animation": "Swim","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
