@@ -110,7 +110,7 @@ namespace Equus
 
         public void ReloadConfig(ICoreAPI api, bool isReload)
         {
-            (_fileWatcher ??= new FileWatcher()).Queued = true;
+            //(_fileWatcher ??= new FileWatcher()).Queued = true;
 
             try
             {
@@ -146,7 +146,7 @@ namespace Equus
                 Mod.Logger.Error(ex);
             }
 
-            api.Event.RegisterCallback(_ => _fileWatcher.Queued = false, 100);
+           // api.Event.RegisterCallback(_ => _fileWatcher.Queued = false, 100);
         }
     }
 }
