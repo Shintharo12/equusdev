@@ -2,24 +2,14 @@
   "profiles": {
     "Client": {
       "commandName": "Executable",
-<<<<<<< HEAD
-      "executablePath": "$(VINTAGE_STORY)/Vintagestory.exe",
-      "commandLineArgs": "--tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
-=======
       "executablePath": "dotnet",
       "commandLineArgs": "\"$(VINTAGE_STORY)/Vintagestory.dll\" --tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
->>>>>>> e88a7ed (parent 21c5aa91f01355abad3da9073b1b24aa0b9a1f14)
       "workingDirectory": "$(VINTAGE_STORY)"
     },
     "Server": {
       "commandName": "Executable",
-<<<<<<< HEAD
-      "executablePath": "$(VINTAGE_STORY)/VintagestoryServer.exe",
-      "commandLineArgs": "--tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
-=======
       "executablePath": "dotnet",
       "commandLineArgs": "\"$(VINTAGE_STORY)/VintagestoryServer.dll\" --tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
->>>>>>> e88a7ed (parent 21c5aa91f01355abad3da9073b1b24aa0b9a1f14)
       "workingDirectory": "$(VINTAGE_STORY)"
     }
   }
