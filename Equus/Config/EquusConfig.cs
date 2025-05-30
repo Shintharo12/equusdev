@@ -21,6 +21,10 @@ namespace Equus.Config
         public float GlobalSwimStaminaCostMultiplier { get; set; } = 1f;
         public float GlobalSprintStaminaCostMultiplier { get; set; } = 1f;
 
+        // Behaviors
+        public float BuckingChanceMultiplier { get; set; } = 0.5f;
+        public float BuckingDismountChanceMultiplier { get; set; } = 0.05f;
+
         // Hud
         public bool HideStaminaOnFull { get; set; } = true;
         public string StaminaBarLocation { get; set; } = "AboveHealth";

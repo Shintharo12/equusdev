@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -21,7 +22,8 @@ namespace Equus.Behaviors
         Walk,
         Trot,
         Canter,
-        Gallop
+        Gallop,
+        Buck
     }
 
     public class EntityBehaviorEquusRideable : EntityBehaviorRideable
@@ -34,11 +36,12 @@ namespace Equus.Behaviors
         protected bool lastSprintPressed = false;
         private float timeSinceLastLog = 0;
         private float timeSinceLastGaitCheck = 0;
+        private float timeSinceLastBuckCheck = 0;
         internal int minGeneration = 0; // Minimum generation for the equus to be rideable
+        private int buckCount = 0;
 
         ControlMeta curControlMeta = null;
         bool shouldMove = false;
-        bool isBucking = false;
 
         string curTurnAnim = null;
         EnumControlScheme scheme;
@@ -46,11 +49,13 @@ namespace Equus.Behaviors
 
         private static readonly List<GaitState> DefaultGaitOrder = new()
         {
+            GaitState.Walkback,
             GaitState.Idle,
             GaitState.Walk,
             GaitState.Trot,
             GaitState.Canter,
-            GaitState.Gallop
+            GaitState.Gallop,
+            GaitState.Buck
         };
 
         public List<GaitState> AvailableGaits = new();
@@ -61,6 +66,16 @@ namespace Equus.Behaviors
             set
             {
                 entity.WatchedAttributes.SetInt("currentgait", (int)value);
+                entity.WatchedAttributes.MarkPathDirty(AttributeKey);
+            }
+        }
+
+        public float TamingLevel
+        {
+            get => entity.WatchedAttributes.GetFloat("taminglevel");
+            set
+            {
+                entity.WatchedAttributes.SetFloat("taminglevel", value);
                 entity.WatchedAttributes.MarkPathDirty(AttributeKey);
             }
         }
@@ -94,9 +109,6 @@ namespace Equus.Behaviors
             }
 
             foreach (var val in rideableconfig.Controls.Values) { val.RiderAnim?.Init(); }
-
-            //// Add this additional check to ensure curb bit works on load
-            //updateControlScheme();
 
             api = entity.Api;
             capi = api as ICoreClientAPI;
@@ -151,11 +163,11 @@ namespace Equus.Behaviors
 
         private void updateControlScheme()
         {
-            var ebc = entity.GetBehavior<EntityBehaviorAttachable>();
-            if (ebc != null)
+            var eba = entity.GetBehavior<EntityBehaviorAttachable>();
+            if (eba != null)
             {
                 scheme = EnumControlScheme.Hold;
-                foreach (var slot in ebc.Inventory)
+                foreach (var slot in eba.Inventory)
                 {
                     if (slot.Empty) continue;
                     var sch = slot.Itemstack.ItemAttributes?["controlScheme"].AsString(null);
@@ -192,6 +204,7 @@ namespace Equus.Behaviors
 
             float yawMultiplier = CurrentGait switch
             {
+                GaitState.Walkback => 3.5F,
                 GaitState.Idle => 4f,
                 GaitState.Walk => 3.5f,
                 GaitState.Trot => 3f,
@@ -314,92 +327,117 @@ namespace Equus.Behaviors
                 long nowMs = entity.World.ElapsedMilliseconds;
 
                 #region Common controls across both schemes
-                if (forwardPressed && CurrentGait == GaitState.Idle) CurrentGait = GaitState.Walk; 
-
-                if (forward && sprintPressed && nowMs - lastGaitChangeMs > 300)
+                if (CurrentGait == GaitState.Buck)
                 {
-                    CurrentGait = CurrentGait switch
-                    {
-                        GaitState.Walk => GaitState.Trot,
-                        GaitState.Trot => GaitState.Canter,
-                        GaitState.Canter => GaitState.Gallop,
-                        GaitState.Gallop => GaitState.Canter,
-                        _ => GaitState.Idle
-                    };
+                    forward = false;
+                    backward = false;
 
-                    lastGaitChangeMs = nowMs;
-                }
-
-                if (backwardPressed && nowMs - lastGaitChangeMs > 300)
-                {
-                    switch (CurrentGait)
+                    // Chance based stop bucking and increase taming percent
+                    if (backwardPressed && api.World.Rand.NextDouble() < 0.01f)
                     {
-                        case GaitState.Gallop:
-                            CurrentGait = GaitState.Canter;
-                            break;
-                        case GaitState.Canter:
-                            CurrentGait = GaitState.Trot;
-                            break;
-                        case GaitState.Trot:
-                            CurrentGait = GaitState.Walk;
-                            break;
-                        case GaitState.Walk:
-                            forward = false;
-                            CurrentGait = GaitState.Idle;
-                            break;
-                        case GaitState.Idle:
-                            backward = true;
-                            CurrentGait = GaitState.Walkback;
-                            break;
+                        Stop();
+                        buckCount = 0;
+
+                        // Increase taming level by flat 10% plus a bonus for the number of bucks you held on
+                        TamingLevel += 0.1f + (buckCount * 0.025f);
                     }
 
-                    lastGaitChangeMs = nowMs;
-                }
-
-                prevSprintKey = nowSprint;
-                #endregion
-
-                if (scheme == EnumControlScheme.Hold)
-                {
-                    #region Snaffle bit controls (Hold scheme)
-                    forward = controls.Forward;
-                    backward = controls.Backward;
-                    #endregion
+                    // Allow turning during bucking
+                    if (canturn && (controls.Left || controls.Right))
+                    {
+                        float dir = controls.Left ? 1 : -1;
+                        angularMotion += str * dir * dt;
+                    }
                 }
                 else
                 {
-                    #region Curb bit controls (Press scheme)
-                    // Transition from idle to forward
-                    if (!forward && !backward && forwardPressed)
+                    if (forwardPressed && CurrentGait == GaitState.Idle) CurrentGait = GaitState.Walk;
+
+                    if (forward && sprintPressed && nowMs - lastGaitChangeMs > 300)
                     {
-                        forward = true;
-                        CurrentGait = GaitState.Walk;
-                    }
-                    // Switch from backward to idle
-                    else if (backward && forwardPressed)
-                    {
-                        backward = false;
-                        CurrentGait = GaitState.Idle;
+                        CurrentGait = CurrentGait switch
+                        {
+                            GaitState.Walk => GaitState.Trot,
+                            GaitState.Trot => GaitState.Canter,
+                            GaitState.Canter => GaitState.Gallop,
+                            GaitState.Gallop => GaitState.Canter,
+                            _ => GaitState.Idle
+                        };
+
+                        lastGaitChangeMs = nowMs;
                     }
 
-                    prevForwardKey = nowForwards;
-                    prevBackwardKey = nowBackwards;
+                    if (backwardPressed && nowMs - lastGaitChangeMs > 300)
+                    {
+                        switch (CurrentGait)
+                        {
+                            case GaitState.Gallop:
+                                CurrentGait = GaitState.Canter;
+                                break;
+                            case GaitState.Canter:
+                                CurrentGait = GaitState.Trot;
+                                break;
+                            case GaitState.Trot:
+                                CurrentGait = GaitState.Walk;
+                                break;
+                            case GaitState.Walk:
+                                forward = false;
+                                CurrentGait = GaitState.Idle;
+                                break;
+                            case GaitState.Idle:
+                                backward = true;
+                                CurrentGait = GaitState.Walkback;
+                                break;
+                        }
+
+                        lastGaitChangeMs = nowMs;
+                    }
+
+                    prevSprintKey = nowSprint;
                     #endregion
 
-                }
+                    if (scheme == EnumControlScheme.Hold)
+                    {
+                        #region Snaffle bit controls (Hold scheme)
+                        forward = controls.Forward;
+                        backward = controls.Backward;
+                        #endregion
+                    }
+                    else
+                    {
+                        #region Curb bit controls (Press scheme)
+                        // Transition from idle to forward
+                        if (!forward && !backward && forwardPressed)
+                        {
+                            forward = true;
+                            CurrentGait = GaitState.Walk;
+                        }
+                        // Switch from backward to idle
+                        else if (backward && forwardPressed)
+                        {
+                            backward = false;
+                            CurrentGait = GaitState.Idle;
+                        }
 
-                #region Motion update
-                if (canturn && (controls.Left || controls.Right))
-                {
-                    float dir = controls.Left ? 1 : -1;
-                    angularMotion += str * dir * dt;
+                        prevForwardKey = nowForwards;
+                        prevBackwardKey = nowBackwards;
+                        #endregion
+
+                    }
+
+                    #region Motion update
+                    if (canturn && (controls.Left || controls.Right))
+                    {
+                        float dir = controls.Left ? 1 : -1;
+                        angularMotion += str * dir * dt;
+                    }
+                    if (forward || backward)
+                    {
+                        float dir = forward ? 1 : -1;
+                        linearMotion += str * dir * dt * 2f;
+                    }
+                    #endregion
                 }
-                if (forward || backward)
-                {
-                    float dir = forward ? 1 : -1;
-                    linearMotion += str * dir * dt * 2f;
-                }
-                #endregion
             }
 
             return new Vec2d(linearMotion, angularMotion);
@@ -408,6 +446,10 @@ namespace Equus.Behaviors
         protected void UpdateRidingState()
         {
             if (!AnyMounted()) return;
+
+            ControlMeta nowControlMeta;
+
+            #region Jump handling                
 
             bool wasMidJump = IsInMidJump;
             IsInMidJump &= (entity.World.ElapsedMilliseconds - lastJumpMs < 500 || !entity.OnGround) && !entity.Swimming;
@@ -419,99 +461,106 @@ namespace Equus.Behaviors
                 eagent.AnimManager.StopAnimation(meta.Animation);
             }
 
-            eagent.Controls.Backward = ForwardSpeed < 0;
-            eagent.Controls.Forward = ForwardSpeed >= 0;
-            eagent.Controls.Sprint = CurrentGait == GaitState.Gallop && ForwardSpeed > 0;
-
+            #region Turning
             string nowTurnAnim = null;
             if (ForwardSpeed >= 0)
             {
-                if (AngularVelocity > 0.001) nowTurnAnim = "turn-left";                
+                if (AngularVelocity > 0.001) nowTurnAnim = "turn-left";
                 else if (AngularVelocity < -0.001) nowTurnAnim = "turn-right";
             }
+
             if (nowTurnAnim != curTurnAnim)
             {
                 if (curTurnAnim != null) eagent.StopAnimation(curTurnAnim);
                 eagent.StartAnimation((ForwardSpeed == 0 ? "idle-" : "") + (curTurnAnim = nowTurnAnim));
             }
+            #endregion
 
-            ControlMeta nowControlMeta;
+            #endregion
 
-            shouldMove = ForwardSpeed != 0;
-            if (!shouldMove && !jumpNow)
+            // Handle movement and animations based on current gait, bucking prevents forward/backward movement
+            if (CurrentGait != GaitState.Buck) 
             {
-                if (curControlMeta != null) Stop();
-                curAnim = rideableconfig.Controls[eagent.Swimming ? "swim" : "idle"].RiderAnim;
-                nowControlMeta = eagent.Swimming ? rideableconfig.Controls["swim"] : null;
-            }
-            else
-            {
-                string controlCode = eagent.Controls.Backward ? "walkback" : "walk";
+                eagent.Controls.Backward = ForwardSpeed < 0;
+                eagent.Controls.Forward = ForwardSpeed >= 0;
+                eagent.Controls.Sprint = CurrentGait == GaitState.Gallop && ForwardSpeed > 0;
 
-                switch (CurrentGait)
+                shouldMove = ForwardSpeed != 0;
+                if (!shouldMove && !jumpNow)
                 {
-                    case GaitState.Idle:
-                        controlCode = "idle";
-                        break;
-                    case GaitState.Walk:
-                        controlCode = eagent.Controls.Backward ? "walkback" : "walk";
-                        break;
-                    case GaitState.Trot:
-                        controlCode = "trot";
-                        break;
-                    case GaitState.Canter:
-                        controlCode = "canter";
-                        break;
-                    case GaitState.Gallop:
-                        controlCode = "sprint";
-                        break;
-                }
-
-                if (eagent.Swimming) controlCode = "swim";
-
-                nowControlMeta = rideableconfig.Controls[controlCode];
-                eagent.Controls.Jump = jumpNow;
-
-                if (jumpNow)
-                {
-                    IsInMidJump = true;
-                    jumpNow = false;
-                    if (eagent.Properties.Client.Renderer is EntityShapeRenderer esr) 
-                        esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
-
-                    nowControlMeta = rideableconfig.Controls["jump"];
-                    nowControlMeta.EaseOutSpeed = (ForwardSpeed != 0) ? 30 : 40;
-
-                    foreach (var seat in Seats) seat.Passenger?.AnimManager?.StartAnimation(nowControlMeta.RiderAnim);
-                    EntityPlayer entityPlayer = entity as EntityPlayer;
-                    IPlayer player = entityPlayer?.World.PlayerByUid(entityPlayer.PlayerUID);
-                    entity.PlayEntitySound("jump", player, false);
+                    if (curControlMeta != null) Stop();
+                    curAnim = rideableconfig.Controls[eagent.Swimming ? "swim" : "idle"].RiderAnim;
+                    nowControlMeta = eagent.Swimming ? rideableconfig.Controls["swim"] : null;
                 }
                 else
                 {
-                    curAnim = nowControlMeta.RiderAnim;
-                }
-            }
+                    string controlCode = eagent.Controls.Backward ? "walkback" : "walk";
 
-            if (nowControlMeta != curControlMeta)
-            {
-                if (curControlMeta != null && curControlMeta.Animation != "jump")
+                    switch (CurrentGait)
+                    {
+                        case GaitState.Idle:
+                            controlCode = "idle";
+                            break;
+                        case GaitState.Walk:
+                            controlCode = eagent.Controls.Backward ? "walkback" : "walk";
+                            break;
+                        case GaitState.Trot:
+                            controlCode = "trot";
+                            break;
+                        case GaitState.Canter:
+                            controlCode = "canter";
+                            break;
+                        case GaitState.Gallop:
+                            controlCode = "sprint";
+                            break;
+                    }
+
+                    if (eagent.Swimming) controlCode = "swim";
+
+                    nowControlMeta = rideableconfig.Controls[controlCode];
+                    eagent.Controls.Jump = jumpNow;
+
+                    if (jumpNow)
+                    {
+                        IsInMidJump = true;
+                        jumpNow = false;
+                        if (eagent.Properties.Client.Renderer is EntityShapeRenderer esr)
+                            esr.LastJumpMs = capi.InWorldEllapsedMilliseconds;
+
+                        nowControlMeta = rideableconfig.Controls["jump"];
+                        nowControlMeta.EaseOutSpeed = (ForwardSpeed != 0) ? 30 : 40;
+
+                        foreach (var seat in Seats) seat.Passenger?.AnimManager?.StartAnimation(nowControlMeta.RiderAnim);
+                        EntityPlayer entityPlayer = entity as EntityPlayer;
+                        IPlayer player = entityPlayer?.World.PlayerByUid(entityPlayer.PlayerUID);
+                        entity.PlayEntitySound("jump", player, false);
+                    }
+                    else
+                    {
+                        curAnim = nowControlMeta.RiderAnim;
+                    }
+                }
+
+                if (nowControlMeta != curControlMeta)
                 {
-                    eagent.StopAnimation(curControlMeta.Animation);
+                    if (curControlMeta != null && curControlMeta.Animation != "jump")
+                    {
+                        eagent.StopAnimation(curControlMeta.Animation);
+                    }
+
+                    curControlMeta = nowControlMeta;
+                    if (DebugMode) ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta?.Code}");
+                    if (nowControlMeta != null) eagent.AnimManager.StartAnimation(nowControlMeta);
                 }
 
-                curControlMeta = nowControlMeta;
-                if (DebugMode) ModSystem.Logger.Notification($"Side: {api.Side}, Meta: {nowControlMeta?.Code}");
-                if (nowControlMeta != null) eagent.AnimManager.StartAnimation(nowControlMeta);
-            }
+                // If entity has stamina let it know youre currently sprinting
+                if (ebs is not null) ebs.Sprinting = CurrentGait == GaitState.Gallop;
 
-            // If entity has stamina let it know youre currently sprinting
-            if (ebs is not null) ebs.Sprinting = CurrentGait == GaitState.Gallop;
-
-            if (api.Side == EnumAppSide.Server)
-            {
-                eagent.Controls.Sprint = false; // Uh, why does the elk speed up 2x with this on?
-            }
+                if (api.Side == EnumAppSide.Server)
+                {
+                    eagent.Controls.Sprint = false; // Uh, why does the elk speed up 2x with this on?
+                }
+            }            
         }
 
         /// <summary>
@@ -529,13 +578,7 @@ namespace Equus.Behaviors
             {
                 if (CurrentGait == GaitState.Gallop && !eagent.Swimming)
                 {
-                    if (ebs.Exhausted && capi?.World.Rand.NextDouble() > 0.1f)
-                    {
-                        isBucking = true;
-                    }
-
                     bool isTired = api.World.Rand.NextDouble() < GetStaminaDeficitMultiplier(ebs.Stamina, ebs.MaxStamina);
-
                     if (isTired)
                     {
                         CurrentGait = ebs.Stamina < 10 ? GaitState.Trot : GaitState.Canter;
@@ -547,6 +590,82 @@ namespace Equus.Behaviors
                 }
 
                 timeSinceLastGaitCheck = 0;
+            }
+        }
+
+        public void BuckAndDismountCheck(float dt)
+        {
+            if (!AnyMounted()) return;
+
+            if (api.Side != EnumAppSide.Server || ebs == null) return;
+
+            if (TamingLevel >= 1f) return; // If fully tamed, no bucking
+
+            timeSinceLastBuckCheck += dt;
+
+            if (timeSinceLastBuckCheck > 1f)
+            {
+                float tamingFactor = GetTamingLevelMultiplier(TamingLevel);
+                // Bucking: Happens more when wild
+                float buckChance = ModSystem.Config.BuckingChanceMultiplier * tamingFactor;
+                bool willBuck = api.World.Rand.NextDouble() < buckChance;
+
+                if (willBuck)
+                {
+                    ModSystem.Logger.Notification($"Buck Count: {buckCount}");
+                    ModSystem.Logger.Notification($"Buck Chance: {buckChance:F2}");
+
+                    var controlMeta = rideableconfig.Controls["buck"];
+                    foreach (var seat in Seats) seat.Passenger?.AnimManager?.StartAnimation(controlMeta.RiderAnim);
+
+                    var entityPlayer = entity as EntityPlayer;
+                    var player = entityPlayer?.World.PlayerByUid(entityPlayer.PlayerUID);
+                    entity.PlayEntitySound("jump", player, false);
+
+                    StopAndBuck();
+
+                    /// Dismount: More likely the longer you're being bucked
+                    float dismountChance = ModSystem.Config.BuckingDismountChanceMultiplier
+                        * tamingFactor             // Less likely when tamed
+                        * (1 + buckCount)          // Grows with time
+                        * (1 + buckCount) / 10f;   // Quadratic growth (divide to control pacing)
+                    bool willDismount = api.World.Rand.NextDouble() < dismountChance;
+                    // Chance to dismount
+                    if (willDismount)
+                    {
+                        ModSystem.Logger.Notification($"Buck Count: {buckCount}");
+                        ModSystem.Logger.Notification($"Dismount Chance: {dismountChance:F2}");
+
+                        // Stop the horse now
+                        Stop();
+
+                        foreach (var seat in Seats)
+                        {
+                            if (seat.Passenger is EntityPlayer plr)
+                            {
+                                if (plr.TryUnmount())
+                                {
+                                    buckCount = 0;
+                                    // ToDo: This is always false, figure out why
+                                    bool receivedDamage = plr.ReceiveDamage(new() {
+                                        Source = EnumDamageSource.Entity,
+                                        SourceEntity = seat.Entity,
+                                        SourcePos = seat.SeatPosition.AsBlockPos.ToVec3d(),
+                                        CauseEntity = plr,
+                                        Type = EnumDamageType.BluntAttack,
+                                        KnockbackStrength = 3f
+                                    }, 3f);
+
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                    buckCount++;
+                }
+
+                timeSinceLastBuckCheck = 0;
             }
         }
 
@@ -567,25 +686,29 @@ namespace Equus.Behaviors
             return deficit * deficit;  // Quadratic curve for gradual increase
         }
 
-        public void DismountViolently()
+        /// <summary>
+        /// Returns a value on a quadratic curve prortional to taming level
+        /// </summary>
+        /// <param name="tamingLevel"></param>
+        /// <returns></returns>
+        public static float GetTamingLevelMultiplier(float tamingLevel)
         {
-            var meta = rideableconfig.Controls["sprint"];
-            bool unmounted = false;
-            foreach (var seat in Seats)
-            {
-                EntityPlayer rider = seat.Passenger as EntityPlayer;
-                if (rider is null) return;
+            tamingLevel = GameMath.Clamp(tamingLevel, 0, 1);
+            return MathF.Pow(1 - tamingLevel, 1.5f); // Ease-out
+        }
 
-                seat.DoTeleportOnUnmount = false;
-                unmounted = rider.TryUnmount();
-                rider?.AnimManager?.StopAnimation(meta.RiderAnim.Animation);
-                rider?.AnimManager?.StartAnimation("knockbackland");
-            }
-
-            if (unmounted)
+        public void StopAndBuck()
+        {
+            CurrentGait = GaitState.Buck;
+            eagent.Controls.StopAllMovement();
+            eagent.Controls.WalkVector.Set(0, 0, 0);
+            eagent.Controls.FlyVector.Set(0, 0, 0);
+            shouldMove = false;
+            if (curControlMeta != null && curControlMeta.Animation != "jump")
             {
-                Stop();
+                eagent.StopAnimation(curControlMeta.Animation);
             }
+            eagent.StartAnimation("buck");
         }
 
         public new void Stop()
@@ -595,7 +718,7 @@ namespace Equus.Behaviors
             eagent.Controls.WalkVector.Set(0, 0, 0);
             eagent.Controls.FlyVector.Set(0, 0, 0);
             shouldMove = false;
-            if (curControlMeta != null && curControlMeta.Animation != "jump")
+            if (curControlMeta != null && curControlMeta.Animation != "jump" && curControlMeta.Animation != "buck")
             {
                 eagent.StopAnimation(curControlMeta.Animation);
             }
@@ -613,6 +736,8 @@ namespace Equus.Behaviors
             }
 
             StaminaGaitCheck(dt);
+
+            BuckAndDismountCheck(dt);
 
             UpdateRidingState();
 
@@ -767,6 +892,12 @@ namespace Equus.Behaviors
         {
             updateControlScheme();
             CurrentGait = GaitState.Idle;
+        }
+
+        public override void GetInfoText(StringBuilder infotext)
+        {
+            base.GetInfoText(infotext);
+            infotext.AppendLine(Lang.Get("equus:infotext-taming-state", TamingLevel * 100));
         }
     }
 }

@@ -43,5 +43,6 @@
 
   "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
   "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
-  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}"
+  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}",
+  "infotext-taming-state": "{0:0.##}% Tamed"
 }
