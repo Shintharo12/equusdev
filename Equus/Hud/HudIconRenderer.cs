@@ -71,7 +71,7 @@ namespace Equus.Hud
         {
             EntityPlayer player = capi.World.Player.Entity;
 
-            if (player.MountedOn?.MountSupplier.OnEntity.GetBehavior<EntityBehaviorRideable>() is EntityBehaviorEquusRideable ebr)
+            if (player.MountedOn?.MountSupplier?.OnEntity?.GetBehavior<EntityBehaviorRideable>() is EntityBehaviorEquusRideable ebr)
             {
                 activeTexture = ebr.CurrentGait switch
                 {
