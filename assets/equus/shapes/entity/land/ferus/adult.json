@@ -2230,7 +2230,7 @@
 				}
 			]
 		},
-		
+
 		{
 			"name": "Hurt",
 			"code": "hurt",
@@ -2426,10 +2426,10 @@
 						"R heelH": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 28.0 },
 						"R hoofH": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 25.0 },
 						"R Femur": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -22.0 },
-						"Head Origin": { "rotationX": 0.0, "rotationY": 3.0, "rotationZ": -10.0 },
+						"Head Origin": { "rotationX": 0.0, "rotationY": 3.0, "rotationZ": 3.0 },
 						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -3.0 },
 						"L Pelvis": { "offsetX": 0.0, "offsetY": -0.422, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -4.7143 },
-						"R Pelvis": { "offsetX": -0.73, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 },
+						"R Pelvis": { "offsetX": -1.83, "offsetY": -1.1, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 },
 						"Chest": { "rotationX": 3.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"tail": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 72.0 },
 						"Ear R": { "rotationX": 6.0, "rotationY": -133.0, "rotationZ": 75.0 },
@@ -2446,7 +2446,7 @@
 						"L humerus": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 14.0 },
 						"L cannon": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 116.0 },
 						"L Pelvis": { "offsetX": 0.0, "offsetY": -0.266, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -3.0 },
-						"R Pelvis": { "offsetX": -0.55, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 17.0 },
+						"R Pelvis": { "offsetX": -0.95, "offsetY": -0.3, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 17.0 },
 						"R Femur": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -17.0 },
 						"R Tibia": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -3.0 },
 						"R cannonH": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -6.0 },
@@ -2517,7 +2517,8 @@
 						"L hoof": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 30.0 },
 						"R heelH": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 25.0 },
 						"Chest": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 10.0 },
-						"tail": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 58.0 }
+						"tail": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 58.0 },
+						"Head Origin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -14.0 }
 					}
 				},
 				{
@@ -2540,11 +2541,10 @@
 						"R heelH": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 89.0 },
 						"R cannon": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 6.0 },
 						"R radius": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -11.0 },
-						"Head Origin": { "rotationX": 0.0, "rotationY": -3.0, "rotationZ": 10.0 },
 						"Chest": { "rotationX": -3.0, "rotationY": 0.0, "rotationZ": 6.129 },
 						"tail": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 61.0 },
 						"Hind": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 6.0 },
-						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 11.0 },
+						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 },
 						"Ear L": { "rotationX": 0.0, "rotationY": 136.0, "rotationZ": 102.0 },
 						"Ear R": { "rotationX": 6.0, "rotationY": -133.0, "rotationZ": 100.0 }
 					}
@@ -2604,7 +2604,7 @@
 						"R cannon": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 97.0 },
 						"R radius": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -89.0 },
 						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
-						"Head Origin": { "rotationX": 0.0, "rotationY": 1.32, "rotationZ": -17.0 }
+						"Head Origin": { "rotationX": 0.0, "rotationY": 1.32, "rotationZ": 3.0 }
 					}
 				}
 			]
