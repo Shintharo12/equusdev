@@ -18,7 +18,7 @@ namespace Equus.Config
         public float GlobalSprintStaminaCostMultiplier { get; set; } = 1f;
 
         // Hud
-        public bool HideStaminaOnFull { get; set; } = true;
+        public bool HideStaminaOnFull { get; set; } = false;
         public string StaminaBarLocation { get; set; } = "AboveHealth";
         public float StaminaBarWidthMultiplier { get; set; } = 1f;
         public float StaminaBarXOffset { get; set; } = 0f;
