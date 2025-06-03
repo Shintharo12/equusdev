@@ -328,12 +328,11 @@ namespace Equus.Behaviors
 
         public override void GetInfoText(StringBuilder infotext)
         {
-            var capi = entity.Api as ICoreClientAPI;
+            if (entity.Api is not ICoreClientAPI capi) return;
 
-            infotext.AppendLine(Lang.Get("equus:infotext-stamina-state", Stamina, AdjustedMaxStamina));
-
-            if (capi?.World.Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
+            if (capi.World.Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative || capi.Settings.Bool["extendedDebugInfo"])
             {
+                infotext.AppendLine(Lang.Get("equus:infotext-stamina-state", Stamina, AdjustedMaxStamina));
                 infotext.AppendLine(Lang.Get("equus:infotext-stamina-sprint-fatigue", SprintFatigue));
                 infotext.AppendLine(Lang.Get("equus:infotext-stamina-swim-fatigue", SwimFatigue));
             }
