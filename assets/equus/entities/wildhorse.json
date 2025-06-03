@@ -412,7 +412,7 @@
 		"behaviors": [
 			{ "code": "repulseagents" },
 			{ "code": "controlledphysics","stepHeight": 3.1251},
-			{ "code": "mortallywoundable" },
+			{ "code": "mortallywoundable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "floatupwhenstuck","onlyWhenDead": true},
 			{ "code": "interpolateposition" },
 			{ "code": "health" },
@@ -422,8 +422,8 @@
 			{ "code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
 			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
-			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
-			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false}},
+			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
+			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "ropetieable" },
 			{ "code": "equus:stamina" }
 		],
