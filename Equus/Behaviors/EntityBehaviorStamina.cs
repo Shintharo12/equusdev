@@ -161,7 +161,7 @@ namespace Equus.Behaviors
 
         public override void Initialize(EntityProperties properties, JsonObject typeAttributes)
         {
-            if (DebugMode) ModSystem.Logger.Notification($"{ModSystem.ModId} - Initializing stamina behavior for {0}", entity.EntityId);
+            if (DebugMode) ModSystem.Logger.Notification(Lang.Get("equus:debug-stamina-init", entity.EntityId));
 
             // Initialize common fatigue sources
             SprintFatigueSource = new()

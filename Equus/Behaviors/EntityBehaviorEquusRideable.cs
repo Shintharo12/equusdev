@@ -79,6 +79,8 @@ namespace Equus.Behaviors
 
         public override void Initialize(EntityProperties properties, JsonObject attributes)
         {
+            if (DebugMode) ModSystem.Logger.Notification(Lang.Get("equus:debug-rideable-init", entity.EntityId));
+
             base.Initialize(properties, attributes);
 
             rideableconfig = attributes.AsObject<RideableConfig>();

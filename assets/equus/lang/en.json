@@ -2,6 +2,11 @@
   "game:creaturegroup-wildhorse": "Wild horses",
   "game:tabname-equus": "Equus",
 
+  "debug-stamina-init": "[Equus] Initializing stamina behavior for entity {0}",
+  "debug-rideable-init": "[Equus] Initializing rideable behavior for entity {0}",
+
+  "ingame-error-too-wild": "This animal is too wild to ride",
+
   "setting-drop-multiplier":"Mob drop multiplier",
   "setting-worldgen-spawnrate-ferus":"Worldgen ferus spawnrate",
   "setting-runtime-spawnrate":"Runtime spawnrate",
@@ -42,14 +47,14 @@
   "game:prefixandcreature-wildhorsebabyfemaleferus": "a wild horse filly",
   "game:prefixandcreature-wildhorsebabymaleferus": "a wild horse colt",
 
+  "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
+  "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
+  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}"
+
   "game:itemdesc-hoovedwearables-face-face*": "Place on the brow of a tamed elk or horse to claim ownership. You can only claim one mount at a time.",
   "game:itemdesc-hoovedwearables-head-bridle1": "Useful for precise, short distance travel. Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-head-bridle2": "Useful for long distance travel. Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-middleback-saddle1": "Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Suitable for: elk, horse",
-  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse",
-
-  "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
-  "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
-  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}"
+  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse"
 }
