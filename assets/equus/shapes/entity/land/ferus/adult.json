@@ -3338,8 +3338,8 @@
 					"frame": 0,
 					"elements": {
 						"Origin": { "offsetX": 0.0, "offsetY": 0.8, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -6.0 },
-						"Head Origin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
-						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 },
+						"Head Origin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 8.0 },
+						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"Chest": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 },
 						"Hind": { "rotationX": -1.0, "rotationY": 0.0, "rotationZ": -3.0 },
 						"tail": { "rotationX": 0.0, "rotationY": -3.0, "rotationZ": 36.0 },
@@ -3435,15 +3435,15 @@
 						"Ear L": { "rotationX": 0.0, "rotationY": 42.0, "rotationZ": 8.0 },
 						"Ear R": { "rotationX": 0.0, "rotationY": -28.0, "rotationZ": 0.0 },
 						"tail8": { "rotationX": 1.9091, "rotationY": 0.0, "rotationZ": 11.0 },
-						"tail7": { "rotationX": -0.75, "rotationY": 0.0, "rotationZ": 6.0 }
+						"tail7": { "rotationX": -0.75, "rotationY": 0.0, "rotationZ": 6.0 },
+						"Head Origin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -3.0 },
+						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 8.0 }
 					}
 				},
 				{
 					"frame": 24,
 					"elements": {
 						"Origin": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 7.0 },
-						"Neck1": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
-						"Head Origin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -11.0 },
 						"Chest": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -3.0 },
 						"Hind": { "rotationX": 1.0, "rotationY": 0.0, "rotationZ": 3.0 },
 						"tail": { "rotationX": 0.0, "rotationY": 3.0, "rotationZ": -8.0 },
