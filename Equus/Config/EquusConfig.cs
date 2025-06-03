@@ -8,10 +8,6 @@ namespace Equus.Config
 {
     public class EquusConfig
     {
-        // Spawn rates
-        public float WorldGenSpawnRateFerus { get; set; } = 0.002f;
-        public float RuntimeSpawnRateFerus { get; set; } = 0.00005f;
-
         // Stamina
         public bool EnableStamina { get; set; } = true;
         public float GlobalMaxStaminaMultiplier { get; set; } = 1f;
@@ -33,7 +29,7 @@ namespace Equus.Config
         public float IconSize { get; set; } = 42f;
 
         // Debugging
-        public bool DebugMode { get; set; } = true;
+        public bool DebugMode { get; set; } = false;
 
     }
 }
