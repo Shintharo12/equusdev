@@ -67,6 +67,11 @@ namespace Equus.Behaviors
             }
         }
 
+        public float AdjustedMaxStamina
+        {
+            get => MaxStamina * ModSystem.Config.GlobalMaxStaminaMultiplier;
+        }
+
         public float SprintFatigue
         {
             get => StaminaTree?.GetFloat("sprintfatigue") ?? 1f;
@@ -254,7 +259,7 @@ namespace Equus.Behaviors
         public void RegenerateStamina(float elapsedTime)
         {
             var stamina = Stamina;  // better performance to read this TreeAttribute only once
-            var maxStamina = MaxStamina;
+            var maxStamina = AdjustedMaxStamina;
 
             var ebh = entity.GetBehavior<EntityBehaviorHealth>();
 
@@ -318,14 +323,14 @@ namespace Equus.Behaviors
             if (fatigue <= 0) return;
 
             var fatigueRate = BaseFatigueRate * fatigue;
-            Stamina = GameMath.Clamp(Stamina - fatigueRate, 0, MaxStamina);
+            Stamina = GameMath.Clamp(Stamina - fatigueRate, 0, AdjustedMaxStamina);
         }
 
         public override void GetInfoText(StringBuilder infotext)
         {
             var capi = entity.Api as ICoreClientAPI;
 
-            infotext.AppendLine(Lang.Get("equus:infotext-stamina-state", Stamina, MaxStamina));
+            infotext.AppendLine(Lang.Get("equus:infotext-stamina-state", Stamina, AdjustedMaxStamina));
 
             if (capi?.World.Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
             {
