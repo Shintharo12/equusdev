@@ -2,17 +2,13 @@
   "game:creaturegroup-wildhorse": "Wild horses",
   "game:tabname-equus": "Equus",
 
-  "setting-drop-multiplier":"Mob drop multiplier",
-  "setting-worldgen-spawnrate-ferus":"Worldgen ferus spawnrate",
-  "setting-runtime-spawnrate":"Runtime spawnrate",
-  "setting-runtime-spawnrate-ferus":"Runtime ferus spawnrate",
-  "setting-enable-stamina":"Enable stamina",
-  "setting-max-stamina":"Max stamina",
-  "setting-stamina-regen-speed":"Global stamina regen multiplier",
-  "setting-sprint-stamina-cost":"Global sprint stamina multiplier",
-  "setting-swim-stamina-cost":"Global swim stamina multiplier",
-  "setting-hide-stamina-on-full":"Hide stamina on full",
-  "setting-debug-mode":"Debug mode",
+  "debug-stamina-init": "[Equus] Initializing stamina behavior for entity {0}",
+  "debug-rideable-init": "[Equus] Initializing rideable behavior for entity {0}",
+
+  "ingame-error-too-wild": "This animal is too wild to ride",
+
+  "setting-worldgen-spawnrate-ferus":"Worldgen spawnrate for wild horses",
+  "setting-runtime-spawnrate":"Runtime spawnrate for wild horses",
 
   "item-creature-wildhorse-adult-female-ferus": "Wild horse mare",
   "item-creature-wildhorse-adult-male-ferus": "Wild horse stallion",
@@ -28,6 +24,10 @@
   "game:prefixandcreature-wildhorseadultmaleferus": "a wild horse stallion",
   "game:prefixandcreature-wildhorsebabyfemaleferus": "a wild horse filly",
   "game:prefixandcreature-wildhorsebabymaleferus": "a wild horse colt",
+
+  "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
+  "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
+  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}",
 
   "game:itemdesc-hoovedwearables-face-face*": "Place on the brow of a tamed elk or horse to claim ownership. You can only claim one mount at a time.",
   "game:itemdesc-hoovedwearables-head-bridle1": "Useful for precise, short distance travel. Suitable for: elk, horse",

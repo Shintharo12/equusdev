@@ -1,74 +1,83 @@
-   [
+  [
     {
-    "op": "remove",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
-    "file": "game:itemtypes/wearable/hooved.json",
-    "side": "Server"
+      "op": "remove",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
+      "file": "game:itemtypes/wearable/hooved.json",
+      "side": "Server"
     },
     {
-    "file": "game:itemtypes/wearable/hooved.json",
-    "op": "addmerge",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*-ferus",
-        "side": "Server",
-    "value": {
-      "base": "equus:item/wearable/{type}-ferus"
+      "file": "game:itemtypes/wearable/hooved.json",
+      "op": "addmerge",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*-ferus",
+      "side": "Server",
+      "value": {
+        "base": "equus:item/wearable/{type}-ferus"
+      }
+    },
+    {
+      "op": "addmerge",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
+      "value": {
+        "base": "game:item/wearable/hooved/{type}-elk"
+      },
+      "file": "game:itemtypes/wearable/hooved.json",
+      "side": "Server"
+    },
+    {
+      "file": "game:itemtypes/wearable/hooved.json",
+      "op": "addmerge",
+      "path": "/creativeinventory",
+      "side": "Universal",
+      "value": {
+        "equus": ["*"]
+      }
+    },
+    {
+      "op": "remove",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*",
+      "file": "game:itemtypes/wearable/blanket.json",
+      "side": "Server"
+    },
+    {
+      "op": "remove",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
+      "file": "game:itemtypes/wearable/blanket.json",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*-ferus",
+      "value": {
+        "base": "equus:item/wearable/blanket1-ferus"
+      },
+      "file": "game:itemtypes/wearable/blanket.json",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*-ferus",
+      "value": {
+        "base": "equus:item/wearable/blanket2-ferus"
+      },
+      "file": "game:itemtypes/wearable/blanket.json",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
+      "value": {
+        "base": "item/wearable/hooved/blanket1-elk"
+      },
+      "file": "game:itemtypes/wearable/blanket.json",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*",
+      "value": {
+        "base": "item/wearable/hooved/blanket2-elk"
+      },
+      "file": "game:itemtypes/wearable/blanket.json",
+      "side": "Server"
     }
-  },
-  {
-    "op": "addmerge",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
-    "value": {
-      "base": "game:item/wearable/hooved/{type}-elk"
-    },
-    "file": "game:itemtypes/wearable/hooved.json",
-    "side": "Server"
-  },
-  {
-    "op": "remove",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*",
-    "file": "game:itemtypes/wearable/blanket.json",
-    "side": "Server"
-  },
-  {
-    "op": "remove",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
-    "file": "game:itemtypes/wearable/blanket.json",
-    "side": "Server"
-  },
-  {
-    "op": "addmerge",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*-ferus",
-    "value": {
-      "base": "equus:item/wearable/blanket1-ferus"
-    },
-    "file": "game:itemtypes/wearable/blanket.json",
-    "side": "Server"
-  },
-  {
-    "op": "addmerge",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*-ferus",
-    "value": {
-      "base": "equus:item/wearable/blanket2-ferus"
-    },
-    "file": "game:itemtypes/wearable/blanket.json",
-    "side": "Server"
-  },
-  {
-    "op": "addmerge",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
-    "value": {
-      "base": "item/wearable/hooved/blanket1-elk"
-    },
-    "file": "game:itemtypes/wearable/blanket.json",
-    "side": "Server"
-  },
-  {
-    "op": "addmerge",
-    "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*",
-    "value": {
-      "base": "item/wearable/hooved/blanket2-elk"
-    },
-    "file": "game:itemtypes/wearable/blanket.json",
-    "side": "Server"
-  }
-]
+  ]
