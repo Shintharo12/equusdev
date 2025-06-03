@@ -27,7 +27,7 @@
 
   "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
   "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
-  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}"
+  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}",
 
   "game:itemdesc-hoovedwearables-face-face*": "Place on the brow of a tamed elk or horse to claim ownership. You can only claim one mount at a time.",
   "game:itemdesc-hoovedwearables-head-bridle1": "Useful for precise, short distance travel. Suitable for: elk, horse",
