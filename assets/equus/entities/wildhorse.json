@@ -35,9 +35,9 @@
 			"sprintFatigue": 0.2,
 			"swimFatigue": 0.2,
 			"baseFatigueRate": 1,
-            "staminaRegenRate": 1,
-            "regenPenaltyWounded": 0.5,
-            "regenPenaltyRiding": 0.3
+			"staminaRegenRate": 1,
+			"regenPenaltyWounded": 0.5,
+			"regenPenaltyRiding": 0.3
 		}
 	},
 	"behaviorConfigs": {
@@ -231,39 +231,39 @@
 					}
 				},
 				"canter":  {
-                    "animation": "Canter",
-                    "weight": 10,
-                    "movespeedByType": {
-                        "*-ferus": 0.07625
-                    },
-                    "animationSpeedByType": {
-                        "*-ferus": 2.2,
-                        "*": 2.2
-                    },
-                    "blendMode": "Average",
-                    "riderAnim": {
-                        "animation": "rideelk-run",
-                        "animationSpeed": 1,
-                        "weight": 1,
-                        "withFpVariant": true,
-                        "blendMode": "Average",
-                        "elementWeight": {
-                            "LowerTorso": 80,
-                            "UpperTorso": 80,
-                            "UpperFootR": 80,
-                            "UpperFootL": 80,
-                            "LowerFootR": 80,
-                            "LowerFootL": 80
-                        },
-                        "elementBlendMode": {
-                            "LowerTorso": "Average",
-                            "UpperTorso": "Average",
-                            "UpperFootR": "Average",
-                            "UpperFootL": "Average",
-                            "LowerFootR": "Average",
-                            "LowerFootL": "Average"
-                        }
-                    }
+					"animation": "Canter",
+					"weight": 10,
+					"movespeedByType": {
+						"*-ferus": 0.07625
+					},
+					"animationSpeedByType": {
+						"*-ferus": 2.2,
+						"*": 2.2
+					},
+					"blendMode": "Average",
+					"riderAnim": {
+						"animation": "rideelk-run",
+						"animationSpeed": 1,
+						"weight": 1,
+						"withFpVariant": true,
+						"blendMode": "Average",
+						"elementWeight": {
+							"LowerTorso": 80,
+							"UpperTorso": 80,
+							"UpperFootR": 80,
+							"UpperFootL": 80,
+							"LowerFootR": 80,
+							"LowerFootL": 80
+						},
+						"elementBlendMode": {
+							"LowerTorso": "Average",
+							"UpperTorso": "Average",
+							"UpperFootR": "Average",
+							"UpperFootL": "Average",
+							"LowerFootR": "Average",
+							"LowerFootL": "Average"
+						}
+					}
 				},
 				"sprint": {
 					"animation": "Gallop",
@@ -303,7 +303,7 @@
 				},
 				"jump": {
 					"animation": "Jump",
-				    "weight": 100,
+					"weight": 100,
 					"blendMode": "Average",
 					"animationSpeed": 1.4,
 					"easeOutSpeed": 40,
@@ -356,55 +356,55 @@
 		},
 		"textureByType": {
 			"*-ferus": { "base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
-                { "base": "entity/ferus/grullo"},
-                { "base": "entity/ferus/mealy-reddun"},
-                { "base": "entity/ferus/bay"},
-                { "base": "entity/ferus/black"},
-                { "base": "entity/ferus/chestnut"},
-                { "base": "entity/ferus/buckskin"},
-                { "base": "entity/ferus/black"},
-                { "base": "entity/ferus/palomino"},
-                { "base": "entity/ferus/baydun"},
-                { "base": "entity/ferus/grullo"},
-                { "base": "entity/ferus/reddun"},
-                { "base": "entity/ferus/dunskin"},
-                { "base": "entity/ferus/grullo"},
-                { "base": "entity/ferus/dunalino"},
-                { "base": "entity/ferus/mealy-bay"},
-                { "base": "entity/ferus/black"},
-                { "base": "entity/ferus/mealy-chestnut"},
-                { "base": "entity/ferus/bay-leopard"},
-                { "base": "entity/ferus/black-leopard"},
-                { "base": "entity/ferus/chestnut-leopard"},
-                { "base": "entity/ferus/baydun-leopard"},
-                { "base": "entity/ferus/grullo-leopard"},
-                { "base": "entity/ferus/reddun-leopard"},
-                { "base": "entity/ferus/cremello"},
-                { "base": "entity/ferus/mealy-baydun", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/mealy-reddun", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/bay-roan"},
-                { "base": "entity/ferus/blue-roan"},
-                { "base": "entity/ferus/red-roan"},
-                { "base": "entity/ferus/buckskin", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/palomino", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/baydun", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/reddun", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/dunskin", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/dunalino", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/mealy-bay", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/mealy-chestnut", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/bay-leopard", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/black-leopard", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/chestnut-leopard", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/baydun-leopard", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/grullo-leopard", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/reddun-leopard", "overlays": [ "entity/ferus/roan" ] },
-                { "base": "entity/ferus/cremello", "overlays": [ "entity/ferus/roan" ] } ]}
+				{ "base": "entity/ferus/grullo"},
+				{ "base": "entity/ferus/mealy-reddun"},
+				{ "base": "entity/ferus/bay"},
+				{ "base": "entity/ferus/black"},
+				{ "base": "entity/ferus/chestnut"},
+				{ "base": "entity/ferus/buckskin"},
+				{ "base": "entity/ferus/black"},
+				{ "base": "entity/ferus/palomino"},
+				{ "base": "entity/ferus/baydun"},
+				{ "base": "entity/ferus/grullo"},
+				{ "base": "entity/ferus/reddun"},
+				{ "base": "entity/ferus/dunskin"},
+				{ "base": "entity/ferus/grullo"},
+				{ "base": "entity/ferus/dunalino"},
+				{ "base": "entity/ferus/mealy-bay"},
+				{ "base": "entity/ferus/black"},
+				{ "base": "entity/ferus/mealy-chestnut"},
+				{ "base": "entity/ferus/bay-leopard"},
+				{ "base": "entity/ferus/black-leopard"},
+				{ "base": "entity/ferus/chestnut-leopard"},
+				{ "base": "entity/ferus/baydun-leopard"},
+				{ "base": "entity/ferus/grullo-leopard"},
+				{ "base": "entity/ferus/reddun-leopard"},
+				{ "base": "entity/ferus/cremello"},
+				{ "base": "entity/ferus/mealy-baydun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/mealy-reddun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/bay-roan"},
+				{ "base": "entity/ferus/blue-roan"},
+				{ "base": "entity/ferus/red-roan"},
+				{ "base": "entity/ferus/buckskin", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/palomino", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/baydun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/reddun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/dunskin", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/dunalino", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/mealy-bay", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/mealy-chestnut", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/bay-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/black-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/chestnut-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/baydun-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/reddun-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/cremello", "overlays": [ "entity/ferus/roan" ] } ]}
 		},
 		"sizeByType": {
 			"*-adult-female-ferus": 1,"*-adult-male-ferus": 1.05,"*-baby-*-ferus": 1
@@ -426,7 +426,7 @@
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "ropetieable" },
 			{ "code": "equus:stamina" },
-            { code: "genelib.info", showtagonlywhentargeted: true }
+			{ "code": "genelib.info", "showtagonlywhentargeted": true }
 		],
 		"animations": [
 			{ "code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
@@ -455,9 +455,9 @@
 	"server": {
 		"attributes": {
 			"pathfinder": {
-                "minTurnAnglePerSec": 350,
-                "maxTurnAnglePerSec": 650
-            }
+				"minTurnAnglePerSec": 350,
+				"maxTurnAnglePerSec": 650
+			}
 		},
 		"behaviors": [
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}},
@@ -573,15 +573,15 @@
 				"aiCreatureType": "LandCreature",
 				"aitasks": [
 					{
-                        "code": "cometoowner",
-                        "priority": 4,
-                        "animation": "trot",
-                        "animationSpeed": 1.35,
-                        "movespeed": 0.019,
-                        "teleportMaxRange": 1000,
-                        "teleportAfterRange": 200,
-                        "teleportToRange": 20
-                    },
+						"code": "cometoowner",
+						"priority": 4,
+						"animation": "trot",
+						"animationSpeed": 1.35,
+						"movespeed": 0.019,
+						"teleportMaxRange": 1000,
+						"teleportAfterRange": 200,
+						"teleportToRange": 20
+					},
 					{
 						"code": "meleeattack",
 						"animation": "Attack",
@@ -777,13 +777,13 @@
 					}
 				]
 			},
-            { "code": "pettable", "minGeneration": 1},
-            { "code": "selectionboxes", "minGeneration": 2 },
+			{ "code": "pettable", "minGeneration": 1},
+			{ "code": "selectionboxes", "minGeneration": 2 },
 			{ "code": "rideableaccessories", "minGeneration": 2 },
 			{ "code": "equus:rideable" },
 			{ "code": "equus:stamina" },
-            { "code": "ropetieable" },
-            { code: "genelib.info", showtagonlywhentargeted: true }
+			{ "code": "ropetieable" },
+			{ "code": "genelib.info", "showtagonlywhentargeted": true }
 		],
 		"spawnconditions": {
 			"worldgen": {
