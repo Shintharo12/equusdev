@@ -1,6 +1,6 @@
 {
 	"editor": {
-		"collapsedPaths": ",Root/Origin/Head Origin/Cube5,Root/Origin/Head Origin/Cube2,Root/Origin/Body Origin/Chest/Neck1/Neck2/Neck3,Root/Origin/Head Origin/Cube7,Root/R scapula,Root/R Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Neck3/Head Origin,Root/Origin/Body Origin/Belly/Chest/Neck1/mane,Root/L Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear R,Root/Origin/Cube2,Root/Origin/Body Origin/Chest/Neck1/Neck2,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear L,Root/L scapula,Root/Origin/Head Origin",
+		"collapsedPaths": ",Root/Origin/Head Origin/Cube5,Root/Origin/Head Origin/Cube2,Root/Origin/Body Origin/Chest/Neck1/Neck2/Neck3,Root/Origin/Head Origin/Cube7,Root/R scapula,Root/R Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Neck3/Head Origin,Root/Origin/Body Origin/Belly/Chest/Neck1/mane,Root/L Pelvis,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear R,Root/Origin/Cube2,Root/Origin/Body Origin/Belly/Cube3,Root/Origin/Body Origin/Chest/Neck1/Neck2,Root/Origin/Body Origin/Belly/Chest/Neck1/Head Origin/Ear L,Root/L scapula,Root/Origin/Head Origin",
 		"allAngles": true,
 		"entityTextureMode": true
 	},
@@ -195,12 +195,12 @@
 									"children": [
 										{
 											"name": "Neck1",
-											"from": [ -0.7329, 3.67, 1.9 ],
-											"to": [ 7.9671, 11.67, 7.9 ],
+											"from": [ -0.7329, 3.67, 1.8 ],
+											"to": [ 7.9671, 11.67, 7.8 ],
 											"unwrapMode": 7,
 											"unwrapRotation": 1,
 											"uv": [ 57.25, 54.5 ],
-											"rotationOrigin": [ 3.4671, 6.2699, 4.8 ],
+											"rotationOrigin": [ 3.4671, 6.2699, 4.7 ],
 											"rotationZ": 92.5,
 											"faces": {
 												"north": { "texture": "#skin", "uv": [ 71.5, 62.5, 79.5, 71.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
@@ -212,31 +212,13 @@
 											},
 											"children": [
 												{
-													"name": "Cube3",
-													"from": [ 6.61, 1.16, 0.5 ],
-													"to": [ 10.61, 3.56, 5.5 ],
-													"unwrapMode": 7,
-													"unwrapRotation": 1,
-													"uv": [ 93.0, 4.0 ],
-													"rotationOrigin": [ 6.6077, 1.1606, 0.5 ],
-													"rotationZ": -119.0,
-													"faces": {
-														"north": { "texture": "#skin", "uv": [ 100.0, 6.0, 102.0, 10.0 ], "rotation": 90 },
-														"east": { "texture": "#skin", "uv": [ 95.0, 10.0, 100.0, 12.0 ] },
-														"south": { "texture": "#skin", "uv": [ 93.0, 6.0, 95.0, 10.0 ], "rotation": 270 },
-														"west": { "texture": "#skin", "uv": [ 95.0, 4.0, 100.0, 6.0 ], "rotation": 180 },
-														"up": { "texture": "#skin", "uv": [ 95.0, 6.0, 100.0, 10.0 ], "rotation": 270 },
-														"down": { "texture": "#skin", "uv": [ 102.0, 6.0, 107.0, 10.0 ], "rotation": 90 }
-													}
-												},
-												{
 													"name": "Neck3",
-													"from": [ 2.9, 6.0, 1.2 ],
+													"from": [ 2.9, 6.0, 1.3 ],
 													"to": [ 8.8, 19.0, 4.9 ],
 													"unwrapMode": 7,
 													"unwrapRotation": 1,
 													"uv": [ 31.5, 9.75 ],
-													"rotationOrigin": [ 10.3, 4.7, 4.8 ],
+													"rotationOrigin": [ 10.3, 4.7, 4.9 ],
 													"rotationZ": 3.0,
 													"faces": {
 														"north": { "texture": "#skin", "uv": [ 48.0, 23.0, 61.0, 28.5 ], "rotation": 90 },
@@ -250,7 +232,7 @@
 														{
 															"name": "Cube2",
 															"from": [ -3.2953, -0.4, 0.15 ],
-															"to": [ 1.1047, 11.4, 3.55 ],
+															"to": [ 1.1047, 11.4, 3.45 ],
 															"unwrapMode": 7,
 															"unwrapRotation": 1,
 															"uv": [ 55.25, 1.9 ],
@@ -729,6 +711,42 @@
 											"rotationX": "0.0","rotationY": "0.0","rotationZ": "0.0"
 										}
 									]
+								},
+								{
+									"name": "wither",
+									"from": [ 0.6, 8.0, 0.9 ],
+									"to": [ 3.6, 10.97, 7.8 ],
+									"unwrapMode": 7,
+									"unwrapRotation": 1,
+									"uv": [ 77.0, 81.5 ],
+									"rotationOrigin": [ 0.6, 8.0, 0.9 ],
+									"rotationZ": 9.0,
+									"faces": {
+										"north": { "texture": "#skin", "uv": [ 86.0, 84.0, 88.5, 87.0 ], "rotation": 90 },
+										"east": { "texture": "#skin", "uv": [ 79.5, 87.0, 86.0, 89.5 ] },
+										"south": { "texture": "#skin", "uv": [ 77.0, 84.0, 79.5, 87.0 ], "rotation": 270 },
+										"west": { "texture": "#skin", "uv": [ 79.5, 81.5, 86.0, 84.0 ], "rotation": 180 },
+										"up": { "texture": "#skin", "uv": [ 79.5, 84.0, 86.0, 87.0 ], "rotation": 270 },
+										"down": { "texture": "#skin", "uv": [ 88.5, 84.0, 95.0, 87.0 ], "rotation": 90 }
+									}
+								},
+								{
+									"name": "wither2",
+									"from": [ 1.68, 8.64, 1.0 ],
+									"to": [ 5.68, 11.74, 7.7 ],
+									"unwrapMode": 7,
+									"unwrapRotation": 1,
+									"uv": [ 55.5, 102.0 ],
+									"rotationOrigin": [ 1.679, 8.6368, 1.0 ],
+									"rotationZ": -27.0,
+									"faces": {
+										"north": { "texture": "#skin", "uv": [ 65.0, 105.0, 68.0, 109.0 ], "rotation": 90 },
+										"east": { "texture": "#skin", "uv": [ 58.5, 109.0, 65.0, 112.0 ] },
+										"south": { "texture": "#skin", "uv": [ 55.5, 105.0, 58.5, 109.0 ], "rotation": 270 },
+										"west": { "texture": "#skin", "uv": [ 58.5, 102.0, 65.0, 105.0 ], "rotation": 180 },
+										"up": { "texture": "#skin", "uv": [ 58.5, 105.0, 65.0, 109.0 ], "rotation": 270 },
+										"down": { "texture": "#skin", "uv": [ 68.0, 105.0, 74.5, 109.0 ], "rotation": 90 }
+									}
 								}
 							],
 							"attachmentpoints": [
@@ -1196,7 +1214,8 @@
 				{
 					"frame": 0,
 					"elements": {
-						"mane3": { "rotationX": 0.0, "rotationY": -5.0, "rotationZ": 0.0 }
+						"mane3": { "rotationX": 0.0, "rotationY": -5.0, "rotationZ": 0.0 },
+						"Neck1": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 }
 					}
 				},
 				{
@@ -1223,12 +1242,6 @@
 						"Hind": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"tail": { "rotationX": 3.0, "rotationY": 1.2536, "rotationZ": -6.0 },
 						"forlock": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -3.0 }
-					}
-				},
-				{
-					"frame": 17,
-					"elements": {
-						"Cube3": { "offsetX": 0.0, "offsetY": -1.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -55.0 }
 					}
 				},
 				{
@@ -2153,8 +2166,7 @@
 						"tail8": { "rotationX": 33.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"tail7": { "rotationX": 33.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"tail6": { "rotationX": 33.0, "rotationY": 0.0, "rotationZ": 0.0 },
-						"Lower Lip": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 6.0 },
-						"Cube3": { "offsetX": -0.9, "offsetY": -0.2, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -22.0 }
+						"Lower Lip": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 6.0 }
 					}
 				},
 				{
@@ -2879,7 +2891,7 @@
 						"Chest": { "rotationX": -2.0, "rotationY": 0.0, "rotationZ": 0.0 },
 						"Head Origin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 14.0 },
 						"Belly": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -1.0 },
-						"Neck1": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 1.08, "rotationY": 1.08, "rotationZ": 33.0 },
+						"Neck1": { "offsetX": 0.0, "offsetY": 0.5, "offsetZ": 0.0, "rotationX": 1.08, "rotationY": 1.08, "rotationZ": 33.0 },
 						"tail": { "rotationX": 3.0, "rotationY": 0.0, "rotationZ": 72.0 },
 						"Origin": { "offsetX": -0.1, "offsetY": 0.2, "offsetZ": 0.0 },
 						"tail9": { "rotationX": -20.0, "rotationY": 0.0, "rotationZ": -39.0 },

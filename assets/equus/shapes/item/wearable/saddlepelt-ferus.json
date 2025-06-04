@@ -1,7 +1,7 @@
 {
 	"editor": {
 		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
-		"collapsedPaths": "Root/ORIGIN/SaddleSeat,Root/ORIGIN/SaddleFrontWall,Root/ORIGIN/Saddle/SaddleFrontN/StrapFront,Root/ORIGIN/SaddleBack1,Root/SaddleFrontN",
+		"collapsedPaths": "Root/ORIGIN/SaddleSeat,Root/ORIGIN/Saddle/SaddleFrontN/StrapFront,Root/ORIGIN/SaddleBack1,Root/ORIGIN/SaddleFrontWall,Root/SaddleFrontN",
 		"allAngles": true,
 		"entityTextureMode": false
 	},
@@ -40,7 +40,7 @@
 				{
 					"name": "SaddleFrontN",
 					"from": [ -1.98, -4.42, -5.35 ],
-					"to": [ 2.53, 1.63, 5.99 ],
+					"to": [ 2.53, 2.53, 5.99 ],
 					"rotationOrigin": [ -1.98, -4.4192, -5.295 ],
 					"rotationZ": 3.0,
 					"faces": {
@@ -100,10 +100,10 @@
 				},
 				{
 					"name": "SaddleFrontN2",
-					"from": [ 1.3155, -2.244, -5.14 ],
-					"to": [ 7.9155, 1.376, 5.58 ],
-					"rotationOrigin": [ 1.3155, -2.2465, -5.085 ],
-					"rotationZ": 3.0,
+					"from": [ 1.3155, -1.64, -5.14 ],
+					"to": [ 7.7155, 2.38, 5.58 ],
+					"rotationOrigin": [ 1.3155, -1.6465, -5.085 ],
+					"rotationZ": -6.0,
 					"faces": {
 						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 11.5, 10.0 ], "autoUv": false },
 						"east": { "texture": "#pelt", "uv": [ 4.0, 1.0, 13.0, 4.0 ], "autoUv": false },
@@ -115,9 +115,9 @@
 				},
 				{
 					"name": "SaddleFrontN3",
-					"from": [ -2.1527, 0.8755, -0.44 ],
-					"to": [ -0.2827, 2.5255, 0.99 ],
-					"rotationOrigin": [ -2.1527, 0.8763, -0.385 ],
+					"from": [ -2.1527, 1.88, -0.44 ],
+					"to": [ -0.2827, 3.53, 0.99 ],
+					"rotationOrigin": [ -2.1527, 1.8763, -0.385 ],
 					"rotationZ": 3.0,
 					"faces": {
 						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 7.0, 8.5 ], "autoUv": false },
@@ -126,6 +126,21 @@
 						"west": { "texture": "#pelt", "uv": [ 3.0, 6.5, 4.0, 8.0 ], "autoUv": false },
 						"up": { "texture": "#pelt", "uv": [ 2.0, 5.0, 3.5, 6.0 ], "autoUv": false },
 						"down": { "texture": "#pelt", "uv": [ 0.0, 4.5, 1.5, 5.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+					}
+				},
+				{
+					"name": "SaddleFrontN4",
+					"from": [ 2.32, -4.14, -5.04 ],
+					"to": [ 7.92, -1.12, 5.48 ],
+					"rotationOrigin": [ 2.3155, -4.1465, -4.985 ],
+					"rotationZ": 8.0,
+					"faces": {
+						"north": { "texture": "#pelt", "uv": [ 5.5, 7.0, 11.5, 10.0 ], "autoUv": false },
+						"east": { "texture": "#pelt", "uv": [ 4.0, 1.0, 13.0, 4.0 ], "autoUv": false },
+						"south": { "texture": "#pelt", "uv": [ 9.5, 4.0, 15.5, 7.0 ], "autoUv": false },
+						"west": { "texture": "#pelt", "uv": [ 3.0, 6.5, 12.0, 9.5 ], "autoUv": false },
+						"up": { "texture": "#pelt", "uv": [ 2.0, 5.0, 8.0, 14.0 ], "autoUv": false },
+						"down": { "texture": "#pelt", "uv": [ 0.0, 4.5, 6.0, 13.5 ], "autoUv": false, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
 					}
 				}
 			]
