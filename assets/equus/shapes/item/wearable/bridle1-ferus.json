@@ -1,6 +1,6 @@
 {
 	"editor": {
-		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/Equus/assets/equus/shapes/entity/land/ferus/adult",
+		"backDropShape": "C:/Users/shani/Documents/VS Modding/equusdev/assets/equus/shapes/entity/land/ferus/adult",
 		"collapsedPaths": ",Root/ORIGINbridle/ReinsN4,Root/ORIGINbridle/Bit/BitArmN/BitSArmUp2,Root/ORIGINbridle/Bit/BitArmN,Root/Bit,Root/ORIGINbridle/Bit/BitArmS,Root/StrapMainN,Root/ORIGINbridle/reinsOrigin,Root/ORIGINbridle/Bit,Root/ORIGINbridle/ReinsN,Root/ORIGINbridle/StrapMainN,Root/reinsOrigin",
 		"allAngles": true,
 		"entityTextureMode": false
@@ -583,4 +583,40 @@
 				}
 			]
 		}
-	]}
+	],
+	"animations": [
+		{
+			"name": "Eat",
+			"code": "eat",
+			"quantityframes": 44,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"reinsOrigin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 33.0 }
+					}
+				},
+				{
+					"frame": 15,
+					"elements": {
+						"reinsOrigin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 42.0 }
+					}
+				},
+				{
+					"frame": 23,
+					"elements": {
+						"reinsOrigin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 36.0 }
+					}
+				},
+				{
+					"frame": 32,
+					"elements": {
+						"reinsOrigin": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 25.0 }
+					}
+				}
+			]
+		}
+	]
+}
