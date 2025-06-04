@@ -419,7 +419,6 @@
 			{ "code": "harvestable","quantitySlots": 8},
 			{ "code": "genelib.multiply", "enabledByType": { "*-adult-female-*": true, "*": false } },
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
-			{ "code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
 			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
 			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
@@ -465,7 +464,6 @@
 			{ "code": "genelib.genetics", "genomeType": "equus:equine" },
 			{ "code": "controlledphysics","stepHeight": 3.1251},
 			{ "code": "mortallywoundable", "whenBelowHealth": 6 },
-			{ "code": "despawn","minPlayerDistance": 8,"belowLightLevel": 5,"minSeconds": 300},
 			{ "code": "health",
 				"maxhealthByType": {
 					"*-adult-female-ferus": 42,"*-adult-male-ferus": 44,"*-baby-*-ferus": 15
