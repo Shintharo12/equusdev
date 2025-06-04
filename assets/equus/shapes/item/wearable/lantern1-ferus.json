@@ -10,12 +10,6 @@
 	"textureSizes": {
 	},
 	"textures": {
-	"candle": "game:block/candle",
-	"glass": "game:block/glass/quartz",
-	"material": "game:block/metal/lantern/copper",
-	"lining": "game:block/metal/lantern/copper",
-	"material-deco": "game:block/metal/lantern/copper-deco",
-	"rope": "game:item/resource/rope"
 	},
 	"elements": [
 		{
@@ -232,4 +226,498 @@
 				}
 			]
 		}
-	]}
+	],
+	"animations": [
+		{
+			"name": "Eat",
+			"code": "eat",
+			"quantityframes": 44,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -90.0 }
+					}
+				},
+				{
+					"frame": 32,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -50.0 }
+					}
+				},
+				{
+					"frame": 43,
+					"elements": {
+
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Walk",
+			"code": "walk",
+			"quantityframes": 49,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 4,
+					"elements": {
+
+					}
+				},
+				{
+					"frame": 8,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -6.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 16,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -2.0, "rotationZ": -9.0 }
+					}
+				},
+				{
+					"frame": 32,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 6.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 40,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 2.16, "rotationZ": -3.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "WalkBack",
+			"code": "walkback",
+			"quantityframes": 49,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 8,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -9.0 }
+					}
+				},
+				{
+					"frame": 16,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 9.0, "rotationZ": 3.0 }
+					}
+				},
+				{
+					"frame": 32,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -9.0 }
+					}
+				},
+				{
+					"frame": 40,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -9.0, "rotationZ": 3.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Die",
+			"code": "die",
+			"quantityframes": 25,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 10,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -22.5, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 22,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 24,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": 0.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Wounded-Idle",
+			"code": "wounded-idle",
+			"quantityframes": 31,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 22.5, "rotationY": 0.0, "rotationZ": -90.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Dead",
+			"code": "dead",
+			"quantityframes": 2,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": -22.5 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Wounded-RestHead",
+			"code": "wounded-resthead",
+			"quantityframes": 31,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -135.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Wounded-Look",
+			"code": "wounded-look",
+			"quantityframes": 31,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": -22.5 }
+					}
+				},
+				{
+					"frame": 15,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": -18.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Hurt",
+			"code": "hurt",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 5,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 22.5 }
+					}
+				},
+				{
+					"frame": 10,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Sit",
+			"code": "sit",
+			"quantityframes": 60,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 22.5, "rotationY": 0.0, "rotationZ": -45.0 }
+					}
+				},
+				{
+					"frame": 1,
+					"elements": {
+
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Sleep",
+			"code": "sleep",
+			"quantityframes": 60,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": -22.5, "rotationY": 0.0, "rotationZ": -90.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Gallop",
+			"code": "gallop",
+			"quantityframes": 49,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": -22.5 }
+					}
+				},
+				{
+					"frame": 12,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -22.5, "rotationZ": -11.25 }
+					}
+				},
+				{
+					"frame": 24,
+					"elements": {
+
+					}
+				},
+				{
+					"frame": 36,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -18.5473 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Attack",
+			"code": "attack",
+			"quantityframes": 28,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+
+					}
+				},
+				{
+					"frame": 8,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 6.0 }
+					}
+				},
+				{
+					"frame": 16,
+					"elements": {
+
+					}
+				},
+				{
+					"frame": 18,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -12.0 }
+					}
+				},
+				{
+					"frame": 20,
+					"elements": {
+
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Turn-left",
+			"code": "turn-left",
+			"quantityframes": 1,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -6.0, "rotationZ": 0.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Turn-right",
+			"code": "turn-right",
+			"quantityframes": 1,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 6.0, "rotationZ": 0.0 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Jump",
+			"code": "jump",
+			"quantityframes": 44,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 30,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 36,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -22.5 }
+					}
+				},
+				{
+					"frame": 40,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 22.5 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Canter",
+			"code": "canter",
+			"quantityframes": 36,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 22.5, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 12,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -22.5, "rotationZ": -11.25 }
+					}
+				},
+				{
+					"frame": 24,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -22.5 }
+					}
+				}
+			]
+		},
+
+		{
+			"name": "Trot",
+			"code": "trot",
+			"quantityframes": 60,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -6.25, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 10,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 20,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 10.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 24,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": 7.6471, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 30,
+					"elements": {
+
+					}
+				},
+				{
+					"frame": 50,
+					"elements": {
+
+					}
+				},
+				{
+					"frame": 54,
+					"elements": {
+						"knot": { "rotationX": 0.0, "rotationY": -10.0, "rotationZ": 0.0 }
+					}
+				}
+			]
+		}
+	]
+}
