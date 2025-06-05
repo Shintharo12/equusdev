@@ -29,6 +29,22 @@
   "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
   "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}",
 
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-NeckAP": "Neck Attachment Point",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-MidAP": "Mid Attachment Point",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-MidUnderAP": "Mid Under Attachment Point",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-HeadAP": "Head Attachment Point",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-FaceAP": "Face Attachment Point",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-RearAP": "Rear Attachment Point",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-RearSideAP": "Rear Side Attachment Point",
+
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-NeckAP": "Neck Attachment Point",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-MidAP": "Mid Attachment Point",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-MidUnderAP": "Mid Under Attachment Point",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-HeadAP": "Head Attachment Point",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-FaceAP": "Face Attachment Point",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-RearAP": "Rear Attachment Point",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-RearSideAP": "Rear Side Attachment Point",
+
   "game:itemdesc-hoovedwearables-face-face*": "Place on the brow of a tamed elk or horse to claim ownership. You can only claim one mount at a time.",
   "game:itemdesc-hoovedwearables-head-bridle1": "Useful for precise, short distance travel. Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-head-bridle2": "Useful for long distance travel. Suitable for: elk, horse",
