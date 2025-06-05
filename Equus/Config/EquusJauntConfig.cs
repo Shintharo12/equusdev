@@ -3,10 +3,11 @@ using System.Reflection;
 using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Jaunt.Config;
 
 namespace Equus.Config
 {
-    public class EquusConfig
+    public class EquusJauntConfig : IJauntConfig
     {
         // Stamina
         public bool EnableStamina { get; set; } = true;

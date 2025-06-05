@@ -30,7 +30,7 @@
 		"handbook": {
 			"groupcode": "creaturegroup-wildhorse-{type}"
 		},
-		"equus:stamina": {
+		"jaunt:stamina": {
 			"maxStamina": 100,
 			"sprintFatigue": 0.2,
 			"swimFatigue": 0.2,
@@ -59,7 +59,7 @@
 		"selectionboxes": {
 			"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP", "RearAP","FaceAP"]
 		},
-		"equus:rideable": {
+		"jaunt:rideable": {
 			"interactMountAnySeat": true,
 			"seats": [
 				{ "apName": "Rider", "selectionBox": "MidAP", "bodyYawLimit": 0.2, "controllable": true,
@@ -421,10 +421,10 @@
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
 			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
 			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
-			{ "code": "equus:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
+			{ "code": "jaunt:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "ropetieable" },
-			{ "code": "equus:stamina" },
+			{ "code": "jaunt:stamina" },
 			{ "code": "genelib.info", "showtagonlywhentargeted": true }
 		],
 		"animations": [
@@ -778,8 +778,8 @@
 			{ "code": "pettable", "minGeneration": 1},
 			{ "code": "selectionboxes", "minGeneration": 2 },
 			{ "code": "rideableaccessories", "minGeneration": 2 },
-			{ "code": "equus:rideable" },
-			{ "code": "equus:stamina" },
+			{ "code": "jaunt:rideable" },
+			{ "code": "jaunt:stamina" },
 			{ "code": "ropetieable" },
 			{ "code": "genelib.info", "showtagonlywhentargeted": true }
 		],

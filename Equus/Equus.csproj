@@ -47,6 +47,10 @@
             <HintPath>../Lib/Genelib.dll</HintPath>
             <Private>False</Private>
         </Reference>
+		<Reference Include="Jaunt">
+			<HintPath>../Lib/Jaunt.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
     </ItemGroup>
 
     <ItemGroup>
