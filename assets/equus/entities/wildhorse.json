@@ -29,16 +29,7 @@
 		},
 		"handbook": {
 			"groupcode": "creaturegroup-wildhorse-{type}"
-		},
-		"jaunt:stamina": {
-			"maxStamina": 100,
-			"sprintFatigue": 0.2,
-			"swimFatigue": 0.2,
-			"baseFatigueRate": 1,
-			"staminaRegenRate": 1,
-			"regenPenaltyWounded": 0.5,
-			"regenPenaltyRiding": 0.3
-		}
+		}		
 	},
 	"behaviorConfigs": {
 		"controlledphysics": { 
@@ -334,6 +325,15 @@
 					}
 				}
 			}
+		},
+		"jaunt:stamina": {
+			"maxStamina": 100,
+			"sprintFatigue": 0.2,
+			"swimFatigue": 0.2,
+			"baseFatigueRate": 1,
+			"staminaRegenRate": 1,
+			"regenPenaltyWounded": 0.5,
+			"regenPenaltyMounted": 0.3
 		},
 		"health": {
 			"currenthealthByType": {
