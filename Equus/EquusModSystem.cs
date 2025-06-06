@@ -22,7 +22,7 @@ namespace Equus
             Instance = this;
             Api = api;
             GenomeType.RegisterInterpreter(new EquusInterpreter());
-            JauntConfig.Register(new EquusJauntConfig());
+            JauntConfig.RegisterConfig(new EquusJauntConfig());
 
             ReloadConfig(api);
         }
