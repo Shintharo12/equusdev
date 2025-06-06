@@ -57,8 +57,15 @@
 					"mountOffsetByType": { "*adult-*-ferus": { "x":-0.1,"y":-0.4,"z":0},
 					"*": { "x":0,"y":-0.5,"z":0} } }
 			],
-		"controls": {
+			"lowStaminaState": "trot",
+            "moderateStaminaState": "canter",
+            "highStaminaState": "gallop",
+			"controls": {
 				"idle": {
+                    "isGait": true,
+					"turnRadius": 4,
+					"sound": "",
+					"icon": "",
 					"weight": 1,
 					"riderAnim": {
 						"animation": "rideelk-idle",
@@ -85,6 +92,7 @@
 					}
 				},
 				"swim": {
+                    "isGait": false,
 					"animation": "Swim",
 					"animationSpeed": 1,
 					"movespeed": 0.02,
@@ -115,6 +123,10 @@
 					}
 				},
 				"walk": {
+                    "isGait": true,
+					"turnRadius": 3.5,
+					"sound": "sounds/creature/hooved/trot",
+					"icon": "equus:textures/hud/walk",
 					"animation": "Walk",
 					"weight": 10,
 						"movespeedByType": {
@@ -150,6 +162,10 @@
 					}
 				},
 				"trot": {
+                    "isGait": true,
+					"turnRadius": 3,
+					"sound": "sounds/creature/hooved/trot",
+					"icon": "equus:textures/hud/trot",
 					"animation": "Trot",
 					"weight": 10,
 						"movespeedByType": {
@@ -185,6 +201,10 @@
 					}
 				},
 				"walkback": {
+                    "isGait": true,
+					"turnRadius": 3.5,
+					"sound": "sounds/creature/hooved/trot",
+					"icon": "equus:textures/hud/walk",
 					"animation": "walkback",
 					"weight": 10,
 						"movespeedByType": {
@@ -222,6 +242,10 @@
 					}
 				},
 				"canter":  {
+                    "isGait": true,
+					"turnRadius": 2,
+					"sound": "sounds/creature/hooved/trot",
+					"icon": "equus:textures/hud/canter",
 					"animation": "Canter",
 					"weight": 10,
 					"movespeedByType": {
@@ -256,7 +280,11 @@
 						}
 					}
 				},
-				"sprint": {
+				"gallop": {
+                    "isGait": true,
+					"turnRadius": 1.5,
+					"sound": "sounds/creature/hooved/gallop",
+					"icon": "equus:textures/hud/gallop",
 					"animation": "Gallop",
 					"easeOutSpeed": 4,
 					"weight": 10,

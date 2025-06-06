@@ -9,6 +9,6 @@
     "dependencies": {
         "game": "",
         "genelib": "1.1.2",
-        "jaunt": "0.1.0"
+        "jaunt": "1.0.0-pre3"
     }
 }
