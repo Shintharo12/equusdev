@@ -54,6 +54,7 @@
             <Link>assets/%(RecursiveDir)%(Filename)%(Extension)</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <Content Remove="..\assets\equus\patches\elk-tamed.json" />
         <Content Include="../modinfo.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
