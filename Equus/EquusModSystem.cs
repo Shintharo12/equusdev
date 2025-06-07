@@ -1,7 +1,4 @@
-﻿using Equus.Config;
-using Genelib;
-using Jaunt.Config;
-using System;
+﻿using Genelib;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
