@@ -13,7 +13,6 @@ namespace Equus
         public string ModId => Mod.Info.ModID;
         public ILogger Logger => Mod.Logger;
         public ICoreAPI Api { get; private set; }
-        public EquusJauntConfig Config { get; private set; }
         public static EquusModSystem Instance { get; private set; }
 
         // Called on server and client
@@ -22,9 +21,6 @@ namespace Equus
             Instance = this;
             Api = api;
             GenomeType.RegisterInterpreter(new EquusInterpreter());
-            JauntConfig.RegisterConfig(new EquusJauntConfig());
-
-            ReloadConfig(api);
         }
 
         public override void StartServerSide(ICoreServerAPI api)
@@ -34,32 +30,6 @@ namespace Equus
 
         public override void StartClientSide(ICoreClientAPI api)
         {
-        }
-
-        public void ReloadConfig(ICoreAPI api)
-        {
-            try
-            {
-                // Load user config
-                var _config = api.LoadModConfig<EquusJauntConfig>($"{ModId}.json");
-
-                // If no user config, create one
-                if (_config == null)
-                {
-                    Mod.Logger.Warning("Missing config! Using default.");
-                    Config = new EquusJauntConfig();
-                    api.StoreModConfig(Config, $"{ModId}.json");
-                }
-                else
-                {
-                    Config = _config;
-                }
-            }
-            catch (Exception ex)
-            {
-                Mod.Logger.Error($"Could not load {ModId} config!");
-                Mod.Logger.Error(ex);
-            }
         }
     }
 }
