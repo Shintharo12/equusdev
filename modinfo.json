@@ -8,6 +8,6 @@
     "version": "1.1.4",
     "dependencies": {
         "game": "",
-        "genelib": "1.1.1"
+        "genelib": "1.1.2"
     }
 }
