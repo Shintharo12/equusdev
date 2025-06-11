@@ -1,0 +1,54 @@
+{
+  "game:creaturegroup-wildhorse": "Дикі коні",
+  "game:tabname-equus": "Equus",
+
+  "debug-stamina-init": "[Equus] Ініціалізація поведінки витривалості для об'єкта {0}",
+  "debug-rideable-init": "[Equus] Ініціалізація поведінки, доступної для їзди, для об'єкта {0}",
+
+  "ingame-error-too-wild": "Ця тварина занадто дика, щоб на ній їздити",
+
+  "setting-worldgen-spawnrate-ferus":"Швидкість появи диких коней у світі гри",
+  "setting-runtime-spawnrate":"Швидкість появи диких коней під час гри",
+
+  "item-creature-wildhorse-adult-female-ferus": "Дика кобила",
+  "item-creature-wildhorse-adult-male-ferus": "Дикий жеребець",
+  "item-creature-wildhorse-baby-female-ferus": "Дике лоша",
+  "item-creature-wildhorse-baby-male-ferus": "Дике лоша",
+
+  "item-dead-creature-wildhorse-adult-female-ferus": "Мертва дика кобила",
+  "item-dead-creature-wildhorse-adult-male-ferus": "Мервий дикий жеребець",
+  "item-dead-creature-wildhorse-baby-female-ferus": "Мертве дике лоша",
+  "item-dead-creature-wildhorse-baby-male-ferus": "Мертве дике лоша",
+
+  "game:prefixandcreature-wildhorseadultfemaleferus": "дикою кобилою",
+  "game:prefixandcreature-wildhorseadultmaleferus": "диким жеребцем",
+  "game:prefixandcreature-wildhorsebabyfemaleferus": "диким лошам",
+  "game:prefixandcreature-wildhorsebabymaleferus": "диким лошам",
+
+  "infotext-stamina-state": "Витривалість: {0:0.##}/{1:0.##}",
+  "infotext-stamina-sprint-fatigue": "Втома від спринту: {0}",
+  "infotext-stamina-swim-fatigue": "Втома від плавання: {0}",
+
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-NeckAP": "Місце для ліхтаря",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-MidAP": "Місце для сідла",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-MidUnderAP": "Місце для попони",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-HeadAP": "Місце для вуздечки",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-FaceAP": "Місце для медальйона",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-RearAP": "Місце для спальника",
+  "creature-equus:wildhorse-adult-female-ferus-selectionbox-RearSideAP": "Місце для сідельних сумок",
+
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-NeckAP": "Місце для ліхтаря",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-MidAP": "Місце для сідла",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-MidUnderAP": "Місце для попони",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-HeadAP": "Місце для вуздечки",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-FaceAP": "Місце для медальйона",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-RearAP": "Місце для спальника",
+  "creature-equus:wildhorse-adult-male-ferus-selectionbox-RearSideAP": "Місце для сідельних сумок",
+
+  "game:itemdesc-hoovedwearables-face-face*": "Прикріпіть до лоба прирученого оленя або коня, щоб заявити про своє право власності. Ви можете заявити право власності лише на одного скакуна одночасно.",
+  "game:itemdesc-hoovedwearables-head-bridle1": "Корисний для точних поїздок на короткі відстані. Підходить для: оленя, коня",
+  "game:itemdesc-hoovedwearables-head-bridle2": "Корисний для далеких подорожей. Підходить для: оленя, коня",
+  "game:itemdesc-hoovedwearables-middleback-saddle1": "Підходить для: оленя, коня",
+  "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Підходить для: оленя, коня",
+  "game:itemdesc-hoovedwearables-blanket-*": "Підходить для: оленя, коня"
+}

@@ -524,9 +524,9 @@
 					"*-adult-female-*": "equus:wildhorse-adult-male-{type}"},
 				"requiresNearbyEntityRange": 10,
 				"spawnQuantityMin": 1,
-				"spawnQuantityMaxByType": { "*": 2},
+				"spawnQuantityMaxByType": { "*": 1.1},
 				"pregnancyDaysByType": {
-					"*-ferus": 36
+					"*-ferus": 85
 				},
 				"multiplyCooldownDaysMinByType": { "*": 6},
 				"multiplyCooldownDaysMaxByType": { "*": 11},
@@ -540,7 +540,7 @@
 					"*-baby-*": true,
 					"*": false
 				},
-				"hoursToGrowByType": { "*": 432},
+				"hoursToGrowByType": { "*": 1200},
 				"adultEntityCodesByType": {
 					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
 					"*-baby-female-*": ["equus:wildhorse-adult-female-{type}"]
