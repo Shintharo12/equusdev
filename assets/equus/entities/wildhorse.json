@@ -50,6 +50,59 @@
 		"selectionboxes": {
 			"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP", "RearAP","FaceAP"]
 		},
+		"jaunt:gait": {
+			"gaits": [
+				{
+					"code": "walkback",
+					"order": 0,
+					"turnRadius": 3.5,
+					"staminaCost": 0.0,
+					"sound": "game:creature/hooved/trot",
+					"iconTexture": "equus:hud/walkback.svg"
+				},
+				{
+					"code": "idle",
+					"order": 1,
+					"turnRadius": 4,
+					"iconTexture": "equus:hud/idle.svg"
+                },
+				{
+					"code": "walk",
+					"order": 2,
+					"turnRadius": 3.5,
+					"staminaCost": 0.0,
+					"sound": "game:creature/hooved/trot",
+					"iconTexture": "equus:hud/walk.svg"
+				},
+				{
+                    "code": "trot",
+					"order": 3,
+					"turnRadius": 3,
+					"staminaCost": 0.0,
+					"fallbackGait": "walk",
+					"sound": "game:creature/hooved/trot",
+					"iconTexture": "equus:hud/trot.svg"
+                },
+				{
+					"code": "canter",
+					"order": 4,
+					"turnRadius": 2,
+					"staminaCost": 0.0,
+					"fallbackGait": "trot",
+					"sound": "game:creature/hooved/trot",
+					"iconTexture": "equus:hud/canter.svg"
+                },
+				{
+					"code": "gallop",
+					"order": 5,
+					"turnRadius": 1.5,
+					"staminaCost": 0.2,
+					"fallbackGait": "canter",
+					"sound": "game:creature/hooved/gallop",
+					"iconTexture": "equus:hud/gallop.svg"
+                }
+			]
+		},
 		"jaunt:rideable": {
 			"interactMountAnySeat": true,
 			"seats": [
@@ -57,9 +110,8 @@
 					"mountOffsetByType": { "*adult-*-ferus": { "x":-0.1,"y":-0.4,"z":0},
 					"*": { "x":0,"y":-0.5,"z":0} } }
 			],
-			"lowStaminaState": "trot",
-            "moderateStaminaState": "canter",
-            "highStaminaState": "gallop",
+			"defaultGait": "idle",
+			"gaitOrder": ["walkback", "idle", "walk", "trot", "canter", "gallop"],
 			"controls": {
 				"idle": {
                     "isGait": true,
@@ -242,7 +294,7 @@
 						}
 					}
 				},
-				"canter":  {
+				"canter": {
                     "isGait": true,
 					"turnRadius": 2,
 					"staminaCost": 0.0,
@@ -362,6 +414,7 @@
 			"sprintFatigue": 0.2,
 			"swimFatigue": 0.2,
 			"baseFatigueRate": 1,
+			"exhaustionThreshold": 0.5,
 			"staminaRegenRate": 1,
 			"regenPenaltyWounded": 0.5,
 			"regenPenaltyMounted": 0.3
@@ -375,7 +428,7 @@
 			}
 		},
 		"ownable": {
-			"groupCode": "mountableanimal"
+			"groupCode": "ferus"
 		},
 	"drops": []
 	},
@@ -455,6 +508,7 @@
 			{ "code": "jaunt:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
 			{ "code": "ropetieable" },
+			{ "code": "jaunt:gait" },
 			{ "code": "jaunt:stamina" },
 			{ "code": "genelib.info", "showtagonlywhentargeted": true }
 		],
@@ -809,6 +863,7 @@
 			{ "code": "pettable", "minGeneration": 1},
 			{ "code": "selectionboxes", "minGeneration": 2 },
 			{ "code": "rideableaccessories", "minGeneration": 2 },
+			{ "code": "jaunt:gait"},
 			{ "code": "jaunt:rideable" },
 			{ "code": "jaunt:stamina" },
 			{ "code": "ropetieable" },
