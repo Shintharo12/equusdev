@@ -61,13 +61,11 @@
 					"backwards": true,
 					"turnRadius": 3.5,
 					"staminaCost": 0.0,
-					"sound": "game:creature/hooved/trot",
-					"iconTexture": "equus:hud/walkback.svg"
+					"sound": "game:creature/hooved/trot"
 				},
 				{
 					"code": "idle",
-					"turnRadius": 4,
-					"iconTexture": "equus:hud/idle"
+					"turnRadius": 4
 				},
 				{
 					"code": "walk",
@@ -77,7 +75,7 @@
 					"turnRadius": 3.5,
 					"staminaCost": 0.0,
 					"sound": "game:creature/hooved/trot",
-					"iconTexture": "equus:hud/walk.svg"
+					"iconTexture": "jaunt:hud/walk.svg"
 				},
 				{
 					"code": "trot",
@@ -87,8 +85,6 @@
 					"turnRadius": 3,
 					"staminaCost": 0.0,
 					"fallbackGaitCode": "walk",
-					"sound": "game:creature/hooved/trot",
-                    "iconTexture": "equus:hud/trot.svg"
 				},
 				{
 					"code": "canter",
@@ -99,7 +95,6 @@
 					"staminaCost": 0.0,
 					"fallbackGaitCode": "trot",
 					"sound": "game:creature/hooved/trot",
-					"iconTexture": "equus:hud/canter.svg"
 				},
 				{
 					"code": "gallop",
@@ -109,8 +104,6 @@
 					"turnRadius": 1.5,
 					"staminaCost": 0.2,
 					"fallbackGaitCode": "canter",
-					"sound": "game:creature/hooved/gallop",
-					"iconTexture": "equus:hud/gallop.svg"
 				},
 				{
 					"code": "jump",
@@ -136,7 +129,7 @@
 				{ "apName": "Rider", "selectionBox": "MidAP", "bodyYawLimit": 0.2, "controllable": true,
 					"mountOffsetByType": { "*adult-*-ferus": { "x":-0.1,"y":-0.4,"z":0},
 					"*": { "x":0,"y":-0.5,"z":0} } }
-			],			
+			],
 			"rideableGaitOrder": ["walkback", "idle", "walk", "trot", "canter", "gallop"],
 			"controls": {
 				"idle": {
