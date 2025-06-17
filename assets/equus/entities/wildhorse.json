@@ -88,7 +88,7 @@
 					"staminaCost": 0.0,
 					"fallbackGaitCode": "walk",
 					"sound": "game:creature/hooved/trot",
-                    "iconTexture": "equus:hud/trot.svg"
+					"iconTexture": "equus:hud/trot.svg"
 				},
 				{
 					"code": "canter",
@@ -174,7 +174,7 @@
 					"riderAnim": {
 						"animation": "rideelk-walk",
 						"animationSpeed": 1,
-						"weight": 1,	
+						"weight": 1,
 						"withFpVariant": true,
 						"blendMode": "Average", 
 						"elementWeight": {
@@ -207,7 +207,7 @@
 					"riderAnim": {
 						"animation": "rideelk-walk",
 						"animationSpeed": 1,
-						"weight": 1,	
+						"weight": 1,
 						"withFpVariant": true,
 						"blendMode": "Average", 
 						"elementWeight": {
@@ -240,7 +240,7 @@
 					"riderAnim": {
 						"animation": "rideelk-walk",
 						"animationSpeed": 1,
-						"weight": 1,	
+						"weight": 1,
 						"withFpVariant": true,
 						"blendMode": "Average", 
 						"elementWeight": {
@@ -699,7 +699,7 @@
 						"animation": "Gallop",
 						"animationSpeed": 2
 					},
-										{
+					{
 						"code": "fleeentity",
 						"entityCodes": ["bear-*","hyena-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"],
 						"priority": 1.7,
@@ -766,7 +766,7 @@
 						"stopOnHurt": true,
 						"whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage"
 					},
-										{
+					{
 						"code": "idle",
 						"animation": "Sit",
 						"priority": 1.6,
@@ -837,7 +837,6 @@
 						"wanderChanceByType": { "*-adult-*":0.1,"*":0.5},
 						"movespeedByType": {
 							"*-adult-*-ferus": 0.010,"*-baby-*-ferus": 0.010
-
 						},
 						"animationSpeedByType": {
 							"*-baby-*": 1.2,
@@ -879,7 +878,7 @@
 				},
 				"maxLightLevel": 7,
 				"lightLevelType": "onlyBlockLight",
-				"spawnCapPlayerScaling": 0.0,			
+				"spawnCapPlayerScaling": 0.0,
 				"groupSizeByType": {
 					"*-adult-female-ferus": { "dist": "uniform", "avg": 7, "var": 3 },
 					"*-adult-male-ferus": { "dist": "uniform", "avg": 3.5, "var": 2.5 }
@@ -899,7 +898,7 @@
 					"maxRain": 0.8,
 					"minForest": 0.0,
 					"maxForest": 0.6,
-					"maxShrubs": 0.9				
+					"maxShrubs": 0.9
 				},
 				"worldgen": {
 					"triesPerChunk": { "avg": 0.003, "var": 0}
