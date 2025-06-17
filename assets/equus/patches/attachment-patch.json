@@ -24,60 +24,17 @@
         "side": "Server"
     },
     {
-        "enabled": true,
-        "dependsOn": [
-            {
-                "modid": "cartwrightscaravan",
-                "invert": true
-            }
-        ],
-        "op": "remove",
-        "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShape",
-        "file": "game:blocktypes/wood/bed.json",
-        "side": "Server"
-    },
-    {
-        "dependsOn": [
-            {
-                "modid": "cartwrightscaravan"
-            }
-        ],
-        "op": "move",
-        "frompath": "/attributesByType/bed-hay-*/attachableToEntity/attachedShapeBySlotCode/*",
-        "path": "/temp",
-        "file": "game:blocktypes/wood/bed.json",
-        "side": "Server"
-    },
-    {
         "file": "game:blocktypes/wood/bed.json",
         "op": "addmerge",
-        "path": "/attributesByType/bed-hay-*",
-        "value": {
-            "attachableToEntity": {
-                "categoryCode": "bedroll",
-                "attachedShapeBySlotCode": {
-                    "lowerback": {
+        "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShapeBySlotCode",
+        "value":{
+                    "low*rback": {
                         "base": "item/wearable/hooved/strawbed"
                     },
                     "lowerback-ferus": {
                         "base": "equus:item/wearable/strawbed"
-                    }
-                }
-
             }
         },
         "side": "server"
-    },
-    {
-        "dependsOn": [
-            {
-                "modid": "cartwrightscaravan"
-            }
-        ],
-        "op": "move",
-        "frompath": "/temp",
-        "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShapeBySlotCode/*",
-        "file": "game:blocktypes/wood/bed.json",
-        "side": "Server"
     }
 ]

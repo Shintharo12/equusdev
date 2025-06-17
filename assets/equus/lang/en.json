@@ -2,11 +2,6 @@
   "game:creaturegroup-wildhorse": "Wild horses",
   "game:tabname-equus": "Equus",
 
-  "debug-stamina-init": "[Equus] Initializing stamina behavior for entity {0}",
-  "debug-rideable-init": "[Equus] Initializing rideable behavior for entity {0}",
-
-  "ingame-error-too-wild": "This animal is too wild to ride",
-
   "setting-worldgen-spawnrate-ferus":"Worldgen spawnrate for wild horses",
   "setting-runtime-spawnrate":"Runtime spawnrate for wild horses",
 
@@ -24,10 +19,6 @@
   "game:prefixandcreature-wildhorseadultmaleferus": "a wild horse stallion",
   "game:prefixandcreature-wildhorsebabyfemaleferus": "a wild horse filly",
   "game:prefixandcreature-wildhorsebabymaleferus": "a wild horse colt",
-
-  "infotext-stamina-state": "Stamina: {0:0.##}/{1:0.##}",
-  "infotext-stamina-sprint-fatigue": "Stamina Sprint Fatigue: {0}",
-  "infotext-stamina-swim-fatigue": "Stamina Swim Fatigue: {0}",
 
   "creature-equus:wildhorse-adult-female-ferus-selectionbox-NeckAP": "Neck Attachment Point",
   "creature-equus:wildhorse-adult-female-ferus-selectionbox-MidAP": "Mid Attachment Point",
