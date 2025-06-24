@@ -1,5 +1,5 @@
 {
-  "game:creaturegroup-wildhorse": "Wild horses",
+  "game:creaturegroup-wildhorse-ferus": "Wild horse",
   "game:tabname-equus": "Equus",
 
   "setting-worldgen-spawnrate-ferus":"Worldgen spawnrate for wild horses",
