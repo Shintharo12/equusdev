@@ -25,7 +25,7 @@
 		"minGenerationToAllowHealing": 0,
 		"creatureDiet": {
 			"foodCategories": ["Fruit","Grain","Vegetable"],
-			"foodTags": ["fruitmash","grass","nibblecrop","sweetBerryBush"]
+			"foodTags": ["fruitmash","grass","nibblecrop"]
 		},
 		"handbook": {
 			"groupcode": "creaturegroup-wildhorse-{type}"
@@ -902,7 +902,7 @@
 					"maxShrubs": 0.9
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.003, "var": 0}
+					"triesPerChunk": { "avg": 0.0005, "var": 0}
 				},
 				"runtime": {
 					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 3 }
