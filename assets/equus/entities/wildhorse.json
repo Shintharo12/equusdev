@@ -39,14 +39,14 @@
 		"floatupwhenstuck": { "onlyWhenDead": true },
 		"rideableaccessories": {
 			"wearableSlots": [
-				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tack-bridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
-				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tack-saddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
-				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket", "tack-blanket", "tack-caparison"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
+				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
+				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
+				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket", "tackblanket", "tackcaparison"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
 				{ "code": "lowerbackside-ferus", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
 				{ "code": "neck-ferus", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } } },
 				{ "code": "lowerback-ferus", "forCategoryCodes": ["bedroll"], "attachmentPointCode": "RearAP", "stepParentTo": { "": { "elementName": "RearStorage" } } },
 				{ "code": "face-ferus", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } },
-				{ "code": "hoof-ferus", "forCategoryCodes": ["horseshoes"], "attachmentPointCode": "HoofAP", "stepParentTo": { "": { "elementName": "HoofStorage" } } }
+				{ "code": "hoof-ferus", "forCategoryCodes": ["tackhorseshoes"], "attachmentPointCode": "HoofAP", "stepParentTo": { "": { "elementName": "HoofStorage" } } }
 			]},
 		"selectionboxes": {
 			"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP", "RearAP","FaceAP"]

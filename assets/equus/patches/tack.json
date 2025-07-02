@@ -1,0 +1,14 @@
+[
+  {
+    "file": "equus:entities/wildhorse.json",
+    "op": "addmerge",
+    "path": "/behaviorConfigs/selectionboxes/selectionBoxes",
+    "side": "Server",
+    "value": ["HoofAP"],
+    "dependsOn": [
+        {
+          "modid": "tackandequipment"
+        }
+      ]
+  }
+]
