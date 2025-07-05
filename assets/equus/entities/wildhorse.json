@@ -25,7 +25,7 @@
 		"minGenerationToAllowHealing": 0,
 		"creatureDiet": {
 			"foodCategories": ["Fruit","Grain","Vegetable"],
-			"foodTags": ["fruitmash","grass","nibblecrop","sweetBerryBush"]
+			"foodTags": ["fruitmash","grass","nibblecrop"]
 		},
 		"handbook": {
 			"groupcode": "creaturegroup-wildhorse-{type}"
@@ -39,13 +39,14 @@
 		"floatupwhenstuck": { "onlyWhenDead": true },
 		"rideableaccessories": {
 			"wearableSlots": [
-				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
-				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
-				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
+				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
+				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
+				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket", "tackblanket", "tackcaparison"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
 				{ "code": "lowerbackside-ferus", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
 				{ "code": "neck-ferus", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } } },
 				{ "code": "lowerback-ferus", "forCategoryCodes": ["bedroll"], "attachmentPointCode": "RearAP", "stepParentTo": { "": { "elementName": "RearStorage" } } },
-				{ "code": "face-ferus", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } }
+				{ "code": "face-ferus", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } },
+				{ "code": "hoof-ferus", "forCategoryCodes": ["tackhorseshoes"], "attachmentPointCode": "HoofAP", "stepParentTo": { "": { "elementName": "HoofStorage" } } }
 			]},
 		"selectionboxes": {
 			"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP", "RearAP","FaceAP"]
@@ -902,7 +903,7 @@
 					"maxShrubs": 0.9
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.003, "var": 0}
+					"triesPerChunk": { "avg": 0.001, "var": 0}
 				},
 				"runtime": {
 					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 3 }

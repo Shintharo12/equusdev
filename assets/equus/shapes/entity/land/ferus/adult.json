@@ -1070,7 +1070,25 @@
 																"west": { "texture": "#skin", "uv": [ 25.5, 106.5, 27.5, 108.0 ], "rotation": 180 },
 																"up": { "texture": "#skin", "uv": [ 25.5, 108.0, 27.5, 110.5 ], "rotation": 270 },
 																"down": { "texture": "#skin", "uv": [ 29.0, 108.0, 31.0, 110.5 ], "rotation": 90 }
-															}
+															},
+															"children": [
+																{
+																	"name": "HoofStorage",
+																	"from": [ -0.6, 0.1, -0.8 ],
+																	"to": [ 3.0, 1.6, 2.8 ],
+																	"uv": [ 0.0, 0.0 ],
+																	"rotationOrigin": [ -0.6, 0.1, -0.8 ],
+																	"faces": {
+																	},
+																	"attachmentpoints": [
+																		{
+																			"code": "HoofAP",
+																			"posX": "0.0","posY": "0.0","posZ": "0.0",
+																			"rotationX": "0.0","rotationY": "0.0","rotationZ": "0.0"
+																		}
+																	]
+																}
+															]
 														}
 													]
 												}
