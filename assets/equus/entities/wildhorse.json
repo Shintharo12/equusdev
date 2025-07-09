@@ -37,6 +37,23 @@
 			"stepUpSpeed": 0.2
 		},
 		"floatupwhenstuck": { "onlyWhenDead": true },
+		"genelib.multiply": {
+			"spawnEntityCodesByType": {
+			"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ]},
+			"requiresNearbyEntityCodeByType": {
+				"*-adult-female-*": "equus:wildhorse-adult-male-{type}"},
+			"requiresNearbyEntityRange": 10,
+			"spawnQuantityMin": 1,
+			"spawnQuantityMaxByType": { "*": 1.005},
+			"pregnancyDaysByType": {
+				"*-ferus": 85
+			},
+			"multiplyCooldownDaysMinByType": { "*": 6},
+			"multiplyCooldownDaysMaxByType": { "*": 11},
+			"portionsEatenForMultiplyByType": {
+				"*-ferus": 10
+			}
+		},
 		"rideableaccessories": {
 			"wearableSlots": [
 				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
@@ -592,21 +609,6 @@
 				"enabledByType": {
 					"*-adult-female-*": true,
 					"*": false
-				},
-				"spawnEntityCodesByType": {
-				"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ]},
-				"requiresNearbyEntityCodeByType": {
-					"*-adult-female-*": "equus:wildhorse-adult-male-{type}"},
-				"requiresNearbyEntityRange": 10,
-				"spawnQuantityMin": 1,
-				"spawnQuantityMaxByType": { "*": 1.005},
-				"pregnancyDaysByType": {
-					"*-ferus": 85
-				},
-				"multiplyCooldownDaysMinByType": { "*": 6},
-				"multiplyCooldownDaysMaxByType": { "*": 11},
-				"portionsEatenForMultiplyByType": {
-					"*-ferus": 10
 				}
 			},
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
