@@ -145,6 +145,14 @@
 						"*-ferus": 0.02
 					},
 					"turnRadius": 3.5
+				},
+				{
+					"code": "swimback",
+					"backwards": true,
+					"movespeedByType": {
+						"*-ferus": 0.02
+					},
+					"turnRadius": 3.5
 				}
 			]
 		},
@@ -196,6 +204,36 @@
 						"weight": 1,
 						"withFpVariant": true,
 						"blendMode": "Average", 
+						"elementWeight": {
+							"LowerTorso": 80,
+							"UpperTorso": 80,
+							"UpperFootR": 80,
+							"UpperFootL": 80,
+							"LowerFootR": 80,
+							"LowerFootL": 80
+						},
+						"elementBlendMode": {
+							"LowerTorso": "Average",
+							"UpperTorso": "Average",
+							"UpperFootR": "Average",
+							"UpperFootL": "Average",
+							"LowerFootR": "Average",
+							"LowerFootL": "Average"
+						}
+					}
+				},
+				"swimback": {
+					"moveSpeedMultiplier": 1,
+					"animation": "Swim",
+					"animationSpeed": 1,
+					"weight": 10,
+					"blendMode": "Average",
+					"riderAnim": {
+						"animation": "rideelk-walk",
+						"animationSpeed": 1,
+						"weight": 1,
+						"withFpVariant": true,
+						"blendMode": "Average",
 						"elementWeight": {
 							"LowerTorso": 80,
 							"UpperTorso": 80,
