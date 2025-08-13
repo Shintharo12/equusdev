@@ -915,9 +915,10 @@
 				"group": "neutral",
 				"tryOnlySurface": true,
 				"chanceByType": {
-					"*-adult-female-ferus": 0.0005,"*-adult-male-ferus": 0.0005,
+					"*-adult-female-ferus": 0.000001,"*-adult-male-ferus": 0.000001,
 					"*": 0.0
 				},
+				"mindistancetoplayer": 100,
 				"maxLightLevel": 7,
 				"lightLevelType": "onlyBlockLight",
 				"spawnCapPlayerScaling": 0.0,
@@ -934,19 +935,19 @@
 		"spawnconditionsByType": {
 			"wildhorse-adult-*-ferus": {
 				"climate": {
-					"minTemp": -10,
-					"maxTemp": 40,
+					"minTemp": -5,
+					"maxTemp": 30,
 					"minRain": 0.1,
-					"maxRain": 0.8,
+					"maxRain": 0.5,
 					"minForest": 0.0,
-					"maxForest": 0.6,
+					"maxForest": 0.5,
 					"maxShrubs": 0.9
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.001, "var": 0}
+					"triesPerChunk": { "avg": 0.0005, "var": 0}
 				},
 				"runtime": {
-					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 3 }
+					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 1 }
 				}
 			}
 		}
