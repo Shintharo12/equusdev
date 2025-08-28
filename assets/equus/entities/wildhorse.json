@@ -77,14 +77,14 @@
 						"*-ferus": 0.013
 					},
 					"backwards": true,
-					"turnRadius": 3.5,
+					"yawMultiplier":1,
 					"staminaCost": 0.0,
 					"sound": "game:creature/hooved/trot",
 					"iconTexture": "equus:hud/walkback.svg"
 				},
 				{
 					"code": "idle",
-					"turnRadius": 4,
+					"yawMultiplier":0.8,
 					"iconTexture": "equus:hud/idle.svg"
 				},
 				{
@@ -92,7 +92,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.013
 					},
-					"turnRadius": 3.5,
+					"yawMultiplier":0.75,
 					"staminaCost": 0.0,
 					"sound": "game:creature/hooved/trot",
 					"iconTexture": "equus:hud/walk.svg"
@@ -102,7 +102,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.036
 					},
-					"turnRadius": 3,
+					"yawMultiplier": 0.7,
 					"staminaCost": 0.0,
 					"fallbackGaitCode": "walk",
 					"sound": "game:creature/hooved/trot",
@@ -113,7 +113,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.08475
 					},
-					"turnRadius": 2,
+					"yawMultiplier": 0.6,
 					"staminaCost": 0.0,
 					"fallbackGaitCode": "trot",
 					"sound": "game:creature/hooved/trot",
@@ -124,7 +124,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.16
 					},
-					"turnRadius": 1.5,
+					"yawMultiplier": 0.5,
 					"staminaCost": 0.2,
 					"fallbackGaitCode": "canter",
 					"sound": "game:creature/hooved/gallop",
@@ -135,7 +135,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.013
 					},
-					"turnRadius": 3.5,
+					"yawMultiplier": 1,
 					"staminaCost": 0.0,
 					"sound": "game:creature/hooved/trot"
 				},
@@ -144,7 +144,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.02
 					},
-					"turnRadius": 3.5
+					"yawMultiplier": 1
 				},
 				{
 					"code": "swimback",
@@ -152,7 +152,7 @@
 					"movespeedByType": {
 						"*-ferus": 0.02
 					},
-					"turnRadius": 3.5
+					"yawMultiplier": 1
 				}
 			]
 		},

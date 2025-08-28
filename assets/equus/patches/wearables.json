@@ -2,11 +2,11 @@
     {
       "op": "remove",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
-      "file": "game:itemtypes/wearable/hooved.json",
+      "file": "game:itemtypes/wearable/animal/hooved.json",
       "side": "Server"
     },
     {
-      "file": "game:itemtypes/wearable/hooved.json",
+      "file": "game:itemtypes/wearable/animal/hooved.json",
       "op": "addmerge",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*-ferus",
       "side": "Server",
@@ -18,13 +18,13 @@
       "op": "addmerge",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
       "value": {
-        "base": "game:item/wearable/hooved/{type}-elk"
+        "base": "game:item/wearable/animal/hooved/{type}-elk"
       },
       "file": "game:itemtypes/wearable/hooved.json",
       "side": "Server"
     },
     {
-      "file": "game:itemtypes/wearable/hooved.json",
+      "file": "game:itemtypes/wearable/animal/hooved.json",
       "op": "addmerge",
       "path": "/creativeinventory",
       "side": "Universal",
@@ -35,13 +35,13 @@
     {
       "op": "remove",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*",
-      "file": "game:itemtypes/wearable/blanket.json",
+      "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
     },
     {
       "op": "remove",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
-      "file": "game:itemtypes/wearable/blanket.json",
+      "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
     },
     {
@@ -50,7 +50,7 @@
       "value": {
         "base": "equus:item/wearable/blanket1-ferus"
       },
-      "file": "game:itemtypes/wearable/blanket.json",
+      "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
     },
     {
@@ -59,7 +59,7 @@
       "value": {
         "base": "equus:item/wearable/blanket2-ferus"
       },
-      "file": "game:itemtypes/wearable/blanket.json",
+      "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
     },
     {
@@ -68,7 +68,7 @@
       "value": {
         "base": "item/wearable/hooved/blanket1-elk"
       },
-      "file": "game:itemtypes/wearable/blanket.json",
+      "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
     },
     {
@@ -77,7 +77,7 @@
       "value": {
         "base": "item/wearable/hooved/blanket2-elk"
       },
-      "file": "game:itemtypes/wearable/blanket.json",
+      "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
     }
   ]
