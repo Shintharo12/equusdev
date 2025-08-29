@@ -1,6 +1,5 @@
 {
-	"enabled":  false,
-	"code": "wildhorse",
+	"code": "wildwildhorse",
 	"class": "EntityAgent",
 	"fallDamageMultiplierByType": { "*-baby-*" :0.5,"*-ferus" :0.5},
 	"variantgroups": [
@@ -20,16 +19,23 @@
 	"attributes": {
 		"tamedByType": { "*": false },
 		"killedByInfoText": "deadcreature-killed",
-		"basketCatchable": true,
-		"trapChanceByType": { "*": 0.0 },
-		"trapDestroyChanceByType": { "*-baby-*": 0.85, "*": 0.99 },
+		"trappableByType": {
+			"*-adult-*": {
+				"small": { "trapChance": 0.0,	"trapDestroyChance": 0.6 },
+				"large": { "trapChance": 0.0,	"trapDestroyChance": 0.15 }
+			},
+			"*-baby-*": {
+				"small": { "trapChance": 0.0,	"trapDestroyChance": 0.2 },
+				"large": { "trapChance": 0.4,	"trapDestroyChance": 0 }
+			}
+		},
 		"minGenerationToAllowHealing": 0,
 		"creatureDiet": {
 			"foodCategories": ["Fruit","Grain","Vegetable"],
 			"foodTags": ["fruitmash","grass","nibblecrop"]
 		},
 		"handbook": {
-			"groupcode": "creaturegroup-wildhorse-{type}"
+			"groupcode": "creaturegroup-wildwildhorse-{type}"
 		}		
 	},
 	"behaviorConfigs": {
@@ -40,9 +46,9 @@
 		"floatupwhenstuck": { "onlyWhenDead": true },
 		"genelib.multiply": {
 			"spawnEntityCodesByType": {
-			"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ]},
+			"*-adult-female-*": [ { "code":"equus:feralwildhorse-baby-female-{type}"}, { "code": "equus:feralwildhorse-baby-male-{type}"} ]},
 			"requiresNearbyEntityCodeByType": {
-				"*-adult-female-*": "equus:wildhorse-adult-male-{type}"},
+				"*-adult-female-*": "equus:wildwildhorse-adult-male-{type}"},
 			"requiresNearbyEntityRange": 10,
 			"spawnQuantityMin": 1,
 			"spawnQuantityMaxByType": { "*": 1.005},
@@ -58,16 +64,10 @@
 		"rideableaccessories": {
 			"wearableSlots": [
 				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
-				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
-				{ "code": "middlebackunder-ferus", "forCategoryCodes": ["blanket", "tackblanket", "tackcaparison"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
-				{ "code": "lowerbackside-ferus", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
-				{ "code": "neck-ferus", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } } },
-				{ "code": "lowerback-ferus", "forCategoryCodes": ["bedroll"], "attachmentPointCode": "RearAP", "stepParentTo": { "": { "elementName": "RearStorage" } } },
-				{ "code": "face-ferus", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } },
-				{ "code": "hoof-ferus", "forCategoryCodes": ["tackhorseshoes"], "attachmentPointCode": "HoofAP", "stepParentTo": { "": { "elementName": "HoofStorage" } } }
+				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } }
 			]},
 		"selectionboxes": {
-			"selectionBoxes": ["HeadAP","MidAP","MidUnderAP","RearSideAP","NeckAP", "RearAP","FaceAP"]
+			"selectionBoxes": ["HeadAP","MidAP"]
 		},
 		"jaunt:gait": {
 			"idleGait": "idle",
@@ -158,6 +158,10 @@
 			]
 		},
 		"jaunt:rideable": {
+			"enabledByType": {
+				"*adult*": true,
+				"*": false
+			},
 			"interactMountAnySeat": true,
 			"seats": [
 				{ "apName": "Rider", "selectionBox": "MidAP", "bodyYawLimit": 0.2, "controllable": true,
@@ -166,6 +170,10 @@
 					"*": { "x":0,"y":-0.5,"z":0}}}
 			],			
 			"rideableGaitOrder": ["walkback", "idle", "walk", "trot", "canter", "gallop"],
+			"saddleBreakGait": "gallop",
+			"saddleBreaksRequired": { "avg": 22.5, "var": 2.5 },  
+			"saddleBreakDayInterval": 0.5,
+			"tamedEntityCode": "equus:tamedhorse-adult-{gender}-{type}",
 			"controls": {
 				"idle": {
 					"weight": 1,
@@ -475,9 +483,10 @@
 		},
 		"ownable": {
 			"groupCode": "ferus"
-		},
-	"drops": []
+		}
+
 	},
+	"drops": [],
 	"client": {
 		"renderer": "Shape",
 		"shapeByType": {
@@ -658,8 +667,8 @@
 				},
 				"hoursToGrowByType": { "*": 1200},
 				"adultEntityCodesByType": {
-					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
-					"*-baby-female-*": ["equus:wildhorse-adult-female-{type}"]
+					"*-baby-male-*": ["equus:feralwildhorse-adult-male-{type}"],
+					"*-baby-female-*": ["equus:feralwildhorse-adult-female-{type}"]
 				}
 			},
 			{ "code": "emotionstates",
@@ -769,7 +778,7 @@
 						},
 						"priority": 1.81,
 						"entityCodeByType": {
-							"*-baby-*": "wildhorse-adult-female-{type}"},
+							"*-baby-*": "*wildhorse-adult-female-{type}"},
 						"movespeedByType": {
 							"*-adult-*-ferus": 0.0285,"*-baby-*-ferus": 0.02
 						},
@@ -909,8 +918,8 @@
 				},
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
 				"companionsByType": {
-				"*-adult-male-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}"],
-				"*-adult-female-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
+				"*-adult-male-*":["equus:wildwildhorse-adult-male-{type}","equus:wildwildhorse-adult-male-{type}","equus:wildwildhorse-adult-male-{type}"],
+				"*-adult-female-*":["equus:wildwildhorse-adult-male-{type}","equus:wildwildhorse-adult-female-{type}","equus:wildwildhorse-adult-female-{type}","equus:wildwildhorse-adult-female-{type}"]}
 			},
 			"runtime": {
 				"group": "neutral",
@@ -929,12 +938,12 @@
 				},
 				"insideBlockCodes": [ "game:air", "game:gravel-*",  "game:sand-*","game:snowlayer-1","game:soil-*","game:tallgrass-*" ],
 				"companionsByType": {
-				"*-adult-male-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-male-{type}"],
-				"*-adult-female-*":["equus:wildhorse-adult-male-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}","equus:wildhorse-adult-female-{type}"]}
+				"*-adult-male-*":["equus:wildwildhorse-adult-male-{type}","equus:wildwildhorse-adult-male-{type}","equus:wildwildhorse-adult-male-{type}"],
+				"*-adult-female-*":["equus:wildwildhorse-adult-male-{type}","equus:wildwildhorse-adult-female-{type}","equus:wildwildhorse-adult-female-{type}","equus:wildwildhorse-adult-female-{type}"]}
 			}
 		},
 		"spawnconditionsByType": {
-			"wildhorse-adult-*-ferus": {
+			"wildwildhorse-adult-*-ferus": {
 				"climate": {
 					"minTemp": -5,
 					"maxTemp": 30,
@@ -948,7 +957,7 @@
 					"triesPerChunk": { "avg": 0.0005, "var": 0}
 				},
 				"runtime": {
-					"maxQuantityByGroup": { "code": "wildhorse-*", "maxQuantity": 1 }
+					"maxQuantityByGroup": { "code": "wildwildhorse-*", "maxQuantity": 1 }
 				}
 			}
 		}

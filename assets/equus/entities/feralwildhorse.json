@@ -1,0 +1,118 @@
+{
+	"code": "wildhorse",
+	"class": "EntityAgent",
+	"tags": ["animal", "huntable", "habitat-land", "semitamed"],
+	"inheritFrom": "entities/wildwildhorse",
+	"attributes": {
+		"tamedByType": { "*":  false },
+		"killedByInfoText": "deadcreature-killed",
+		"basketCatchable": true,
+		"trapChanceByType": { "*": 0.0 },
+		"trapDestroyChanceByType": { "*-baby-*": 0.85, "*": 0.99 },
+		"minGenerationToAllowHealing": 0,
+		"creatureDiet": {
+			"foodCategories": ["Fruit","Grain","Vegetable"],
+			"foodTags": ["fruitmash","grass","nibblecrop"]
+		},
+		"handbook": {
+			"groupcode": "creaturegroup-wildhorse-{type}"
+		}
+	},
+	"drops": [],
+	"behaviorConfigs": {
+		"jaunt:rideable": {
+			"enabledByType": {
+				"*adult*": true,
+				"*": false
+			},
+			"saddleBreakGait": "gallop",
+			"saddleBreaksRequired": { "avg": 5, "var": 1 },  
+			"saddleBreakDayInterval": 0.04,
+			"tamedEntityCode": "equus:tamedwildhorse-adult-{gender}-{type}"
+		},
+			"ownable": {
+				"enabledByType": {
+					"*adult*": true,
+					"*": false
+				},
+				"groupCode": "wildhorse-{type}"
+			
+		},
+		 "multiply": {
+			"enabledByType": {
+					"*-adult-female-*": true,
+					"*": false},
+			"spawnEntityCodesByType": {
+			"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}" }, { "code": "equus:wildhorse-baby-male-{type}" } ]},
+			"requiresNearbyEntityCode": "equus:*wildhorse-adult-male-{type}",
+			"requiresNearbyEntityRange": 3,
+			"spawnQuantityMin": 1,
+			"spawnQuantityMaxByType": { "*": 2},
+			"pregnancyDaysByType": {
+				"*-indicus": 103,
+				"*-caledonius": 116
+			},
+			"multiplyCooldownDaysMinByType": { "*": 7},
+			"multiplyCooldownDaysMaxByType": { "*": 14},
+			"portionsEatenForMultiplyByType": {
+				"*-indicus": 10,
+				"*-caledonius": 12
+			}
+		}
+	},
+	"client": {
+		"behaviors": [
+			{ "code": "repulseagents" },
+			{ "code": "controlledphysics"},
+			{ "code": "mortallywoundable"},
+			{ "code": "floatupwhenstuck"},
+			{ "code": "interpolateposition" },
+			{ "code": "health" },
+			{ "code": "harvestable"},
+			{ "code": "multiply"},
+			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false } },
+			{ "code": "ownable"},
+			{ "code": "rideableaccessories"},
+			{ "code": "jaunt:rideable"},
+			{ "code": "selectionboxes"},
+			{ "code": "jaunt:stamina" },
+			{ "code": "jaunt:gait" },
+			{ "code": "ropetieable" }
+		]
+	},
+	"server": {
+		"behaviors": [
+			{ "code": "ownable"},
+			{ "code": "repulseagents" },
+			{ "code": "controlledphysics"},
+			{ "code": "mortallywoundable"},
+			{ "code": "health"},
+			{ "code": "deaddecay"},
+			{ "code": "floatupwhenstuck"},
+			{ "code": "harvestable"},
+			{ "code": "breathe" },
+			{ "code": "multiply"},
+			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false }},
+			{ "code": "grow",
+					"enabledByType": {
+					"*-baby-*": true,
+					"*": false
+				},
+				"hoursToGrowByType": { "*": 168},
+				"adultEntityCodesByType": {
+					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
+					"*-baby-female-*": [ "equus:wildhorse-adult-female-{type}" ]
+				}
+			},
+			{ "code": "emotionstates"},
+			{"code": "taskai"},
+			{ "code": "pettable" },
+			{ "code": "selectionboxes" },
+			{ "code": "rideableaccessories" },
+			{ "code": "jaunt:gait" },
+			{ "code": "jaunt:rideable" },
+			{ "code": "jaunt:stamina" },
+			{ "code": "ropetieable" },
+			{ "code": "entitystatetags" }
+		]
+}}

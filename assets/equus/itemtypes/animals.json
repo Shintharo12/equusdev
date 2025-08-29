@@ -3,7 +3,7 @@
 	"class": "ItemCreature",
 	"maxstacksize": 64,
 	"variantgroups": [
-		{"code": "main","states": [ "wildhorse"]},
+		{"code": "main","states": [ "wildwildhorse", "feralwildhorse", "tamedwildhorse"]},
 		{"code": "age","states": [ "adult","baby"]},
 		{"code": "gender","states": [ "female","male"]},
 		{"code": "type","states": [ "ferus"]}
@@ -23,15 +23,12 @@
 		"*-baby-male-ferus": {"skin": { "base": "entity/ferus/mealy-bay" }}
 	},
 	
-	
-	
-	
-	"creativeinventory": { "general": ["*"], "items": ["*"], "creatures": ["*-wildhorse-*"], "equus": ["*"] },
+	"creativeinventory": { "general": ["*"], "items": ["*"], "creatures": ["*-*wildhorse-*"], "equus": ["*"] },
 	"materialDensity": 600,
 	"guiTransformByType": {
 
 		
-		"creature-wildhorse-*": {
+		"creature-*wildhorse-*": {
 			"rotate": true,
 			"translation": { "x": 3, "y": 0, "z": 0 },
 			"rotation": { "x": -11, "y": -52, "z": -180 },
@@ -41,7 +38,7 @@
 	},
 	
 	"tpHandTransformByType": {
-		"creature-wildhorse-*": {
+		"creature-*wildhorse-*": {
 			"translation": { "x": -0.9, "y": -0.9, "z": -0.7 },
 			"rotation": { "x": -180, "y": 0, "z": -156 },
 			"scale": 0.45
@@ -49,7 +46,7 @@
 	},
 	
 	"fpHandTransformByType": {
-		"creature-wildhorse-*": {
+		"creature-*wildhorse-*": {
 			"translation": { "x": 0.2, "y": 0, "z": 0 },
 			"rotation": { "x": -8, "y": -63, "z": -7 }
 		}
