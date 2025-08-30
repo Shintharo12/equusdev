@@ -48,7 +48,7 @@
 				"groupCode": "wildhorse-{type}"
 			
 		},
-		 "multiply": {
+		 "genelib.multiply": {
 			"enabledByType": {
 					"*-adult-female-*": true,
 					"*": false},
@@ -77,7 +77,7 @@
 			{ "code": "interpolateposition" },
 			{ "code": "health" },
 			{ "code": "harvestable"},
-			{ "code": "multiply"},
+			{ "code": "genelib.multiply"},
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false }},
 			{ "code": "ownable"},
 			{ "code": "rideableaccessories"},
@@ -99,9 +99,9 @@
 			{ "code": "floatupwhenstuck"},
 			{ "code": "harvestable"},
 			{ "code": "breathe" },
-			{ "code": "multiply"},
+			{ "code": "genelib.multiply"},
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false }},
-			{ "code": "grow",
+			{ "code": "genelib.grow",
 					"enabledByType": {
 					"*-baby-*": true,
 					"*": false

@@ -3,7 +3,7 @@
 	"class": "ItemCreature",
 	"maxstacksize": 64,
 	"variantgroups": [
-		{"code": "main","states": [ "wildwildhorse", "feralwildhorse", "tamedwildhorse"]},
+		{"code": "main","states": [ "wildwildhorse", "wildhorse", "tamedwildhorse"]},
 		{"code": "age","states": [ "adult","baby"]},
 		{"code": "gender","states": [ "female","male"]},
 		{"code": "type","states": [ "ferus"]}
