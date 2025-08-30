@@ -483,195 +483,8 @@
 		},
 		"ownable": {
 			"groupCode": "ferus"
-		}
-
-	},
-	"drops": [],
-	"client": {
-		"renderer": "Shape",
-		"shapeByType": {
-			"*-adult-*-ferus": { "base": "entity/land/ferus/adult"},
-			"*-baby-*-ferus": { "base": "entity/land/ferus/baby"}
 		},
-		"textureByType": {
-			"*-ferus": { "base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
-				{ "base": "entity/ferus/grullo"},
-				{ "base": "entity/ferus/mealy-reddun"},
-				{ "base": "entity/ferus/bay"},
-				{ "base": "entity/ferus/black"},
-				{ "base": "entity/ferus/chestnut"},
-				{ "base": "entity/ferus/buckskin"},
-				{ "base": "entity/ferus/black"},
-				{ "base": "entity/ferus/palomino"},
-				{ "base": "entity/ferus/baydun"},
-				{ "base": "entity/ferus/grullo"},
-				{ "base": "entity/ferus/reddun"},
-				{ "base": "entity/ferus/dunskin"},
-				{ "base": "entity/ferus/grullo"},
-				{ "base": "entity/ferus/dunalino"},
-				{ "base": "entity/ferus/mealy-bay"},
-				{ "base": "entity/ferus/black"},
-				{ "base": "entity/ferus/mealy-chestnut"},
-				{ "base": "entity/ferus/bay-leopard"},
-				{ "base": "entity/ferus/black-leopard"},
-				{ "base": "entity/ferus/chestnut-leopard"},
-				{ "base": "entity/ferus/baydun-leopard"},
-				{ "base": "entity/ferus/grullo-leopard"},
-				{ "base": "entity/ferus/reddun-leopard"},
-				{ "base": "entity/ferus/cremello"},
-				{ "base": "entity/ferus/mealy-baydun", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/mealy-reddun", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/bay-roan"},
-				{ "base": "entity/ferus/blue-roan"},
-				{ "base": "entity/ferus/red-roan"},
-				{ "base": "entity/ferus/buckskin", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/palomino", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/baydun", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/reddun", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/dunskin", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/dunalino", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/mealy-bay", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/mealy-chestnut", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/bay-leopard", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/black-leopard", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/chestnut-leopard", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/baydun-leopard", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/grullo-leopard", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/reddun-leopard", "overlays": [ "entity/ferus/roan" ] },
-				{ "base": "entity/ferus/cremello", "overlays": [ "entity/ferus/roan" ] } ]}
-		},
-		"sizeByType": {
-			"*-adult-female-ferus": 1,"*-adult-male-ferus": 1.05,"*-baby-*-ferus": 1
-		},
-		"behaviors": [
-			{ "code": "repulseagents" },
-			{ "code": "controlledphysics","stepHeight": 3.1251},
-			{ "code": "mortallywoundable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
-			{ "code": "floatupwhenstuck","onlyWhenDead": true},
-			{ "code": "interpolateposition" },
-			{ "code": "health" },
-			{ "code": "harvestable","quantitySlots": 8},
-			{ "code": "genelib.multiply", "enabledByType": { "*-adult-female-*": true, "*": false } },
-			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
-			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
-			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
-			{ "code": "jaunt:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
-			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
-			{ "code": "ropetieable" },
-			{ "code": "jaunt:gait" },
-			{ "code": "jaunt:stamina" },
-			{ "code": "genelib.info", "showtagonlywhentargeted": true }
-		],
-		"animations": [
-			{ "code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
-			{ "code": "buck", "animation": "Buck", "animationSpeed": 1.2, "weight": 100, "blendMode": "AddAverage"},
-			{ "code": "canter","animation": "Canter","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "charge","animation": "Charge","easeInSpeed": 10,"easeOutSpeed": 2,"animationSpeed": 1,"weight": 10,"blendMode": "Average"},
-			{ "code": "dead","animation": "dead","weight": 10,"blendMode": "Average"},
-			{ "code": "die","animation": "Die","animationSpeed": 0.75,"weight": 10,"blendMode": "Average","triggeredBy": { "onControls": [ "dead" ] }},
-			{ "code": "eat","animation": "Eat","easeOutSpeed": 10,"blendMode": "Average"},
-			{ "code": "gallop","animation": "Gallop","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "hurt","animation": "Hurt","animationSpeed": 1,"weight": 10,"blendMode": "AddAverage"},
-			{ "code": "idle","animation": "Idle","animationSpeed": 1,"blendMode": "AddAverage","easeOutSpeed": 4,"triggeredBy": { "defaultAnim": true }},
-			{ "code": "idle-turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
-			{ "code": "idle-turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
-			{ "code": "jump", "animation": "Jump", "animationSpeed": 1.4, "weight": 100, "blendMode": "AddAverage", "easeOutSpeed": 40 },
-			{ "code": "sit","animation": "Sit","easeInSpeed": 4,"easeOutSpeed": 4,"blendMode": "Average"},
-			{ "code": "sleep","animation": "Sleep","easeInSpeed": 4,"easeOutSpeed": 4,"weight": 5,"blendMode": "Average"},
-			{ "code": "swim","animation": "Swim","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "walk","animation": "Walk","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "trot","animation": "Trot","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
-			{ "code": "turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
-			{ "code": "turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
-			{ "code": "wounded-idle", "animation": "wounded-idle", "easeInSpeed": 3, "weight": 10, "blendMode": "Average" }
-		]
-	},
-	"server": {
-		"attributes": {
-			"pathfinder": {
-				"minTurnAnglePerSec": 350,
-				"maxTurnAnglePerSec": 650
-			}
-		},
-		"behaviors": [
-			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}},
-			{ "code": "repulseagents" },
-			{ "code": "genelib.genetics", "genomeType": "equus:equine" },
-			{ "code": "controlledphysics","stepHeight": 3.1251},
-			{ "code": "mortallywoundable", "whenBelowHealth": 6 },
-			{ "code": "health",
-				"maxhealthByType": {
-					"*-adult-female-ferus": 42,"*-adult-male-ferus": 44,"*-baby-*-ferus": 15
-				}
-			},
-			{ "code": "deaddecay",
-				"hoursToDecay": 96,
-				"decayedBlockByType": {
-				"*-adult-*": "carcass-large",
-				"*-baby-*": "carcass-medium"
-				}
-			},
-			{ "code": "floatupwhenstuck","onlyWhenDead": true},
-			{ "code": "harvestable","quantitySlots": 8,
-				"drops": [
-					{
-						"type": "item",
-						"code": "game:redmeat-raw",
-						"quantityByType": {
-							"*-adult-female-ferus": { "avg": 12,"var": 1.5},"*-adult-male-ferus": { "avg": 15,"var": 1.5},"*-baby-*-ferus": { "avg": 6,"var": 1.5}
-							
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:fat",
-						"quantityByType": {
-							"*-adult-female-ferus": { "avg": 2,"var": 1},"*-adult-male-ferus": { "avg": 3,"var": 1},"*-baby-*-ferus": { "avg": 1,"var": 0.5}
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:hide-raw-large",
-						"quantityByType": {
-							"*-adult-*": { "avg": 1.0,"var": 0.0},
-							"*": { "avg": 0.0,"var": 0.0}
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:hide-raw-medium",
-						"quantityByType": {
-							"*-baby-*": { "avg": 1.0,"var": 0.0},
-							"*": { "avg": 0.0,"var": 0.0}
-						}
-					}
-				]
-			},
-			{ "code": "breathe" },
-			{ "code": "genelib.multiply",
-				"enabledByType": {
-					"*-adult-female-*": true,
-					"*": false
-				}
-			},
-			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
-			{ "code": "genelib.grow",
-					"enabledByType": {
-					"*-baby-*": true,
-					"*": false
-				},
-				"hoursToGrowByType": { "*": 1200},
-				"adultEntityCodesByType": {
-					"*-baby-male-*": ["equus:feralwildhorse-adult-male-{type}"],
-					"*-baby-female-*": ["equus:feralwildhorse-adult-female-{type}"]
-				}
-			},
-			{ "code": "emotionstates",
+		"emotionstates": {
 				"states": [
 					{ "code": "fleeondamage","duration": 60,
 						"chanceByType": {
@@ -691,8 +504,7 @@
 					{ "code": "saturated","duration": 1200,"chance": 1,"slot": 0,"priority": 1,"accumType": "sum"}
 				]
 			},
-			{
-				"code": "taskai",
+		"taskai": {
 				"aiCreatureType": "LandCreature",
 				"aitasks": [
 					{
@@ -898,6 +710,193 @@
 						"whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage"
 					}
 				]
+			}
+
+	},
+	"drops": [],
+	"client": {
+		"renderer": "Shape",
+		"shapeByType": {
+			"*-adult-*-ferus": { "base": "entity/land/ferus/adult"},
+			"*-baby-*-ferus": { "base": "entity/land/ferus/baby"}
+		},
+		"textureByType": {
+			"*-ferus": { "base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
+				{ "base": "entity/ferus/grullo"},
+				{ "base": "entity/ferus/mealy-reddun"},
+				{ "base": "entity/ferus/bay"},
+				{ "base": "entity/ferus/black"},
+				{ "base": "entity/ferus/chestnut"},
+				{ "base": "entity/ferus/buckskin"},
+				{ "base": "entity/ferus/black"},
+				{ "base": "entity/ferus/palomino"},
+				{ "base": "entity/ferus/baydun"},
+				{ "base": "entity/ferus/grullo"},
+				{ "base": "entity/ferus/reddun"},
+				{ "base": "entity/ferus/dunskin"},
+				{ "base": "entity/ferus/grullo"},
+				{ "base": "entity/ferus/dunalino"},
+				{ "base": "entity/ferus/mealy-bay"},
+				{ "base": "entity/ferus/black"},
+				{ "base": "entity/ferus/mealy-chestnut"},
+				{ "base": "entity/ferus/bay-leopard"},
+				{ "base": "entity/ferus/black-leopard"},
+				{ "base": "entity/ferus/chestnut-leopard"},
+				{ "base": "entity/ferus/baydun-leopard"},
+				{ "base": "entity/ferus/grullo-leopard"},
+				{ "base": "entity/ferus/reddun-leopard"},
+				{ "base": "entity/ferus/cremello"},
+				{ "base": "entity/ferus/mealy-baydun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/mealy-reddun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/bay-roan"},
+				{ "base": "entity/ferus/blue-roan"},
+				{ "base": "entity/ferus/red-roan"},
+				{ "base": "entity/ferus/buckskin", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/palomino", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/baydun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/reddun", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/dunskin", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/dunalino", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/mealy-bay", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/black", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/mealy-chestnut", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/bay-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/black-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/chestnut-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/baydun-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/grullo-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/reddun-leopard", "overlays": [ "entity/ferus/roan" ] },
+				{ "base": "entity/ferus/cremello", "overlays": [ "entity/ferus/roan" ] } ]}
+		},
+		"sizeByType": {
+			"*-adult-female-ferus": 1,"*-adult-male-ferus": 1.05,"*-baby-*-ferus": 1
+		},
+		"behaviors": [
+			{ "code": "repulseagents" },
+			{ "code": "controlledphysics","stepHeight": 3.1251},
+			{ "code": "floatupwhenstuck","onlyWhenDead": true},
+			{ "code": "interpolateposition" },
+			{ "code": "health" },
+			{ "code": "harvestable","quantitySlots": 8},
+			{ "code": "genelib.multiply", "enabledByType": { "*-adult-female-*": true, "*": false } },
+			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
+			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
+			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
+			{ "code": "jaunt:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
+			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
+			{ "code": "ropetieable" },
+			{ "code": "jaunt:gait" },
+			{ "code": "jaunt:stamina" },
+			{ "code": "genelib.info", "showtagonlywhentargeted": true }
+		],
+		"animations": [
+			{ "code": "attack","animation": "Attack","animationSpeed": 1.2,"weight": 10,"blendMode": "AddAverage"},
+			{ "code": "buck", "animation": "Buck", "animationSpeed": 1.2, "weight": 100, "blendMode": "AddAverage"},
+			{ "code": "canter","animation": "Canter","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
+			{ "code": "charge","animation": "Charge","easeInSpeed": 10,"easeOutSpeed": 2,"animationSpeed": 1,"weight": 10,"blendMode": "Average"},
+			{ "code": "dead","animation": "dead","weight": 10,"blendMode": "Average"},
+			{ "code": "die","animation": "Die","animationSpeed": 0.75,"weight": 10,"blendMode": "Average","triggeredBy": { "onControls": [ "dead" ] }},
+			{ "code": "eat","animation": "Eat","easeOutSpeed": 10,"blendMode": "Average"},
+			{ "code": "gallop","animation": "Gallop","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
+			{ "code": "hurt","animation": "Hurt","animationSpeed": 1,"weight": 10,"blendMode": "AddAverage"},
+			{ "code": "idle","animation": "Idle","animationSpeed": 1,"blendMode": "AddAverage","easeOutSpeed": 4,"triggeredBy": { "defaultAnim": true }},
+			{ "code": "idle-turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "idle-turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "jump", "animation": "Jump", "animationSpeed": 1.4, "weight": 100, "blendMode": "AddAverage", "easeOutSpeed": 40 },
+			{ "code": "sit","animation": "Sit","easeInSpeed": 4,"easeOutSpeed": 4,"blendMode": "Average"},
+			{ "code": "sleep","animation": "Sleep","easeInSpeed": 4,"easeOutSpeed": 4,"weight": 5,"blendMode": "Average"},
+			{ "code": "swim","animation": "Swim","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
+			{ "code": "walk","animation": "Walk","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
+			{ "code": "trot","animation": "Trot","easeInSpeed": 4,"easeOutSpeed": 4,"supressDefaultAnimation": true,"blendMode": "Average"},
+			{ "code": "turn-left", "animation": "turn-left", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "turn-right", "animation": "turn-right", "easeInSpeed": 3, "easeOutSpeed": 10, "weight": 0.01, "blendMode": "Average", "elementWeight": { "Head Origin": 80,"Chest": 80,"Neck1": 80}, "elementBlendMode": { "Head Origin": "AddAverage","Chest": "AddAverage","Neck1": "AddAverage"}},
+			{ "code": "wounded-idle", "animation": "wounded-idle", "easeInSpeed": 3, "weight": 10, "blendMode": "Average" }
+		]
+	},
+	"server": {
+		"attributes": {
+			"pathfinder": {
+				"minTurnAnglePerSec": 350,
+				"maxTurnAnglePerSec": 650
+			}
+		},
+		"behaviors": [
+			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}},
+			{ "code": "repulseagents" },
+			{ "code": "genelib.genetics", "genomeType": "equus:equine" },
+			{ "code": "controlledphysics","stepHeight": 3.1251},
+			{ "code": "taskai"},
+			{ "code":"emotionstates"},
+			{ "code": "health",
+				"maxhealthByType": {
+					"*-adult-female-ferus": 42,"*-adult-male-ferus": 44,"*-baby-*-ferus": 15
+				}
+			},
+			{ "code": "deaddecay",
+				"hoursToDecay": 96,
+				"decayedBlockByType": {
+				"*-adult-*": "carcass-large",
+				"*-baby-*": "carcass-medium"
+				}
+			},
+			{ "code": "floatupwhenstuck","onlyWhenDead": true},
+			{ "code": "harvestable","quantitySlots": 8,
+				"drops": [
+					{
+						"type": "item",
+						"code": "game:redmeat-raw",
+						"quantityByType": {
+							"*-adult-female-ferus": { "avg": 12,"var": 1.5},"*-adult-male-ferus": { "avg": 15,"var": 1.5},"*-baby-*-ferus": { "avg": 6,"var": 1.5}
+							
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:fat",
+						"quantityByType": {
+							"*-adult-female-ferus": { "avg": 2,"var": 1},"*-adult-male-ferus": { "avg": 3,"var": 1},"*-baby-*-ferus": { "avg": 1,"var": 0.5}
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:hide-raw-large",
+						"quantityByType": {
+							"*-adult-*": { "avg": 1.0,"var": 0.0},
+							"*": { "avg": 0.0,"var": 0.0}
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:hide-raw-medium",
+						"quantityByType": {
+							"*-baby-*": { "avg": 1.0,"var": 0.0},
+							"*": { "avg": 0.0,"var": 0.0}
+						}
+					}
+				]
+			},
+			{ "code": "breathe" },
+			{ "code": "genelib.multiply",
+				"enabledByType": {
+					"*-adult-female-*": true,
+					"*": false
+				}
+			},
+			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
+			{ "code": "genelib.grow",
+					"enabledByType": {
+					"*-baby-*": true,
+					"*": false
+				},
+				"hoursToGrowByType": { "*": 1200},
+				"adultEntityCodesByType": {
+					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
+					"*-baby-female-*": ["equus:wildhorse-adult-female-{type}"]
+				}
 			},
 			{ "code": "pettable", "minGeneration": 1},
 			{ "code": "selectionboxes", "minGeneration": 2 },
