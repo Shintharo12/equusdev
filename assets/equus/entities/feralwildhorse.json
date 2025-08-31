@@ -37,27 +37,6 @@
 				},
 				"groupCode": "wildhorse-{type}"
 			
-		},
-		 "genlib.multiply": {
-			"enabledByType": {
-					"*-adult-female-*": true,
-					"*": false},
-			"spawnEntityCodesByType": {
-			"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}" }, { "code": "equus:wildhorse-baby-male-{type}" } ]},
-			"requiresNearbyEntityCode": "equus:*wildhorse-adult-male-{type}",
-			"requiresNearbyEntityRange": 3,
-			"spawnQuantityMin": 1,
-			"spawnQuantityMaxByType": { "*": 2},
-			"pregnancyDaysByType": {
-				"*-indicus": 103,
-				"*-caledonius": 116
-			},
-			"multiplyCooldownDaysMinByType": { "*": 7},
-			"multiplyCooldownDaysMaxByType": { "*": 14},
-			"portionsEatenForMultiplyByType": {
-				"*-indicus": 10,
-				"*-caledonius": 12
-			}
 		}
 	},
 	"client": {
@@ -69,8 +48,6 @@
 			{ "code": "interpolateposition" },
 			{ "code": "health" },
 			{ "code": "harvestable"},
-			{ "code": "genelib.multiply"},
-			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false } },
 			{ "code": "ownable"},
 			{ "code": "rideableaccessories"},
 			{ "code": "jaunt:rideable"},
@@ -91,8 +68,6 @@
 			{ "code": "floatupwhenstuck"},
 			{ "code": "harvestable"},
 			{ "code": "breathe" },
-			{ "code": "genelib.multiply"},
-			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false }},
 			{ "code": "genelib.grow",
 					"enabledByType": {
 					"*-baby-*": true,
