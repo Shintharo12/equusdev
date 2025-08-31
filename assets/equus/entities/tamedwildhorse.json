@@ -51,7 +51,7 @@
 		},
 		"genelib.multiply": {
 			"spawnEntityCodesByType": {
-			"*-adult-female-*": [ { "code":"equus:feralwildhorse-baby-female-{type}"}, { "code": "equus:feralwildhorse-baby-male-{type}"} ]},
+			"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ]},
 			"requiresNearbyEntityCodeByType": {
 				"*-adult-female-*": "equus:tamedwildhorse-adult-male-{type}"},
 			"requiresNearbyEntityRange": 10,
@@ -107,8 +107,8 @@
 				},
 				"hoursToGrowByType": { "*": 168},
 				"adultEntityCodesByType": {
-					"*-baby-male-*": ["equus:tamedwildhorse-adult-male-{type}"],
-					"*-baby-female-*": [ "equus:tamedwildhorse-adult-female-{type}" ]
+					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
+					"*-baby-female-*": [ "equus:wildhorse-adult-female-{type}" ]
 				}
 			},
 			{ "code": "emotionstates"},
