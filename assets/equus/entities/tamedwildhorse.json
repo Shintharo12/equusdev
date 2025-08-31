@@ -27,11 +27,12 @@
 				{ "code": "middlebackunder-{type}", "forCategoryCodes": ["blanket"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
 				{ "code": "lowerbackside-{type}", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
 				{ "code": "neck-{type}", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } } },
-				{ "code": "face-{type}", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } }
+				{ "code": "face-{type}", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } },
+				{ "code": "Riding-{type}", "forCategoryCodes": [], "attachmentPointCode": "RidingAP", "stepParentTo": { "": { "elementName": "RidingStorage" } } }
 			]},
 			"selectionboxes": {
 				"enabledByType": {"*adult*": true,"*": false},
-				"selectionBoxes": ["HeadAP", "MidAP", "MidUnderAP", "RearSideAP", "NeckAP", "FaceAP"]
+				"selectionBoxes": ["HeadAP", "MidAP", "MidUnderAP", "RearSideAP", "NeckAP", "FaceAP", "RidingAP"]
 			},
 		"jaunt:rideable": {
 			"enabledByType": {

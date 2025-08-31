@@ -64,10 +64,11 @@
 		"rideableaccessories": {
 			"wearableSlots": [
 				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
-				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } }
+				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
+				{ "code": "Riding-{type}", "forCategoryCodes": [], "attachmentPointCode": "RidingAP", "stepParentTo": { "": { "elementName": "RidingStorage" } } }
 			]},
 		"selectionboxes": {
-			"selectionBoxes": ["HeadAP","MidAP"]
+			"selectionBoxes": ["HeadAP","MidAP","RidingAP"]
 		},
 		"jaunt:gait": {
 			"idleGait": "idle",
@@ -164,7 +165,7 @@
 			},
 			"interactMountAnySeat": true,
 			"seats": [
-				{ "apName": "Rider", "selectionBox": "MidAP", "bodyYawLimit": 0.2, "controllable": true,
+				{ "apName": "Rider", "selectionBox": "RidingAP", "bodyYawLimit": 0.2, "controllable": true,
 					"mountOffsetByType": {"*adult-female-ferus": { "x":-0.1,"y":-0.4,"z":0}, 
 					"*adult-male-ferus":{"x":-0.1,"y":-0.3,"z":0},
 					"*": { "x":0,"y":-0.5,"z":0}}}
