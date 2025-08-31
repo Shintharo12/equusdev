@@ -15,24 +15,29 @@
 			"foodTags": ["fruitmash","grass","nibblecrop"]
 		},
 		"handbook": {
-			"groupcode": "creaturegroup-wildhorse-{type}"
+			"groupcode": "creaturegroup-tamedwildhorse-{type}"
 		}
 	},
 	"drops": [],
 	"behaviorConfigs": {
 		"rideableaccessories": {
+			"enabledByType": {
+				"*adult*": true,
+				"*": false
+			},
 			"wearableSlots": [
-				{ "code": "head-{type}", "forCategoryCodes": ["bridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
-				{ "code": "middleback-{type}", "forCategoryCodes": ["saddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
-				{ "code": "middlebackunder-{type}", "forCategoryCodes": ["blanket"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
+				{ "code": "head-{type}", "forCategoryCodes": ["bridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
+				{ "code": "middleback-{type}", "forCategoryCodes": ["saddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
+				{ "code": "middlebackunder-{type}", "forCategoryCodes": ["blanket", "tackblanket"], "attachmentPointCode": "MidUnderAP", "stepParentTo": { "": { "elementName": "MidUnderStorage" } } },
 				{ "code": "lowerbackside-{type}", "forCategoryCodes": ["sidebags"], "attachmentPointCode": "RearSideAP", "stepParentTo": { "": { "elementName": "RearSideStorage" } } },
 				{ "code": "neck-{type}", "forCategoryCodes": ["lantern"], "attachmentPointCode": "NeckAP", "stepParentTo": { "": { "elementName": "NeckStorage" } } },
+				{ "code": "lowerback-ferus", "forCategoryCodes": ["bedroll"], "attachmentPointCode": "RearAP", "stepParentTo": { "": { "elementName": "RearStorage" } } },
 				{ "code": "face-{type}", "forCategoryCodes": ["face"], "attachmentPointCode": "FaceAP", "stepParentTo": { "": { "elementName": "FaceStorage" } } },
 				{ "code": "Riding-{type}", "forCategoryCodes": [], "attachmentPointCode": "RidingAP", "stepParentTo": { "": { "elementName": "RidingStorage" } } }
 			]},
 			"selectionboxes": {
 				"enabledByType": {"*adult*": true,"*": false},
-				"selectionBoxes": ["HeadAP", "MidAP", "MidUnderAP", "RearSideAP", "NeckAP", "FaceAP", "RidingAP"]
+				"selectionBoxes": [ "HeadAP", "MidAP", "MidUnderAP", "RearSideAP", "NeckAP", "RearAP", "FaceAP", "RidingAP" ]
 			},
 		"jaunt:rideable": {
 			"enabledByType": {
@@ -46,8 +51,7 @@
 					"*adult*": true,
 					"*": false
 				},
-				"groupCode": "wildhorse-{type}"
-			
+				"groupCode": "ferus"		
 		},
 		"genelib.multiply": {
 			"spawnEntityCodesByType": {
@@ -89,30 +93,41 @@
 	},
 	"server": {
 		"behaviors": [
-			{ "code": "ownable"},
+			{ "code": "ownable" },
 			{ "code": "repulseagents" },
-			{ "code": "controlledphysics"},
-			{ "code": "mortallywoundable"},
-			{ "code": "health"},
-			{ "code": "deaddecay"},
-			{ "code": "floatupwhenstuck"},
-			{ "code": "harvestable"},
+			{ "code": "controlledphysics" },
+			{ "code": "mortallywoundable" },
+			{ "code": "health" },
+			{ "code": "deaddecay" },
+			{ "code": "floatupwhenstuck" },
+			{ "code": "harvestable" },
 			{ "code": "breathe" },
-			{ "code": "genelib.multiply"},
-			{ "code": "milkable", "enabledByType": { "*-adult-female-*" : true, "*": false }},
-			{ "code": "genelib.grow",
-					"enabledByType": {
+			{
+				"code": "genelib.genetics",
+				"genomeType": "equus:equine"
+			},
+			{ "code": "genelib.multiply" },
+			{
+				"code": "milkable",
+				"enabledByType": {
+					"*-adult-female-*": true,
+					"*": false
+				}
+			},
+			{
+				"code": "genelib.grow",
+				"enabledByType": {
 					"*-baby-*": true,
 					"*": false
 				},
-				"hoursToGrowByType": { "*": 168},
+				"hoursToGrowByType": { "*": 168 },
 				"adultEntityCodesByType": {
-					"*-baby-male-*": ["equus:wildhorse-adult-male-{type}"],
+					"*-baby-male-*": [ "equus:wildhorse-adult-male-{type}" ],
 					"*-baby-female-*": [ "equus:wildhorse-adult-female-{type}" ]
 				}
 			},
-			{ "code": "emotionstates"},
-			{"code": "taskai"},
+			{ "code": "emotionstates" },
+			{ "code": "taskai" },
 			{ "code": "pettable" },
 			{ "code": "selectionboxes" },
 			{ "code": "rideableaccessories" },

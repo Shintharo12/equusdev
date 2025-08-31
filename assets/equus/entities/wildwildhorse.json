@@ -1,6 +1,7 @@
 {
 	"code": "wildwildhorse",
 	"class": "EntityAgent",
+	"tags": ["animal", "huntable", "habitat-land"],
 	"fallDamageMultiplierByType": { "*-baby-*" :0.5,"*-ferus" :0.5},
 	"variantgroups": [
 		{ "code": "age","states": [ "adult","baby"]},
@@ -45,13 +46,21 @@
 		},
 		"floatupwhenstuck": { "onlyWhenDead": true },
 		"rideableaccessories": {
+			"enabledByType": {
+				"*adult*": true,
+				"*": false
+			},
 			"wearableSlots": [
 				{ "code": "head-ferus", "forCategoryCodes": ["bridle", "unicornbridle", "tackbridle"], "attachmentPointCode": "HeadAP","stepParentTo": { "": { "elementName": "Head" } } }, 
 				{ "code": "middleback-ferus", "forCategoryCodes": ["saddle", "unicornsaddle", "tacksaddle"], "attachmentPointCode": "MidAP","stepParentTo": { "": { "elementName": "MidStorage" } } },
 				{ "code": "Riding-{type}", "forCategoryCodes": [], "attachmentPointCode": "RidingAP", "stepParentTo": { "": { "elementName": "RidingStorage" } } }
 			]},
 		"selectionboxes": {
-			"selectionBoxes": ["HeadAP","MidAP","RidingAP"]
+			"selectionBoxes": [ "HeadAP", "MidAP", "RidingAP" ],
+			"enabledByType": {
+				"*adult*": true,
+				"*": false
+			}
 		},
 		"jaunt:gait": {
 			"idleGait": "idle",
@@ -466,7 +475,87 @@
 			}
 		},
 		"ownable": {
-			"groupCode": "ferus"
+			"groupCode": "ferus",
+			"enabledByType": {
+				"*": false
+			}
+		},
+		"deaddecay": {
+			"hoursToDecay": 96,
+			"decayedBlockByType": {
+				"*-adult-*": "carcass-large",
+				"*-baby-*": "carcass-medium"
+			}
+		},
+		"harvestable": {
+			"quantitySlots": 8,
+			"drops": [
+				{
+					"type": "item",
+					"code": "game:redmeat-raw",
+					"quantityByType": {
+						"*-adult-female-ferus": {
+							"avg": 12,
+							"var": 1.5
+						},
+						"*-adult-male-ferus": {
+							"avg": 15,
+							"var": 1.5
+						},
+						"*-baby-*-ferus": {
+							"avg": 6,
+							"var": 1.5
+						}
+
+					}
+				},
+				{
+					"type": "item",
+					"code": "game:fat",
+					"quantityByType": {
+						"*-adult-female-ferus": {
+							"avg": 2,
+							"var": 1
+						},
+						"*-adult-male-ferus": {
+							"avg": 3,
+							"var": 1
+						},
+						"*-baby-*-ferus": {
+							"avg": 1,
+							"var": 0.5
+						}
+					}
+				},
+				{
+					"type": "item",
+					"code": "game:hide-raw-large",
+					"quantityByType": {
+						"*-adult-*": {
+							"avg": 1.0,
+							"var": 0.0
+						},
+						"*": {
+							"avg": 0.0,
+							"var": 0.0
+						}
+					}
+				},
+				{
+					"type": "item",
+					"code": "game:hide-raw-medium",
+					"quantityByType": {
+						"*-baby-*": {
+							"avg": 1.0,
+							"var": 0.0
+						},
+						"*": {
+							"avg": 0.0,
+							"var": 0.0
+						}
+					}
+				}
+			]
 		},
 		"emotionstates": {
 				"states": [
@@ -761,15 +850,15 @@
 		},
 		"behaviors": [
 			{ "code": "repulseagents" },
-			{ "code": "controlledphysics","stepHeight": 3.1251},
+			{ "code": "controlledphysics"},
 			{ "code": "floatupwhenstuck","onlyWhenDead": true},
 			{ "code": "interpolateposition" },
 			{ "code": "health" },
-			{ "code": "harvestable","quantitySlots": 8},
-			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}, "minGeneration": 2},
-			{ "code": "rideableaccessories", "enabledByType": { "*-baby-*": false,"*-adult-*": true, "*": false }},
-			{ "code": "jaunt:rideable", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
-			{ "code": "selectionboxes", "enabledByType": { "*-baby-*": false, "*-adult-*": true, "*": false}},
+			{ "code": "harvestable"},
+			{ "code": "ownable"},
+			{ "code": "rideableaccessories"},
+			{ "code": "jaunt:rideable"},
+			{ "code": "selectionboxes"},
 			{ "code": "ropetieable" },
 			{ "code": "jaunt:gait" },
 			{ "code": "jaunt:stamina" },
@@ -807,60 +896,16 @@
 			}
 		},
 		"behaviors": [
-			{ "code": "ownable", "enabledByType": { "*-baby-*": false,"*": true}},
+			{ "code": "ownable"},
 			{ "code": "repulseagents" },
 			{ "code": "genelib.genetics", "genomeType": "equus:equine" },
-			{ "code": "controlledphysics","stepHeight": 3.1251},
+			{ "code": "controlledphysics"},
 			{ "code": "taskai"},
 			{ "code":"emotionstates"},
-			{ "code": "health",
-				"maxhealthByType": {
-					"*-adult-female-ferus": 42,"*-adult-male-ferus": 44,"*-baby-*-ferus": 15
-				}
-			},
-			{ "code": "deaddecay",
-				"hoursToDecay": 96,
-				"decayedBlockByType": {
-				"*-adult-*": "carcass-large",
-				"*-baby-*": "carcass-medium"
-				}
-			},
+			{ "code": "health"},
+			{ "code": "deaddecay"},
 			{ "code": "floatupwhenstuck","onlyWhenDead": true},
-			{ "code": "harvestable","quantitySlots": 8,
-				"drops": [
-					{
-						"type": "item",
-						"code": "game:redmeat-raw",
-						"quantityByType": {
-							"*-adult-female-ferus": { "avg": 12,"var": 1.5},"*-adult-male-ferus": { "avg": 15,"var": 1.5},"*-baby-*-ferus": { "avg": 6,"var": 1.5}
-							
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:fat",
-						"quantityByType": {
-							"*-adult-female-ferus": { "avg": 2,"var": 1},"*-adult-male-ferus": { "avg": 3,"var": 1},"*-baby-*-ferus": { "avg": 1,"var": 0.5}
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:hide-raw-large",
-						"quantityByType": {
-							"*-adult-*": { "avg": 1.0,"var": 0.0},
-							"*": { "avg": 0.0,"var": 0.0}
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:hide-raw-medium",
-						"quantityByType": {
-							"*-baby-*": { "avg": 1.0,"var": 0.0},
-							"*": { "avg": 0.0,"var": 0.0}
-						}
-					}
-				]
-			},
+			{ "code": "harvestable"	},
 			{ "code": "breathe" },
 			{ "code": "genelib.grow",
 					"enabledByType": {
@@ -880,7 +925,8 @@
 			{ "code": "jaunt:rideable" },
 			{ "code": "jaunt:stamina" },
 			{ "code": "ropetieable" },
-			{ "code": "genelib.info", "showtagonlywhentargeted": true }
+			{ "code": "genelib.info", "showtagonlywhentargeted": true },
+			{ "code": "entitystatetags" }
 		],
 		"spawnconditions": {
 			"worldgen": {
