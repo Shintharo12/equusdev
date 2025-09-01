@@ -1,6 +1,6 @@
 [
   {
-    "file": "equus:entities/wildhorse.json",
+    "file": "equus:entities/tamedwildhorse.json",
     "op": "addmerge",
     "path": "/behaviorConfigs/selectionboxes/selectionBoxes",
     "side": "Server",

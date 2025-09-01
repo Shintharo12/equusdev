@@ -166,7 +166,7 @@
 			"saddleBreakGait": "gallop",
 			"saddleBreaksRequired": { "avg": 22.5, "var": 2.5 },  
 			"saddleBreakDayInterval": 0.5,
-			"tamedEntityCode": "equus:tamedhorse-adult-{gender}-{type}",
+			"tamedEntityCode": "equus:tamedwildhorse-adult-{gender}-{type}",
 			"controls": {
 				"idle": {
 					"weight": 1,
@@ -974,7 +974,7 @@
 					"maxShrubs": 0.9
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.0005, "var": 0}
+					"triesPerChunk": { "avg": 0.0001, "var": 0}
 				},
 				"runtime": {
 					"maxQuantityByGroup": { "code": "wildwildhorse-*", "maxQuantity": 1 }
