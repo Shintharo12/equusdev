@@ -591,6 +591,22 @@
 						"teleportToRange": 20
 					},
 					{
+						"code": "followleadholder",
+						"enabledByType": {
+							"*tamed*": true,
+							"*": false
+						},
+						"priority": 1.45,
+						"animation": "walk",
+						"movespeedByType": {
+							"*-adult-*-ferus": 0.015,"*-baby-*-ferus": 0.012
+						},
+						"animationSpeedByType": {
+							"*-baby-*": 1.4,
+							"*": 1.4
+						}
+					},
+					{
 						"code": "meleeattack",
 						"animation": "Attack",
 						"enabledByType": {
