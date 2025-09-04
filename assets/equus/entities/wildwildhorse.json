@@ -974,7 +974,7 @@
 					"maxShrubs": 0.9
 				},
 				"worldgen": {
-					"triesPerChunk": { "avg": 0.0001, "var": 0}
+					"triesPerChunk": { "avg": 0.001, "var": 0}
 				},
 				"runtime": {
 					"maxQuantityByGroup": { "code": "wildwildhorse-*", "maxQuantity": 1 }
