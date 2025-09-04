@@ -651,7 +651,7 @@
 				}
 			},
 			{ "code": "milkable", "enabledByType": { "*-adult-female-*": true, "*": false } },
-			{ "code": "genelib.grow",
+			{ "code": "grow",
 					"enabledByType": {
 					"*-baby-*": true,
 					"*": false

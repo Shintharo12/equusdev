@@ -115,7 +115,7 @@
 				}
 			},
 			{
-				"code": "genelib.grow",
+				"code": "grow",
 				"enabledByType": {
 					"*-baby-*": true,
 					"*": false

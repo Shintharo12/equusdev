@@ -923,7 +923,7 @@
 			{ "code": "floatupwhenstuck","onlyWhenDead": true},
 			{ "code": "harvestable"	},
 			{ "code": "breathe" },
-			{ "code": "genelib.grow",
+			{ "code": "grow",
 					"enabledByType": {
 					"*-baby-*": true,
 					"*": false
