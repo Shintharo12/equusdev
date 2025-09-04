@@ -18,9 +18,9 @@
       "op": "addmerge",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
       "value": {
-        "base": "game:item/wearable/animal/hooved/{type}-elk"
+        "base": "game:item/wearable/hooved/{type}-elk"
       },
-      "file": "game:itemtypes/wearable/hooved.json",
+      "file": "game:itemtypes/wearable/animal/hooved.json",
       "side": "Server"
     },
     {
@@ -66,7 +66,7 @@
       "op": "addmerge",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*/*",
       "value": {
-        "base": "item/wearable/hooved/blanket1-elk"
+        "base": "game:item/wearable/hooved/blanket1-elk"
       },
       "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"
@@ -75,7 +75,7 @@
       "op": "addmerge",
       "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-forlorn/*",
       "value": {
-        "base": "item/wearable/hooved/blanket2-elk"
+        "base": "game:item/wearable/hooved/blanket2-elk"
       },
       "file": "game:itemtypes/wearable/animal/blanket.json",
       "side": "Server"

@@ -945,7 +945,7 @@
 				"group": "neutral",
 				"tryOnlySurface": true,
 				"chanceByType": {
-					"*-adult-female-ferus": 0.000001,"*-adult-male-ferus": 0.000001,
+					"wildwild*-adult-*-ferus": 0.000001,
 					"*": 0.0
 				},
 				"mindistancetoplayer": 100,
