@@ -72,7 +72,7 @@
     {
     "op": "remove",
     "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType/*-face*/*",
-    "file": "game:itemtypes/wearable/hooved.json",
+    "file": "game:itemtypes/wearable/animal/hooved.json",
     "side": "Server"
   },
   {
@@ -81,7 +81,7 @@
     "value": {
       "base": "equus:item/wearable/face/{type}-ferus"
     },
-    "file": "game:itemtypes/wearable/hooved.json",
+    "file": "game:itemtypes/wearable/animal/hooved.json",
     "side": "Server"
   },
   {
@@ -90,7 +90,7 @@
     "value": {
       "base": "game:item/wearable/hooved/face/{type}-elk"
     },
-    "file": "game:itemtypes/wearable/hooved.json",
+    "file": "game:itemtypes/wearable/animal/hooved.json",
     "side": "Server"
   }
 

@@ -18,9 +18,9 @@
 		{
 			"name": "ORIGIN",
 			"stepParentName": "MidStorage",
-			"from": [ 1.6, 0.9, 4.29 ],
-			"to": [ 2.7, 2.0, 5.39 ],
-			"rotationOrigin": [ 1.6, 0.9, 4.29 ],
+			"from": [ 1.6, 1.7, 4.29 ],
+			"to": [ 2.7, 2.8, 5.39 ],
+			"rotationOrigin": [ 1.6, 1.7, 4.29 ],
 			"faces": {
 			},
 			"children": [

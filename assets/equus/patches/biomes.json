@@ -1,6 +1,6 @@
 [
       {
-      "file": "equus:entities/wildhorse.json",
+      "file": "equus:entities/wildwildhorse.json",
       "op": "addmerge",
       "path": "/attributesByType",
       "side": "Server",
