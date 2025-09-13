@@ -4,7 +4,7 @@
 	"tags": ["animal", "huntable", "habitat-land", "tamed"],
 	"inheritFrom": "entities/wildwildhorse",
 	"attributes": {
-		"tamedByType": { "*adult*": true, "*":  false },
+		"tamedByType": { "*": true },
 		"killedByInfoText": "deadcreature-killed",
 		"basketCatchable": true,
 		"trapChanceByType": { "*": 0.0 },

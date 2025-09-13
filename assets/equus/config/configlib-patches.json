@@ -5,7 +5,15 @@
       "equus:entities/wildwildhorse.json": {
         "server/spawnconditionsByType/wildwildhorse-adult-*-ferus/worldgen/triesPerChunk/avg": "WorldGenSpawnRateFerus / 2000",
         "server/spawnconditions/runtime/chanceByType/*-adult-female-ferus": "RuntimeSpawnRateFerus / 1000000",
-        "server/spawnconditions/runtime/chanceByType/*-adult-male-ferus": "RuntimeSpawnRateFerus / 1000000"
+        "server/spawnconditions/runtime/chanceByType/*-adult-male-ferus": "RuntimeSpawnRateFerus / 1000000",
+        "behaviorConfigs/jaunt:rideable/saddleBreakDayInterval": "saddlebreakCooldownWild",
+        "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/avg": "saddlebreaksWildAvg",
+        "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/var": "saddlebreaksWildVar"
+      },
+      "equus:entities/feralwildhorse.json": {
+        "behaviorConfigs/jaunt:rideable/saddleBreakDayInterval": "saddlebreakCooldownFeral",
+        "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/avg": "saddlebreaksFeralAvg",
+        "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/var": "saddlebreaksFeralVar"
       }
     }
   },
@@ -32,6 +40,72 @@
         "min": 0.0,
         "max": 10.0,
         "step":0.1
+      }
+    },
+    {
+      "code": "saddlebreakCooldownWild",
+      "type": "float",
+      "ingui": "setting-saddlebreak-cooldown-wild",
+      "default": 0,
+      "range": {
+        "min": 0.0,
+        "max": 1.0,
+        "step":0.01
+      }
+    },
+    {
+      "code": "saddlebreakCooldownFeral",
+      "type": "float",
+      "ingui": "setting-saddlebreak-cooldown-feral",
+      "default": 0,
+      "range": {
+        "min": 0.0,
+        "max": 1.0,
+        "step":0.01
+      }
+    },
+    {
+      "code": "saddlebreaksWildAvg",
+      "type": "float",
+      "ingui": "setting-saddlebreaks-wild-avg",
+      "default": 22.5,
+      "range": {
+        "min": 1,
+        "max": 50,
+        "step":0.5
+      }
+    },
+    {
+      "code": "saddlebreaksWildVar",
+      "type": "float",
+      "ingui": "setting-saddlebreaks-wild-var",
+      "default": 2.5,
+      "range": {
+        "min": 0,
+        "max": 10,
+        "step":0.5
+      }
+    },
+    {
+      "code": "saddlebreaksFeralAvg",
+      "type": "float",
+      "ingui": "setting-saddlebreaks-feral-avg",
+      "default": 5,
+      "range": {
+        "min": 1,
+        "max": 20,
+        "step":0.5
+      }
+    },
+    {
+      "code": "saddlebreaksFeralVar",
+      "type": "float",
+      "ingui": "setting-saddlebreaks-feral-var",
+      "default": 1,
+      "range": {
+        "min": 0,
+        "max": 5,
+        "step":0.5
       }
     }
   ]

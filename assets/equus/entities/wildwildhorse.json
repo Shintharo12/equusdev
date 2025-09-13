@@ -165,7 +165,7 @@
 			"rideableGaitOrder": ["walkback", "idle", "walk", "trot", "canter", "gallop"],
 			"saddleBreakGait": "gallop",
 			"saddleBreaksRequired": { "avg": 22.5, "var": 2.5 },  
-			"saddleBreakDayInterval": 0.5,
+			"saddleBreakDayInterval": 0,
 			"tamedEntityCode": "equus:tamedwildhorse-adult-{gender}-{type}",
 			"controls": {
 				"idle": {
@@ -655,11 +655,28 @@
 					},
 					{
 						"code": "fleeentity",
-						"entityCodes": ["bear-*","hyena-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"],
+						"enabledByType":{
+							"wildwildhorse*": true,
+							"*": false
+						},
+						"entityCodes": ["player","bear-*","hyena-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"],
 						"priority": 1.7,
 						"movespeed": 0.05,
 						"seekingRange": 12,
 						"animation": "Gallop",
+						"animationSpeed": 2
+					},
+										{
+						"code": "fleeentity",
+						"enabledByType":{
+							"wildhorse*": true,
+							"*": false
+						},
+						"entityCodes": ["player","bear-*","hyena-*","wolf-*", "caninae-canina-adult-*","felinae-adult-*","machairodontinae-adult-*", "pantherinae-neofelis-adult-*", "pantherinae-panthera-adult-*","thylacoleonidae-adult-*"],
+						"priority": 1.7,
+						"movespeed": 0.0285,
+						"seekingRange": 5,
+						"animation": "trot",
 						"animationSpeed": 2
 					},
 					{

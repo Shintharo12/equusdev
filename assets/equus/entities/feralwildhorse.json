@@ -27,7 +27,7 @@
 			},
 			"saddleBreakGait": "gallop",
 			"saddleBreaksRequired": { "avg": 5, "var": 1 },  
-			"saddleBreakDayInterval": 0.04,
+			"saddleBreakDayInterval": 0,
 			"tamedEntityCode": "equus:tamedwildhorse-adult-{gender}-{type}"
 		},
 			"ownable": {
