@@ -29,7 +29,7 @@
         "path": "/attributesByType/bed-hay-*/attachableToEntity/attachedShapeBySlotCode",
         "value":{
                     "low*rback": {
-                        "base": "item/wearable/hooved/strawbed"
+                        "base": "block/hay/strawbed-inventory"
                     },
                     "lowerback-ferus": {
                         "base": "equus:item/wearable/strawbed"
