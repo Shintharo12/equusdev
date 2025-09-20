@@ -120,7 +120,7 @@
 					"*-baby-*": true,
 					"*": false
 				},
-				"hoursToGrowByType": { "*": 168 },
+				"hoursToGrowByType": { "*": 1200 },
 				"adultEntityCodesByType": {
 					"*-baby-male-*": [ "equus:wildhorse-adult-male-{type}" ],
 					"*-baby-female-*": [ "equus:wildhorse-adult-female-{type}" ]
