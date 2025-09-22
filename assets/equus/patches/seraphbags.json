@@ -1,0 +1,132 @@
+  [
+    {
+      "op": "remove",
+      "file": "game:itemtypes/wearable/bag/backpack.json",
+      "path": "/attributes/attachableToEntity/attachedShape",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "file": "game:itemtypes/wearable/bag/backpack.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+      "side": "Server",
+      "value": { "*-ferus":{
+        "base": "equus:item/bag/backpack-{type}"
+      }}
+    },
+    {
+      "op": "addmerge",
+      "file": "game:itemtypes/wearable/bag/backpack.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+      "side": "Server",
+      "value": { "*":{
+        "base": "item/bag/backpack-{type}-attached"
+      }}
+    },
+    {
+      "op": "remove",
+      "file": "game:itemtypes/wearable/bag/hunterbackpack.json",
+      "path": "/attributes/attachableToEntity/attachedShape",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "file": "game:itemtypes/wearable/bag/hunterbackpack.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+      "side": "Server",
+      "value": { "*-ferus":{
+        "base": "equus:item/bag/hunterbackpack"
+      }}
+    },
+    {
+      "op": "addmerge",
+      "file": "game:itemtypes/wearable/bag/hunterbackpack.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+      "side": "Server",
+      "value": { "*":{
+        "base": "item/bag/hunterbackpack-attached"
+      }}
+    },     
+    {
+      "dependsOn": [{ "modid": "butchering" }],
+      "op": "remove",
+      "file": "butchering:itemtypes/tool/butcherybag.json",
+      "path": "/attributes/attachableToEntity/attachedShapeByType",
+      "side": "Server"
+    },
+    {
+      "enabled": false,
+      "op": "addmerge",
+      "file": "butchering:itemtypes/tool/butcherybag.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType",
+      "side": "Server",
+      "value": { "*-ferus":{
+				"butcherybag-primitive": { "base": "equus:item/bag/butcherybagreed" },
+				"butcherybag-standard": { "base": "equus:item/bag/butcherybagpelt" },
+				"butcherybag-leather": { "base": "equus:item/bag/butcherybagleather" },
+				"butcherybag-sturdyleather": { "base": "equus:item/bag/butcherybagsturdyleather" }
+			}}
+    },
+    {
+      "enabled": false,
+      "op": "addmerge",
+      "file": "butchering:itemtypes/tool/butcherybag.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType",
+      "side": "Server",
+      "value": { "*":{
+				"butcherybag-primitive": { "base": "items/bags/butcherybagreed" },
+				"butcherybag-standard": { "base": "items/bags/butcherybagpelt" },
+				"butcherybag-leather": { "base": "items/bags/butcherybagleather" },
+				"butcherybag-sturdyleather": { "base": "items/bags/butcherybagsturdyleather" }
+			}}
+    },
+    {
+      "dependsOn": [{ "modid": "butchering" }],
+      "op": "addmerge",
+      "file": "butchering:itemtypes/tool/butcherybag.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCodeByType",
+      "side": "Server",
+      "value": { 
+      "*-primitive":{
+				"*-ferus": { "base": "equus:item/bag/butcherybagreed" },
+				"*": { "base": "items/bags/butcherybagreed" },
+			},
+      "*-standard":{
+				"*-ferus": { "base": "equus:item/bag/butcherybagpelt" },
+				"*": { "base": "items/bags/butcherybagpelt" },
+			},
+      "*-leather":{
+				"*-ferus": { "base": "equus:item/bag/butcherybagleather" },
+				"*": { "base": "items/bags/butcherybagleather" },
+			},
+      "*-sturdyleather":{
+				"*-ferus": { "base": "equus:item/bag/butcherybagsturdyleather" },
+				"*": { "base": "items/bags/butcherybagsturdyleather" },
+			}
+      }
+    },
+    {
+      "op": "remove",
+      "file": "game:itemtypes/wearable/bag/quiver.json",
+      "path": "/attributes/attachableToEntity/attachedShape",
+      "side": "Server"
+    },
+    {
+      "op": "addmerge",
+      "file": "game:itemtypes/wearable/bag/quiver.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+      "side": "Server",
+      "value": { "*-ferus":{
+        "base": "equus:item/bag/quiver"
+      }}
+    },
+    {
+      "op": "addmerge",
+      "file": "game:itemtypes/wearable/bag/quiver.json",
+      "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+      "side": "Server",
+      "value": { "*":{
+        "base": "item/bag/quiver-attached"
+      }}
+    }
+  ]

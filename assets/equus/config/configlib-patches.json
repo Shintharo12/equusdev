@@ -15,7 +15,11 @@
         "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/avg": "saddlebreaksFeralAvg",
         "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/var": "saddlebreaksFeralVar"
       }
-    }
+    },
+    "boolean": {
+      "equus:patches/configpatches": {
+        "/0/enabled": "allowbackpacks"
+        }}
   },
   "settings": [
     {
@@ -107,6 +111,12 @@
         "max": 5,
         "step":0.5
       }
+    },
+    {
+      "code": "allowbackpacks",
+      "type": "boolean",
+      "ingui": "setting-allowbackpacks",
+      "default": true
     }
   ]
 }

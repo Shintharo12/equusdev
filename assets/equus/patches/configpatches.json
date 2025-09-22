@@ -1,0 +1,10 @@
+ [
+  {
+    "enabled": true,
+    "op": "addeach",
+    "path": "/behaviorConfigs/rideableaccessories/wearableSlots/5/forCategoryCodes/-",
+    "value": [ "backpack" ],
+    "file": "entities/tamedwildhorse.json",
+    "side": "Server"
+  }, 
+]
