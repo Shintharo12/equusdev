@@ -17,11 +17,16 @@
       }
     },
     "boolean": {
-      "equus:patches/configpatches": {
-        "/0/enabled": "allowbackpacks"
+      "equus:patches/configpatches.json": {
+        "0/enabled": "allowbackpacks"
         }}
   },
   "settings": [
+    {
+      "type": "separator",
+      "title": "settings-wildhorses",
+      "weight": 1.0
+    },    
     {
       "code": "WorldGenSpawnRateFerus",
       "type": "float",
@@ -49,18 +54,7 @@
     {
       "code": "saddlebreakCooldownWild",
       "type": "float",
-      "ingui": "setting-saddlebreak-cooldown-wild",
-      "default": 0,
-      "range": {
-        "min": 0.0,
-        "max": 1.0,
-        "step":0.01
-      }
-    },
-    {
-      "code": "saddlebreakCooldownFeral",
-      "type": "float",
-      "ingui": "setting-saddlebreak-cooldown-feral",
+      "ingui": "setting-saddlebreak-cooldown",
       "default": 0,
       "range": {
         "min": 0.0,
@@ -71,7 +65,7 @@
     {
       "code": "saddlebreaksWildAvg",
       "type": "float",
-      "ingui": "setting-saddlebreaks-wild-avg",
+      "ingui": "setting-saddlebreaks-avg",
       "default": 22.5,
       "range": {
         "min": 1,
@@ -82,18 +76,34 @@
     {
       "code": "saddlebreaksWildVar",
       "type": "float",
-      "ingui": "setting-saddlebreaks-wild-var",
+      "ingui": "setting-saddlebreaks-var",
       "default": 2.5,
       "range": {
         "min": 0,
         "max": 10,
         "step":0.5
       }
+    },    
+    {
+      "type": "separator",
+      "title": "settings-feralhorses",
+      "weight": 1.0
+    },  
+    {
+      "code": "saddlebreakCooldownFeral",
+      "type": "float",
+      "ingui": "setting-saddlebreak-cooldown",
+      "default": 0,
+      "range": {
+        "min": 0.0,
+        "max": 1.0,
+        "step":0.01
+      }
     },
     {
       "code": "saddlebreaksFeralAvg",
       "type": "float",
-      "ingui": "setting-saddlebreaks-feral-avg",
+      "ingui": "setting-saddlebreaks-avg",
       "default": 5,
       "range": {
         "min": 1,
@@ -104,14 +114,19 @@
     {
       "code": "saddlebreaksFeralVar",
       "type": "float",
-      "ingui": "setting-saddlebreaks-feral-var",
+      "ingui": "setting-saddlebreaks-var",
       "default": 1,
       "range": {
         "min": 0,
         "max": 5,
         "step":0.5
       }
-    },
+    },    
+    {
+      "type": "separator",
+      "title": "settings-tamedhorses",
+      "weight": 1.0
+    },  
     {
       "code": "allowbackpacks",
       "type": "boolean",

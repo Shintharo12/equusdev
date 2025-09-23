@@ -47,5 +47,17 @@
   "game:itemdesc-hoovedwearables-head-bridle2": "Useful for long distance travel. Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-middleback-saddle1": "Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Suitable for: elk, horse",
-  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse"
+  "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse",
+
+  "setting-worldgen-spawnrate-ferus": "Worldgen Spawnrate",
+  "setting-runtime-spawnrate-ferus": "Runtime Spawnrate",
+  "setting-saddlebreak-cooldown": "Saddlebreak Cooldown",
+  "setting-saddlebreaks-avg": "Average Saddlebreaks needed",
+  "setting-saddlebreaks-var": "Saddlebreak count Variance",
+  "setting-allowbackpacks": "Allow Backpacks in bedroll slots",
+
+  "settings-feralhorses": "Feral Horses",
+  "settings-wildhorses": "Wild Horses",
+  "settings-tamedhorses": "Tamed Horses"
+
 }
