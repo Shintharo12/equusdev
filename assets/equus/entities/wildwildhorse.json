@@ -979,7 +979,7 @@
 				"group": "neutral",
 				"tryOnlySurface": true,
 				"chanceByType": {
-					"wildwild*-adult-*-ferus": 0.000001,
+					"wildwildhorse-adult-*-ferus": 0.00001,
 					"*": 0.0
 				},
 				"mindistancetoplayer": 100,
@@ -1002,7 +1002,7 @@
 					"minTemp": -5,
 					"maxTemp": 30,
 					"minRain": 0.1,
-					"maxRain": 0.5,
+					"maxRain": 0.7,
 					"minForest": 0.0,
 					"maxForest": 0.5,
 					"maxShrubs": 0.9
