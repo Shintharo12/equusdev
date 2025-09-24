@@ -54,21 +54,17 @@
 				"groupCode": "ferus"		
 		},
 		"genelib.multiply": {
-			"spawnEntityCodesByType": {
-			"*-adult-female-*": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ]},
-			"requiresNearbyEntityCodeByType": {
-				"*-adult-female-*": "equus:tamedwildhorse-adult-male-{type}"},
+            "enabledByType": { "*-adult-female-*" : true, "*": false },
+			"spawnEntityCodes": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ],
+			"requiresNearbyEntityCode": "equus:tamedwildhorse-adult-male-{type}",
 			"requiresNearbyEntityRange": 10,
 			"spawnQuantityMin": 1,
-			"spawnQuantityMaxByType": { "*": 1.005},
-			"pregnancyDaysByType": {
-				"*-ferus": 85
-			},
-			"multiplyCooldownDaysMinByType": { "*": 6},
-			"multiplyCooldownDaysMaxByType": { "*": 11},
-			"portionsEatenForMultiplyByType": {
-				"*-ferus": 10
-			}
+			"spawnQuantityMax": 1.005,
+			"pregnancyDays": 85,
+			"multiplyCooldownDaysMin": 6,
+			"multiplyCooldownDaysMax": 11,
+			"portionsEatenForMultiply": 10,
+            "eatAnyway": true
 		}
 	},
 	"client": {
