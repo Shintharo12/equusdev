@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "patches": {
     "number": {
       "equus:entities/wildwildhorse.json": {
@@ -30,11 +30,11 @@
       "code": "WorldGenSpawnRateFerus",
       "type": "float",
       "ingui": "setting-worldgen-spawnrate-ferus",
-      "logarithmic": true,
-      "default": 1,
+      "logarithmic": false,
+      "default": 1.0,
       "range": {
         "min": 0.0,
-        "max": 10.0,
+        "max": 100.0,
         "step":0.1
       }
     },
@@ -42,11 +42,11 @@
       "code": "RuntimeSpawnRateFerus",
       "type": "float",
       "ingui": "setting-runtime-spawnrate-ferus",
-      "logarithmic": true,
-      "default": 1,
+      "logarithmic": false,
+      "default": 1.0,
       "range": {
         "min": 0.0,
-        "max": 10.0,
+        "max": 100.0,
         "step":0.1
       }
     },
@@ -54,10 +54,10 @@
       "code": "saddlebreakCooldownWild",
       "type": "float",
       "ingui": "setting-saddlebreak-cooldown",
-      "default": 0,
+      "default": 0.00,
       "range": {
-        "min": 0.0,
-        "max": 1.0,
+        "min": 0.00,
+        "max": 1.00,
         "step":0.01
       }
     },
@@ -92,10 +92,10 @@
       "code": "saddlebreakCooldownFeral",
       "type": "float",
       "ingui": "setting-saddlebreak-cooldown",
-      "default": 0,
+      "default": 0.00,
       "range": {
-        "min": 0.0,
-        "max": 1.0,
+        "min": 0.00,
+        "max": 1.00,
         "step":0.01
       }
     },
