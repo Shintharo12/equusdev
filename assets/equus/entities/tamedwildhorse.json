@@ -84,7 +84,8 @@
 			{ "code": "selectionboxes"},
 			{ "code": "jaunt:stamina" },
 			{ "code": "jaunt:gait" },
-			{ "code": "ropetieable" }
+			{ "code": "ropetieable" },
+			{ "code": "genelib.info", "showtagonlywhentargeted": true }
 		]
 	},
 	"server": {
@@ -97,6 +98,7 @@
 			{ "code": "deaddecay" },
 			{ "code": "floatupwhenstuck" },
 			{ "code": "harvestable" },
+			{ "code": "genelib.info", "showtagonlywhentargeted": true },
 			{ "code": "breathe" },
 			{
 				"code": "genelib.genetics",
