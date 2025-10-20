@@ -7,7 +7,8 @@
             { "cream": ["wildtype", "cream"] },
             { "leopard": ["wildtype", "leopard"] },
             { "mealy": ["mealy", "nonmealy"] },
-            { "roan": ["wildtype", "roan"] }
+            { "roan": ["wildtype", "roan"] },
+            { "tobiano":["wildtype", "tobiano"] }
         ]
     },
     "interpreters": [ "Polygenes", "Equus" ],
@@ -25,7 +26,8 @@
         "verycold": {
             "autosomal": {
                 "leopard": { "default": "wildtype", "leopard": 0.2 },
-                "extension": { "default": "wildtype", "red": 0.4 }
+                "extension": { "default": "wildtype", "red": 0.4 },
+                "tobiano": { "default": "wildtype", "tobiano": 0.2 }
             },
             "conditions": {
                 "maxTemp": 10
@@ -39,7 +41,8 @@
                 "cream": { "default": "wildtype", "cream": 0.1 },
                 "leopard": { "default": "wildtype", "leopard": 0.2 },
                 "mealy": { "default": "mealy", "nonmealy": 0.5 },
-                "roan": { "default": "wildtype", "roan": 0.1 }
+                "roan": { "default": "wildtype", "roan": 0.1 },
+                "tobiano": { "default": "wildtype", "tobiano": 0.1 }
             }
         }
     }
