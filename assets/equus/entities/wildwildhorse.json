@@ -598,9 +598,9 @@
 							"*": false
 						},
 						"priority": 1.45,
-						"animation": "walk",
+						"animation": "trot",
 						"movespeedByType": {
-							"*-adult-*-ferus": 0.015,"*-baby-*-ferus": 0.012
+							"*-adult-*-ferus": 0.036,"*-baby-*-ferus": 0.02
 						},
 						"animationSpeedByType": {
 							"*-baby-*": 1.4,
