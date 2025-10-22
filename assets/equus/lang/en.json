@@ -49,7 +49,6 @@
   "game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Suitable for: elk, horse",
   "game:itemdesc-hoovedwearables-blanket-*": "Suitable for: elk, horse",
 
-  "setting-worldgen-spawnrate-ferus": "Worldgen Spawnrate",
   "setting-runtime-spawnrate-ferus": "Runtime Spawnrate",
   "setting-saddlebreak-cooldown": "Saddlebreak Cooldown",
   "setting-saddlebreaks-avg": "Average Saddlebreaks needed",

@@ -71,10 +71,19 @@ namespace Equus {
             return color;
         }
 
-        private static int getTextureIndex(Genome genome) {
+        private static int getTextureIndex(Genome genome)
+        {
             int texture = getSolidBase(genome);
-
-            if (genome.HasAutosomal("roan", "roan")) {
+            if (genome.HasAutosomal("roan", "roan")&& genome.HasAutosomal("tobiano", "tobiano"))
+            {
+                return texture + 75; // 50 non-tobiano textures, then 25 tobiano textures, then 25 roan+tobiano textures
+            }
+            if (genome.HasAutosomal("tobiano", "tobiano"))
+            {
+                return texture + 50; // 50 non-tobiano textures, then 25 tobiano textures
+            }
+            if (genome.HasAutosomal("roan", "roan"))
+            {
                 return texture + 25; // 25 non-roan textures, then 25 roan textures
             }
             return texture;

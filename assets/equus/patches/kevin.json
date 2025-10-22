@@ -1,0 +1,24 @@
+[
+    {
+        "dependsOn": [{"modid": "kevinsfurniture"}],
+        "op": "remove",
+        "path": "/attributes/attachableToEntity/attachedShape",
+        "file": "kevinsfurniture:blocktypes/beds/furroll.json",
+        "side": "Server"
+    },
+    {
+        "dependsOn": [{"modid": "kevinsfurniture"}],
+        "file": "kevinsfurniture:blocktypes/beds/furroll.json",
+        "op": "addmerge",
+        "path": "/attributes/attachableToEntity/attachedShapeBySlotCode",
+        "value":{
+                    "low*rback": {
+                        "base": "kevinsfurniture:item/furroll_hooved"
+                    },
+                    "lowerback-ferus": {
+                        "base": "equus:item/wearable/furroll_hooved"
+            }
+        },
+        "side": "server"
+    }
+]
