@@ -7,8 +7,8 @@
     "description": "Adds a fictional breed of wild horses",
     "version": "1.2.0",
     "dependencies": {
-        "game": "1.21.0",
-        "genelib": "2.0.0",
-        "jaunt": "2.1.0-rc.1"
+        "game": "1.22.0-rc.5",
+        "genelib": "2.1.7",
+        "jaunt": "3.0.0-rc.3"
     }
 }
