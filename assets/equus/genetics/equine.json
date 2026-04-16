@@ -9,7 +9,13 @@
             { "mealy": ["mealy", "nonmealy"] },
             { "roan": ["wildtype", "roan"] },
             { "tobiano":["wildtype", "tobiano"] }
-        ]
+        ],
+        "anonymous": [
+            { "deleterious": 16 },
+        ],
+        "bitwise": [
+            { "coi": 128 },
+        ],
     },
     "interpreters": [ "Polygenes", "Equus" ],
     "sexdetermination": "xy",
