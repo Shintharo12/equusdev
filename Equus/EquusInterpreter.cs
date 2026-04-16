@@ -27,45 +27,45 @@ namespace Equus {
             int doublecream = 24; // same number for black and red basees too - shared texture is not repeated in the list
 
             // Check the genes to choose a texture
-            if (genome.Homozygous("cream", "cream")) {
+            if (genome.IsHomozygous("cream", "cream")) {
                 return doublecream;
             }
             int color = bay;
             // Give leopard the highest priority - if we don't have a texture for this exact horse, we pick the closest leopard texture
-            if (genome.HasAutosomal("leopard", "leopard")) {
-                if (genome.HasAutosomal("dun", "dun")) {
+            if (genome.HasAllele("leopard", "leopard")) {
+                if (genome.HasAllele("dun", "dun")) {
                     color = baydunleopard;
                 }
                 else {
                     color = bayleopard;
                 }
             }
-            else if (genome.HasAutosomal("cream", "cream")) {
-                if (genome.HasAutosomal("dun", "dun")) {
+            else if (genome.HasAllele("cream", "cream")) {
+                if (genome.HasAllele("dun", "dun")) {
                     color = dunskin;
                 }
                 else {
                     color = buckskin;
                 }
             }
-            else if (genome.HasAutosomal("dun", "dun")) {
-                if (genome.HasAutosomal("mealy", "mealy")) {
+            else if (genome.HasAllele("dun", "dun")) {
+                if (genome.HasAllele("mealy", "mealy")) {
                     color = dunmealy;
                 }
                 else {
                     color = baydun;
                 }
             }
-            else if (genome.HasAutosomal("mealy", "mealy")) {
+            else if (genome.HasAllele("mealy", "mealy")) {
                 color = baymealy;
             }
 
             // Because all textures are arranged in groups of (bay, black, red), except doublecream which 
             // was already handled and is last so not in the way, we can use this trick to get the right base color
-            if (genome.Homozygous("extension", "red")) {
+            if (genome.IsHomozygous("extension", "red")) {
                 return color + 2;
             }
-            if (genome.Homozygous("agouti", "black")) {
+            if (genome.IsHomozygous("agouti", "black")) {
                 return color + 1;
             }
             return color;
@@ -74,15 +74,15 @@ namespace Equus {
         private static int getTextureIndex(Genome genome)
         {
             int texture = getSolidBase(genome);
-            if (genome.HasAutosomal("roan", "roan")&& genome.HasAutosomal("tobiano", "tobiano"))
+            if (genome.HasAllele("roan", "roan")&& genome.HasAllele("tobiano", "tobiano"))
             {
                 return texture + 75; // 50 non-tobiano textures, then 25 tobiano textures, then 25 roan+tobiano textures
             }
-            if (genome.HasAutosomal("tobiano", "tobiano"))
+            if (genome.HasAllele("tobiano", "tobiano"))
             {
                 return texture + 50; // 50 non-tobiano textures, then 25 tobiano textures
             }
-            if (genome.HasAutosomal("roan", "roan"))
+            if (genome.HasAllele("roan", "roan"))
             {
                 return texture + 25; // 25 non-roan textures, then 25 roan textures
             }
