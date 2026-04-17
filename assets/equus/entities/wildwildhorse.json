@@ -180,6 +180,7 @@
 				},
 				{
 					"code": "swim",
+					"environment": "Sea",
 					"movespeedByType": {
 						"*-ferus": 0.02
 					},
@@ -191,6 +192,7 @@
 				},
 				{
 					"code": "tread",
+					"environment": "Sea",
 					"yawMultiplier": 1,
 					"animation": "Swim",
 					"animationSpeed": 1,
@@ -199,6 +201,7 @@
 				},
 				{
 					"code": "swimback",
+					"environment": "Sea",
 					"backwards": true,
 					"movespeedByType": {
 						"*-ferus": 0.02
