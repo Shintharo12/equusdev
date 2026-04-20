@@ -14,7 +14,7 @@
             { "deleterious": 16 },
         ],
         "bitwise": [
-            { "coi": 128 },
+            { "coi": 256 },
         ],
     },
     "interpreters": [ "Polygenes", "Equus" ],
