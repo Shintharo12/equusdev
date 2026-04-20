@@ -2,7 +2,7 @@
     {
         "file": "game:blocktypes/metal/lantern.json",
         "op": "addmerge",
-        "path": "/attributesByType/*-up/attachableToEntity/attachedShapeBySlotCode",
+        "path": "/attributesByType/*-up/attachableToEntityByType/lantern-small-*/attachedShapeBySlotCode",
         "value": {
             "neck-ferus": {
                 "base": "equus:item/wearable/lantern1-ferus"
