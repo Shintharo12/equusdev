@@ -5,10 +5,10 @@
     "authors": ["Shintharo12", "sekelsta", "safwyl", "Freakyuser396"],
     "contributors":["puditto"],
     "description": "Adds a fictional breed of wild horses",
-    "version": "1.2.0",
+    "version": "1.3.0-rc.1",
     "dependencies": {
         "game": "1.22.0-rc.5",
-        "genelib": "3.0.0-pre.1",
+        "genelib": "3.0.0",
         "jaunt": "3.0.0-rc.3"
     }
 }
