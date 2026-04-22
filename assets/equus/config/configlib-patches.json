@@ -4,7 +4,7 @@
     "number": {
       "equus:entities/wildwildhorse.json": {
         "server/spawnconditionsByType/wildwildhorse-adult-*-ferus/worldgen/triesPerChunk/avg": "WorldGenSpawnRateFerus / 1000",
-        "server/spawnconditions/runtime/chanceByType/*-adult-*-ferus": "RuntimeSpawnRateFerus / 100000",
+        "server/spawnconditions/runtime/chanceByType/wildwildhorse-adult-*-ferus": "RuntimeSpawnRateFerus / 100000",
         "behaviorConfigs/jaunt:rideable/saddleBreakDayInterval": "saddlebreakCooldownWild",
         "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/avg": "saddlebreaksWildAvg",
         "behaviorConfigs/jaunt:rideable/saddleBreaksRequired/var": "saddlebreaksWildVar"
