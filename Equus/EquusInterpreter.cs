@@ -9,11 +9,19 @@ namespace Equus {
         void GeneInterpreter.Interpret(EntityBehaviorGenetics genetics) {
             Entity entity = genetics.entity;
             Genome genome = genetics.Genome;
-            entity.WatchedAttributes.SetInt("textureIndex", getTextureIndex(genome));
+            bool faded = false;
+            if (entity.WatchedAttributes.HasAttribute("isfaded")) {
+                faded = entity.WatchedAttributes.GetBool("isfaded");
+            }
+            else {
+                faded = entity.World.Rand.Next(3) == 0;
+                entity.WatchedAttributes.SetBool("isfaded", faded);
+            }
+            entity.WatchedAttributes.SetInt("textureIndex", getTextureIndex(genome, faded));
         }
 
-        // Determines which texture to use, ignoring roan and tobiano, based on the genes
-        private static int getTextureIndex(Genome genome) {
+        // Determines which texture to use, ignoring overlays, based on the genes
+        private static int getTextureIndex(Genome genome, bool faded) {
             // Shortcuts so we don't forget which number goes with which texture
             int dunmealy = 0; // (and +1 for black base, + 2 for red base)
             int bay = 3; // (and 4 for black base, 5 for red base... that keeps being the case except doublecream)
@@ -21,26 +29,17 @@ namespace Equus {
             int baydun = 9;
             int dunskin = 12;
             int baymealy = 15;
-            int bayleopard = 18;
-            int baydunleopard = 21;
             //double cream (shared by cremello, perlino, and smoky cream):
-            int doublecream = 24; // same number for black and red basees too - shared texture is not repeated in the list
+            int doublecream = 18; // same number for black and red bases too - shared texture is not repeated in the list
+            int faded_black = 19;
+            int faded_grullo = 20;
 
             // Check the genes to choose a texture
             if (genome.IsHomozygous("cream", "cream")) {
                 return doublecream;
             }
             int color = bay;
-            // Give leopard the highest priority - if we don't have a texture for this exact horse, we pick the closest leopard texture
-            if (genome.HasAllele("leopard", "leopard")) {
-                if (genome.HasAllele("dun", "dun")) {
-                    color = baydunleopard;
-                }
-                else {
-                    color = bayleopard;
-                }
-            }
-            else if (genome.HasAllele("cream", "cream")) {
+            if (genome.HasAllele("cream", "cream")) {
                 if (genome.HasAllele("dun", "dun")) {
                     color = dunskin;
                 }
@@ -60,12 +59,21 @@ namespace Equus {
                 color = baymealy;
             }
 
-            // Because all textures are arranged in groups of (bay, black, red), except doublecream which 
-            // was already handled and is last so not in the way, we can use this trick to get the right base color
+            // Because all textures are arranged in groups of (bay, black, red), except a few special textures at the end,
+            // we can use this trick to get the right base color
             if (genome.IsHomozygous("extension", "red")) {
                 return color + 2;
             }
             if (genome.IsHomozygous("agouti", "black")) {
+                // Faded black only available for leopard patterns for now, because the texture doesn't look good plain
+                if (faded && genome.HasAllele("leopard", "leopard")) {
+                    if (color == bay) {
+                        return faded_black;
+                    }
+                    if (color == baydun) {
+                        return faded_grullo;
+                    }
+                }
                 return color + 1;
             }
             return color;

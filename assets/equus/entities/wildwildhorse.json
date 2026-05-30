@@ -63,18 +63,36 @@
 			}
 		},
 		"genelib.genetics": {
-            "genomeType": "genelib:equine",
-            "initializers": ["colorful", "deepforest", "verycold"],
-            "extraInterpreters": [
-                { "code": "Equus" },
-                {
-                    "code": "TextureOverlay", 
-                    id: "roan",
-                    textureVariants: [ { base: "entity/ferus/roan" }, { base: "entity/ferus/roan2" }, { base: "entity/ferus/roan3" }, { base: "entity/ferus/roan4" }, { base: "entity/ferus/roan5" }, { base: "entity/ferus/roan6" } ],
-                    "conditions": [{"gene": "roan", "hasAllele": "roan"}] },
-                { "code": "TextureOverlay", id: "tobiano", textureVariants: [ { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano2" } ], "conditions": [{"gene": "tobiano", "hasAllele": "tobiano"}] } 
-            ],
-        },
+			"genomeType": "genelib:equine",
+			"initializers": ["colorful", "deepforest", "verycold"],
+			"extraInterpreters": [
+				{ "code": "Equus" },
+				{
+					"code": "TextureOverlay", 
+					id: "roan",
+					textureVariants: [ { base: "entity/ferus/roan" }, { base: "entity/ferus/roan2" }, { base: "entity/ferus/roan3" }, { base: "entity/ferus/roan4" }, { base: "entity/ferus/roan5" }, { base: "entity/ferus/roan6" } ],
+					"conditions": [{"gene": "roan", "hasAllele": "roan"}]
+				},
+				{
+					"code": "TextureOverlay",
+					id: "tobiano",
+					textureVariants: [ { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano2" } ],
+					"conditions": [{"gene": "tobiano", "hasAllele": "tobiano"}]
+				},
+				{
+					"code": "TextureOverlay",
+					id: "leopard",
+					textureVariants: [ { base: "entity/ferus/leopard_80" }, { base: "entity/ferus/leopard_70" }, { base: "entity/ferus/leopard_60" }, { base: "entity/ferus/leopard_50" } ],
+					"conditions": [{"gene": "leopard", "hasAllele": "leopard", "otherAllele": "wildtype" }]
+				},
+				{
+					"code": "TextureOverlay",
+					id: "snowcap",
+					textureVariants: [ { base: "entity/ferus/snowcap_40" } ],
+					"conditions": [{"gene": "leopard", "homozygous": "leopard"}]
+				}
+			],
+		},
 		"jaunt:gait": {
 			"idleGaits": {"Land": "idle", "Sea": "tread" },
 			"gaits": [
@@ -890,14 +908,10 @@
 				{ "base": "entity/ferus/mealy-bay"},
 				{ "base": "entity/ferus/black"},
 				{ "base": "entity/ferus/mealy-chestnut"},
-				{ "base": "entity/ferus/bay-leopard"},
-				{ "base": "entity/ferus/black-leopard"},
-				{ "base": "entity/ferus/chestnut-leopard"},
-				{ "base": "entity/ferus/baydun-leopard"},
-				{ "base": "entity/ferus/grullo-leopard"},
-				{ "base": "entity/ferus/reddun-leopard"},
 				{ "base": "entity/ferus/cremello"},
-            ]}
+				{ "base": "entity/ferus/black_faded"},
+				{ "base": "entity/ferus/grullo_faded"},
+			]}
 		},
 		"sizeByType": {
 			"*-adult-female-ferus": 1,"*-adult-male-ferus": 1.05,"*-baby-*-ferus": 1
