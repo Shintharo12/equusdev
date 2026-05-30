@@ -85,7 +85,8 @@
 			{ "code": "jaunt:stamina" },
 			{ "code": "jaunt:gait" },
 			{ "code": "ropetieable" },
-			{ "code": "genelib.info", "showtagonlywhentargeted": true }
+			{ "code": "genelib.info", "showtagonlywhentargeted": true },
+			{ "code": "genelib.genetics" }
 		]
 	},
 	"server": {
@@ -100,10 +101,7 @@
 			{ "code": "harvestable" },
 			{ "code": "genelib.info", "showtagonlywhentargeted": true },
 			{ "code": "breathe" },
-			{
-				"code": "genelib.genetics",
-				"genomeType": "equus:equine"
-			},
+			{ "code": "genelib.genetics" },
 			{ "code": "genelib.multiply" },
 			{
 				"code": "milkable",

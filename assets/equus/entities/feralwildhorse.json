@@ -54,7 +54,8 @@
 			{ "code": "selectionboxes"},
 			{ "code": "jaunt:stamina" },
 			{ "code": "jaunt:gait" },
-			{ "code": "ropetieable" }
+			{ "code": "ropetieable" },
+			{ "code": "genelib.genetics" }
 		]
 	},
 	"server": {
@@ -68,10 +69,7 @@
 			{ "code": "floatupwhenstuck" },
 			{ "code": "harvestable" },
 			{ "code": "breathe" },
-			{
-				"code": "genelib.genetics",
-				"genomeType": "equus:equine"
-			},
+			{ "code": "genelib.genetics" },
 			{
 				"code": "grow",
 				"enabledByType": {

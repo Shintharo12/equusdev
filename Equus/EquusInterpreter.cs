@@ -12,8 +12,8 @@ namespace Equus {
             entity.WatchedAttributes.SetInt("textureIndex", getTextureIndex(genome));
         }
 
-        // Determines which texture to use, ignoring roan, based on the genes
-        private static int getSolidBase(Genome genome) {
+        // Determines which texture to use, ignoring roan and tobiano, based on the genes
+        private static int getTextureIndex(Genome genome) {
             // Shortcuts so we don't forget which number goes with which texture
             int dunmealy = 0; // (and +1 for black base, + 2 for red base)
             int bay = 3; // (and 4 for black base, 5 for red base... that keeps being the case except doublecream)
@@ -69,24 +69,6 @@ namespace Equus {
                 return color + 1;
             }
             return color;
-        }
-
-        private static int getTextureIndex(Genome genome)
-        {
-            int texture = getSolidBase(genome);
-            if (genome.HasAllele("roan", "roan")&& genome.HasAllele("tobiano", "tobiano"))
-            {
-                return texture + 75; // 50 non-tobiano textures, then 25 tobiano textures, then 25 roan+tobiano textures
-            }
-            if (genome.HasAllele("tobiano", "tobiano"))
-            {
-                return texture + 50; // 50 non-tobiano textures, then 25 tobiano textures
-            }
-            if (genome.HasAllele("roan", "roan"))
-            {
-                return texture + 25; // 25 non-roan textures, then 25 roan textures
-            }
-            return texture;
         }
     }
 }
