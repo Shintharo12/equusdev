@@ -63,7 +63,8 @@
 			}
 		},
 		"genelib.genetics": {
-            "genomeType": "equus:equine",
+            "genomeType": "genelib:equine",
+            "initializers": ["colorful", "deepforest", "verycold"],
             "extraInterpreters": [
                 { "code": "Equus" },
                 { "code": "TextureOverlay", id: "roan", textureVariants: [ { base: "entity/ferus/roan" } ], "conditions": [{"gene": "roan", "hasAllele": "roan"}] },

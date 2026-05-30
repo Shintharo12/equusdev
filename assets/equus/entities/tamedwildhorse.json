@@ -56,7 +56,7 @@
 		"genelib.multiply": {
             "enabledByType": { "*-adult-female-*" : true, "*": false },
 			"spawnEntityCodes": [ { "code":"equus:wildhorse-baby-female-{type}"}, { "code": "equus:wildhorse-baby-male-{type}"} ],
-			"requiresNearbyEntityCode": "equus:tamedwildhorse-adult-male-{type}",
+			"requiresNearbyEntityCodes": ["equus:tamedwildhorse-adult-male-{type}"],
 			"requiresNearbyEntityRange": 10,
 			"spawnQuantityMin": 1,
 			"spawnQuantityMax": 1.005,
