@@ -1,0 +1,62 @@
+{
+	"game:creaturegroup-wildhorse-ferus": "Дикая лошадь",
+	"game:creaturegroup-tamedwildhorse-ferus": "Прирученная лошадь",
+	"game:creaturegroup-wildwildhorse-ferus": "Необъезженная лошадь",
+	"game:tabname-equus": "Equus",
+
+	"setting-worldgen-spawnrate-ferus": "Частота появления диких лошадей при генерации мира",
+	"setting-runtime-spawnrate": "Частота появления диких лошадей во время игры",
+
+	"item-creature-wildhorse-adult-female-ferus": "Дикая кобыла",
+	"item-creature-wildhorse-adult-male-ferus": "Дикий жеребец",
+	"item-creature-wildhorse-baby-female-ferus": "Жеребенок дикой кобылы",
+	"item-creature-wildhorse-baby-male-ferus": "Жеребенок дикого жеребца",
+
+	"item-creature-wildwildhorse-adult-female-ferus": "Необъезженная кобыла",
+	"item-creature-wildwildhorse-adult-male-ferus": "Необъезженный жеребец",
+	"item-creature-wildwildhorse-baby-female-ferus": "Жеребенок необъезженной кобылы",
+	"item-creature-wildwildhorse-baby-male-ferus": "Жеребенок необъезженного жеребца",
+
+	"item-creature-tamedwildhorse-adult-female-ferus": "Прирученная кобыла",
+	"item-creature-tamedwildhorse-adult-male-ferus": "Прирученный жеребец",
+	"item-creature-tamedwildhorse-baby-female-ferus": "Жеребенок прирученной кобылы",
+	"item-creature-tamedwildhorse-baby-male-ferus": "Жеребенок прирученного жеребца",
+
+	"item-dead-creature-wildhorse-adult-female-ferus": "Дикая кобыла (Мёртвая)",
+	"item-dead-creature-wildhorse-adult-male-ferus": "Дикий жеребец (Мёртвый)",
+	"item-dead-creature-wildhorse-baby-female-ferus": "Жеребенок дикой кобылы (Мёртвый)",
+	"item-dead-creature-wildhorse-baby-male-ferus": "Жеребенок дикого жеребца (Мёртвый)",
+
+	"game:prefixandcreature-wildhorseadultfemaleferus": "дикой кобылой",
+	"game:prefixandcreature-wildhorseadultmaleferus": "диким жеребцом",
+	"game:prefixandcreature-wildhorsebabyfemaleferus": "жеребенком дикой кобылы",
+	"game:prefixandcreature-wildhorsebabymaleferus": "жеребенком дикого жеребца",
+
+	"creature-equus:*-adult-*-ferus-selectionbox-NeckAP": "<br><font color='cornflowerblue'>• Слот для фонаря •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-MidAP": "<br><font color='cornflowerblue'>• Слот для седла •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-MidUnderAP": "<br><font color='cornflowerblue'>• Слот для попоны •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-HeadAP": "<br><font color='cornflowerblue'>• Слот для уздечки •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-FaceAP": "<br><font color='cornflowerblue'>• Слот для медальона •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-RearAP": "<br><font color='cornflowerblue'>• Слот для спальника •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-RearSideAP": "<br><font color='cornflowerblue'>• Слот для седельных сумок •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-HoofAP": "<br><font color='cornflowerblue'>• Слот для подков •</font>",
+	"creature-equus:*-adult-*-ferus-selectionbox-RidingAP": "<br><font color='cornflowerblue'>• Слот для наездника •</font>",
+
+	"game:itemdesc-hoovedwearables-face-face*": "Наденьте на лоб прирученному вапити или лошади, чтобы заявить о праве собственности. Вы можете привязать только одно верховое животное одновременно.",
+	"game:itemdesc-hoovedwearables-head-bridle1": "Полезно для точных путешествий на короткие расстояния. Подходит для: вапити, лошади",
+	"game:itemdesc-hoovedwearables-head-bridle2": "Полезно для путешествий на длинные расстояния. Подходит для: вапити, лошади",
+	"game:itemdesc-hoovedwearables-middleback-saddle1": "Подходит для: вапити, лошади",
+	"game:itemdesc-hoovedwearables-lowerbackside-saddlebags*": "Подходит для: вапити, лошади",
+	"game:itemdesc-hoovedwearables-blanket-*": "Подходит для: вапити, лошади",
+
+	"setting-runtime-spawnrate-ferus": "Частота появления во время игры",
+	"setting-saddlebreak-cooldown": "Перезарядка объезживания",
+	"setting-saddlebreaks-avg": "Среднее количество попыток объезживания",
+	"setting-saddlebreaks-var": "Разброс количества попыток объезживания",
+	"setting-allowbackpacks": "Разрешить рюкзаки в слотах для спальников",
+
+	"settings-feralhorses": "Дикие лошади",
+	"settings-wildhorses": "Необъезженные лошади",
+	"settings-tamedhorses": "Прирученные лошади"
+
+}

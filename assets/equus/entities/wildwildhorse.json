@@ -69,29 +69,29 @@
 				{ "code": "Equus" },
 				{
 					"code": "TextureOverlay", 
-					id: "roan",
-					textureVariants: [ { base: "entity/ferus/roan" }, { base: "entity/ferus/roan2" }, { base: "entity/ferus/roan3" }, { base: "entity/ferus/roan4" }, { base: "entity/ferus/roan5" }, { base: "entity/ferus/roan6" } ],
+					"id": "roan",
+					"textureVariants": [ { "base": "entity/ferus/roan" }, { "base": "entity/ferus/roan2" }, { "base": "entity/ferus/roan3" }, { "base": "entity/ferus/roan4" }, { "base": "entity/ferus/roan5" }, { "base": "entity/ferus/roan6" } ],
 					"conditions": [{"gene": "roan", "hasAllele": "roan"}]
 				},
 				{
 					"code": "TextureOverlay",
-					id: "tobiano",
-					textureVariants: [ { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano2" } ],
+					"id": "tobiano",
+					"textureVariants": [ { "base": "entity/ferus/tobiano" }, { "base": "entity/ferus/tobiano" }, { "base": "entity/ferus/tobiano2" } ],
 					"conditions": [{"gene": "tobiano", "hasAllele": "tobiano"}]
 				},
 				{
 					"code": "TextureOverlay",
-					id: "leopard",
-					textureVariants: [ { base: "entity/ferus/leopard_80" }, { base: "entity/ferus/leopard_70" }, { base: "entity/ferus/leopard_60" }, { base: "entity/ferus/leopard_50" } ],
+					"id": "leopard",
+					"textureVariants": [ { "base": "entity/ferus/leopard_80" }, { "base": "entity/ferus/leopard_70" }, { "base": "entity/ferus/leopard_60" }, { "base": "entity/ferus/leopard_50" } ],
 					"conditions": [{"gene": "leopard", "hasAllele": "leopard", "otherAllele": "wildtype" }]
 				},
 				{
 					"code": "TextureOverlay",
-					id: "snowcap",
-					textureVariants: [ { base: "entity/ferus/snowcap_40" } ],
+					"id": "snowcap",
+					"textureVariants": [ { "base": "entity/ferus/snowcap_40" } ],
 					"conditions": [{"gene": "leopard", "homozygous": "leopard"}]
 				}
-			],
+			]
 		},
 		"jaunt:gait": {
 			"idleGaits": {"Land": "idle", "Sea": "tread" },
@@ -104,7 +104,6 @@
 					"backwards": true,
 					"yawMultiplier":1,
 					"staminaCost": 0.0,
-					"sound": "game:creature/hooved/trot",
 					"iconTexture": "equus:hud/walkback.svg",
 					"animation": "walkback",
 					"weight": 10,
@@ -120,7 +119,9 @@
 					"code": "idle",
 					"yawMultiplier":0.8,
 					"iconTexture": "equus:hud/idle.svg",
-					"weight": 1
+					"weight": 1,
+					"animation": "Idle",
+					"blendMode": "Average"
 				},
 				{
 					"code": "walk",
@@ -129,7 +130,6 @@
 					},
 					"yawMultiplier":0.75,
 					"staminaCost": 0.0,
-					"sound": "game:creature/hooved/trot",
 					"iconTexture": "equus:hud/walk.svg",
 					"animation": "Walk",
 					"weight": 10,
@@ -137,17 +137,50 @@
 						"*-ferus": 1.125,
 						"*": 1.125
 					},
-					"blendMode": "Average"
+					"blendMode": "Average",
+					"animationSounds": [
+					{"frame": 8, "range": 10, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 16, "range": 5, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 32, "range": 5, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+						},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+						}
+					},
+					{"frame": 40, "range": 5, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+						},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+						}
+					}
+				]
 				},
 				{
 					"code": "trot",
 					"movespeedByType": {
 						"*-ferus": 0.03528
 					},
-					"yawMultiplier": 0.7,
+					"yawMultiplier": 0.9,
 					"staminaCost": 0.0,
 					"fallbackGaitCode": "walk",
-					"sound": "game:creature/hooved/trot",
 					"iconTexture": "equus:hud/trot.svg",
 					"animation": "Trot",
 					"weight": 10,
@@ -155,17 +188,34 @@
 						"*-ferus": 2.5,
 						"*": 2.5
 					},
-					"blendMode": "Average"
+					"blendMode": "Average",
+					"animationSounds": [
+					{"frame": 10, "range": 13, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 40, "range": 10, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}
+				]
 				},
 				{
 					"code": "canter",
 					"movespeedByType": {
 						"*-ferus": 0.0720375
 					},
-					"yawMultiplier": 0.6,
-					"staminaCost": 0.0,
+					"yawMultiplier": 1.1,
+					"staminaCost": 0.001,
 					"fallbackGaitCode": "trot",
-					"sound": "game:creature/hooved/trot",
 					"iconTexture": "equus:hud/canter.svg",
 					"animation": "Canter",
 					"weight": 10,
@@ -173,17 +223,42 @@
 						"*-ferus": 2.2,
 						"*": 2.2
 					},
-					"blendMode": "Average"
+					"blendMode": "Average",
+					"animationSounds": [
+					{"frame": 10, "range": 16, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 22, "range": 15, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 32, "range": 15, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+						},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+						}
+					}
+				]
 				},
 				{
 					"code": "gallop",
 					"movespeedByType": {
 						"*-ferus": 0.12
 					},
-					"yawMultiplier": 0.5,
-					"staminaCost": 0.2,
+					"yawMultiplier": 1.2,
+					"staminaCost": 0.17,
 					"fallbackGaitCode": "canter",
-					"sound": "game:creature/hooved/gallop",
 					"iconTexture": "equus:hud/gallop.svg",
 					"animation": "Gallop",
 					"easeOutSpeed": 4,
@@ -192,7 +267,41 @@
 						"*-ferus": 3.1,
 						"*": 3
 					},
-					"blendMode": "Average"
+					"blendMode": "Average",
+					"animationSounds": [
+					{"frame": 6, "range": 20, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 12, "range": 20, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+							},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+							}
+					}, 
+					{"frame": 18, "range": 20, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+						},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+						}
+					},
+					{"frame": 24, "range": 20, "location": "equus:horse-footstep-*",
+						"pitchByType": {
+							"*adult*": { "avg": 0.8, "var": 0.15 }
+						},
+						"volumeByType": {
+							"*adult*": { "avg": 0.15 }
+						}
+					}
+				]
 				},
 				{
 					"code": "jump",
@@ -201,7 +310,6 @@
 					},
 					"yawMultiplier": 1,
 					"staminaCost": 0.0,
-					"sound": "game:creature/hooved/trot",
 					"animation": "Jump",
 					"weight": 100,
 					"blendMode": "Average",
@@ -910,7 +1018,7 @@
 				{ "base": "entity/ferus/mealy-chestnut"},
 				{ "base": "entity/ferus/cremello"},
 				{ "base": "entity/ferus/black_faded"},
-				{ "base": "entity/ferus/grullo_faded"},
+				{ "base": "entity/ferus/grullo_faded"}
 			]}
 		},
 		"sizeByType": {
