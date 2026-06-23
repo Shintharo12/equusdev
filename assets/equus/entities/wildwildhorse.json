@@ -70,26 +70,23 @@
 				{
 					"code": "TextureOverlay", 
 					"id": "roan",
+					"material": "skin",
 					"textureVariants": [ { "base": "entity/ferus/roan" }, { "base": "entity/ferus/roan2" }, { "base": "entity/ferus/roan3" }, { "base": "entity/ferus/roan4" }, { "base": "entity/ferus/roan5" }, { "base": "entity/ferus/roan6" } ],
 					"conditions": [{"gene": "roan", "hasAllele": "roan"}]
 				},
 				{
 					"code": "TextureOverlay",
 					"id": "tobiano",
+					"material": "skin",
 					"textureVariants": [ { "base": "entity/ferus/tobiano" }, { "base": "entity/ferus/tobiano" }, { "base": "entity/ferus/tobiano2" } ],
 					"conditions": [{"gene": "tobiano", "hasAllele": "tobiano"}]
 				},
 				{
 					"code": "TextureOverlay",
 					"id": "leopard",
-					"textureVariants": [ { "base": "entity/ferus/leopard_80" }, { "base": "entity/ferus/leopard_70" }, { "base": "entity/ferus/leopard_60" }, { "base": "entity/ferus/leopard_50" } ],
-					"conditions": [{"gene": "leopard", "hasAllele": "leopard", "otherAllele": "wildtype" }]
-				},
-				{
-					"code": "TextureOverlay",
-					"id": "snowcap",
-					"textureVariants": [ { "base": "entity/ferus/snowcap_40" } ],
-					"conditions": [{"gene": "leopard", "homozygous": "leopard"}]
+					"material": "skin",
+					"textureVariants": [ { "base": "entity/ferus/leopard_80" }, { "base": "entity/ferus/leopard_70" }, { "base": "entity/ferus/leopard_60" }, { "base": "entity/ferus/leopard_50" }, { "base": "entity/ferus/snowcap_40" }  ],
+					"conditions": [{"gene": "leopard", "hasAllele": "leopard" }]
 				}
 			]
 		},
@@ -997,8 +994,9 @@
 			"*-adult-*-ferus": { "base": "entity/land/ferus/adult"},
 			"*-baby-*-ferus": { "base": "entity/land/ferus/baby"}
 		},
-		"textureByType": {
-			"*-ferus": { "base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
+		"texturesByType": {
+			"*-ferus": {
+			"skin": { "base": "entity/ferus/mealy-baydun", "overlays": [ ], "alternates": [ 
 				{ "base": "entity/ferus/grullo"},
 				{ "base": "entity/ferus/mealy-reddun"},
 				{ "base": "entity/ferus/bay"},
@@ -1020,6 +1018,7 @@
 				{ "base": "entity/ferus/black_faded"},
 				{ "base": "entity/ferus/grullo_faded"}
 			]}
+		}
 		},
 		"sizeByType": {
 			"*-adult-female-ferus": 1,"*-adult-male-ferus": 1.05,"*-baby-*-ferus": 1
