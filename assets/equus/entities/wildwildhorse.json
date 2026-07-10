@@ -76,17 +76,24 @@
 				},
 				{
 					"code": "TextureOverlay",
-					"id": "tobiano",
+					"id": "leopard",
 					"material": "skin",
-					"textureVariants": [ { "base": "entity/ferus/tobiano" }, { "base": "entity/ferus/tobiano" }, { "base": "entity/ferus/tobiano2" } ],
-					"conditions": [{"gene": "tobiano", "hasAllele": "tobiano"}]
+					"textureVariants": [ { base: "entity/ferus/leopard_80" }, { base: "entity/ferus/leopard_70" }, { base: "entity/ferus/leopard_60" }, { base: "entity/ferus/leopard_50" } ],
+					"conditions": [{"gene": "leopard", "hasAllele": "leopard", "otherAllele": "wildtype" }]
 				},
 				{
 					"code": "TextureOverlay",
-					"id": "leopard",
+					"id": "snowcap",
 					"material": "skin",
-					"textureVariants": [ { "base": "entity/ferus/leopard_80" }, { "base": "entity/ferus/leopard_70" }, { "base": "entity/ferus/leopard_60" }, { "base": "entity/ferus/leopard_50" }, { "base": "entity/ferus/snowcap_40" }  ],
-					"conditions": [{"gene": "leopard", "hasAllele": "leopard" }]
+					"textureVariants": [ { base: "entity/ferus/snowcap_40" } ],
+					"conditions": [{"gene": "leopard", "homozygous": "leopard"}]
+				},
+				{
+					"code": "TextureOverlay",
+					"id": "tobiano",
+					"material": "skin",
+					"textureVariants": [ { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano" }, { base: "entity/ferus/tobiano2" } ],
+					"conditions": [{"gene": "tobiano", "hasAllele": "tobiano"}]
 				}
 			]
 		},
