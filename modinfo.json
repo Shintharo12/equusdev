@@ -8,7 +8,7 @@
     "version": "1.4.0",
     "dependencies": {
         "game": "1.22.0",
-        "genelib": "3.1.1",
+        "genelib": "3.2.0",
         "jaunt": "3.0.0-rc.3"
     }
 }
