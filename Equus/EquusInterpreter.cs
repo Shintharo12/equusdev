@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+
 using Genelib;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
+
+#nullable enable
 
 namespace Equus {
     public class EquusInterpreter : GeneInterpreter {
@@ -77,6 +82,73 @@ namespace Equus {
                 return color + 1;
             }
             return color;
+        }
+
+        // Returns a translated name for the horse's color if leopard and pinto are ignored
+        protected string getBaseCoatName(Genome genome) {
+            if (genome.IsHomozygous("cream", "cream")) {
+                return Lang.Get("genelib:horsecoat-doublecream");
+            }
+            string baseName = "bay";
+            if (genome.IsHomozygous("extension", "red")) {
+                baseName = "chestnut";
+            }
+            else if (genome.IsHomozygous("agouti", "black")) {
+                baseName = "black";
+            }
+
+            if (genome.HasAllele("dun", "dun")) {
+                baseName += "-dun";
+            }
+
+            if (genome.HasAllele("cream", "cream") && !baseName.StartsWith("black")) {
+                baseName += "-cream";
+            }
+
+            if (genome.HasAllele("roan", "roan") && !genome.HasAllele("leopard", "leopard")) {
+                if (Lang.HasTranslation("genelib:horsecoat-" + baseName + "-roan")) {
+                    return Lang.Get("genelib:horsecoat-" + baseName + "-roan");
+                }
+                return Lang.Get("genelib:horsecoat-other-roan", Lang.Get("genelib:horsecoat-" + baseName));
+            }
+            // Minor modifiers which we only list if nothing more interesting is going on
+            if (genome.HasAllele("mealy", "mealy") && (baseName == "bay" || baseName == "chestnut")) {
+                baseName += "-mealy";
+            }
+
+            return Lang.Get("genelib:horsecoat-" + baseName);
+        }
+
+        protected string? getPatternName(Genome genome) {
+            if (genome.HasAllele("tobiano", "tobiano")) {
+                if (genome.HasAllele("leopard", "leopard")) {
+                    return "genelib:horsecoat-pintaloosa";
+                }
+                return "genelib:horsecoat-tobiano";
+            }
+
+            if (genome.IsHomozygous("leopard", "leopard")) {
+                // Only snowcap is available for this case
+                return "genelib:horsecoat-snowcap";
+            }
+            else if (genome.HasAllele("leopard", "leopard")) {
+                // Options range up to nearly full leopard but let's keep it simple
+                return "genelib:horsecoat-spottedblanket";
+            }
+            return null;
+        }
+
+        void GeneInterpreter.ListPhenotype(EntityBehaviorGenetics genetics, List<string> descriptions) {
+            string baseCoat = getBaseCoatName(genetics.Genome);
+            string? pattern = getPatternName(genetics.Genome);
+
+            if (pattern == null) {
+                descriptions.Add(Lang.Get("genelib:animalinfo-coatcolor", baseCoat));
+            }
+            else {
+                descriptions.Add(Lang.Get("genelib:animalinfo-basecoat", baseCoat));
+                descriptions.Add(Lang.Get("genelib:animalinfo-pattern", Lang.Get(pattern)));
+            }
         }
     }
 }
