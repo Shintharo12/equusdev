@@ -8,6 +8,8 @@
 		{ "code": "gender","states": [ "female","male"]},
 		{ "code": "type","states": [ "ferus"]}
 	],
+	"adultWeightKg": 545,
+	"sexualDimorphism": 0.1,
 	"hitBoxSizeByType": {
 		"*-adult-*-ferus": { "x": 1.0, "y": 1.5,"z": 3.0 },"*-baby-*-ferus": { "x": 0.75, "y": 0.8 }
 	},
@@ -991,8 +993,38 @@
 						"whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage"
 					}
 				]
+			},
+			animalhunger: { 
+				monthsUntilWeaned: 6.0,
+				fiber: 0.52,
+				sugar: 0.14,
+				fat: 0.04,
+				fatMax: 0.2,
+				starch: 0.14,
+				protein: 0.14,
+				water: 1.0,
+				minerals: 0.02,
+				mineralsMax: 0.1,
+				avoidFoodTags: [ "sour" ],
+				specialties: [ "toughplant" ],
+				fiberDigestion: 1.0,
+				grazeMethods: ["graze", "nibblegraze"],
+			},
+			agegraduallyByType: {
+				"*-baby-*:": {
+					monthsToGrow: 12.0,
+					initialWeight: 0.05,
+					portionsEatenForTaming: 15,
+					maxTameness: 1.0,
+				},
+				"*:": {
+					monthsToGrow: 48.0,
+					startAgeMonths: 12.0,
+					initialWeight: 0.7,
+					portionsEatenForTaming: 15,
+					maxTameness: 1.0,
+				}
 			}
-
 	},
 	"drops": [],
 	"client": {

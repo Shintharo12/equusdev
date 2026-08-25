@@ -1,0 +1,19 @@
+[
+	// agegradually is already in the behavior config, so here we only need to patch it in to the lists
+	// animalhunger is also in the behavior config, but code will patch it into the lists automatically for us, so no need to do that here
+	{ file: "equus:entities/wildwildhorse.json", op: "replace", path: "/server/behaviors/11", value: { "code": "agegradually" }, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/wildwildhorse.json", op: "add", path: "/client/behaviors/-", value: { "code": "agegradually" }, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/feralwildhorse.json", op: "replace", path: "/server/behaviors/10", value: { "code": "agegradually" }, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/feralwildhorse.json", op: "add", path: "/client/behaviors/-", value: { "code": "agegradually" }, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/tamewildhorse.json", op: "add", path: "/server/behaviors/-", value: { "code": "agegradually" }, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/tamewildhorse.json", op: "add", path: "/client/behaviors/-", value: { "code": "agegradually" }, dependsOn: [ { modid: "detailedanimals" } ]},
+	// agegradually handles the age-based and sex-based scaling, but needs all models to start at the same size. So scale up foals to match the size of adults.
+	{ file: "equus:entities/wildwildhorse.json", op: "replace", path: "/client/sizeByType", value: { "*-baby-*": 1.47 }, dependsOn: [ { modid: "detailedanimals" } ]},
+	// Now to replace seekfoodandeat task logic. This is based on hunger drainage so needs only a short cooldown in json
+	{ file: "equus:entities/wildwildhorse.json", op: "replace", path: "/behaviorConfigs/taskai/aitasks/13/code", value: "forage", dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/wildwildhorse.json", op: "replace", path: "/behaviorConfigs/taskai/aitasks/13/mincooldownHours", value: 0.05, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/wildwildhorse.json", op: "replace", path: "/behaviorConfigs/taskai/aitasks/13/maxcooldownHours", value: 1, dependsOn: [ { modid: "detailedanimals" } ]},
+	{ file: "equus:entities/wildwildhorse.json", op: "add", path: "/behaviorConfigs/taskai/aitasks/13/nurseFromEntities", value: ["equus:*-adult-female-*"], dependsOn: [ { modid: "detailedanimals" } ]},
+	// Now remove the decorative idle eat task
+	{ file: "equus:entities/wildwildhorse.json", op: "add", path: "/behaviorConfigs/taskai/aitasks/14/enabled", value: "false", dependsOn: [ { modid: "detailedanimals" } ]},
+]
